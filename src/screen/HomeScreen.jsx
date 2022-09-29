@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -7,23 +7,24 @@ import {
   TextInput,
   Button,
   StatusBar,
+  Image,
+  ActivityIndicator,
 } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {addTodoToStore} from '../redux/action';
+import {addTodoToStore, getInitialData} from '../redux/action';
 
 const TodoCard = ({item}) => {
   return (
     <View style={styles.card}>
-      <BouncyCheckbox isChecked={item.finished} onPress={() => {}} />
-      <Text style={{fontSize: 17}}>{item.title}</Text>
+      <Image source={{uri: item.image}} style={styles.img} />
+      <Text style={{fontSize: 15}}>{item.title}</Text>
     </View>
   );
 };
 
 const HomeScreen = () => {
-  const {todos} = useSelector(state => state);
+  const {productData, loading} = useSelector(state => state.todos);
   const dispatch = useDispatch();
 
   const [todo, setTodo] = useState();
@@ -31,6 +32,23 @@ const HomeScreen = () => {
   const addTodo = () => {
     dispatch(addTodoToStore(todo));
   };
+  useEffect(() => {
+    dispatch(getInitialData());
+  }, []);
+
+  if (loading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#1B2430',
+        }}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
     <>
@@ -48,7 +66,7 @@ const HomeScreen = () => {
           <Button title="Add" onPress={() => addTodo()} />
         </View>
         <FlatList
-          data={todos}
+          data={productData}
           style={styles.list}
           renderItem={({item}) => {
             return <TodoCard item={item} />;
@@ -75,16 +93,19 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     padding: 20,
-    // backgroundColor: 'red',
+  },
+  img: {
+    height: 200,
+    width: '100%',
+    borderRadius: 20,
+    resizeMode: 'cover',
   },
   card: {
-    flexDirection: 'row',
     backgroundColor: '#E7F6F2',
     borderRadius: 10,
     margin: 10,
     padding: 10,
     alignItems: 'center',
-    height: 100,
   },
 
   inputContainer: {
