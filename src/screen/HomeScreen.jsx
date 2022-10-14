@@ -12,28 +12,29 @@ import {
 } from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {addTodoToStore, getInitialData} from '../redux/action';
+import {getInitialData} from '../redux/action';
+import {getData} from '../redux/reducers/todoSlice';
 
 const TodoCard = ({item}) => {
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.card}>
       <Image source={{uri: item.image}} style={styles.img} />
       <Text style={{fontSize: 15}}>{item.title}</Text>
+      <Button title="" />
     </View>
   );
 };
 
 const HomeScreen = () => {
-  const {productData, loading} = useSelector(state => state.todos);
-  const dispatch = useDispatch();
+  const {productData, loading} = useSelector(state => state.todo);
 
+  const dispatch = useDispatch();
   const [todo, setTodo] = useState();
 
-  const addTodo = () => {
-    dispatch(addTodoToStore(todo));
-  };
   useEffect(() => {
-    dispatch(getInitialData());
+    dispatch(getnitialData());
   }, []);
 
   if (loading) {

@@ -13,15 +13,17 @@ export const addTodoToStore = (todo) => {
   }
 }
 
+// action creator 
+// thunk/redux-saga
 
 export const getInitialData = () => async dispatch => {
-
   dispatch({
     type: SET_FETCHING,
     payload: true
   })
   try {
     const res = await axios.get("https://fakestoreapi.com/products")
+
     dispatch({
       type: "SET_INIT_DATA",
       payload: res.data
