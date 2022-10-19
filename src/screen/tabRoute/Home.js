@@ -91,6 +91,7 @@ const Home = ({navigation}) => {
       <FlatList
         data={ShopKeeperData}
         renderItem={checkCondition}
+        numColumns={2}
         //ItemSeparatorComponent={itemseparator}
       />
     </View>

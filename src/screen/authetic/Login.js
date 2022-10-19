@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'rgb(255,255,255)',
   },
   textDesign: {
     fontSize: 20,
