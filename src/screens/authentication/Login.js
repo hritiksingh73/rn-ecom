@@ -11,7 +11,7 @@ import {
 import LoginTextField from '../../components/LoginTextField';
 import HomeBtn from '../../components/HomeBtn';
 import {useDispatch, useSelector} from 'react-redux';
-import { loginDetails } from '../../redux/action/action';
+import {loginDetails} from '../../redux/action/action';
 
 const Login = ({navigation}) => {
   const [userEmail, setUserEmail] = useState('');

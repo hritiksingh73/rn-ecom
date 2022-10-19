@@ -1,6 +1,6 @@
 const colors = {
-    PRIMERY: 'white',
-    Finding_Bar: "red", 
+    primary: 'white',
+    findingBar: "red", 
 };
 
 export default colors;

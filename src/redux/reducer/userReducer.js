@@ -3,30 +3,12 @@ import {ActionTypes} from '../constants/constants';
 const initialState = {
   loginData: [],
   registerData: [
-    {
-      Name: 'praveen',
-      Email: 'P',
-      Number: '123',
-      Password: '123',
-    },
-    {
-      Name: 'naveen',
-      Email: 'n@gmail',
-      Number: '123',
-      Password: '123',
-    },
-    {
-      Name: 'rudan',
-      Email: 'r@gmail',
-      Number: '123',
-      Password: '123',
-    },
-    {
-      Name: 'himanshu',
-      Email: 'h@gmail',
-      Number: '123',
-      Password: '123',
-    },
+    // {
+    //   Name: 'praveen',
+    //   Email: 'P',
+    //   Number: '123',
+    //   Password: '123',
+    // },
   ],
 };
 

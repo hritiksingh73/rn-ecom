@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, TextInput, Text, View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-const LoginTextField = ({page, placeholder, icon, FilterData, secureTxt=false}) => {
+const LoginTextField = ({page, placeholder, icon, FilterData}) => {
   return (
     <View style={styles.container}>
       <Feather name={icon} size={20} style={styles.icons} />
@@ -14,11 +14,7 @@ const LoginTextField = ({page, placeholder, icon, FilterData, secureTxt=false}) 
           console.log('--->', val);
           FilterData(placeholder, val, page);
         }}
-        // onFocus={()=>{styles.txtBtmClr}}
-        // onBlur={() => FilterData(placeholder, data, page)}
       />
-      {/* <Text>{secureTxt}</Text> ? <Feather name={icon} size={20} style={styles.icons} /> */}
-
     </View>
   );
 };

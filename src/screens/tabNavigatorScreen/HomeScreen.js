@@ -32,7 +32,7 @@ const HomeScreen = () => {
   return (
     <View>
       <SafeAreaView style={styles.container}>
-        <View style={{backgroundColor: colors.PRIMERY}}>
+        <View style={{backgroundColor: colors.primary}}>
 
 		  <DropDown />
 
