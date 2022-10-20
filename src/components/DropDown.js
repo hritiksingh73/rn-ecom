@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor:'white'
   },
   picker: {
-    height: 40,
     width: 200,
-    marginTop: 40,
-    padding: 20,
+    marginTop: 20,
+    //padding: 10,
   },
 });
 

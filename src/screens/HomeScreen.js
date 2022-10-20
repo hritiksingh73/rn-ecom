@@ -19,8 +19,8 @@ const renderItem = ({item}) => {
     <View style={styles.container}>
       <View style={styles.veggies}>
         <Image source={item.image} style={styles.image} />
-        <Text>{item.rating}</Text>
-        <Text>{item.title}</Text>
+        <Text style ={styles.text}>{item.rating}</Text>
+        <Text style={styles.text}>{item.title}</Text>
       </View>
     </View>
   );
@@ -28,10 +28,10 @@ const renderItem = ({item}) => {
 const Home = () => {
   return (
     <SafeAreaView>
-      <DropDown />
+      <DropDown/>
       <View style={styles.input}>
-        <Icon name="search1" size={20} />
-        <TextInput placeholder="Find Store" />
+        <Icon name="search1" size={20}/>
+        <TextInput placeholder="Find Store"/>
       </View>
       <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
     </SafeAreaView>
@@ -41,6 +41,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"white"
   },
   veggies: {
     height: 180,
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     marginTop: 80,
     marginLeft: 20,
     width: 320,
+    height:40,
     margin: 5,
   },
   text: {

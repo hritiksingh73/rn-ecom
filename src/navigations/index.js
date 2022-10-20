@@ -3,10 +3,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
-import Home from '../screens/Home';
-import Cart from '../screens/Cart';
-import Search from '../screens/Search';
-import Account from '../screens/Account';
+import HomeScreen from '../screens/HomeScreen';
+import CartScreen from '../screens/CartScreen';
+import SearchScreen from '../screens/SearchScreen';
+import AccountScreen from '../screens/AccountScreen';
 import Icon from 'react-native-vector-icons/AntDesign';
 //AntIcon.loadFont();
 
@@ -26,23 +26,23 @@ const HomeNavigator = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Home"
+        name="HomeScreen"
         component={AppNavigator}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Cart"
-        component={Cart}
+        name="CartScreen"
+        component={CartScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Search"
-        component={Search}
+        name="SearchScreen"
+        component={SearchScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Account"
-        component={Account}
+        name="AccountScreen"
+        component={AccountScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -55,24 +55,24 @@ const AppNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="HomeS"
-        component={Home}
+        name="Home"
+        component={HomeScreen}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="home" {...props} />,
         }}
       />
       <Tab.Screen
-        name="SearchS"
-        component={Search}
+        name="Search"
+        component={SearchScreen}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="search1" {...props} />,
         }}
       />
       <Tab.Screen
-        name="CartS"
-        component={Cart}
+        name="Cart"
+        component={CartScreen}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
@@ -80,8 +80,8 @@ const AppNavigator = () => {
       />
 
       <Tab.Screen
-        name="AccountS"
-        component={Account}
+        name="Account"
+        component={AccountScreen}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="user" {...props} />,

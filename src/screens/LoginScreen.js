@@ -18,6 +18,8 @@ import TextInputComponent from '../components/TextInputComponent';
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const dispatch = useDispatch();
   const login = useSelector(state => state.user.login);
@@ -29,36 +31,72 @@ const LoginScreen = ({navigation}) => {
         password: password,
       }),
     );
-    navigation.navigate('RegisterScreen');
+    //navigation.navigate('HomeScreen');
   };
+
+  const emailValidator = () => {
+    if (email === '') {
+      setEmailError('email cannot be empty');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const passwordValidator = () => {
+    if (password === '') {
+      setPasswordError('password must be 8 character long');
+    } else {
+      setPasswordError('');
+    }
+  };
+  const validator = () => {
+    if (email == '' && password == '') {
+      alert('Incorrect information');
+    } else navigation.navigate('HomeScreen');
+  };
+  console.log(emailError)
   return (
+    
     <View style={styles.container}>
       <Image
-        source={require('../Assets/grocery.png')}
+        source={require('../assets/grocery.png')}
         style={styles.grcryimage}
       />
       <Text style={styles.wlcm}>Welcome Back!</Text>
       <View style={styles.input}>
         <Icon name="mail" size={20} />
-        <TextInputComponent
+        <TextInput
           placeholder="Email"
+          style={styles.placeholder}
           value={email}
+          onBlur={emailValidator}
           autoCapitalize="words"
-          onChangeText={text => setEmail(text)}
+          onChangeText={(val) => setEmail(val)}
         />
-      </View>
-      <View style={styles.input}>
+        </View>
+        <Text style={styles.error}>{emailError}</Text>
+        <View style={styles.input}>
         <Icon name="key" size={20} />
-        <TextInputComponent
+        <TextInput
           placeholder="Password"
           value={password}
+          style={styles.placeholder}
           secureTextEntry={true}
-          onChangeText={text => setPassword(text)}
+          onBlur={passwordValidator}
+          onChangeText={(val) => setPassword(val)}
         />
       </View>
+      <Text style={styles.error}>{passwordError}</Text>
       <Text style={styles.forgot}>Forgot Password?</Text>
       <View style={styles.login}>
-        <Button title={'Login'} color="limegreen" onPress={Final} />
+        <Button
+          title={'Login'}
+          color="white"
+          onPress={() => {
+            Final();
+            validator();
+          }}
+        />
       </View>
       <View style={styles.or}>
         <View style={styles.line} />
@@ -69,14 +107,14 @@ const LoginScreen = ({navigation}) => {
       <View style={styles.button}>
         <TouchableOpacity>
           <Image
-            source={require('../Assets/facebook.png')}
+            source={require('../assets/facebook.png')}
             style={styles.facebook}
           />
         </TouchableOpacity>
         <View>
           <TouchableOpacity>
             <Image
-              source={require('../Assets/logingooglebtn.png')}
+              source={require('../assets/logingooglebtn.png')}
               style={styles.google}
             />
           </TouchableOpacity>
@@ -99,7 +137,7 @@ const styles = StyleSheet.create({
   grcryimage: {
     width: 200,
     height: 50,
-    marginTop: 40,
+    marginTop: 50,
   },
   wlcm: {
     margin: 20,
@@ -112,16 +150,23 @@ const styles = StyleSheet.create({
     borderColor: 'green',
     borderTopColor: 'white',
     borderLeftColor: 'white',
-    margin: 10,
+    },
+  placeholder:{
+    padding:20,
     width: 350,
   },
+  error:{
+    marginRight:160,
+    color:'red'
+  },
   forgot: {
-    color: 'green',
+    color: Color.primary,
     fontSize: 15,
     padding: 10,
   },
   login: {
     margin: 10,
+    backgroundColor: Color.primary,
   },
   or: {
     flexDirection: 'row',
