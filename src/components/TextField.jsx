@@ -10,6 +10,6 @@ export default function TextField(props) {
 }
 const styles = StyleSheet.create({
   inputContainer: {
-    padding: Platform.OS === 'ios' ? 20 : 10,
+    padding: Platform.OS === 'ios' ? 25 : 10,
   },
 });

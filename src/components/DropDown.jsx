@@ -9,18 +9,18 @@ export default function DropDown() {
   const [items, setItems] = useState(Location);
 
   return (
-    <DropDownPicker
-      style={styles.dropdownStyle}
-      open={open}
-      value={value}
-      items={items}
-      setOpen={setOpen}
-      setValue={setValue}
-      setItems={setItems}
-      placeholder="Select any place"
-      placeholderStyle={{marginLeft: '10%'}}
-      showBadgeDot={true}
-    />
+      <DropDownPicker
+        style={styles.dropdownStyle}
+        open={open}
+        value={value}
+        items={items}
+        setOpen={setOpen}
+        setValue={setValue}
+        setItems={setItems}
+        placeholder="Select any place"
+        placeholderStyle={{marginLeft: '10%'}}
+        showBadgeDot={true}
+      />
   );
 }
 const styles = StyleSheet.create({
