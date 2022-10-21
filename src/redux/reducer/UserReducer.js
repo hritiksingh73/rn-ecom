@@ -10,6 +10,8 @@ const InitialState = {
     cellNumber: '',
     password: '',
   },
+  isFetching: false,
+  productData: [],
 };
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
@@ -19,6 +21,13 @@ const userReducer = (state = InitialState, action) => {
 
     case ActionType.REGISTER_USER:
       return {...state, RegisterPage: {...action.payload}};
+
+    case ActionType.SET_INIT_DATA:
+      return {...state, productData: action.payload};
+
+    case ActionType.SET_FETCHING:
+      return {...state, isFetching: action.payload};
+
     default:
       return state;
   }

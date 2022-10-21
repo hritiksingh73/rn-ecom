@@ -1,13 +1,14 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import RegisterPage from './redux/screens/Register';
-import LoginPage from './redux/screens/Login';
+import RegisterPage from './screens/Register';
+import LoginPage from './screens/Login';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Search from './redux/screens/Search';
-import Cart from './redux/screens/Cart';
-import Account from './redux/screens/Account';
+import Search from './screens/Search';
+import Cart from './screens/Cart';
+import Account from './screens/Account';
 import Icon from 'react-native-vector-icons/AntDesign';
-import TabNav from './redux/screens/TabNav';
+import TabNav from './screens/TabNav';
+import SuperFresh from './screens/SuperFresh';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -25,8 +26,13 @@ const HomeNavigator = () => {
         options={{headerShown: true}}
       />
       <HomeStack.Screen
-        name="TabNav"
+        name="Super_Fresh"
         component={AppNavigator}
+        options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="TabNav"
+        component={TabNav}
         options={{headerShown: false}}
       />
       <HomeStack.Screen
@@ -54,13 +60,12 @@ const AppNavigator = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Home"
-        component={TabNav}
+        component={SuperFresh}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="home" {...props} />,
         }}
       />
-      
 
       <Tab.Screen
         name="Search"

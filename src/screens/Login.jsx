@@ -12,20 +12,51 @@ import Email from 'react-native-vector-icons/Fontisto';
 import Password from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {addUser} from '../action/Action';
-import { green, white } from '../../constant/Color';
+import {addUser} from '../redux/action/Action';
+import {Color} from '../constant/Color';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const [loginActive, setLoginActive] = useState(true);
   const datafetch = useSelector(state => state.userInput.loginpage);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
+  const emailValidator = () => {
+    if (email == '') {
+      setEmailError('email cannot be empty');
+    } else {
+      setEmailError('');
+    }
+  };
+  const passwordValidator = () => {
+    if (userPassword == '') {
+      setPasswordError('Password can not be Empty');
+    } else {
+      setPasswordError('');
+    }
+  };
+
+  const dispatchCredentials = () => {
+    dispatch(addUser(email, userPassword));
+    navigation.navigate('TabNav');
+  };
+
+  const validator = () => {
+    if (email == '' && userPassword == '') {
+      setLoginActive(true);
+    } else {
+      setLoginActive(false);
+    }
+  };
+
   return (
     <SafeAreaView>
       <Image
-        source={require('../../asset/GrocerryMain.jpeg')}
+        source={require('../asset/GrocerryMain.jpeg')}
         style={styles.groceryHeader}
       />
 
@@ -34,11 +65,15 @@ const LoginPage = () => {
         <Email name="email" color="black" size={24} />
         <TextInput
           onChangeText={text => setEmail(text)}
+          keyboardType="email-address"
           value={email}
           placeholder="Email"
           autoCapitalize="words"
+          onBlur={() => emailValidator()}
         />
       </View>
+      <Text style={{color: Color.red}}>{emailError}</Text>
+
       <Text style={styles.userInputHeader}>Password</Text>
       <View style={styles.userDetails}>
         <Password name="form-textbox-password" color="black" size={24} />
@@ -47,9 +82,10 @@ const LoginPage = () => {
           value={userPassword}
           placeholder="Password"
           autoCapitalize="words"
+          onBlur={() => passwordValidator()}
         />
       </View>
-
+      <Text style={{color: Color.red}}>{passwordError}</Text>
       <TouchableOpacity
         style={styles.forgetPassword}
         onPress={() => console.log(datafetch)}>
@@ -57,15 +93,16 @@ const LoginPage = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={() => {
-          dispatch(addUser(email, userPassword));
-          // console.log(email,userPassword)
-        }}
+        disabled={loginActive}
+        onPress={() => {validator(),dispatchCredentials();}}
+        // onPress={() => {
+        //   dispatch(addUser(email, userPassword));
+        // }}
         style={styles.loginButtonContainer}>
         <Text style={styles.loginButton}>Login</Text>
       </TouchableOpacity>
       <Image
-        source={require('../../asset/orcontinuewith.jpeg')}
+        source={require('../asset/orcontinuewith.jpeg')}
         style={styles.orContinue}
       />
       <View style={styles.bottomHeadline}>
@@ -97,13 +134,13 @@ styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     width: 330,
-    borderRightColor: white,
-    borderLeftColor: white,
-    borderTopColor: white,
+    borderRightColor: Color.white,
+    borderLeftColor: Color.white,
+    borderTopColor: Color.white,
   },
   forgetPassword: {
     fontSize: 20,
-    color: 'green',
+    color: Color.green,
     alignSelf: 'center',
     alignItems: 'center',
     paddingTop: 10,
@@ -115,11 +152,11 @@ styles = StyleSheet.create({
   },
   loginButton: {
     fontSize: 20,
-    color: white,
+    color: Color.white,
     borderRadius: 3,
     width: 100,
     height: 30,
-    backgroundColor: green,
+    backgroundColor: Color.green,
     textAlign: 'center',
   },
   orContinue: {

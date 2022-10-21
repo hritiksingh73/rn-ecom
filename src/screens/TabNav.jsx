@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 // import { Dropdown } from 'rn-material-dropdown';
-import Cards from '../../dummyData/Cards';
+import Cards from '../dummyData/Cards';
 
 // const country = [
 //   {label: 'India', value: '1'},
@@ -22,13 +22,13 @@ import Cards from '../../dummyData/Cards';
 const shoppingCards = ({item}) => {
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.courseContainer}>
+      <View style={styles.selectionCard}>
         <Image
           style={styles.cardImage}
           source={item.image}
           resizeMode="contain"
         />
-        <Text style={styles.mainHeader}>{item.title}</Text>
+        <Text style={styles.imageTitle}>{item.title}</Text>
       </View>
     </View>
   );
@@ -60,14 +60,15 @@ const styles = StyleSheet.create({
     width: 350,
   },
   mainContainer: {
-    paddingHorizontal: 20,
-    
+    flexDirection: 'row',
   },
-  courseContainer: {
-    padding: 30,
+  selectionCard: {
+    height: 200,
+    width: 220,
+    padding: 5,
     backgroundColor: 'rgbs(255,255,255,0.90)',
     textAlign: 'center',
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: 'grey',
     shadowOffset: {width: 0, height: 0},
     shadowOffset: 0.5,
@@ -75,18 +76,17 @@ const styles = StyleSheet.create({
     elevation: 8,
     marginVertical: 30,
   },
-  mainHeader: {
-    fontSize: 22,
+  imageTitle: {
+    fontSize: 20,
     color: '#344055',
     textTransform: 'uppercase',
     paddingBottom: 15,
     textAlign: 'center',
-    fontFamily: 'Nunito_600SemiBold',
   },
   cardImage: {
     width: '100%',
-    height: undefined,
-    aspectRatio: 1,
+    height: '80%',
+    flexDirection: 'row',
   },
 });
 

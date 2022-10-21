@@ -1,10 +1,10 @@
-import { createStore, combineReducers } from "redux";
-import UserReducer from "../reducer/DataHub";
-
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import UserReducer from "../reducer/UserReducer";
+import thunk from "redux-thunk";
 const rootReducer= combineReducers({
     userInput: UserReducer,
 })
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
