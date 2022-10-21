@@ -3,22 +3,22 @@ import {
   View,
   Image,
   Text,
-  StyleSheet,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import TextField from '../components/TextField';
-import ButtonComponent from '../components/ButtonComponent';
-import color from '../constant/color';
+import TextField from '../../components/TextField';
+import ButtonComponent from '../../components/ButtonComponent';
+import color from '../../constant/color';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {userLogin} from '../redux/actions/userAction';
-import ImageBtn from '../components/ImageBtn';
+import {userLogin} from '../../redux/actions/userAction';
+import ImageBtn from '../../components/ImageBtn';
 import Icon from 'react-native-vector-icons/AntDesign';
-import TxtComponent from '../components/TxtComponent';
+import TxtComponent from '../../components/TxtComponent';
+import {styles} from './styles';
 
-export default function LoginScreen() {
+const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validation, setValidation] = useState({
@@ -34,14 +34,26 @@ export default function LoginScreen() {
     navigation.navigate('Grocery');
   };
 
+  validateEmail = email => {
+    var re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return re.test(email);
+  };
+  validatePassword = password => {
+    var re =
+      /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+    return re.test(password);
+  };
+
   const emailValidator = () => {
-    email == ''
-      ? setValidation({emailError: 'please enter your email id'})
+    email == '' || !validateEmail(email)
+      ? setValidation({emailError: 'please enter a valid email'})
       : setValidation({emailError: ''});
   };
   const passwordValidator = () => {
-    password == ''
-      ? setValidation({passwordError: 'please enter your password'})
+    password == '' || !validatePassword(password)
+      ? setValidation({
+          passwordError: 'please enter a valid password (eg: John@1234)',
+        })
       : setValidation({passwordError: ''});
   };
 
@@ -50,7 +62,7 @@ export default function LoginScreen() {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
         <View style={styles.headerImage}>
-          <Image source={require('../assets/grocery.png')} />
+          <Image source={require('../../assets/grocery.png')} />
           <Text
             style={[
               styles.textStyle,
@@ -87,12 +99,17 @@ export default function LoginScreen() {
         <TxtComponent>{validation.passwordError}</TxtComponent>
         <Text style={styles.forgotStyle}>Forgot Password?</Text>
 
-        <ButtonComponent style={{backgroundColor: color.primary}}>
-          <Text onPress={() => userLoginDetails()}>Login</Text>
+        <ButtonComponent
+          style={{backgroundColor: color.primary}}
+          onPress={() => userLoginDetails()}
+          disabled={
+            !validateEmail(email) || !validatePassword(password) ? true : false
+          }>
+          <Text>Login</Text>
         </ButtonComponent>
 
         <View style={styles.orImage}>
-          <Image source={require('../assets/or.png')} />
+          <Image source={require('../../assets/or.png')} />
           <Text style={styles.textStyle}>Continue with</Text>
         </View>
 
@@ -109,41 +126,5 @@ export default function LoginScreen() {
       </KeyboardAvoidingView>
     </View>
   );
-}
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: 'white',
-    paddingTop: '22%',
-  },
-  headerImage: {
-    alignItems: 'center',
-  },
-  textStyle: {
-    fontSize: 18,
-  },
-  textInput: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'lightgrey',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '90%',
-    marginHorizontal: 20,
-  },
-  forgotStyle: {
-    textAlign: 'center',
-    color: color.primary,
-    fontSize: 16,
-    marginTop: 24,
-  },
-  orImage: {
-    alignItems: 'center',
-    paddingTop: 25,
-  },
-  accountText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingTop: '8%',
-    marginHorizontal: '13%',
-  },
-});
+};
+export default LoginScreen;

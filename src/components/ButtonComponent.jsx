@@ -7,6 +7,8 @@ export default function ButtonComponent(props) {
     <View style={styles.loginButton}>
       <TouchableOpacity
         style={styles.loginButtonContainer}
+        disabled={props.disabled}
+        activeOpacity={0.8}
         onPress={props.onPress}>
         <Text {...props} style={styles.loginButtonStyle} />
       </TouchableOpacity>

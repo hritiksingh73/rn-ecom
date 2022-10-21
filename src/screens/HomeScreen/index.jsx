@@ -1,18 +1,11 @@
 import React from 'react';
-import {
-  Text,
-  Image,
-  StyleSheet,
-  FlatList,
-  View,
-  TextInput,
-  Platform,
-} from 'react-native';
-import {CATEGORIES} from '../data/dummy-data';
+import {Text, Image, FlatList, View, TextInput} from 'react-native';
+import {CATEGORIES} from '../../data/dummy-data';
 import Icon from 'react-native-vector-icons/AntDesign';
-import DropDown from '../components/DropDown';
+import DropDown from '../../components/DropDown';
+import {styles} from './styles';
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const renderGroceryShops = grocery => {
     return (
       <View style={styles.renderItemScreen}>
@@ -44,40 +37,5 @@ export default function HomeScreen() {
       />
     </View>
   );
-}
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    margin: 10,
-    backgroundColor: 'white',
-    marginTop: Platform.OS === 'ios' ? 30 : 0,
-  },
-  renderItemScreen: {
-    flex: 1,
-    margin: 8,
-  },
-  imageContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  imgStyle: {
-    resizeMode: 'stretch',
-    width: '100%',
-    height: 160,
-    marginTop: 15,
-  },
-  searchSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    height: '9%',
-    backgroundColor: 'lightgrey',
-  },
-  input: {
-    padding: 8,
-  },
-  shopTitle: {
-    fontSize: 18,
-    color: 'black',
-  },
-});
+};
+export default HomeScreen;

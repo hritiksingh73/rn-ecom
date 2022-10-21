@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {userRegister} from '../redux/actions/userAction';
-import color from '../constant/color';
-import TextField from '../components/TextField';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {userRegister} from '../../redux/actions/userAction';
+import color from '../../constant/color';
+import TextField from '../../components/TextField';
 import {useDispatch, useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/AntDesign';
-import TxtComponent from '../components/TxtComponent';
+import TxtComponent from '../../components/TxtComponent';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import ButtonComponent from '../components/ButtonComponent';
+import ButtonComponent from '../../components/ButtonComponent';
+import {styles} from './styles';
 
-export default function RegisterScreen() {
+const RegisterScreen = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
@@ -41,19 +42,35 @@ export default function RegisterScreen() {
       ? setValidation({nameError: 'please enter your name'})
       : setValidation({nameError: ''});
   };
+  validateEmail = email => {
+    var re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return re.test(email);
+  };
+  validatePhNumber = mobileNumber => {
+    var re = /^(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$/;
+    return re.test(mobileNumber);
+  };
+  validatePassword = password => {
+    var re =
+      /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+    return re.test(password);
+  };
+
   const emailValidator = () => {
-    email == ''
-      ? setValidation({emailError: 'please enter your email id'})
+    email == '' || !validateEmail(email)
+      ? setValidation({emailError: 'please enter a valid email'})
       : setValidation({emailError: ''});
   };
   const mobileValidator = () => {
-    mobileNumber == ''
-      ? setValidation({mobileError: 'please enter your mobile number'})
+    mobileNumber == '' || !validatePhNumber(mobileNumber)
+      ? setValidation({mobileError: 'please enter a valid mobile number'})
       : setValidation({mobileError: ''});
   };
   const passwordValidator = () => {
-    password == ''
-      ? setValidation({passwordError: 'please enter your password'})
+    password == '' || !validatePassword(password)
+      ? setValidation({
+          passwordError: 'please enter a valid password (eg: John@1234)',
+        })
       : setValidation({passwordError: ''});
   };
 
@@ -110,8 +127,18 @@ export default function RegisterScreen() {
       </View>
       <TxtComponent>{validation.passwordError}</TxtComponent>
 
-      <ButtonComponent style={{backgroundColor: color.primary}}>
-        <Text onPress={() => userRegisterDetails()()}>Register</Text>
+      <ButtonComponent
+        style={{backgroundColor: color.primary}}
+        onPress={() => userRegisterDetails()}
+        disabled={
+          fullName == '' ||
+          !validateEmail(email) ||
+          !validatePassword(password) ||
+          !validatePhNumber(mobileNumber)
+            ? true
+            : false
+        }>
+        <Text>Register</Text>
       </ButtonComponent>
 
       <View style={styles.accountText}>
@@ -122,34 +149,5 @@ export default function RegisterScreen() {
       </View>
     </SafeAreaView>
   );
-}
-
-const styles = StyleSheet.create({
-  headerText: {
-    fontSize: 25,
-    fontWeight: '800',
-    marginTop: 30,
-    marginLeft: 20,
-  },
-  loginText: {
-    color: color.primary,
-  },
-  textInput: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'lightgrey',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '90%',
-    padding: 10,
-  },
-  textStyle: {
-    fontSize: 18,
-  },
-  accountText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingTop: '8%',
-    marginHorizontal: '13%',
-    paddingTop: '20%',
-  },
-});
+};
+export default RegisterScreen;
