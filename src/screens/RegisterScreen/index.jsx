@@ -10,6 +10,7 @@ import TxtComponent from '../../components/TxtComponent';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import ButtonComponent from '../../components/ButtonComponent';
 import {styles} from './styles';
+import auth from '@react-native-firebase/auth';
 
 const RegisterScreen = () => {
   const [fullName, setFullName] = useState('');
@@ -28,14 +29,32 @@ const RegisterScreen = () => {
   const registerDetails = useSelector(state => state.reducer.registerDetails);
 
   const userRegisterDetails = () => {
-    dispatch(
-      userRegister({
-        fullName: fullName,
-        email: email,
-        mobileNumber: mobileNumber,
-        password: password,
-      }),
-    );
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(({user}) => {
+        user.updateProfile({
+          displayName: fullName,
+        });
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+        console.error(error);
+      });
+    // dispatch(
+    //   userRegister({
+    //     fullName: fullName,
+    //     email: email,
+    //     mobileNumber: mobileNumber,
+    //     password: password,
+    //   }),
+    // );
   };
   const nameValidator = () => {
     fullName == ''

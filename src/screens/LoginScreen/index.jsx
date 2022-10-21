@@ -17,6 +17,7 @@ import ImageBtn from '../../components/ImageBtn';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TxtComponent from '../../components/TxtComponent';
 import {styles} from './styles';
+import auth from '@react-native-firebase/auth';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -29,9 +30,15 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const loginDetails = useSelector(state => state.reducer.loginDetails);
 
-  const userLoginDetails = () => {
-    dispatch(userLogin({email: email, password: password}));
-    navigation.navigate('Grocery');
+  const userLoginDetails = async () => {
+    try {
+      const userLogin = auth().signInWithEmailAndPassword(email, password);
+      console.log('---->', userLogin);
+    } catch (error) {
+      console.error(error.code);
+    }
+    // dispatch(userLogin({email: email, password: password}));
+    // navigation.navigate('Grocery');
   };
 
   validateEmail = email => {
