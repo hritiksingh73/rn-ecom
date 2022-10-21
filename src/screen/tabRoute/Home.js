@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
-/* eslint-disable react/jsx-no-undef */
 import React from 'react';
 import {
   Text,
@@ -11,23 +9,24 @@ import {
   Image,
 } from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
+import Colors from '../../constants/Colors';
 
 const ShopKeeperData = [
   {
     id: 1,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/shopkeeper1.jpeg'),
   },
 
   {
     id: 2,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/shopkeeper2.jpeg'),
   },
 
   {
     id: 3,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/Shopkeeper3.jpeg'),
   },
 
@@ -45,27 +44,27 @@ const ShopKeeperData = [
 
   {
     id: 6,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/shopkeeper6.webp'),
   },
   {
     id: 7,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/shopkeeper7.jpeg'),
   },
   {
     id: 8,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/shopkeeper8.jpeg'),
   },
   {
     id: 9,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/shopkeeper9.jpeg'),
   },
   {
     id: 10,
-    name: 'Anything',
+    name: 'DailyNeeds',
     image: require('../../assests/shopkeeper10.jpeg'),
   },
 ];
@@ -102,6 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Colors.background,
   },
   design: {
     fontSize: 20,

@@ -4,18 +4,25 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import Textinput from '../../components/Textinput';
 import {useDispatch} from 'react-redux';
-import {updateReg} from './../../redux/action/action';
+import {updateReg} from '../../redux/action/action';
+import Colors from '../../constants/Colors';
+
 const Registration = ({navigation}) => {
   const dispatch = useDispatch();
   const [fullName, setfullName] = useState('');
   const [email, setEmail] = useState('');
   const [mobNo, setMobno] = useState('');
   const [password, setPassword] = useState('');
+  const [isValidemail, setisValidemail] = useState(true);
+  const [isPassValid, setisPassValid] = useState(true);
+
+  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/; // for mail pattern
+  const passRegex =
+    /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/; // for password
 
   const update = () => {
     const object = {fullName, email, mobNo, password};
     dispatch(updateReg(object));
-    //console.log(object)
   };
   return (
     <View style={styles.container}>
@@ -31,8 +38,14 @@ const Registration = ({navigation}) => {
 
       <Text style={styles.field}>FullName</Text>
       <IconAntDesign style={styles.icontwo} name="user" size={25} />
-      <Textinput onChangeText={Email => setEmail(Email)} defaultValue={email} />
-
+      <Textinput
+        onChangeText={Email => setEmail(Email)}
+        defaultValue={email}
+        onBlur={() => {
+          setisValidemail(reg.test(email) === true ? '' : 'Incorrect email');
+        }}
+      />
+      <Text style={styles.errorMsg}>{isValidemail}</Text>
       <Text style={styles.field}>Email</Text>
       <IconAntDesign style={styles.icontwo} name="mail" size={25} />
       <Textinput onChangeText={Mob => setMobno(Mob)} defaultValue={mobNo} />
@@ -42,11 +55,18 @@ const Registration = ({navigation}) => {
       <Textinput
         onChangeText={pass => setPassword(pass)}
         defaultValue={password}
+        secureTextEntry
+        onBlur={() => {
+          setisPassValid(
+            passRegex.test(password) === true ? '' : 'NeedStrongPass',
+          );
+        }}
       />
 
       <Text style={styles.field}>Password</Text>
       <IconAntDesign style={styles.icontwo} name="key" size={25} />
       <View>
+        <Text style={styles.errorMsgofPass}>{isPassValid}</Text>
         <TouchableOpacity style={styles.btn} onPress={() => update()}>
           <Text style={styles.btnOne}>Register</Text>
         </TouchableOpacity>
@@ -68,6 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Colors.background,
   },
   text: {
     fontSize: 30,
@@ -105,6 +126,16 @@ const styles = StyleSheet.create({
   icontwo: {
     bottom: 225,
     right: 165,
+  },
+  errorMsg: {
+    color: 'red',
+    bottom: '20%',
+    right: '30%',
+  },
+  errorMsgofPass: {
+    color: 'red',
+    bottom: '380%',
+    right: '30%',
   },
 });
 export default Registration;

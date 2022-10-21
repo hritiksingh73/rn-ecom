@@ -16,7 +16,7 @@ const initialState = {
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.REGDATA:
-      console.log('hello', action.payload);
+      //console.log('hello', action.payload);
       return {
         ...state,
         registrationData: action.payload,

@@ -8,20 +8,33 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import Colors from '../../constants/Colors';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch} from 'react-redux';
-import {updateUser} from './../../redux/action/action';
+import {updateUser} from '../../redux/action/action';
+
+let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/; // for mail pattern
+const passRegex =
+  /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/; // for password
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const [mail, setmail] = useState('');
   const [pass, setpass] = useState('');
+  const [isValidemail, setisValidemail] = useState(true);
+  const [isPassValid, setisPassValid] = useState(true);
   const object = {mail, pass};
+
   const updateLogin = () => {
     dispatch(updateUser(object));
-
-    //console.log(object)
+    setmail('');
+    setpass('');
+    // eslint-disable-next-line no-lone-blocks
+    {
+      navigation.navigate('Home');
+    }
   };
+
   return (
     <View style={styles.conatiner}>
       <View style={styles.top}>
@@ -31,31 +44,38 @@ const Login = ({navigation}) => {
       </View>
 
       <TextInput
-        style={styles.textfield}
+        style={styles.textField}
         placeholder="Email"
         placeholderTextColor={'black'}
         onChangeText={Name => setmail(Name)}
         defaultValue={mail}
+        onBlur={() => {
+          setisValidemail(reg.test(mail) === true ? '' : 'Incorrect email');
+        }}
       />
+      <Text style={styles.errorMsg}>{isValidemail}</Text>
+
       <TextInput
-        style={styles.textfield}
+        style={styles.textField}
         placeholder="Password"
         placeholderTextColor={'black'}
         onChangeText={val => setpass(val)}
         defaultValue={pass}
+        onBlur={() => {
+          setisPassValid(passRegex.test(pass) === true ? '' : 'NeedStrongPass');
+        }}
       />
+      <Text style={styles.errorMsg}>{isPassValid}</Text>
 
       <View>
         <IconAntDesign style={styles.icon} name="mail" size={25} />
       </View>
-      <IconAntDesign style={styles.icontwo} name="key" size={25} />
-      <IconAntDesign style={styles.iconthree} name="eye" size={25} />
+      <IconAntDesign style={styles.iconTwo} name="key" size={25} />
+      <IconAntDesign style={styles.iconThree} name="eye" size={25} />
       <TouchableOpacity>
         <Text style={styles.touchable}>Forgot Password? </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.btn}
-        onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity style={styles.btn} onPress={() => updateLogin()}>
         <Text style={styles.btnOne}>Login</Text>
       </TouchableOpacity>
       <Text style={styles.or}>OR</Text>
@@ -66,14 +86,14 @@ const Login = ({navigation}) => {
       <TouchableOpacity style={{right: 100}}>
         <Text style={styles.design}>Facebook</Text>
         <Image
-          style={styles.DesignThree}
+          style={styles.designThree}
           source={require('../../assests/facebook.png')}
         />
       </TouchableOpacity>
       <TouchableOpacity style={{top: 28, left: 90}}>
-        <Text style={styles.DesignFour}>Google</Text>
+        <Text style={styles.designFour}>Google</Text>
         <Image
-          style={styles.DesignFive}
+          style={styles.designFive}
           source={require('../../assests/google-logo.png')}
         />
       </TouchableOpacity>
@@ -94,7 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgb(255,255,255)',
+    backgroundColor: Colors.background,
   },
   textDesign: {
     fontSize: 20,
@@ -106,15 +126,15 @@ const styles = StyleSheet.create({
     bottom: '5%',
   },
   icon: {
-    bottom: '485%',
+    bottom: '620%',
     right: '44%',
   },
-  icontwo: {
-    bottom: '10%',
+  iconTwo: {
+    bottom: '12%',
     right: '45%',
   },
-  iconthree: {
-    bottom: '12%',
+  iconThree: {
+    bottom: '14%',
     left: '38%',
   },
   touchable: {
@@ -149,14 +169,14 @@ const styles = StyleSheet.create({
     // right:300
   },
 
-  DesignThree: {
+  designThree: {
     top: 88,
     height: 30,
     width: 30,
     left: 35,
     // right:40
   },
-  DesignFour: {
+  designFour: {
     fontSize: 18,
     fontWeight: '700',
     top: 20,
@@ -170,13 +190,13 @@ const styles = StyleSheet.create({
 
     paddingRight: 30,
   },
-  DesignFive: {
+  designFive: {
     bottom: 23,
     height: 30,
     width: 30,
     left: 20,
   },
-  textfield: {
+  textField: {
     fontSize: 20,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
@@ -194,6 +214,12 @@ const styles = StyleSheet.create({
   logtwo: {
     top: 42,
     left: 100,
+  },
+  errorMsg: {
+    color: 'red',
+    bottom: '3%',
+    right: '30%',
+    fontSize: 15,
   },
 });
 export default Login;
