@@ -9,9 +9,16 @@ import {
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
-import Cards from '../dummyData/Cards';
+import Cards from '../../dummyData/Cards';
+import styles from '../HomeScreen/styles';
+//import { Dropdown } from 'rn-material-dropdown';
 
-
+// const country = [
+//   {label: 'India', value: '1'},
+//   {label: 'Usa', value: '2'},
+//   {label: 'Russia', value: '3'},
+//   {label: 'China', value: '4'},
+// ];
 
 const shoppingCards = ({item}) => {
   return (
@@ -28,10 +35,10 @@ const shoppingCards = ({item}) => {
   );
 };
 
-const TabNav = () => {
+const HomeScreen = () => {
   return (
     <SafeAreaView>
-      {/* <Dropdown data={country} label='Favorite Fruit'/> */}
+      {/* <Dropdown/> */}
       <View style={styles.searchBar}>
         <Icon name="search1" size={28} />
         <TextInput placeholder="Find Store" />
@@ -46,37 +53,4 @@ const TabNav = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  searchBar: {
-    paddingTop: 10,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    alignSelf: 'center',
-    width: 350,
-  },
-  mainContainer: {
-    flexDirection: 'row',
-  },
-  selectionCard: {
-    width: 190,
-    height: 180,
-    paddingHorizontal: 5,
-    borderRadius: 10,
-    shadowColor: 'grey',
-    shadowRadius: 8,
-    elevation: 8,
-    marginVertical: 10,
-  },
-  imageTitle: {
-    fontSize: 15,
-    color: '#344055',
-    textAlign: 'center',
-  },
-  cardImage: {
-    width: '100%',
-    height: '90%',
-
-  },
-});
-
-export default TabNav;
+export default HomeScreen;

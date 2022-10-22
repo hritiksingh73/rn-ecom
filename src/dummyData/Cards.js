@@ -1,45 +1,38 @@
 const Cards = [
   {
     id: '1',
-    title: 'Artifacts',
+    title: 'Contrary to Popular',
     image: require('../asset/artifacts.webp'),
-    price: 5000,
   },
   {
     id: '2',
-    title: 'Library ',
-    image: require('../asset/books.webp'),
-    price: 3000,
+    title: 'The standard ',
+    image: require('../asset/shoes.webp'),
   },
   {
     id: '3',
-    title: 'Clothing',
+    title: 'Hampden-Sydney',
     image: require('../asset/clothing.webp'),
-    price: 1000,
   },
   {
     id: '4',
-    title: 'CoffeeShop',
-    image: require('../asset/coffeeshop.jpeg'),
-    price: 6000,
+    title: 'Nullam amare',
+    image: require('../asset/shoes.webp'),
   },
   {
     id: '5',
     title: 'FlowerShop',
     image: require('../asset/flowering.webp'),
-    price: 5000,
   },
   {
     id: '6',
     title: 'Mall',
     image: require('../asset/grocerry.jpeg'),
-    price: 5000,
   },
   {
     id: '7',
     title: 'Web Development',
     image: require('../asset/laptop.jpeg'),
-    price: 5000,
   },
 ];
 

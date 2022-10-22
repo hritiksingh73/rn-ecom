@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/Entypo';
+// import Icon from 'react-native-vector-icons/Entypo';
 import Hearto from 'react-native-vector-icons/AntDesign';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Rating} from 'react-native-ratings';
@@ -41,7 +41,7 @@ const SuperFresh = () => {
     <SafeAreaView>
       <ActivityIndicator animating={isFetching} />
       <View style={styles.headerBar}>
-        <Icon name="menu" size={30} />
+        {/* <Icon name="menu" size={30} /> */}
         <Text style={{fontSize: 25}}>Super Fresh</Text>
         <Bell name="bell-badge-outline" size={30} />
       </View>

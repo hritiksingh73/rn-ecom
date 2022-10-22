@@ -1,43 +1,49 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  SafeAreaView,
-  Image,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import Email from 'react-native-vector-icons/Fontisto';
 import Password from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {addUser} from '../redux/action/Action';
-import {Color} from '../constant/Color';
+import {addUser} from '../../redux/action/Action';
+import styles from '../LoginScreen/styles';
+import FormContainer from '../../componentReuse/FormInput';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const [loginActive, setLoginActive] = useState(true);
+  const [validation, setValidation] = useState({
+    emailError: '',
+    passwordError: '',
+  });
   const datafetch = useSelector(state => state.userInput.loginpage);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const emailValidator = () => {
-    if (email == '') {
-      setEmailError('email cannot be empty');
-    } else {
-      setEmailError('');
-    }
+  validateEmail = email => {
+    var rejx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return rejx.test(email);
   };
+
+  validatePassword = userPassword => {
+    var re =
+      /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+    return re.test(userPassword);
+  };
+
+  const emailValidator = () => {
+    email == '' || !validateEmail(email)
+      ? setValidation({
+          emailError: 'please enter a valid email (eg: A@123@Indianic.com)',
+        })
+      : setValidation({emailError: ''});
+  };
+
   const passwordValidator = () => {
-    if (userPassword == '') {
-      setPasswordError('Password can not be Empty');
-    } else {
-      setPasswordError('');
-    }
+    userPassword == '' || !validatePassword(userPassword)
+      ? setValidation({
+          passwordError: 'please enter a valid password ',
+        })
+      : setValidation({passwordError: ''});
   };
 
   const dispatchCredentials = () => {
@@ -45,25 +51,17 @@ const LoginPage = () => {
     navigation.navigate('TabNav');
   };
 
-  const validator = () => {
-    if (email == '' && userPassword == '') {
-      setLoginActive(true);
-    } else {
-      setLoginActive(false);
-    }
-  };
-
   return (
     <SafeAreaView>
       <Image
-        source={require('../asset/GrocerryMain.jpeg')}
+        source={require('../../asset/GrocerryMain.jpeg')}
         style={styles.groceryHeader}
       />
 
       <Text style={styles.userInputHeader}>Email</Text>
       <View style={styles.userDetails}>
         <Email name="email" color="black" size={24} />
-        <TextInput
+        <FormContainer
           onChangeText={text => setEmail(text)}
           keyboardType="email-address"
           value={email}
@@ -72,20 +70,22 @@ const LoginPage = () => {
           onBlur={() => emailValidator()}
         />
       </View>
-      <Text style={{color: Color.red}}>{emailError}</Text>
+      <Text style={styles.errormsg}>{validation.emailError}</Text>
 
       <Text style={styles.userInputHeader}>Password</Text>
       <View style={styles.userDetails}>
         <Password name="form-textbox-password" color="black" size={24} />
-        <TextInput
+        <FormContainer
           onChangeText={text => setUserPassword(text)}
           value={userPassword}
           placeholder="Password"
           autoCapitalize="words"
           onBlur={() => passwordValidator()}
+          secureTextEntry={true}
+          maxLength={9}
         />
       </View>
-      <Text style={{color: Color.red}}>{passwordError}</Text>
+      <Text style={styles.errormsg}>{validation.passwordError}</Text>
       <TouchableOpacity
         style={styles.forgetPassword}
         onPress={() => console.log(datafetch)}>
@@ -93,18 +93,37 @@ const LoginPage = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        disabled={loginActive}
-        onPress={() => {validator(),dispatchCredentials();}}
-        // onPress={() => {
-        //   dispatch(addUser(email, userPassword));
-        // }}
+        disabled={
+          !validateEmail(email) || !validatePassword(userPassword)
+            ? true
+            : false
+        }
+        onPress={() => {
+          dispatchCredentials();
+        }}
         style={styles.loginButtonContainer}>
         <Text style={styles.loginButton}>Login</Text>
       </TouchableOpacity>
       <Image
-        source={require('../asset/orcontinuewith.jpeg')}
+        source={require('../../asset/orcontinuewith.jpeg')}
         style={styles.orContinue}
       />
+
+      <TouchableOpacity style={styles.bottomSocialMedia}>
+        <View style={styles.bottomFacebook}>
+          <Image
+            style={styles.facebook}
+            source={require('../../asset/facebook.jpeg')}
+          />
+        </View>
+        <View style={styles.bottomGoogle}>
+          <Image
+            style={styles.googleImage}
+            source={require('../../asset/GoogleImage.jpeg')}
+          />
+        </View>
+      </TouchableOpacity>
+
       <View style={styles.bottomHeadline}>
         <Text>Dont have an account?</Text>
         <TouchableOpacity>
@@ -118,56 +137,5 @@ const LoginPage = () => {
     </SafeAreaView>
   );
 };
-styles = StyleSheet.create({
-  groceryHeader: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    marginTop: 60,
-  },
-  userInputHeader: {
-    paddingLeft: 60,
-    paddingTop: 20,
-  },
-  userDetails: {
-    flexDirection: 'row',
-    alignSelf: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    width: 330,
-    borderRightColor: Color.white,
-    borderLeftColor: Color.white,
-    borderTopColor: Color.white,
-  },
-  forgetPassword: {
-    fontSize: 20,
-    color: Color.green,
-    alignSelf: 'center',
-    alignItems: 'center',
-    paddingTop: 10,
-  },
-  loginButtonContainer: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    paddingTop: 20,
-  },
-  loginButton: {
-    fontSize: 20,
-    color: Color.white,
-    borderRadius: 3,
-    width: 100,
-    height: 30,
-    backgroundColor: Color.green,
-    textAlign: 'center',
-  },
-  orContinue: {
-    width: 400,
-    height: 80,
-    marginBottom: 120,
-  },
-  bottomHeadline: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
-  },
-});
+
 export default LoginPage;
