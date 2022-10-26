@@ -1,32 +1,26 @@
 import {ActionTypes} from '../constants/constants';
 
 const initialState = {
-  loginData: [],
   registerData: [
-    // {
-    //   Name: 'praveen',
-    //   Email: 'P',
-    //   Number: '123',
-    //   Password: '123',
-    // },
+    {
+      Name: '',
+      Email: '',
+      Number: '',
+      Password: '',
+    },
+    {
+      Name: 'praveen',
+      Email: 'praveen@gmail.com',
+      Number: '9999999999',
+      Password: '99999999',
+    },
   ],
 };
 
 export const userReducer = (state = initialState, action) => {
   const {type, payload} = action;
-  switch (type) {
-    case ActionTypes.LOGIN_DETAILS:
-      return {
-        ...state,
-        loginData: [
-          ...state.loginData,
-          {
-            Email: payload.email,
-            Password: payload.password,
-          },
-        ],
-      };
 
+  switch (type) {
     case ActionTypes.REGISTER_DETAILS:
       return {
         ...state,

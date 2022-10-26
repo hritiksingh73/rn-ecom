@@ -1,4 +1,3 @@
 export const ActionTypes = {
-  LOGIN_DETAILS: 'LOGIN_DETAILS',
   REGISTER_DETAILS: 'REGISTER_DETAILS',
 };

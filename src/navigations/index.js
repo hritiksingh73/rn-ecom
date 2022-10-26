@@ -1,9 +1,10 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
-import Login from '../screens/authentication/Login';
-import Register from '../screens/authentication/Register';
-import HomeScreen from '../screens/tabNavigatorScreen/HomeScreen';
+import Login from '../screens/authentication/login';
+import Register from '../screens/authentication/register';
+import HomeScreen from '../screens/tabNavigatorScreen/homeScreen';
+import SearchScreen from '../screens/tabNavigatorScreen/searchScreen';
 
 const MainNavigator = () => {
   const authStack = createNativeStackNavigator();
@@ -46,7 +47,7 @@ const TabNavigator = () => {
       />
       <tabStack.Screen
         name="Search"
-        component={HomeScreen}
+        component={SearchScreen}
         options={{
           headerShown: false,
           tabBarIcon: () => (
@@ -76,7 +77,6 @@ const TabNavigator = () => {
       />
     </tabStack.Navigator>
   );
-
 };
 
 export default MainNavigator;

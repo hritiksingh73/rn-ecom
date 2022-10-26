@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
+import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 
 const places = [
@@ -14,7 +15,6 @@ const places = [
 ];
 
 const DropDown = () => {
-  const [num, setNum] = useState(0);
   const [isTrue, setIsTrue] = useState(true);
   var val = true;
 
@@ -44,30 +44,8 @@ const DropDown = () => {
           );
         })
       )}
-      {/* {places.map((value, index) => {
-                return(
-                    <View style={styles.DropDownStyle}>
-                        <Text key={String(index)}>{value.place}</Text>
-                    </View>
-                )})} */}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  DropDownStyle: {
-    width: '50%',
-    alignItems: 'center',
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'lightgray',
-    borderRadius: 3,
-    margin: 2,
-  },
-});
 
 export default DropDown;
