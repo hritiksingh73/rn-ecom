@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
   },
+  view:{
+    flexDirection:'row'
+  },
   register: {
     marginTop: 10,
     color: color.primary,
