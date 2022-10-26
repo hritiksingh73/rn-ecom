@@ -7,12 +7,10 @@ const styles = StyleSheet.create({
   veggies: {
     height: 180,
     width: 200,
-    borderWidth: 1,
     margin: 5,
     padding: 5,
   },
   image: {
-    borderWidth: 1,
     height: 130,
     width: 180,
   },
