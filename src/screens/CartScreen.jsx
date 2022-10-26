@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, TextInput, ImageBackground} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TextInput,
+  ImageBackground,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const Cart = ({navigation}) => {
@@ -10,9 +17,14 @@ const Cart = ({navigation}) => {
         <TextInput placeholder="Super Fresh" style={styles.placeholder} />
         <Icon name="bells" size={20} />
       </View>
-      <ImageBackground source ={require('../assets/vegetable.jpeg')} style={styles.image}>
-      <Text style={styles.text}>Super Fresh</Text>
-      <Text style={styles.text}>Lorem Ipsum is simply dummy text of the printing and typesetting industry</Text>
+      <ImageBackground
+        source={require('../assets/vegetable.jpeg')}
+        style={styles.image}>
+        <Text style={styles.text}>Super Fresh</Text>
+        <Text style={styles.text}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry
+        </Text>
       </ImageBackground>
       <Button title="Cart" onPress={() => navigation.navigate('Search')} />
     </View>
@@ -28,8 +40,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 300,
   },
-  text:{
-    fontSize:20
+  text: {
+    fontSize: 20,
   },
   placeholder: {
     borderBottomWidth: 1,
@@ -38,10 +50,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 80,
   },
-  image:{
-    height:200,
-    width:400
-  }
+  image: {
+    height: 200,
+    width: 400,
+  },
 });
 
 export default Cart;

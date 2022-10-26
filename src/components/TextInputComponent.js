@@ -8,6 +8,8 @@ const TextInputComponent = props => {
       placeholder={props.placeholder}
       autoCapitalize={props.autoCapitalize}
       onChangeText={props.onChangeText}
+      onBlur={props.onBlur}
+      value={props.onvalue}
     />
   );
 };

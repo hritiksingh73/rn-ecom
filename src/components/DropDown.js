@@ -9,7 +9,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const DropDown = () => {
@@ -24,32 +24,29 @@ const DropDown = () => {
     {label: 'Jabalpur', value: 'Jabalpur'},
   ]);
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.picker}>
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={items}
-          setOpen={setOpen}
-          setValue={setValue}
-          setItems={setItems}
-        />
-      </View>
-    </SafeAreaView>
+    <DropDownPicker
+      style={styles.dropdown}
+      open={open}
+      value={value}
+      items={items}
+      setOpen={setOpen}
+      setValue={setValue}
+      placeholder="AI Hamra"
+      setItems={setItems}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor:'white'
+    flexDirection: 'row',
+    marginLeft: 50,
   },
-  picker: {
-    width: 200,
-    marginTop: 20,
-    //padding: 10,
+  dropdown: {
+    borderColor: 'white',
+    marginLeft: 20,
+    height: 20,
+    width: 250,
   },
 });
 
