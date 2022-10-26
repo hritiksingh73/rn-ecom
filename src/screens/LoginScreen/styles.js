@@ -21,6 +21,7 @@ styles = StyleSheet.create({
       borderRightColor: Color.white,
       borderLeftColor: Color.white,
       borderTopColor: Color.white,
+      // borderBottomColor: Color.green,
     },
     forgetPassword: {
       fontSize: 20,
@@ -48,7 +49,7 @@ styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       alignSelf: 'center',
-    paddingTop:50
+    paddingTop:30
     },
     errormsg: {
       color: Color.red,
@@ -57,7 +58,7 @@ styles = StyleSheet.create({
     orContinue: {
       width: 400,
       height: 80,
-      marginBottom: 30,
+      marginBottom: 5,
     },
     imagebutton: {
       width: 130,

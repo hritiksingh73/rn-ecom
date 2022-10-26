@@ -16,6 +16,7 @@ import {registerUser} from '../../redux/action/Action';
 import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import FormContainer from '../../componentReuse/FormInput';
+import auth from '@react-native-firebase/auth';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -31,9 +32,40 @@ const RegisterPage = () => {
     errorcellNumber: '',
     errorpassword: '',
   });
-  const registerUserDetails = () => {
-    dispatch(registerUser(name, registeremail, cellNumber, password));
-  };
+  // const registerUserDetails = () => {
+  //   auth()
+  // .createUserWithEmailAndPassword(registeremail, password)
+  // .then(() => {
+  //   console.log('User account created & signed in!');
+  // })
+  // .catch(error => {
+  //   if (error.code === 'auth/email-already-in-use') {
+  //     console.log('That email address is already in use!');
+  //   }
+
+  //   if (error.code === 'auth/invalid-email') {
+  //     console.log('That email address is invalid!');
+  //   }
+
+  //   console.error(error);
+  // });
+  //   // dispatch(registerUser(name, registeremail, cellNumber, password));
+  // };
+  const registerUserDetails=async()=>{
+    try{
+      const userRes= await auth().createUserWithEmailAndPassword(
+        registeremail, password
+      );
+      await userRes.user.updateProfile({
+        displayName:name
+      });
+      console.log("userRes=======>>", userRes);
+    }catch(error){
+      console.error(error.code)
+    }
+  }
+
+
 
   const nameValidator = () => {
     name == ''
@@ -142,10 +174,10 @@ const RegisterPage = () => {
           <Text style={styles.loginButton}>Login Here</Text>
         </TouchableOpacity>
       </View>
-      <Button
+      {/* <Button
         title="Explore Tab Navigation"
         onPress={() => navigation.navigate('TabNav')}
-      />
+      /> */}
        </KeyboardAvoidingView>
     </SafeAreaView>
   );

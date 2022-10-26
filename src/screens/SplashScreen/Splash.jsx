@@ -13,7 +13,7 @@ const Splash = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../asset/SplashScreen.png')}
+        source={require('../../asset/SplashScreen.png')}
         style={{width: '100%', height: '100%'}}
       />
     </View>

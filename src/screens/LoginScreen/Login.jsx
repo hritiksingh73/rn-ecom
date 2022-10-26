@@ -7,6 +7,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addUser} from '../../redux/action/Action';
 import styles from '../LoginScreen/styles';
 import FormContainer from '../../componentReuse/FormInput';
+import auth from '@react-native-firebase/auth';
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -25,9 +27,9 @@ const LoginPage = () => {
   };
 
   validatePassword = userPassword => {
-    var re =
+    var rejx =
       /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-    return re.test(userPassword);
+    return rejx.test(userPassword);
   };
 
   const emailValidator = () => {
@@ -46,9 +48,18 @@ const LoginPage = () => {
       : setValidation({passwordError: ''});
   };
 
-  const dispatchCredentials = () => {
-    dispatch(addUser(email, userPassword));
-    navigation.navigate('TabNav');
+  const dispatchCredentials = async() => {
+    //dispatch(addUser(email, userPassword));
+    //dispatch(addUser(email, userPassword));
+    try {
+      const userRes = dispatch(addUser (auth().signInWithEmailAndPassword(email,userPassword)))
+      // navigation.navigate('TabNav');  //it will automatically gets diverted into that page which has been used in stackScreen  
+      //console.log("----->",userRes);
+      console.log(addUser(email, userPassword));
+      //console.log(datafetch);
+    } catch (error) {
+      console.log(error.code);
+    }
   };
 
   return (
