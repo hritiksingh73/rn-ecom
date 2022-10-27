@@ -6,15 +6,17 @@ import RegisterPage from '../screens/RegisterScreen';
 import AuthNavigator from './AuthNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
+import {useDispatch} from 'react-redux';
+import {addUser} from '../redux/action/Action';
 const HomeStack = createNativeStackNavigator();
 
 const HomeNavigator = () => {
   const [user, setUser] = useState('');
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const dispatch = useDispatch();
   const onAuthStateChanged = user => {
-    setUser(user);
-    console.log(user);
+    dispatch(addUser(setUser(user)));
+    console.log(addUser(setUser(user)));
   };
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(user =>
@@ -30,8 +32,7 @@ const HomeNavigator = () => {
   );
 };
 
-
-  /*<HomeStack.Navigator initialRouteName="LoginScreen">
+/*<HomeStack.Navigator initialRouteName="LoginScreen">
       <HomeStack.Screen
         name="LoginScreen"
         component={LoginPage}
@@ -43,22 +44,19 @@ const HomeNavigator = () => {
         options={{headerShown: true}}
       /> */
 
-
-
-  /* <HomeStack.Screen
+/* <HomeStack.Screen
         name="TabNav"
         component={AppNavigator}
         options={{headerShown: false}}
       /> */
 
-
-  /* <HomeStack.Screen
+/* <HomeStack.Screen
         name="HomeScreem"
         component={AppNavigator}
         options={{headerShown: false}}
       /> */
 
-  /* <HomeStack.Screen
+/* <HomeStack.Screen
         name="Super_Fresh"
         component={AppNavigator}
         options={{headerShown: false}}
@@ -80,6 +78,5 @@ const HomeNavigator = () => {
       /> 
     </HomeStack.Navigator>
 */
-
 
 export default HomeNavigator;
