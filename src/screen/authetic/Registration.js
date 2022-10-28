@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     left: 112,
   },
   icontwo: {
-    bottom: 225,
+    bottom: 230,
     right: 165,
   },
   errorMsg: {
