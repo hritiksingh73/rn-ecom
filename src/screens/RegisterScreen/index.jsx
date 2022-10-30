@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {userRegister} from '../../redux/actions/userAction';
+import {userInfoDetails} from '../../redux/actions/userAction';
 import color from '../../constant/color';
 import TextField from '../../components/TextField';
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,9 +26,9 @@ const RegisterScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const registerDetails = useSelector(state => state.reducer.registerDetails);
+  const userDetails = useSelector(state => state.userDataReducer.userDetails);
 
-  const userRegisterDetails = () => {
+  const registerBtnHandler = () => {
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(({user}) => {
@@ -47,14 +47,13 @@ const RegisterScreen = () => {
         }
         console.error(error);
       });
-    // dispatch(
-    //   userRegister({
-    //     fullName: fullName,
-    //     email: email,
-    //     mobileNumber: mobileNumber,
-    //     password: password,
-    //   }),
-    // );
+    let userInfo = {
+      fullName: fullName,
+      email: email,
+      mobileNumber: mobileNumber,
+      password: password,
+    };
+    const reduxRes = dispatch(userInfoDetails(userInfo));
   };
   const nameValidator = () => {
     fullName == ''
@@ -148,7 +147,7 @@ const RegisterScreen = () => {
 
       <ButtonComponent
         style={{backgroundColor: color.primary}}
-        onPress={() => userRegisterDetails()}
+        onPress={() => registerBtnHandler()}
         disabled={
           fullName == '' ||
           !validateEmail(email) ||

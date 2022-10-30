@@ -1,12 +1,7 @@
-import {LOGIN_DATA} from '../constants/userTypes';
-import {REGISTER_DATA} from '../constants/userTypes';
+import {USER_DATA} from '../constants/userTypes';
 
 const initialState = {
-  loginDetails: {
-    email: '',
-    password: '',
-  },
-  registerDetails: {
+  userDetails: {
     fullName: '',
     email: '',
     mobileNumber: '',
@@ -16,13 +11,9 @@ const initialState = {
 
 const userDataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_DATA:
-      console.log(action.payload);
-      return {...state, loginDetails: action.payload};
-
-    case REGISTER_DATA:
-      console.log(action.payload);
-      return {...state, registerDetails: action.payload};
+    case USER_DATA:
+      console.log('user details---->', action.payload);
+      return {...state, userDetails: action.payload};
 
     default:
       return state;

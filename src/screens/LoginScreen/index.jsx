@@ -12,7 +12,7 @@ import ButtonComponent from '../../components/ButtonComponent';
 import color from '../../constant/color';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {userLogin} from '../../redux/actions/userAction';
+import {userInfoDetails} from '../../redux/actions/userAction';
 import ImageBtn from '../../components/ImageBtn';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TxtComponent from '../../components/TxtComponent';
@@ -28,17 +28,20 @@ const LoginScreen = () => {
   });
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const loginDetails = useSelector(state => state.reducer.loginDetails);
+  const userDetails = useSelector(state => state.userDataReducer.userDetails);
 
-  const userLoginDetails = async () => {
+  const loginBtnHandler = async () => {
     try {
-      const userLogin = auth().signInWithEmailAndPassword(email, password);
-      console.log('---->', userLogin);
+      const userRes = await auth().signInWithEmailAndPassword(email, password);
+
+      let userInfo = {
+        uid: userRes.user.uid,
+        email: email,
+      };
+      const reduxRes = dispatch(userInfoDetails(userInfo));
     } catch (error) {
       console.error(error.code);
     }
-    // dispatch(userLogin({email: email, password: password}));
-    // navigation.navigate('Grocery');
   };
 
   validateEmail = email => {
@@ -70,13 +73,7 @@ const LoginScreen = () => {
         behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
         <View style={styles.headerImage}>
           <Image source={require('../../assets/grocery.png')} />
-          <Text
-            style={[
-              styles.textStyle,
-              {paddingBottom: Platform.OS === 'ios' ? 30 : 20},
-            ]}>
-            Welcome back!
-          </Text>
+          <Text style={[styles.textStyle]}>Welcome back!</Text>
         </View>
 
         <View style={styles.textInput}>
@@ -108,7 +105,7 @@ const LoginScreen = () => {
 
         <ButtonComponent
           style={{backgroundColor: color.primary}}
-          onPress={() => userLoginDetails()}
+          onPress={() => loginBtnHandler()}
           disabled={
             !validateEmail(email) || !validatePassword(password) ? true : false
           }>

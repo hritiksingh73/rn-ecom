@@ -1,12 +1,6 @@
-import {LOGIN_DATA} from '../constants/userTypes';
-import {REGISTER_DATA} from '../constants/userTypes';
+import {USER_DATA} from '../constants/userTypes';
 
-export const userLogin = login => ({
-  type: LOGIN_DATA,
-  payload: login,
-});
-
-export const userRegister = register => ({
-  type: REGISTER_DATA,
-  payload: register,
+export const userInfoDetails = userDetails => ({
+  type: USER_DATA,
+  payload: userDetails,
 });
