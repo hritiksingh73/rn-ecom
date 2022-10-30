@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {addUser} from '../../redux/action/Action';
 import styles from '../LoginScreen/styles';
-import FormContainer from '../../componentReuse/FormInput';
+import FormContainer from '../../reUsable/FormInput';
 import auth from '@react-native-firebase/auth';
 import imagePath from '../../config/Image';
 

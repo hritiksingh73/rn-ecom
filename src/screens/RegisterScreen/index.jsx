@@ -15,7 +15,7 @@ import styles from './styles';
 import {addUser} from '../../redux/action/Action';
 import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import FormContainer from '../../componentReuse/FormInput';
+import FormContainer from '../../reUsable/FormInput';
 import auth from '@react-native-firebase/auth';
 
 const RegisterPage = () => {

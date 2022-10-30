@@ -15,7 +15,10 @@ const HomeNavigator = () => {
 
   const onAuthStateChanged = user => {
     setUser(user);
-    dispatch(addUser(user.displayName, user.email, user.uid, user.phoneNumber ));
+    if(user){
+      dispatch(addUser(user.displayName, user.email, user.uid, user.phoneNumber ));
+    }
+    
     //console.log(user);
     //console.log("DataFetch Redux Login Details======>>>>", datafetch)
   };
@@ -34,51 +37,6 @@ const HomeNavigator = () => {
   );
 };
 
-/*<HomeStack.Navigator initialRouteName="LoginScreen">
-      <HomeStack.Screen
-        name="LoginScreen"
-        component={LoginPage}
-        options={{headerShown: false}}
-      />
-      <HomeStack.Screen
-        name="RegisterScreen"
-        component={RegisterPage}
-        options={{headerShown: true}}
-      /> */
 
-/* <HomeStack.Screen
-        name="TabNav"
-        component={AppNavigator}
-        options={{headerShown: false}}
-      /> */
-
-/* <HomeStack.Screen
-        name="HomeScreem"
-        component={AppNavigator}
-        options={{headerShown: false}}
-      /> */
-
-/* <HomeStack.Screen
-        name="Super_Fresh"
-        component={AppNavigator}
-        options={{headerShown: false}}
-      />
-      <HomeStack.Screen
-        name="Search"
-        component={Search}
-        options={{headerShown: false}}
-      />
-      <HomeStack.Screen
-        name="Cart"
-        component={Cart}
-        options={{headerShown: false}}
-      />
-      <HomeStack.Screen
-        name="Account"
-        component={Account}
-        options={{headerShown: false}}
-      /> 
-    </HomeStack.Navigator>
-*/
 
 export default HomeNavigator;
