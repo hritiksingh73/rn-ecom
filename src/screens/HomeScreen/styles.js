@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   imageTitle: {
     fontSize: 5,
     color: '#344055',
-    // paddingBottom: 15,
     textAlign: 'center',
   },
   cardImage: {

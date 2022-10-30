@@ -1,38 +1,40 @@
+import imagePath from '../config/Image';
+
 const Cards = [
   {
     id: '1',
     title: 'Contrary to Popular',
-    image: require('../asset/artifacts.webp'),
+    image: imagePath.artifacts,
   },
   {
     id: '2',
     title: 'The standard ',
-    image: require('../asset/shoes.webp'),
+    image: imagePath.shoes,
   },
   {
     id: '3',
     title: 'Hampden-Sydney',
-    image: require('../asset/clothing.webp'),
+    image: imagePath.clothing,
   },
   {
     id: '4',
     title: 'Nullam amare',
-    image: require('../asset/shoes.webp'),
+    image: imagePath.flowering,
   },
   {
     id: '5',
     title: 'FlowerShop',
-    image: require('../asset/flowering.webp'),
+    image: imagePath.grocerry,
   },
   {
     id: '6',
     title: 'Mall',
-    image: require('../asset/grocerry.jpeg'),
+    image: imagePath.laptop,
   },
   {
     id: '7',
     title: 'Web Development',
-    image: require('../asset/laptop.jpeg'),
+    image: imagePath.shoes,
   },
 ];
 

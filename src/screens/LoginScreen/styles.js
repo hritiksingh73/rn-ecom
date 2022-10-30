@@ -8,8 +8,8 @@ styles = StyleSheet.create({
       marginTop: 60,
     },
     userInputHeader: {
-      paddingLeft: 60,
-      paddingTop: 20,
+      paddingLeft: 55,
+      paddingTop: "5%",
     },
     userDetails: {
       flexDirection: 'row',
@@ -21,7 +21,6 @@ styles = StyleSheet.create({
       borderRightColor: Color.white,
       borderLeftColor: Color.white,
       borderTopColor: Color.white,
-      // borderBottomColor: Color.green,
     },
     forgetPassword: {
       fontSize: 20,
@@ -49,17 +48,34 @@ styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       alignSelf: 'center',
-    paddingTop:30
+    paddingTop:"20%"
     },
     errormsg: {
       color: Color.red,
       paddingLeft:"14%"
     },
-    orContinue: {
-      width: 400,
-      height: 80,
-      marginBottom: 5,
+    or: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingTop: 30,
     },
+    line: {
+      flex: 1,
+      height: 1,
+      backgroundColor: 'black',
+      marginHorizontal: 25,
+    },
+    text: {
+      width: 50,
+      textAlign: 'center',
+    },
+    continuewith: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    alignItems: 'center',
+    paddingTop:"7%"
+  },
     imagebutton: {
       width: 130,
       height: 50,
@@ -67,7 +83,8 @@ styles = StyleSheet.create({
     bottomSocialMedia:{
       flexDirection:"row",
       paddingHorizontal:"13%",
-      alignContent:'space-between'
+      alignContent:'space-between',
+      paddingTop:"4%"
     },
     facebook: {
       width: 130,
@@ -78,10 +95,10 @@ styles = StyleSheet.create({
       height: 50,
     },
     bottomFacebook:{
-      paddingRight:20
+      paddingRight:"8%"
     },
     bottomGoogle:{
-      paddingLeft:20
+      paddingLeft:"8%"
     }
   });
 

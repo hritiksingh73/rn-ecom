@@ -1,14 +1,14 @@
 import {Text, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import Email from 'react-native-vector-icons/Fontisto';
-import Password from 'react-native-vector-icons/MaterialCommunityIcons';
+import  Icon from 'react-native-vector-icons/AntDesign'; 
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {addUser} from '../../redux/action/Action';
 import styles from '../LoginScreen/styles';
 import FormContainer from '../../componentReuse/FormInput';
 import auth from '@react-native-firebase/auth';
-
+import imagePath from '../../config/Image';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +17,7 @@ const LoginPage = () => {
     emailError: '',
     passwordError: '',
   });
-  const datafetch = useSelector(state => state.userInput.loginpage);
+  const datafetch = useSelector(state => state.userInfo.loginpage);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -48,14 +48,14 @@ const LoginPage = () => {
       : setValidation({passwordError: ''});
   };
 
-  const dispatchCredentials = async() => {
-    //dispatch(addUser(email, userPassword));
-    //dispatch(addUser(email, userPassword));
+  const dispatchCredentials = async () => {
+    //dispatch(addUser( email, userPassword ));
     try {
-      const userRes = dispatch(addUser (auth().signInWithEmailAndPassword(email,userPassword)))
-      // navigation.navigate('TabNav');  //it will automatically gets diverted into that page which has been used in stackScreen  
+      const userRes =await auth().signInWithEmailAndPassword(email, userPassword);
+      // navigation.navigate('TabNav');  //it will automatically gets diverted into that page which has been used in stackScreen
       //console.log("----->",userRes);
-      console.log(addUser(email, userPassword));
+      //console.log(addUser(email, userPassword));
+      //dispatch(addUser( userRes.user.displayName,userRes.user.email ));
       //console.log(datafetch);
     } catch (error) {
       console.log(error.code);
@@ -64,14 +64,11 @@ const LoginPage = () => {
 
   return (
     <SafeAreaView>
-      <Image
-        source={require('../../asset/GrocerryMain.jpeg')}
-        style={styles.groceryHeader}
-      />
+      <Image source={imagePath.grocerryMain} style={styles.groceryHeader} />
 
       <Text style={styles.userInputHeader}>Email</Text>
       <View style={styles.userDetails}>
-        <Email name="email" color="black" size={24} />
+        <Email name="email" color="black" size={20} />
         <FormContainer
           onChangeText={text => setEmail(text)}
           keyboardType="email-address"
@@ -85,7 +82,7 @@ const LoginPage = () => {
 
       <Text style={styles.userInputHeader}>Password</Text>
       <View style={styles.userDetails}>
-        <Password name="form-textbox-password" color="black" size={24} />
+        <Icon name="key" color="black" size={20} />
         <FormContainer
           onChangeText={text => setUserPassword(text)}
           value={userPassword}
@@ -115,25 +112,22 @@ const LoginPage = () => {
         style={styles.loginButtonContainer}>
         <Text style={styles.loginButton}>Login</Text>
       </TouchableOpacity>
-      <Image
-        source={require('../../asset/orcontinuewith.jpeg')}
-        style={styles.orContinue}
-      />
 
-      <TouchableOpacity style={styles.bottomSocialMedia}>
-        <View style={styles.bottomFacebook}>
-          <Image
-            style={styles.facebook}
-            source={require('../../asset/facebook.jpeg')}
-          />
-        </View>
-        <View style={styles.bottomGoogle}>
-          <Image
-            style={styles.googleImage}
-            source={require('../../asset/GoogleImage.jpeg')}
-          />
-        </View>
+      <View style={styles.or}>
+        <View style={styles.line} />
+        <Text style={styles.text}>OR</Text>
+        <View style={styles.line} />
+      </View>
+      <Text style={styles.continuewith}>Continue With</Text>
+
+      <View style={styles.bottomSocialMedia}>
+      <TouchableOpacity style={styles.bottomFacebook}>
+          <Image style={styles.facebook} source={imagePath.facebook} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomGoogle}>
+          <Image style={styles.googleImage} source={imagePath.google} />
       </TouchableOpacity>
+      </View>
 
       <View style={styles.bottomHeadline}>
         <Text>Dont have an account?</Text>

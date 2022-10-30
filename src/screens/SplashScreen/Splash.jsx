@@ -1,7 +1,7 @@
 import {StyleSheet, Image, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-
+import imagePath from '../../config/Image';
 const Splash = () => {
   const navigation = useNavigation();
   useEffect(() => {
@@ -13,7 +13,7 @@ const Splash = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../asset/SplashScreen.png')}
+        source={imagePath.splash}
         style={{width: '100%', height: '100%'}}
       />
     </View>
