@@ -15,10 +15,12 @@ const HomeNavigator = () => {
 
   const onAuthStateChanged = user => {
     setUser(user);
-    if(user){
-      dispatch(addUser(user.displayName, user.email, user.uid, user.phoneNumber ));
+    if (user) {
+      dispatch(
+        addUser(user.displayName, user.email, user.uid, user.phoneNumber),
+      );
     }
-    
+
     //console.log(user);
     //console.log("DataFetch Redux Login Details======>>>>", datafetch)
   };
@@ -36,7 +38,5 @@ const HomeNavigator = () => {
     </NavigationContainer>
   );
 };
-
-
 
 export default HomeNavigator;
