@@ -1,11 +1,17 @@
 import {ActionType} from './ActionType';
 
-export const addUser =  (email,password) =>({
+export const addUser = (displayName, email, uid, phoneNumber, photoURL) => ({
   type: ActionType.LOGIN_USER,
-  payload: {email,password},
+  payload: {displayName, email, uid, phoneNumber, photoURL},
 });
 
-export const registerUser = (name,registeremail,cellNumber,password) => ({
-  type: ActionType.REGISTER_USER,
-  payload: {name,registeremail,cellNumber,password}
-});
+// export const registerUser = (
+//   name,
+//   registeremail,
+//   cellNumber,
+//   phoneNumber,
+//   photoURL,
+// ) => ({
+//   type: ActionType.REGISTER_USER,
+//   payload: {name, registeremail, cellNumber, phoneNumber, photoURL},
+// });

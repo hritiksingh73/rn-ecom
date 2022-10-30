@@ -12,7 +12,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Email from 'react-native-vector-icons/Fontisto';
 import styles from './styles';
-import {registerUser} from '../../redux/action/Action';
+import {addUser} from '../../redux/action/Action';
 import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import FormContainer from '../../componentReuse/FormInput';
@@ -51,21 +51,25 @@ const RegisterPage = () => {
   // });
   //   // dispatch(registerUser(name, registeremail, cellNumber, password));
   // };
-  const registerUserDetails=async()=>{
-    try{
-      const userRes= await auth().createUserWithEmailAndPassword(
-        registeremail, password
+  const registerUserDetails = async () => {
+    try {
+      const userRes =  auth().createUserWithEmailAndPassword(
+        registeremail,
+        password,
+        name,
+        cellNumber
       );
       await userRes.user.updateProfile({
-        displayName:name
+        displayName:name,
+        email:registeremail,
+        phoneNumber:cellNumber,
       });
+      //dispatch(addUser(userRes.user.displayName, userRes.user.email,  userRes.user.phoneNumber));
       console.log("userRes=======>>", userRes);
-    }catch(error){
-      console.error(error.code)
+    } catch (error) {
+      console.error(error.code);
     }
-  }
-
-
+  };
 
   const nameValidator = () => {
     name == ''
@@ -107,78 +111,72 @@ const RegisterPage = () => {
   };
   return (
     <SafeAreaView>
-       <KeyboardAvoidingView>
-      <View style={styles.contaienr}>
+      <KeyboardAvoidingView>
+        <View style={styles.contaienr}>
+          <View style={styles.userDetails}>
+            <Icon name="user" size={24} />
+
+            <FormContainer
+              placeholder="Full Name"
+              autoCapitalize="words"
+              onChangeText={text => setName(text)}
+              onBlur={() => nameValidator()}
+              value={name}
+            />
+          </View>
+        </View>
+        <Text style={styles.errormsg}>{validation.errorname}</Text>
+
         <View style={styles.userDetails}>
-          <Icon name="user" size={24} />
-          
+          <Email name="email" size={24} />
           <FormContainer
-            placeholder="Full Name"
+            keyboardType="email-address"
+            placeholder="Email"
             autoCapitalize="words"
-            onChangeText={text => setName(text)}
-            onBlur={() => nameValidator()}
-            value={name}
+            onChangeText={text => setRegisterEmail(text)}
+            onBlur={() => validatorEmail()}
+            value={registeremail}
           />
         </View>
-      </View>
-      <Text style={styles.errormsg}>{validation.errorname}</Text>
-
-      <View style={styles.userDetails}>
-        <Email name="email" size={24} />
-        <FormContainer
-          keyboardType="email-address"
-          placeholder="Email"
-          autoCapitalize="words"
-          onChangeText={text => setRegisterEmail(text)}
-          onBlur={() => validatorEmail()}
-          value={registeremail}
-        />
-      </View>
-      <Text style={styles.errormsg}>{validation.errorregisteremail}</Text>
-      <View style={styles.userDetails}>
-        <Icon name="mobile1" size={24} />
-        <FormContainer
-        keyboardType="phone-pad"
-          placeholder="Mobile Number"
-          autoCapitalize="words"
-          onChangeText={text => setCellNumber(text)}
-          onBlur={() => validatorMobile()}
-          value={cellNumber}
-        />
-      </View>
-      <Text style={styles.errormsg}>{validation.errorcellNumber}</Text>
-
-      <View style={styles.userDetails}>
-        <Icon name="key" size={24} />
+        <Text style={styles.errormsg}>{validation.errorregisteremail}</Text>
+        <View style={styles.userDetails}>
+          <Icon name="mobile1" size={24} />
           <FormContainer
-          placeholder="Password"
-          autoCapitalize="words"
-          onChangeText={text => setPassword(text)}
-          onBlur={() => validatorPassword()}
-          value={password}
-        />
-       
-        
-      </View>
-      <Text style={styles.errormsg}>{validation.errorpassword}</Text>
+            keyboardType="phone-pad"
+            placeholder="Mobile Number"
+            autoCapitalize="words"
+            onChangeText={text => setCellNumber(text)}
+            onBlur={() => validatorMobile()}
+            value={cellNumber}
+          />
+        </View>
+        <Text style={styles.errormsg}>{validation.errorcellNumber}</Text>
 
-      <TouchableOpacity
-        style={styles.registerButtonContainer}
-        onPress={() => registerUserDetails()}>
-        <Text style={styles.registerButton}>Register</Text>
-      </TouchableOpacity>
+        <View style={styles.userDetails}>
+          <Icon name="key" size={24} />
+          <FormContainer
+            placeholder="Password"
+            autoCapitalize="words"
+            onChangeText={text => setPassword(text)}
+            onBlur={() => validatorPassword()}
+            value={password}
+          />
+        </View>
+        <Text style={styles.errormsg}>{validation.errorpassword}</Text>
 
-      <View style={styles.bottomHeadline}>
-        <Text>Already have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <Text style={styles.loginButton}>Login Here</Text>
+        <TouchableOpacity
+          style={styles.registerButtonContainer}
+          onPress={() => registerUserDetails()}>
+          <Text style={styles.registerButton}>Register</Text>
         </TouchableOpacity>
-      </View>
-      {/* <Button
-        title="Explore Tab Navigation"
-        onPress={() => navigation.navigate('TabNav')}
-      /> */}
-       </KeyboardAvoidingView>
+
+        <View style={styles.bottomHeadline}>
+          <Text>Already have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+            <Text style={styles.loginButton}>Login Here</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
