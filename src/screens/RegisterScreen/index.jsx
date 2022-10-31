@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {registerUser} from '../../redux/action/Action.js';
 import TextInputComponent from '../../components/TextInputComponent.js';
 import styles from './styles.js';
+import auth from '@react-native-firebase/auth';
 
 const RegisterScreen = ({navigation}) => {
   const [fullname, setFullName] = useState('');
@@ -28,19 +29,23 @@ const RegisterScreen = ({navigation}) => {
 
   const register = useSelector(state => state.user.register);
 
-  const updateRegister = () => {
-    dispatch(
-      registerUser({
-        fullname: fullname,
-        email: email,
-        password: password,
-        mobileno: mobileno,
-      }),
-      setEmail(''),
-      setPassword(''),
-      setFullName(''),
-      setMobileNo(''),
-    );
+  const updateRegister = async () => {
+    if (email === '' && password === '') {
+      alert('Empty email and password');
+    } else {
+      try {
+        const userRes = await auth().createUserWithEmailAndPassword(
+          email,
+          password,
+        );
+        await userRes.user.updateProfile({
+          displayName: fullname,
+        });
+        console.log('userRes=======>>', userRes);
+      } catch (error) {
+        console.error(error.code);
+      }
+    }
   };
 
   const checkValidFullName = () => {
@@ -119,7 +124,11 @@ const RegisterScreen = ({navigation}) => {
       </View>
       <Text style={styles.text}>{passwordValid}</Text>
       <View style={styles.button}>
-        <Button title="Register" color="limegreen" onPress={updateRegister} />
+        <Button
+          title="Register"
+          color="limegreen"
+          onPress={() => updateRegister()}
+        />
       </View>
       <View style={{flexDirection: 'row'}}>
         <Text style={styles.account}>Don't have an account?</Text>

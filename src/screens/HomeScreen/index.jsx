@@ -11,7 +11,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import DropDown from '../../components/DropDown';
+import DropDown from '../../components/DropDown/index';
 import Veggies from '../../homeData/Veggies.js';
 import {Rating} from 'react-native-ratings';
 import styles from './styles.js';

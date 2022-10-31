@@ -3,12 +3,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen.jsx';
 import SearchScreen from '../screens/SearchScreen';
-import AccountScreen from '../screens/AccountScreen.jsx';
+import AccountScreen from '../screens/AccountScreen';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => {
+const VeggiesTabNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -35,7 +35,6 @@ const TabNavigator = () => {
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />
-
       <Tab.Screen
         name="Account"
         component={AccountScreen}
@@ -48,4 +47,4 @@ const TabNavigator = () => {
   );
 };
 
-export default TabNavigator;
+export default VeggiesTabNavigator;

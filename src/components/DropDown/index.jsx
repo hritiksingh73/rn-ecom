@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import DropDownPicker from 'react-native-dropdown-picker';
+import styles from './styles.js'
 
 const DropDown = () => {
   const [open, setOpen] = useState(false);
@@ -36,18 +37,5 @@ const DropDown = () => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    marginLeft: 50,
-  },
-  dropdown: {
-    borderColor: 'white',
-    marginLeft: 20,
-    height: 20,
-    width: 250,
-  },
-});
 
 export default DropDown;

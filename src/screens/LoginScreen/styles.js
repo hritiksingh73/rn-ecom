@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   groceryImage: {
     width: 200,
     height: 50,
-    marginTop: 50,
+    marginTop: 20,
   },
   welcome: {
     margin: 20,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     width: 350,
   },
   error: {
-    marginRight: 160,
+    marginRight: 260,
     color: 'red',
   },
   forgot: {
@@ -80,14 +80,14 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   account: {
-    marginTop: 10,
+    marginTop: 5,
     fontSize: 15,
   },
-  view:{
-    flexDirection:'row'
+  bottomLine: {
+    flexDirection: 'row',
   },
   register: {
-    marginTop: 10,
+    marginTop: 5,
     color: color.primary,
     fontSize: 15,
   },
