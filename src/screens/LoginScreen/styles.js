@@ -66,17 +66,17 @@ const styles = StyleSheet.create({
   facebook: {
     flexDirection: 'row',
     marginBottom: 20,
-    marginRight: 10,
+    marginRight: 20,
     paddingTop: 20,
+    marginLeft:15
   },
   google: {
     flexDirection: 'row',
     marginBottom: 10,
-    marginRight: 2,
+    marginRight: 20,
     paddingTop: 20,
     height: 42,
     width: 140,
-    borderWidth: 1,
     marginLeft: 15,
   },
   account: {

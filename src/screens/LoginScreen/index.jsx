@@ -12,19 +12,20 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import color from '../../constant/color.js';
 import {useDispatch, useSelector} from 'react-redux';
-import {loginUser} from '../../redux/action/Action.js';
+import {userFullInfo} from '../../redux/action/Action.js';
 import TextInputComponent from '../../components/TextInputComponent.js';
 import styles from '../LoginScreen/styles.js';
 import auth from '@react-native-firebase/auth';
+import image from '../../config/Image.js'
+import SocialMedia from '../../components/SocialMedia.js'
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
-
   const dispatch = useDispatch();
-  const login = useSelector(state => state.user.login);
+  const userRecord = useSelector(state => state.userData.userRecord);
 
   const updateLogin = async () => {
     if (email === '' && password === '') {
@@ -32,6 +33,14 @@ const LoginScreen = ({navigation}) => {
     } else {
       try {
         const userRes = auth().signInWithEmailAndPassword(email, password);
+        let userInfo = {
+        //uid: userRes.user.uid,
+        email: email,
+        password: password
+        };
+
+        const res = dispatch(userFullInfo(userInfo));
+        
         console.log('---->', userRes);
         console.log('userEmail, password---->', email, password);
       } catch (error) {
@@ -56,7 +65,7 @@ const LoginScreen = ({navigation}) => {
     <SafeAreaView>
       <View style={styles.container}>
         <Image
-          source={require('../../assets/grocery.png')}
+          source={image.grocery}
           style={styles.groceryImage}
         />
         <Text style={styles.welcome}>Welcome Back!</Text>
@@ -96,15 +105,15 @@ const LoginScreen = ({navigation}) => {
         <Text style={styles.continuewith}>Continue With</Text>
         <View style={styles.button}>
           <TouchableOpacity>
-            <Image
-              source={require('../../assets/facebook.png')}
+            <SocialMedia
+              source={image.facebook}
               style={styles.facebook}
             />
           </TouchableOpacity>
           <View>
             <TouchableOpacity>
-              <Image
-                source={require('../../assets/logingooglebtn.png')}
+              <SocialMedia
+                source={image.googlebtn}
                 style={styles.google}
               />
             </TouchableOpacity>

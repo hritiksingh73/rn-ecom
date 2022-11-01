@@ -1,11 +1,7 @@
 import {ActionType} from '../action/ActionType';
 
 const initialState = {
-  login: {
-    email: '',
-    password: '',
-  },
-  register: {
+  userRecord: {
     fullname: '',
     email: '',
     mobileno: '',
@@ -13,20 +9,13 @@ const initialState = {
   },
 };
 
-export const createReducer = (state = initialState, action) => {
+const createReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.LOGIN_USER:
-      console.log(action.payload);
+    case ActionType.USER_DETAILS:
+      console.log('user details----->', action.payload);
       return {
         ...state,
-        login: action.payload,
-      };
-
-    case ActionType.REGISTER_USER:
-      console.log(action.payload);
-      return {
-        ...state,
-        register: action.payload,
+        userRecord: action.payload,
       };
     default:
       return state;

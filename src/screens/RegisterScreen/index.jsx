@@ -12,6 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
 import {registerUser} from '../../redux/action/Action.js';
+import {userFullInfo} from '../../redux/action/Action.js';
 import TextInputComponent from '../../components/TextInputComponent.js';
 import styles from './styles.js';
 import auth from '@react-native-firebase/auth';
@@ -27,7 +28,7 @@ const RegisterScreen = ({navigation}) => {
   const [mobilenoValid, setMobileNoValid] = useState(true);
   const dispatch = useDispatch();
 
-  const register = useSelector(state => state.user.register);
+  const userRecord = useSelector(state => state.userData.userRecord);
 
   const updateRegister = async () => {
     if (email === '' && password === '') {
@@ -41,11 +42,21 @@ const RegisterScreen = ({navigation}) => {
         await userRes.user.updateProfile({
           displayName: fullname,
         });
+        await userRes.user.additionaluserInfo({
+          phoneNumber: mobileno,
+        });
         console.log('userRes=======>>', userRes);
       } catch (error) {
         console.error(error.code);
       }
     }
+    let userInfo = {
+      fullname: fullname,
+      email: email,
+      mobileno: mobileno,
+      password: password,
+    };
+    const res = dispatch(userFullInfo(userInfo));
   };
 
   const checkValidFullName = () => {
@@ -130,7 +141,7 @@ const RegisterScreen = ({navigation}) => {
           onPress={() => updateRegister()}
         />
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.bottomLine}>
         <Text style={styles.account}>Don't have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.login}>Login here</Text>

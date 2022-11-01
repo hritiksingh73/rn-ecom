@@ -40,6 +40,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
   },
+  bottomLine:{
+    flexDirection:'row'
+  },
   login: {
     marginTop: 10,
     color: color.primary,
