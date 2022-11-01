@@ -1,8 +1,6 @@
 import {
-  Button,
   KeyboardAvoidingView,
   SafeAreaView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -53,18 +51,14 @@ const RegisterPage = () => {
   // };
   const registerUserDetails = async () => {
     try {
-      const userRes =  auth().createUserWithEmailAndPassword(
+      const userRes = await auth().createUserWithEmailAndPassword(
         registeremail,
         password,
-        name,
-        cellNumber
       );
       await userRes.user.updateProfile({
         displayName:name,
-        email:registeremail,
-        phoneNumber:cellNumber,
-      });
-      //dispatch(addUser(userRes.user.displayName, userRes.user.email,  userRes.user.phoneNumber));
+      })
+      dispatch(addUser(registeremail,userRes.user.uid, name));
       console.log("userRes=======>>", userRes);
     } catch (error) {
       console.error(error.code);

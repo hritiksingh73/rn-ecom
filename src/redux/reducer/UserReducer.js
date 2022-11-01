@@ -1,11 +1,9 @@
 import {ActionType} from '../action/ActionType';
 const InitialState = {
   loginpage: {
-    Email: '',
-    displayName: '',
+    email: '',
+    name: '',
     uid: '',
-    photourl:'',
-    phoneNumber:''
   },
   // RegisterPage: {
   //   name: '',
@@ -19,7 +17,7 @@ const InitialState = {
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ActionType.LOGIN_USER:
-     // const {displayName,email, phonenumber } = payload;
+      console.log(action.payload)
       return {...state, loginpage: {...action.payload}};
 
     // case ActionType.REGISTER_USER:

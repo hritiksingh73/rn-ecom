@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AppNavigator from './BottomTabHome';
 import AuthNavigator from './AuthNavigator';
 import {NavigationContainer} from '@react-navigation/native';
@@ -10,19 +9,13 @@ import {useDispatch /* useSelector*/} from 'react-redux';
 const HomeNavigator = () => {
   const [user, setUser] = useState('');
   const dispatch = useDispatch();
-  //const datafetch = useSelector(state => state.userInput.loginpage);
-  //const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   const onAuthStateChanged = user => {
     setUser(user);
     if (user) {
-      dispatch(
-        addUser(user.displayName, user.email, user.uid, user.phoneNumber),
-      );
+    dispatch(addUser(user.displayName, user.email, user.uid));
     }
-
-    //console.log(user);
-    //console.log("DataFetch Redux Login Details======>>>>", datafetch)
   };
 
   useEffect(() => {

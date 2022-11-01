@@ -1,10 +1,10 @@
 import {Text, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import Email from 'react-native-vector-icons/Fontisto';
-import  Icon from 'react-native-vector-icons/AntDesign'; 
+import Icon from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
-import {addUser} from '../../redux/action/Action';
+import {useDispatch} from 'react-redux';
+// import {addUser} from '../../redux/action/Action';
 import styles from '../LoginScreen/styles';
 import FormContainer from '../../reUsable/FormInput';
 import auth from '@react-native-firebase/auth';
@@ -17,7 +17,6 @@ const LoginPage = () => {
     emailError: '',
     passwordError: '',
   });
-  const datafetch = useSelector(state => state.userInfo.loginpage);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -49,14 +48,16 @@ const LoginPage = () => {
   };
 
   const dispatchCredentials = async () => {
-    //dispatch(addUser( email, userPassword ));
     try {
-      const userRes =await auth().signInWithEmailAndPassword(email, userPassword);
-      // navigation.navigate('TabNav');  //it will automatically gets diverted into that page which has been used in stackScreen
-      //console.log("----->",userRes);
-      //console.log(addUser(email, userPassword));
-      //dispatch(addUser( userRes.user.displayName,userRes.user.email ));
-      //console.log(datafetch);
+      const userRes = await auth().signInWithEmailAndPassword(
+        email,
+        userPassword,
+      );
+      console.log('from login page----->', userRes.user.displayName);
+      console.log('from login page----->', userRes.user.uid);
+      console.log('from login page----->', userRes.user.email);
+      console.log('from login page----->', userRes);
+      //dispatch(addUser( email,userPassword));
     } catch (error) {
       console.log(error.code);
     }
@@ -65,7 +66,6 @@ const LoginPage = () => {
   return (
     <SafeAreaView>
       <Image source={imagePath.grocerryMain} style={styles.groceryHeader} />
-
       <Text style={styles.userInputHeader}>Email</Text>
       <View style={styles.userDetails}>
         <Email name="email" color="black" size={20} />
@@ -121,12 +121,12 @@ const LoginPage = () => {
       <Text style={styles.continuewith}>Continue With</Text>
 
       <View style={styles.bottomSocialMedia}>
-      <TouchableOpacity style={styles.bottomFacebook}>
+        <TouchableOpacity style={styles.bottomFacebook}>
           <Image style={styles.facebook} source={imagePath.facebook} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomGoogle}>
           <Image style={styles.googleImage} source={imagePath.google} />
-      </TouchableOpacity>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.bottomHeadline}>

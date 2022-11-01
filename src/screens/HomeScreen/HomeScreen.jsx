@@ -1,7 +1,6 @@
 import {
   SafeAreaView,
   View,
-  StyleSheet,
   TextInput,
   Text,
   Image,
@@ -11,14 +10,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Cards from '../../dummyData/Cards';
 import styles from '../HomeScreen/styles';
-//import { Dropdown } from 'rn-material-dropdown';
 
-// const country = [
-//   {label: 'India', value: '1'},
-//   {label: 'Usa', value: '2'},
-//   {label: 'Russia', value: '3'},
-//   {label: 'China', value: '4'},
-// ];
 
 const shoppingCards = ({item}) => {
   return (
