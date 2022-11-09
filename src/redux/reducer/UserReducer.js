@@ -17,7 +17,7 @@ const InitialState = {
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ActionType.LOGIN_USER:
-      console.log(action.payload)
+      console.log(action.payload);
       return {...state, loginpage: {...action.payload}};
 
     // case ActionType.REGISTER_USER:
@@ -29,6 +29,16 @@ const userReducer = (state = InitialState, action) => {
     case ActionType.SET_FETCHING:
       return {...state, isFetching: action.payload};
 
+    case ActionType.ADD_ITEM:
+      return {...state, productData: action.payload};
+
+    case ActionType.REMOVE_ITEM:
+      return {
+        ...state,
+        deleteArray: action.payload.filter((item, index) => {
+          index != action.payload;
+        }),
+      };
     default:
       return state;
   }

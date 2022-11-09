@@ -3,16 +3,16 @@ import {TextInput, StyleSheet, View} from 'react-native';
 
 
 const FormContainer = (props) => {
-  const {placeholder, autoCapitalize, onChangeText, onBlur, value} = props;
+ //const {placeholder, autoCapitalize, onChangeText, onBlur, value} = props;
   return (
     
       <TextInput
       {...props}
-        placeholder={placeholder}
-        autoCapitalize={autoCapitalize}
-        onChangeText={onChangeText}
-        onBlur={onBlur}
-        value={value}
+        //placeholder={placeholder}
+        // autoCapitalize={autoCapitalize}
+        // onChangeText={onChangeText}
+        // onBlur={onBlur}
+        // value={value}
       />
    
   );

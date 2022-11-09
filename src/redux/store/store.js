@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import UserReducer from "../reducer/UserReducer";
+import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
-//import logger from 'redux-logger'
 const rootReducer= combineReducers({
     userInfo: UserReducer,
 })

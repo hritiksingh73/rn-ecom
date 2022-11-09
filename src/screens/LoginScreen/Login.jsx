@@ -9,7 +9,7 @@ import styles from '../LoginScreen/styles';
 import FormContainer from '../../reUsable/FormInput';
 import auth from '@react-native-firebase/auth';
 import imagePath from '../../config/Image';
-
+import SocialMedia from '../../reUsable/SocialMediaButton';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -62,7 +62,12 @@ const LoginPage = () => {
       console.log(error.code);
     }
   };
-
+ const facebookButton=()=>{
+  alert('Facebook Login Successfull!!! ')
+ }
+ const googleButton=()=>{
+  alert('Google Login Successfull!!! ')
+ }
   return (
     <SafeAreaView>
       <Image source={imagePath.grocerryMain} style={styles.groceryHeader} />
@@ -121,11 +126,11 @@ const LoginPage = () => {
       <Text style={styles.continuewith}>Continue With</Text>
 
       <View style={styles.bottomSocialMedia}>
-        <TouchableOpacity style={styles.bottomFacebook}>
-          <Image style={styles.facebook} source={imagePath.facebook} />
+        <TouchableOpacity style={styles.bottomFacebook} onPress={facebookButton}>
+          <SocialMedia style={styles.facebook} source={imagePath.facebook} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomGoogle}>
-          <Image style={styles.googleImage} source={imagePath.google} />
+        <TouchableOpacity style={styles.bottomGoogle} onPress={googleButton}>
+          <SocialMedia style={styles.googleImage} source={imagePath.google} />
         </TouchableOpacity>
       </View>
 

@@ -104,8 +104,9 @@ const RegisterPage = () => {
       : setValidation({errorpassword: ''});
   };
   return (
-    <SafeAreaView>
-      <KeyboardAvoidingView>
+    <KeyboardAvoidingView>
+      <SafeAreaView>
+      
         <View style={styles.contaienr}>
           <View style={styles.userDetails}>
             <Icon name="user" size={24} />
@@ -170,8 +171,9 @@ const RegisterPage = () => {
             <Text style={styles.loginButton}>Login Here</Text>
           </TouchableOpacity>
         </View>
-      </KeyboardAvoidingView>
+      
     </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 export default RegisterPage;

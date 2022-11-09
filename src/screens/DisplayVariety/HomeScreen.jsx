@@ -9,9 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
-import Cards from '../dummyData/Cards';
-
-
+import Cards from '../../dummyData/Cards';
 
 const shoppingCards = ({item}) => {
   return (
@@ -28,7 +26,7 @@ const shoppingCards = ({item}) => {
   );
 };
 
-const TabNav = () => {
+const HomeScreen = () => {
   return (
     <SafeAreaView>
       {/* <Dropdown data={country} label='Favorite Fruit'/> */}
@@ -75,8 +73,7 @@ const styles = StyleSheet.create({
   cardImage: {
     width: '100%',
     height: '90%',
-
   },
 });
 
-export default TabNav;
+export default HomeScreen;
