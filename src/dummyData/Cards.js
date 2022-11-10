@@ -29,7 +29,7 @@ const Cards = [
   {
     id: '6',
     title: 'Mall',
-    image: imagePath.laptop,
+    image: imagePath.flowering,
   },
   {
     id: '7',

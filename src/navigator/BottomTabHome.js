@@ -5,7 +5,8 @@ import Cart from '../screens/CartScreen/Cart';
 import Account from '../screens/AccountScreen/Account';
 import Icon from 'react-native-vector-icons/AntDesign';
 import HomeScreen from '../screens/DisplayVariety/HomeScreen';
-import SuperFresh from '../screens/SuperFresh';
+import SuperFresh from '../screens/SuperFresh/SuperFresh';
+import PopularProducts from '../screens/Popular Products/PopularProducts';
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {

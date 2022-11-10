@@ -6,6 +6,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import React from 'react';
+import styles from './styles';
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Address from 'react-native-vector-icons/FontAwesome';
@@ -55,18 +56,6 @@ const Account = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  menuList: {
-    flexDirection: 'row',
-    marginTop: '10%',
-  },
-  headerBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  favourite: {
-    paddingRight: 30,
-  },
-});
+
 
 export default Account;

@@ -12,7 +12,7 @@ const imagePath = {
   shoes: require('../asset/shoes.webp'),
   flowering: require('../asset/flowering.webp'),
   grocerry: require('../asset/grocerry.jpeg'),
-  laptop: require('../asset/laptop.jpeg'),
+  clothing: require('../asset/clothing.webp'),
 
   //Splash Screen
   splash: require('../asset/SplashScreen.png'),

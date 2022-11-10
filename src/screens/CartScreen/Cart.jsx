@@ -24,38 +24,28 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch,useSelector} from 'react-redux';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {removeItemFromCart} from '../../redux/action/Action';
+import styles from './styles';
 const Cart = () => {
   const navigation = useNavigation();
-  const items = useSelector(state => state.userInfo.loginpage);
- 
+  const item = useSelector(state => state.userInfo.productData);
+  console.log(item);
   const dispatch = useDispatch();
+
   const removeItem = index => {
     dispatch(removeItemFromCart(index));
   };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
-        <View
-          style={{
-            width: '100%',
-            height: 70,
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-          }}>
+        <View style={styles.mainHeader}>
           <TouchableOpacity
-            style={{
-              paddingLeft: 20,
-              height: 20,
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 15,
-            }}
+            style={styles.headerNavigation}
             onPress={() => {
               navigation.goBack();
             }}>
@@ -63,38 +53,15 @@ const Cart = () => {
           </TouchableOpacity>
         </View>
         <FlatList
-          data={items}
+          data={item}
           renderItem={({item, index}) => {
             return (
-              <View
-                style={{
-                  width: '90%',
-                  height: 100,
-                  borderRadius: 15,
-                  alignSelf: 'center',
-                  marginTop: 10,
-                  borderWidth: 0.2,
-                  borderColor: '#8e8e8e',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  backgroundColor: '#fff',
-                }}>
-                <View style={{width: '60%', padding: 20}}>
+              <View style={styles.mainContainer}>
+                <View style={styles.container}>
                   <Text>{item.name}</Text>
-                  <Text style={{fontSize: 20, fontWeight: '600'}}>
-                    {item.price}
-                  </Text>
+                  <Text style={styles.itemPrice}>{item.price}</Text>
                   <TouchableOpacity
-                    style={{
-                      height: 30,
-                      borderRadius: 10,
-                      width: 100,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      backgroundColor: 'red',
-                      marginTop: 5,
-                    }}
+                    style={styles.removeButton}
                     onPress={() => {
                       removeItem(index);
                     }}>
@@ -103,12 +70,7 @@ const Cart = () => {
                 </View>
                 <Image
                   source={{uri: item.image}}
-                  style={{
-                    width: 100,
-                    height: 90,
-                    borderRadius: 10,
-                    marginRight: 15,
-                  }}
+                  style={styles.flatlistImage}
                 />
               </View>
             );
@@ -118,5 +80,5 @@ const Cart = () => {
     </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({});
+
 export default Cart;

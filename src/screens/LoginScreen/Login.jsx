@@ -10,6 +10,8 @@ import FormContainer from '../../reUsable/FormInput';
 import auth from '@react-native-firebase/auth';
 import imagePath from '../../config/Image';
 import SocialMedia from '../../reUsable/SocialMediaButton';
+
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');

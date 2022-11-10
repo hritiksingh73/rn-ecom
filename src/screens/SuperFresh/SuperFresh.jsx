@@ -2,7 +2,6 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -15,21 +14,23 @@ import Hearto from 'react-native-vector-icons/AntDesign';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Rating} from 'react-native-ratings';
 import {useDispatch, useSelector} from 'react-redux';
-import {getInitialData} from '../redux/thunk/ProductThunk';
-import {addItemToCart} from '../redux/action/Action';
+import {getInitialData} from '../../redux/thunk/ProductThunk';
+import {addItemToCart} from '../../redux/action/Action';
 import {useNavigation} from '@react-navigation/native';
+import styles from './styles';
 
 const SuperFresh = () => {
   const Dispatch = useDispatch();
   const {isFetching, productData} = useSelector(state => state.userInfo);
   const navigation = useNavigation();
+
   useEffect(() => {
     Dispatch(getInitialData());
   }, []);
 
-  const addItem = item => {
-    Dispatch(addItemToCart(item));
-  };
+  // const addItem = item => {
+  //   Dispatch(addItemToCart(item.));
+  // };
 
   const ListData = ({item}) => {
     return (
@@ -37,11 +38,12 @@ const SuperFresh = () => {
         <TouchableOpacity
           style={styles.imgContainer}
           onPress={() => {
-            addItem(item);
-            console.log(item)
+            //addItem(item);
+            console.log(item);
           }}>
           <Image source={{uri: item.image}} style={styles.imgStyle} />
           <Text style={styles.mainContainer}>{item.title}</Text>
+          <Rating imageSize={15} ratingCount={5} />
           <Text style={{color: 'black'}}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
@@ -59,21 +61,12 @@ const SuperFresh = () => {
         <Bell name="bell-badge-outline" size={30} />
       </View>
       <TouchableOpacity
-        style={{
-          width: 100,
-          height: 40,
-          borderRadius: 20,
-          backgroundColor: '#b3ffd9',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
-          marginRight: 20,
-        }}
+        style={styles.cart}
         onPress={() => {
           navigation.navigate('Cart');
         }}>
         <Image
-          source={require('../asset/bag.png')}
+          source={require('../../asset/bag.png')}
           style={{width: 24, height: 24}}
         />
         <Text style={{marginLeft: 10, fontSize: 20, fontWeight: '800'}}>
@@ -82,7 +75,7 @@ const SuperFresh = () => {
       </TouchableOpacity>
       <View style={styles.ratingcontainerchild}>
         <Image
-          source={require('../asset/grocerry.jpeg')}
+          source={require('../../asset/grocerry.jpeg')}
           style={styles.tinyIcon}
         />
         <View style={styles.ratingcontainer}>
@@ -101,57 +94,5 @@ const SuperFresh = () => {
     </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  headerBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  tinyIcon: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginHorizontal: 10,
-  },
-  imgContainer: {
-    paddingHorizontal: 5,
-
-    alignItems: 'center',
-  },
-  imgStyle: {
-    width: '60%',
-    height: 160,
-  },
-  card: {
-    width: '50%',
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    marginVertical: 20,
-  },
-  mainContainer: {
-    width: '100%',
-    //padding:50,
-    backgroundColor: '#b696d7',
-    //display:"flex",
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  ratingcontainerchild: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  ratingcontainer: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  favourite: {
-    // alignContent: 'flex-end',
-    // alignItems: 'flex-end',
-    // justifyContent: 'flex-end',
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-});
 
 export default SuperFresh;
