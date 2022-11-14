@@ -51,7 +51,6 @@ const RegisterScreen = () => {
       fullName: fullName,
       email: email,
       mobileNumber: mobileNumber,
-      password: password,
     };
     const reduxRes = dispatch(userInfoDetails(userInfo));
   };

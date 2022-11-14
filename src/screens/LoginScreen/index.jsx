@@ -11,7 +11,7 @@ import TextField from '../../components/TextField';
 import ButtonComponent from '../../components/ButtonComponent';
 import color from '../../constant/color';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {userInfoDetails} from '../../redux/actions/userAction';
 import ImageBtn from '../../components/ImageBtn';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -28,7 +28,6 @@ const LoginScreen = () => {
   });
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const userDetails = useSelector(state => state.userDataReducer.userDetails);
 
   const loginBtnHandler = async () => {
     try {
