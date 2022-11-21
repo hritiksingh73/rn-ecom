@@ -5,3 +5,15 @@ export const userFullInfo = user => ({
   payload: user,
 });
 
+export const addToCart = user => ({
+  type: ActionType.ADD_TO_CART,
+  payload: user,
+});
+
+export const removeToCart = user => ({
+  type: ActionType.REMOVE_CART,
+  payload: user,
+});
+
+
+

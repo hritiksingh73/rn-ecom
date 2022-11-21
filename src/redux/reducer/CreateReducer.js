@@ -7,6 +7,8 @@ const initialState = {
     mobileno: '',
     password: '',
   },
+  cartProducts:[],
+  
 };
 
 const createReducer = (state = initialState, action) => {
@@ -17,6 +19,17 @@ const createReducer = (state = initialState, action) => {
         ...state,
         userRecord: action.payload,
       };
+
+
+    case ActionType.ADD_TO_CART:
+      return {...state, cartProducts: [...state.cartProducts, action.payload]};
+
+    case ActionType.REMOVE_CART:
+      const deleted = state.filter((item, index) =>{
+        return index !== action.payload;
+      });
+        return deleted;
+
     default:
       return state;
   }

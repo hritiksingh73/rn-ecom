@@ -1,4 +1,5 @@
 import React from 'react';
+
 const veggies = [
   {
     id: '2',
@@ -22,10 +23,12 @@ const veggies = [
   },
   {
     id: '6',
+    title: 'Vegetables',
     image: require('../assets/image3.jpeg'),
   },
   {
     id: '7',
+    title: 'Fruits',
     image: require('../assets/image7.jpeg'),
   },
 ];

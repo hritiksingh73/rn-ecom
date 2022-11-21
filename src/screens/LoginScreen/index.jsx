@@ -61,6 +61,14 @@ const LoginScreen = ({navigation}) => {
     );
   };
 
+  const facebook = () => {
+    alert('Sign into facebook successfully ');
+  };
+
+  const google = () => {
+    alert('Sign into google successfully ');
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -104,14 +112,14 @@ const LoginScreen = ({navigation}) => {
         </View>
         <Text style={styles.continuewith}>Continue With</Text>
         <View style={styles.button}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={facebook}>
             <SocialMedia
               source={image.facebook}
               style={styles.facebook}
             />
           </TouchableOpacity>
           <View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={google}>
               <SocialMedia
                 source={image.googlebtn}
                 style={styles.google}

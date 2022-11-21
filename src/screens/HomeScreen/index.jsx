@@ -6,6 +6,7 @@ import {
   FlatList,
   Button,
   TextInput,
+  TouchableOpacity,
   Image,
   ScrollView,
   SafeAreaView,
@@ -16,18 +17,25 @@ import Veggies from '../../homeData/Veggies.js';
 import {Rating} from 'react-native-ratings';
 import styles from './styles.js';
 
+
+const HomeScreen = ({navigation}) => {
+
 const renderItem = ({item}) => {
   return (
     <View style={styles.container}>
       <View style={styles.veggies}>
-        <Image source={item.image} style={styles.image} />
+      <TouchableOpacity onPress={() => navigation.navigate('Super Fresh')}>
+      <Image source={item.image} style={styles.image} />
+      </TouchableOpacity>
         <Rating imageSize={20} ratingCount={5} />
         <Text style={styles.text}>{item.title}</Text>
       </View>
     </View>
+    
   );
 };
-const HomeScreen = () => {
+
+
   return (
     <SafeAreaView>
       <DropDown />
@@ -36,6 +44,7 @@ const HomeScreen = () => {
         <TextInput placeholder="Find Store" />
       </View>
       <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
+      
     </SafeAreaView>
   );
 };
