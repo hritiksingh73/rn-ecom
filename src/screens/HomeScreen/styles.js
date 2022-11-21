@@ -1,41 +1,89 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  searchBar: {
+  headerBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  tinyIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginHorizontal: 10,
+  },
+  cart: {
+    width: 100,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#b3ffd9',
+    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: 80,
-    marginLeft: 20,
-    width: "80%",
-    height: 40,
-    margin: 5,
+    marginRight: 20,
+  },
+  imgContainer: {
+    paddingHorizontal: 5,
+    alignItems: 'center',
+  },
+  imgStyle: {
+    width: '60%',
+    height: 160,
+    marginLeft:"15%"
+  },
+  card: {
+    width: '50%',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    marginVertical: 20,
   },
   mainContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ratingcontainerchild: {
     flexDirection: 'row',
-    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  selectionCard: {
-    height: 180,
-    width: 200,
-    margin: 5,
-    padding: 5,
-    backgroundColor: 'rgbs(255,255,255,0.90)',
-    textAlign: 'center',
-    borderRadius: 10,
-    shadowColor: 'grey',
-    shadowOffset: {width: 0, height: 0},
-    shadowOffset: 0.5,
-    shadowRadius: 8,
-    elevation: 8,
+  ratingcontainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  imageTitle: {
-    fontSize: 5,
-    color: '#344055',
-    textAlign: 'center',
+  favourite: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   cardImage: {
-    height: 130,
-    width: 180,
+    height: 200,
+    width: 380,
+    resizeMode: 'center',
+  },
+  selectionCard: {
+    height: 250,
+    width: 380,
+    marginVertical: 10,
+    flexDirection: 'row',
+  },
+  imageTitle: {
+    color: 'white',
+    // textAlign: 'center',
+    top: '30%',
+    position: 'absolute',
+    fontSize: 30,
+    // display:'flex',
+    // justifyContent:"space-around",
+    // alignitems: "center",
+    left:"30%"
+  },
+  imagedescription: {
+    position: 'absolute',
+    top: '50%',
+    color: 'white',
+    justifyContent:"space-around",
+    alignitems: "center",
+    
   },
 });
 

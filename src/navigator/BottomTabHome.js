@@ -5,8 +5,7 @@ import Cart from '../screens/CartScreen/Cart';
 import Account from '../screens/AccountScreen/Account';
 import Icon from 'react-native-vector-icons/AntDesign';
 import HomeScreen from '../screens/DisplayVariety/HomeScreen';
-import SuperFresh from '../screens/SuperFresh/SuperFresh';
-import PopularProducts from '../screens/Popular Products/PopularProducts';
+import NavigationStack from './NavigationStack';
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
@@ -14,7 +13,7 @@ const AppNavigator = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={NavigationStack}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="home" {...props} />,
@@ -23,7 +22,7 @@ const AppNavigator = () => {
 
       <Tab.Screen
         name="Search"
-        component={SuperFresh}
+        component={HomeScreen}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="search1" {...props} />,

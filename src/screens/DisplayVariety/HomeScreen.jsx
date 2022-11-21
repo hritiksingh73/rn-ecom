@@ -9,16 +9,18 @@ import {
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
-import Cards from '../../dummyData/Cards';
-import { Rating } from 'react-native-ratings';
+import {Rating} from 'react-native-ratings';
 import styles from './styles';
+import {useSelector} from 'react-redux';
+
+
 const shoppingCards = ({item}) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.selectionCard}>
         <Image
-          style={styles.cardImage}
-          source={item.image}
+          style={styles.selectionCard}
+          source={{uri: item.image}}
           resizeMode="contain"
         />
         <Rating imageSize={15} ratingCount={5} />
@@ -29,6 +31,7 @@ const shoppingCards = ({item}) => {
 };
 
 const HomeScreen = () => {
+  const {productData} =  useSelector(state => state.userInfo) ;
   return (
     <SafeAreaView>
       {/* <Dropdown data={country} label='Favorite Fruit'/> */}
@@ -38,14 +41,12 @@ const HomeScreen = () => {
       </View>
       <FlatList
         keyExtractor={item => item.id}
-        data={Cards}
+        data={productData}
         renderItem={shoppingCards}
         numColumns={2}
       />
     </SafeAreaView>
   );
 };
-
-
 
 export default HomeScreen;

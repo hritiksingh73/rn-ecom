@@ -1,4 +1,4 @@
-import {Text, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import {Text, View, SafeAreaView, Image, TouchableOpacity,Button} from 'react-native';
 import React, {useState} from 'react';
 import Email from 'react-native-vector-icons/Fontisto';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -6,11 +6,26 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 // import {addUser} from '../../redux/action/Action';
 import styles from '../LoginScreen/styles';
-import FormContainer from '../../reUsable/FormInput';
+import FormContainer from '../../component/FormComponent/FormInput'
 import auth from '@react-native-firebase/auth';
 import imagePath from '../../config/Image';
-import SocialMedia from '../../reUsable/SocialMediaButton';
+import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
 
+
+const Anonimous = () => {
+  auth()
+  .signInAnonymously()
+  .then(() => {
+    console.log('User signed in anonymously');
+  })
+  .catch(error => {
+    if (error.code === 'auth/operation-not-allowed') {
+      console.log('Enable anonymous in your firebase console.');
+    }
+
+    console.error(error);
+  });
+} 
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -70,6 +85,7 @@ const LoginPage = () => {
  const googleButton=()=>{
   alert('Google Login Successfull!!! ')
  }
+ 
   return (
     <SafeAreaView>
       <Image source={imagePath.grocerryMain} style={styles.groceryHeader} />
@@ -135,6 +151,12 @@ const LoginPage = () => {
           <SocialMedia style={styles.googleImage} source={imagePath.google} />
         </TouchableOpacity>
       </View>
+
+
+      
+<Button title='Login As Guest' onPress={()=> Anonimous}></Button>
+
+
 
       <View style={styles.bottomHeadline}>
         <Text>Dont have an account?</Text>

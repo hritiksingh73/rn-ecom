@@ -13,6 +13,8 @@ const InitialState = {
   // },
   isFetching: false,
   productData: [],
+  cart:[],
+
 };
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
@@ -30,15 +32,15 @@ const userReducer = (state = InitialState, action) => {
       return {...state, isFetching: action.payload};
 
     case ActionType.ADD_ITEM:
-      return {...state, productData: action.payload};
+      return {...state, cart: [action.payload, ...state.cart]};
 
     case ActionType.REMOVE_ITEM:
+      // console.log([...state.cart.filter( (item) => action.payload !== item)])
       return {
         ...state,
-        deleteArray: action.payload.filter((item, index) => {
-          index != action.payload;
-        }),
+        cart: state.cart.filter( item => action.payload !== item.id)
       };
+      
     default:
       return state;
   }

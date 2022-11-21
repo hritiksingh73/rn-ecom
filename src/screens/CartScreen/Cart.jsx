@@ -24,7 +24,6 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
-  StyleSheet,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -32,12 +31,13 @@ import {removeItemFromCart} from '../../redux/action/Action';
 import styles from './styles';
 const Cart = () => {
   const navigation = useNavigation();
-  const item = useSelector(state => state.userInfo.productData);
-  console.log(item);
+  const item = useSelector(state => state.userInfo.cart);
+  //console.log(item);
   const dispatch = useDispatch();
 
-  const removeItem = index => {
-    dispatch(removeItemFromCart(index));
+  const removeItem = (item) => {
+    dispatch(removeItemFromCart(item));
+    console.log(item);
   };
 
   return (
@@ -47,7 +47,7 @@ const Cart = () => {
           <TouchableOpacity
             style={styles.headerNavigation}
             onPress={() => {
-              navigation.goBack();
+              navigation.navigate("SuperFresh");
             }}>
             <Text style={{fontWeight: '70%', fontsize: 20}}>Back</Text>
           </TouchableOpacity>
@@ -57,21 +57,23 @@ const Cart = () => {
           renderItem={({item, index}) => {
             return (
               <View style={styles.mainContainer}>
+                 <Image
+                  source={{uri: item.image}}
+                  style={styles.flatlistImage}
+                />
                 <View style={styles.container}>
-                  <Text>{item.name}</Text>
-                  <Text style={styles.itemPrice}>{item.price}</Text>
+                  <Text>{item.title}</Text>
+                  <Text style={styles.itemPrice}>${item.price}</Text>
                   <TouchableOpacity
                     style={styles.removeButton}
                     onPress={() => {
-                      removeItem(index);
+                      removeItem(item.id);
+                    //  console.log(item.id)
                     }}>
                     <Text style={{color: '#fff'}}>Remove</Text>
                   </TouchableOpacity>
                 </View>
-                <Image
-                  source={{uri: item.image}}
-                  style={styles.flatlistImage}
-                />
+               
               </View>
             );
           }}
