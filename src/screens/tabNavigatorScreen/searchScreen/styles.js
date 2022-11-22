@@ -54,6 +54,17 @@ const styles = StyleSheet.create({
       padding: 15,
       borderRadius: 3,
     },
+    category:{
+      borderWidth: 1,
+      borderColor: 'lightgray',
+      paddingVertical: 20,
+      paddingHorizontal: 15,
+      marginVertical: 2,
+    },
+    categoryTxt: {
+      fontSize: 16,
+      fontWeight: '600',
+    }
   });
 
 export default styles;

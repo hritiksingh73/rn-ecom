@@ -5,6 +5,7 @@ import LoginTextField from '../../../components/textInputField';
 import LoginBtn from '../../../components/loginBtn';
 import {useDispatch} from 'react-redux';
 import {registerDetails} from '../../../redux/action/action';
+import auth from '@react-native-firebase/auth';
 
 const Register = ({navigation}) => {
   const [userName, setUserName] = useState('');
@@ -20,16 +21,54 @@ const Register = ({navigation}) => {
   const dispatch = useDispatch();
 
   const LoginHandler = () => {
-    dispatch(registerDetails(userName, userEmail, userNumber, userPassword));
-    setUserName('');
-    setUserEmail('');
-    setUserNumber('');
-    setUserPassword('');
-    // navigation.navigate('Redirecr_Home');
+    if (
+      userName === '' ||
+      userEmail === '' ||
+      userNumber === '' ||
+      userPassword === ''
+    ) {
+      alert('please enter above details');
+    } else {
+      if (
+        isValidName != '' ||
+        isValidEmail != '' ||
+        isValidNumber != '' ||
+        isValidPassword != ''
+      ) {
+        alert('please enter currect info.');
+      } else {
+        auth()
+          .createUserWithEmailAndPassword(userEmail, userPassword)
+          .then(({user, additionalUserInfo}) => {
+            user.updateProfile({
+              displayName: userName,
+            });
+            console.log('User account created & signed in!');
+          })
+
+          .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+              console.log('That email address is already in use!');
+            }
+            if (error.code === 'auth/invalid-email') {
+              console.log('That email address is invalid!');
+            }
+            console.error(error);
+          });
+
+        dispatch(
+          registerDetails(userName, userEmail, userNumber, userPassword),
+        );
+        setUserName('');
+        setUserEmail('');
+        setUserNumber('');
+        setUserPassword('');
+      }
+    }
   };
 
   const ValidateName = () => {
-    /^[a-zA-Z\-]+$/.test(userName)
+    /^[a-zA-Z ]+$/.test(userName)
       ? setIsValidName('')
       : setIsValidName('Invalid Name');
   };
@@ -39,19 +78,19 @@ const Register = ({navigation}) => {
       ? setIsValidEmail('')
       : setIsValidEmail('Invalid Email');
   };
-  
+
   const ValidateNumber = () => {
-    /^[0]?[789]\d{9}$/.test(userNumber)
+    // /^[0]?[789]\d{9}$/.test(userNumber)
+    /^[789]\d{8}$/.test(userNumber)
       ? setIsValidNumber('')
       : setIsValidNumber('Invalid Number');
   };
 
   const ValidatePassword = () => {
-    /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(userPassword)
+    /^[a-zA-Z0-9!@#$%^&*]{6,12}$/.test(userPassword)
       ? setIsValidPassword('')
       : setIsValidPassword('Enter Strong Password');
   };
-  
 
   return (
     <SafeAreaView>
@@ -62,41 +101,49 @@ const Register = ({navigation}) => {
           <LoginTextField
             icon="user"
             placeholder="Full Name"
-            maxLength={20}
+            maxLength={25}
             value={userName}
-            onBlur={ValidateName}
             warrning={isValidName}
-            onChangeText={val => setUserName(val)}
+            onChangeText={val => {
+              setUserName(val);
+              ValidateName();
+            }}
           />
           <LoginTextField
             icon="mail"
             placeholder="Email"
             maxLength={40}
             value={userEmail}
-            onBlur={ValidateEmail}
             warrning={isValidEmail}
-            onChangeText={val => setUserEmail(val)}
+            onChangeText={val => {
+              setUserEmail(val);
+              ValidateEmail();
+            }}
           />
           <LoginTextField
             icon="smartphone"
             placeholder="Mobile number"
-            maxLength={16}
+            maxLength={14}
             value={userNumber}
-            onBlur={ValidateNumber}
             warrning={isValidNumber}
             // keyboardType='phone-pad'
-            onChangeText={val => setUserNumber(val)}
+            onChangeText={val => {
+              setUserNumber(val);
+              ValidateNumber();
+            }}
           />
           <LoginTextField
             icon="key"
             rightIcon="eye"
             placeholder="Password"
-            maxLength={10}
+            maxLength={16}
             value={userPassword}
             secureTextEntry={true}
-            onBlur={ValidatePassword}
             warrning={isValidPassword}
-            onChangeText={val => setUserPassword(val)}
+            onChangeText={val => {
+              setUserPassword(val);
+              ValidatePassword();
+            }}
           />
 
           <LoginBtn name={'Register'} onPress={LoginHandler} />

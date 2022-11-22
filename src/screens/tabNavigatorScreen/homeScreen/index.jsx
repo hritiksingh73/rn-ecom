@@ -13,19 +13,19 @@ import DropDown from '../../../components/dropDown';
 import colors from '../../../redux/constants/colors';
 
 const data = [
-  {name: 'Name 1', rating: '* * * * *'},
-  {name: 'Name 2', rating: '* * * * *'},
-  {name: 'Name 3', rating: '* * * * *'},
-  {name: 'Name 4', rating: '* * * * *'},
-  {name: 'Name 5', rating: '* * * * *'},
-  {name: 'Name 6', rating: '* * * * *'},
-  {name: 'Name 7', rating: '* * * * *'},
-  {name: 'Name 8', rating: '* * * * *'},
-  {name: 'Name 9', rating: '* * * * *'},
-  {name: 'Name 10', rating: '* * * * *'},
-  {name: 'Name 11', rating: '* * * * *'},
-  {name: 'Name 12', rating: '* * * * *'},
-  {name: 'Name 13', rating: '* * * * *'},
+  {name: 'Name 1', rating: '* * * * *', url: require('../../../assets/images/vegetables5.jpeg')},
+  {name: 'Name 2', rating: '* * * * *', url: require('../../../assets/images/vegetables4.jpeg')},
+  {name: 'Name 3', rating: '* * * * *', url: require('../../../assets/images/vegetables7.jpeg')},
+  {name: 'Name 4', rating: '* * * * *', url: require('../../../assets/images/vegetables6.jpeg')},
+  {name: 'Name 5', rating: '* * * * *', url: require('../../../assets/images/vegetables11.jpg')},
+  {name: 'Name 6', rating: '* * * * *', url: require('../../../assets/images/vegetables12.jpeg')},
+  {name: 'Name 7', rating: '* * * * *', url: require('../../../assets/images/vegetables3.jpeg')},
+  {name: 'Name 8', rating: '* * * * *', url: require('../../../assets/images/vegetables8.jpeg')},
+  {name: 'Name 9', rating: '* * * * *', url: require('../../../assets/images/vegetables9.jpg')},
+  {name: 'Name 10', rating: '* * * * *', url: require('../../../assets/images/vegetables10.jpeg')},
+  {name: 'Name 11', rating: '* * * * *', url: require('../../../assets/images/vegetables14.jpeg')},
+  {name: 'Name 12', rating: '* * * * *', url: require('../../../assets/images/vegetables15.jpeg')},
+  {name: 'Name 13', rating: '* * * * *', url: require('../../../assets/images/vegetables13.jpeg')},
 ];
 
 const HomeScreen = () => {
@@ -49,8 +49,8 @@ const HomeScreen = () => {
                   <View style={styles.itemContainer}>
                     <Image
                       style={styles.itemImage}
-                      resizeMode="contain"
-                      source={require('../../../assets/images/fruits1.webp')}
+                      resizeMode="cover"
+                      source={item.url}
                     />
                   </View>
                   <View style={styles.itemTextContainer}>

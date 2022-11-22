@@ -11,6 +11,7 @@ import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import LoginTextField from '../../../components/textInputField';
 import LoginBtn from '../../../components/loginBtn';
+import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) => {
   const [userEmail, setUserEmail] = useState('');
@@ -22,17 +23,34 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const registerData = useSelector(state => state.user.registerData);
 
-  const isValidate = () => {
-    for (let i = 0; i < registerData.length; i++) {
-
-      if ( registerData[i].Email === userEmail ){
-          if (registerData[i].Password === userPassword){
-            alert('Login successfully')
-            navigation.navigate('Redirecr_Home');
+  const isValidate = async () => {
+    if (userEmail === '' || userPassword === '') {
+      alert('please enter above details');
+    } else {
+      if (isValidEmail != '' || isValidPassword != '') {
+        alert('please enter currect info.');
+      } else {
+        try {
+          const Response = await auth().signInWithEmailAndPassword(
+            userEmail,
+            userPassword,
+          );
+          // console.log('Login user ++> ', Response);
+          console.log('\n\n===========userDetails==========');
+          // console.log('userName :', Response.additionalUserInfo.username);
+          console.log('userName :', Response.user.displayName);
+          console.log('userEmail :', Response.user.email);
+          console.log('userNumber :', Response.user.phoneNumber);
+          console.log('userPassword :', Response.user.uid);
+        } catch (error) {
+          if (error.code === 'auth/user-not-found') {
+            alert('user not found!');
           }
-          else{
-            alert('wrong password')
+          if (error.code === 'auth/wrong-password') {
+            alert('you entered wrong password!');
           }
+          // console.error(error.code);
+        }
       }
     }
   };
@@ -44,7 +62,7 @@ const Login = ({navigation}) => {
   };
 
   const ValidatePassword = () => {
-    /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(userPassword)
+    /^[a-zA-Z0-9!@#$%^&*]{6,12}$/.test(userPassword)
       ? setIsValidPassword('')
       : setIsValidPassword('Enter valid Password');
   };
@@ -63,9 +81,11 @@ const Login = ({navigation}) => {
         <LoginTextField
           icon="mail"
           placeholder="Email"
-          onBlur={ValidateEmail}
           warrning={isValidEmail}
-          onChangeText={val => setUserEmail(val)}
+          onChangeText={val => {
+            setUserEmail(val);
+            ValidateEmail();
+          }}
         />
         <LoginTextField
           icon="key"
@@ -73,9 +93,11 @@ const Login = ({navigation}) => {
           placeholder="Password"
           maxLength={16}
           secureTextEntry={true}
-          onBlur={ValidatePassword}
           warrning={isValidPassword}
-          onChangeText={val => setUserPassword(val)}
+          onChangeText={val => {
+            setUserPassword(val);
+            ValidatePassword();
+          }}
         />
 
         <TouchableOpacity style={styles.forgotTxtOpacity}>

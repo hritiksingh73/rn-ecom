@@ -6,10 +6,11 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import styles from './styles';
 
-const SearchScreen = () => {
+const SearchScreen = ({navigation}) => {
   const veggiImages = [
     {
       id: 1,
@@ -41,8 +42,8 @@ const SearchScreen = () => {
   }, []);
 
   return (
-    <View>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
         <Text style={styles.heading}>Super Fresh</Text>
         <FlatList
           data={veggiImages}
@@ -63,7 +64,7 @@ const SearchScreen = () => {
         <Text style={[styles.heading, {textAlign: 'left', margin: 15}]}>
           Poppular Product
         </Text>
-        <FlatList
+        {/* <FlatList
           data={data}
           horizontal={true}
           renderItem={({item}) => {
@@ -90,10 +91,24 @@ const SearchScreen = () => {
               </View>
             );
           }}
-          //
-        />
-      </SafeAreaView>
-    </View>
+        /> */}
+        <TouchableOpacity
+          style={styles.category}
+          onPress={() => navigation.navigate('Fruits')}>
+          <Text style={styles.categoryTxt}>Fruits Screen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.category}
+          onPress={() => navigation.navigate('Vegetables')}>
+          <Text style={styles.categoryTxt}>Vegetables Screen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.category}
+          onPress={() => navigation.navigate('Pulses')}>
+          <Text style={styles.categoryTxt}>Pulses Screen</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
