@@ -12,6 +12,7 @@ import Colors from '../../constants/Colors';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch} from 'react-redux';
 import {updateUser} from '../../redux/action/action';
+import auth from '@react-native-firebase/auth';
 
 let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/; // for mail pattern
 const passRegex =
@@ -23,16 +24,21 @@ const Login = ({navigation}) => {
   const [pass, setpass] = useState('');
   const [isValidemail, setisValidemail] = useState(true);
   const [isPassValid, setisPassValid] = useState(true);
-  const object = {mail, pass};
 
   const updateLogin = () => {
-    dispatch(updateUser(object));
-    setmail('');
-    setpass('');
+    const object = {mail, pass};
+    try {
+      const Response = auth().signInWithEmailAndPassword(mail, pass);
+      console.log('Login user ++> ', Response);
+    } catch (error) {
+      console.error(error.code);
+    }
     // eslint-disable-next-line no-lone-blocks
     {
       navigation.navigate('Home');
     }
+    dispatch(updateUser(object));
+    //console.log(object);
   };
 
   return (

@@ -11,6 +11,7 @@ const initialState = {
     mail: '',
     pass: '',
   },
+  cart: [],
 };
 
 const counterReducer = (state = initialState, action) => {
@@ -22,10 +23,16 @@ const counterReducer = (state = initialState, action) => {
         registrationData: action.payload,
       };
     case ActionTypes.USERDATA:
-      // console.log(action.payload)
+      //console.log(action.payload);
       return {
         ...state,
         userLoginData: action.payload,
+      };
+    case ActionTypes.ADDCART:
+      //console.log(action.payload);
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
       };
 
     default:

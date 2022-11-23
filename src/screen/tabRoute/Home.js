@@ -1,134 +1,275 @@
 import React from 'react';
 import {
   Text,
-  TextInput,
   View,
   StyleSheet,
-  FlatList,
-  TouchableOpacity,
+  SafeAreaView,
   Image,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
 } from 'react-native';
-import IconAntDesign from 'react-native-vector-icons/AntDesign';
-import Colors from '../../constants/Colors';
+import Feather from 'react-native-vector-icons/Feather';
+import {useDispatch} from 'react-redux';
+import {addtoCart} from '../../redux/action/action';
 
-const ShopKeeperData = [
+const data = [
   {
     id: 1,
-    name: 'DailyNeeds',
-    image: require('../../assests/shopkeeper1.jpeg'),
+    name: 'mango',
+    Price: 100,
+    oldPrice: 200,
+    image: require('../../assests/mango.jpeg'),
   },
 
   {
     id: 2,
-    name: 'DailyNeeds',
-    image: require('../../assests/shopkeeper2.jpeg'),
+    name: 'pineapple',
+    Price: 100,
+    oldPrice: 200,
+    image: require('../../assests/pineapple.jpeg'),
   },
 
   {
     id: 3,
-    name: 'DailyNeeds',
-    image: require('../../assests/Shopkeeper3.jpeg'),
+    name: 'grapes',
+    Price: 100,
+    oldPrice: 200,
+    image: require('../../assests/grapes.png'),
   },
 
   {
     id: 4,
-    name: 'Anything',
-    image: require('../../assests/shopkeeper4.webp'),
+    name: 'banana',
+    Price: 100,
+    oldPrice: 200,
+    image: require('../../assests/banana.webp'),
   },
 
   {
     id: 5,
-    name: 'Anything',
-    image: require('../../assests/shopkeeper5.jpeg'),
+    name: 'Broccoli',
+    image: require('../../assests/Broccoli.jpeg'),
   },
 
   {
     id: 6,
-    name: 'DailyNeeds',
-    image: require('../../assests/shopkeeper6.webp'),
+    name: 'cabbage',
+    Price: 100,
+    oldPrice: 200,
+    image: require('../../assests/cabbage.jpeg'),
   },
   {
     id: 7,
-    name: 'DailyNeeds',
-    image: require('../../assests/shopkeeper7.jpeg'),
+    name: 'Tomato',
+    Price: 100,
+    oldPrice: 200,
+    image: require('../../assests/Tomato.webp'),
   },
   {
     id: 8,
-    name: 'DailyNeeds',
-    image: require('../../assests/shopkeeper8.jpeg'),
-  },
-  {
-    id: 9,
-    name: 'DailyNeeds',
-    image: require('../../assests/shopkeeper9.jpeg'),
-  },
-  {
-    id: 10,
-    name: 'DailyNeeds',
-    image: require('../../assests/shopkeeper10.jpeg'),
+    name: 'radish',
+    Price: 100,
+    oldPrice: 200,
+    image: require('../../assests/radish.jpeg'),
   },
 ];
+
 const Home = ({navigation}) => {
-  const checkCondition = ({item, index}) => {
-    return (
-      <TouchableOpacity>
-        <View style={styles.item}>
-          <Image source={item.image} style={{height: 100, width: 200}} />
-          <Text>{item.name}</Text>
-        </View>
-      </TouchableOpacity>
-    );
+  const dispatch = useDispatch();
+  const deliverData = () => {
+    {
+      navigation.navigate('Cart');
+    }
+    dispatch(addtoCart(data));
   };
+
   return (
-    <View style={styles.conatiner}>
-      <TextInput
-        style={styles.design}
-        placeholder="Find store"
-        placeholderTextColor={'black'}
-      />
-      <IconAntDesign name={'search1'} size={25} style={styles.icon} />
-      <FlatList
-        data={ShopKeeperData}
-        renderItem={checkCondition}
-        numColumns={2}
-        //ItemSeparatorComponent={itemseparator}
-      />
-    </View>
+    <ScrollView>
+      <SafeAreaView style={styles.constainer}>
+        <View style={styles.innerContainer}>
+          <View style={styles.header}>
+            <Text style={styles.headerTxt}>Super Fresh</Text>
+          </View>
+
+          <View style={{alignItems: 'center'}}>
+            <View style={[styles.flexStyl, {alignItems: 'center'}]}>
+              <Image
+                style={styles.imgStyle}
+                source={require('../../assests/Lettuce.jpeg')}
+              />
+              <Text style={styles.headertitle}>Super Fresh</Text>
+              <Feather name={'chevron-down'} size={20} />
+            </View>
+
+            {/* <View>
+          <Feather name={'heart'} size={20} />
+        </View> */}
+          </View>
+          <View>
+            <FlatList
+              data={data}
+              horizontal={true}
+              renderItem={({item}) => {
+                return (
+                  <View style={styles.horizontalSlidebar}>
+                    <Image style={styles.bgimage} source={item.image} />
+                  </View>
+                );
+              }}
+            />
+          </View>
+          <View>
+            <Text style={styles.PopTxt}>Poppular Products</Text>
+          </View>
+
+          <View>
+            <FlatList
+              data={data}
+              horizontal={true}
+              renderItem={({item}) => {
+                return (
+                  <View
+                    style={[styles.itemContainer, {flexDirection: 'column'}]}>
+                    <View
+                      style={{width: '100%', height: '100%', borderWidth: 0.5}}>
+                      <View style={styles.block1}>
+                        <Image style={styles.bgimage} source={item.image} />
+                      </View>
+                      <View style={styles.block1}>
+                        <Text style={{marginHorizontal: 10}}>{item.name}</Text>
+                        <Text style={{marginHorizontal: 10}}>
+                          Rs. {item.price} {item.oldPrice}
+                        </Text>
+
+                        <TouchableOpacity
+                          style={styles.touchableArea}
+                          onPress={() => deliverData()}>
+                          <Text style={styles.AtoCBtn}>Add to Cart</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                );
+              }}
+            />
+          </View>
+
+          <View>
+            <Text style={styles.PopTxt}>Trending near you</Text>
+          </View>
+
+          <View>
+            <FlatList
+              data={data}
+              numColumns={'2'}
+              renderItem={({item}) => {
+                return (
+                  <View
+                    style={[styles.itemContainer, {flexDirection: 'column'}]}>
+                    <View
+                      style={{width: '100%', height: '100%', borderWidth: 0.5}}>
+                      <View style={styles.block1}>
+                        <Image style={styles.bgimage} source={item.image} />
+                      </View>
+                      <View style={styles.block1}>
+                        <Text style={{marginHorizontal: 10}}>{item.name}</Text>
+                        <Text style={{marginHorizontal: 10}}>
+                          Rs. {item.price} {item.oldPrice}
+                        </Text>
+
+                        <TouchableOpacity
+                          style={styles.touchableArea}
+                          onPress={() => deliverData()}>
+                          <Text style={styles.AtoCBtn}>Add to Cart</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                );
+              }}
+            />
+          </View>
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 };
-const styles = StyleSheet.create({
-  conatiner: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.background,
-  },
-  design: {
-    fontSize: 20,
 
-    borderColor: 'orange',
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    borderTopRightRadius: 10,
-    borderWidth: 2,
-    width: '80%',
-    margin: 15,
-    padding: 10,
-    paddingHorizontal: 30,
-    bottom: '-10%',
+const styles = StyleSheet.create({
+  constainer: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'white',
   },
-  icon: {
-    bottom: '-3%',
-    right: '35%',
+  innerContainer: {
+    marginHorizontal: 20,
   },
-  item: {
-    flex: 1,
-    flexDirection: 'row',
+  header: {
     alignItems: 'center',
-    paddingVertical: 13,
-    top: 60,
-    right: 50,
+  },
+  headerTxt: {
+    fontSize: 18,
+    fontWeight: '500',
+    marginVertical: 20,
+    marginBottom: 30,
+  },
+  flexStyl: {
+    flexDirection: 'row',
+  },
+  imgStyle: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 1,
+  },
+  headertitle: {
+    fontSize: 16,
+    marginHorizontal: 10,
+  },
+  bgimage: {
+    width: '100%',
+    height: '100%',
+    borderWidth: 1,
+    borderColor: 'lightgray',
+  },
+  horizontalSlidebar: {
+    width: 350,
+    height: 200,
+    marginVertical: 10,
+    marginRight: 10,
+    marginTop: 25,
+  },
+  PopTxt: {
+    fontWeight: '500',
+    fontSize: 20,
+    marginVertical: 10,
+  },
+  itemContainer: {
+    width: 200,
+    height: 300,
+    marginVertical: 10,
+    marginRight: 0,
+    marginTop: 25,
+  },
+  block1: {
+    width: 200,
+    height: '60%',
+  },
+  block2: {
+    width: 200,
+    height: '40',
+  },
+  AtoCBtn: {
+    textAlign: 'center',
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 5,
+  },
+  touchableArea: {
+    marginHorizontal: 30,
+    marginVertical: 10,
   },
 });
+
 export default Home;

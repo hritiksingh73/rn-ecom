@@ -6,6 +6,7 @@ import Textinput from '../../components/Textinput';
 import {useDispatch} from 'react-redux';
 import {updateReg} from '../../redux/action/action';
 import Colors from '../../constants/Colors';
+import auth from '@react-native-firebase/auth';
 
 const Registration = ({navigation}) => {
   const dispatch = useDispatch();
@@ -20,10 +21,30 @@ const Registration = ({navigation}) => {
   const passRegex =
     /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/; // for password
 
-  const update = () => {
+  const RegisterDetails = () => {
     const object = {fullName, email, mobNo, password};
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(({user}) => {
+        user.updateProfile({
+          displayName: fullName,
+        });
+        console.log(email);
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email  in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log(' email invalid!');
+        }
+        console.error(error);
+      });
     dispatch(updateReg(object));
+    console.log(object);
   };
+
   return (
     <View style={styles.container}>
       <View style={{flex: 1}}>
@@ -67,7 +88,7 @@ const Registration = ({navigation}) => {
       <IconAntDesign style={styles.icontwo} name="key" size={25} />
       <View>
         <Text style={styles.errorMsgofPass}>{isPassValid}</Text>
-        <TouchableOpacity style={styles.btn} onPress={() => update()}>
+        <TouchableOpacity style={styles.btn} onPress={() => RegisterDetails()}>
           <Text style={styles.btnOne}>Register</Text>
         </TouchableOpacity>
       </View>
