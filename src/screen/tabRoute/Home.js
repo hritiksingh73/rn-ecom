@@ -20,6 +20,7 @@ const data = [
     Price: 100,
     oldPrice: 200,
     image: require('../../assests/mango.jpeg'),
+    quantity: 0,
   },
 
   {
@@ -28,6 +29,7 @@ const data = [
     Price: 100,
     oldPrice: 200,
     image: require('../../assests/pineapple.jpeg'),
+    quantity: 0,
   },
 
   {
@@ -36,6 +38,7 @@ const data = [
     Price: 100,
     oldPrice: 200,
     image: require('../../assests/grapes.png'),
+    quantity: 0,
   },
 
   {
@@ -44,12 +47,16 @@ const data = [
     Price: 100,
     oldPrice: 200,
     image: require('../../assests/banana.webp'),
+    quantity: 0,
   },
 
   {
     id: 5,
     name: 'Broccoli',
+    Price: 100,
+    oldPrice: 200,
     image: require('../../assests/Broccoli.jpeg'),
+    quantity: 0,
   },
 
   {
@@ -58,6 +65,7 @@ const data = [
     Price: 100,
     oldPrice: 200,
     image: require('../../assests/cabbage.jpeg'),
+    quantity: 0,
   },
   {
     id: 7,
@@ -65,6 +73,7 @@ const data = [
     Price: 100,
     oldPrice: 200,
     image: require('../../assests/Tomato.webp'),
+    quantity: 0,
   },
   {
     id: 8,
@@ -72,16 +81,18 @@ const data = [
     Price: 100,
     oldPrice: 200,
     image: require('../../assests/radish.jpeg'),
+    quantity: 0,
   },
 ];
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
-  const deliverData = () => {
-    {
-      navigation.navigate('Cart');
-    }
-    dispatch(addtoCart(data));
+
+  const deliverData = item => {
+    navigation.navigate('Cart');
+
+    dispatch(addtoCart(item));
+    //console.log(item.id);
   };
 
   return (
@@ -144,7 +155,7 @@ const Home = ({navigation}) => {
 
                         <TouchableOpacity
                           style={styles.touchableArea}
-                          onPress={() => deliverData()}>
+                          onPress={() => deliverData(item)}>
                           <Text style={styles.AtoCBtn}>Add to Cart</Text>
                         </TouchableOpacity>
                       </View>
@@ -180,7 +191,9 @@ const Home = ({navigation}) => {
 
                         <TouchableOpacity
                           style={styles.touchableArea}
-                          onPress={() => deliverData()}>
+                          onPress={() => {
+                            deliverData(item);
+                          }}>
                           <Text style={styles.AtoCBtn}>Add to Cart</Text>
                         </TouchableOpacity>
                       </View>

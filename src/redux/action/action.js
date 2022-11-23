@@ -12,3 +12,12 @@ export const addtoCart = dataone => ({
   type: ActionTypes.ADDCART,
   payload: dataone,
 });
+export const IncCartItem = itemId => ({
+  type: ActionTypes.INCREMENT_ITEM,
+  payload: itemId,
+});
+
+export const DecCartItem = itemId => ({
+  type: ActionTypes.DECREMENT_ITEM,
+  payload: itemId,
+});
