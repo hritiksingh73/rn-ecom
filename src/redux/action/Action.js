@@ -15,14 +15,14 @@ export const removeToCart = user => ({
   payload: user,
 });
 
-export const increaseToCart = user => ({
+export const increaseToCart = item => ({
   type: ActionType.INCREASE_CART,
-  payload: user,
+  payload: item,
 });
 
-export const decreaseToCart = user => ({
+export const decreaseToCart = item => ({
   type: ActionType.DECREASE_CART,
-  payload: user,
+  payload: item,
 });
 
 
