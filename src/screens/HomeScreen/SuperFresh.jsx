@@ -1,9 +1,9 @@
 import {
   ActivityIndicator,
+  Button,
   FlatList,
   Image,
   ImageBackground,
-  
   Text,
   TouchableOpacity,
   View,
@@ -20,8 +20,7 @@ import {addItemToCart} from '../../redux/action/Action';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import Banner from './Banner';
-import { ScrollView } from 'react-native-virtualized-view';
-
+import {ScrollView} from 'react-native-virtualized-view';
 
 const SuperFresh = () => {
   const Dispatch = useDispatch();
@@ -32,6 +31,21 @@ const SuperFresh = () => {
     Dispatch(getInitialData());
   }, []);
 
+
+  function User({ userId }) {
+    useEffect(() => {
+      const subscriber = firestore()
+        .collection('Users')
+        .doc(userId)
+        .onSnapshot(documentSnapshot => {
+          console.log('User data: ', documentSnapshot.data());
+        });
+  
+      // Stop listening for updates when no longer required
+      return () => subscriber();
+    }, [userId]);
+  }
+
   const addItem = item => {
     Dispatch(addItemToCart(item));
   };
@@ -39,18 +53,19 @@ const SuperFresh = () => {
   const items = useSelector(state => state);
   let addedItems = [];
   addedItems = items;
+//console.log(addedItems)
 
   const ListData = ({item}) => {
     return (
       <View style={styles.card}>
-          <Image source={{uri: item.image}} style={styles.imgStyle} />
-          <Text style={styles.mainContainer}>{item.title}</Text>
-          <Rating imageSize={15} ratingCount={5} />
-          <TouchableOpacity
+        <Image source={{uri: item.image}} style={styles.imgStyle} />
+        <Text style={styles.mainContainer}>{item.title}</Text>
+        <Rating imageSize={15} ratingCount={5} />
+        <TouchableOpacity
           style={styles.imgContainer}
           onPress={() => {
             addItem(item);
-            console.log(item.id);
+            console.log(item);
           }}>
           <Text style={{color: 'black'}}>Add to Cart</Text>
         </TouchableOpacity>
@@ -66,7 +81,6 @@ const SuperFresh = () => {
           source={item.image}
           resizeMode="cover"
         />
-
         <Text style={styles.imageTitle}>Superfresh</Text>
         <Text style={styles.imagedescription}>{item.title}</Text>
       </View>
@@ -74,7 +88,7 @@ const SuperFresh = () => {
   };
 
   return (
-    <ScrollView nestedScrollEnabled={true} >
+    <ScrollView nestedScrollEnabled={true}>
       <SafeAreaView>
         <ActivityIndicator animating={isFetching} />
         <View style={styles.headerBar}>
@@ -93,7 +107,8 @@ const SuperFresh = () => {
           />
           <Text style={{marginLeft: 10, fontSize: 20, fontWeight: '800'}}>
             {' '}
-            {items.length}{'01'}
+            {items.length}
+            {''}
           </Text>
         </TouchableOpacity>
         <View style={styles.ratingcontainerchild}>
@@ -105,10 +120,9 @@ const SuperFresh = () => {
             <Text style={{fontSize: 18}}>Super Fresh</Text>
             <Rating imageSize={15} ratingCount={5} />
           </View>
-          <View style={{marginLeft:"10%"}}>
-             <Hearto name="hearto" size={24} style={styles.favourite} />
+          <View style={{marginLeft: '10%'}}>
+            <Hearto name="hearto" size={24} style={styles.favourite} />
           </View>
-         
         </View>
 
         <FlatList
@@ -120,10 +134,9 @@ const SuperFresh = () => {
         />
         <View style={{flexDirection: 'row'}}>
           <Text style={{fontSize: 20, paddingLeft: 20}}>Poppular Product </Text>
-          <TouchableOpacity onPress={()=> navigation.navigate('PopularProduct')} >
-            <Text style={{fontSize: 20, paddingLeft: 20, paddingLeft: '25%'}}>
-              View More{' '}
-            </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('PopularProduct')}>
+            <Text style={styles.viewMore}>View More </Text>
           </TouchableOpacity>
         </View>
 

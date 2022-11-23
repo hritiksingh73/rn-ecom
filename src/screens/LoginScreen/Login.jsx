@@ -12,20 +12,19 @@ import imagePath from '../../config/Image';
 import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
 
 
-const Anonimous = () => {
-  auth()
-  .signInAnonymously()
-  .then(() => {
-    console.log('User signed in anonymously');
-  })
-  .catch(error => {
-    if (error.code === 'auth/operation-not-allowed') {
-      console.log('Enable anonymous in your firebase console.');
-    }
-
-    console.error(error);
-  });
-} 
+// const Anonimous = () => {
+//   auth()
+//   .signInAnonymously()
+//   .then(() => {
+//     console.log('User signed in anonymously');
+//   })
+//   .catch(error => {
+//     if (error.code === 'auth/operation-not-allowed') {
+//       console.log('Enable anonymous in your firebase console.');
+//     }
+//     console.error(error);
+//   });
+// } 
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -154,7 +153,7 @@ const LoginPage = () => {
 
 
       
-<Button title='Login As Guest' onPress={()=> Anonimous}></Button>
+{/* <Button title='Login As Guest' onPress={()=> Anonimous}></Button> */}
 
 
 

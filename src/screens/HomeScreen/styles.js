@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   imgStyle: {
     width: '60%',
     height: 160,
-    marginLeft:"15%"
+    marginLeft: '15%',
   },
   card: {
     width: '50%',
@@ -75,15 +75,19 @@ const styles = StyleSheet.create({
     // display:'flex',
     // justifyContent:"space-around",
     // alignitems: "center",
-    left:"30%"
+    left: '30%',
   },
   imagedescription: {
     position: 'absolute',
     top: '50%',
     color: 'white',
-    justifyContent:"space-around",
-    alignitems: "center",
-    
+    justifyContent: 'space-around',
+    alignitems: 'center',
+  },
+  viewMore: {
+    fontSize: 20,
+    paddingLeft: 20,
+    paddingLeft: '25%',
   },
 });
 

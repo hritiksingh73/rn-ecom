@@ -20,7 +20,15 @@ export const addItemToCart = data => ({
   type: ActionType.ADD_ITEM,
   payload: data,
 });
-export const removeItemFromCart = index => ({
+export const removeItemFromCart = item => ({
   type: ActionType.REMOVE_ITEM,
-  payload: index,
+  payload: item,
 });
+export const increaseItemQuantity = (item) => ({
+  type: ActionType.INCREASE_ITEM_QUANTITY,
+  payload: item,
+});
+export const DecreaseItemCountInCartAction = (item) => ({
+  type: ActionType.DECREASE_ITEM_QUANTITY,
+  payload: item
+})

@@ -13,8 +13,8 @@ const InitialState = {
   // },
   isFetching: false,
   productData: [],
-  cart:[],
-
+  cart: [],
+  quantity: 0,
 };
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
@@ -35,12 +35,53 @@ const userReducer = (state = InitialState, action) => {
       return {...state, cart: [action.payload, ...state.cart]};
 
     case ActionType.REMOVE_ITEM:
-      // console.log([...state.cart.filter( (item) => action.payload !== item)])
+      //console.log(...state.cart.filter( (item) => action.payload !== item))
       return {
         ...state,
-        cart: state.cart.filter( item => action.payload !== item.id)
+        cart: state.cart.filter(item => action.payload !== item.id),
       };
+
+
+    case ActionType.INCREASE_ITEM_QUANTITY:
+    let increase = [...state.cart];
       
+      const increaseItem = increase.map(item => {
+        return item.id === action.payload
+          ? {
+              ...item,
+              quantity: item.id + 1,
+            }
+          : item;
+      });
+
+      return {
+        ...state,
+        cart: increaseItem,
+      };
+
+    // case ActionType.DECREMENT_ITEM:
+    //   let decrease = [...state.cart];
+    //   const decreaseItem = decrease.map(item => {
+    //     return item.id === action.payload && item.quantity > 0
+    //       ? {
+    //           ...item,
+    //           quantity: item.id - 1,
+    //         }
+    //       : item;
+    //   });
+    //   return {
+    //     ...state,
+    //     cart: decreaseItem,
+    //   };
+
+      
+    // case ActionType.DECREASE_ITEM_QUANTITY:
+    //   //console.log(...state.cart.filter( (item) => action.payload !== item))
+    //   return {
+    //     ...state,
+    //     cart: state.cart.filter(item => action.payload !== item.id),
+    //   };
+
     default:
       return state;
   }
