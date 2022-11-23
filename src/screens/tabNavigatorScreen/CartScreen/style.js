@@ -24,12 +24,10 @@ const styles = StyleSheet.create({
       fontWeight: '500',
       marginHorizontal: 5,
       paddingVertical: 20,
-      // borderWidth: 1
     },
     imgStyl: {
       width: 40,
       height: 40,
-      // borderWidth: 1,
       margin: 10,
       borderRadius: 20,
     },
@@ -50,18 +48,14 @@ const styles = StyleSheet.create({
       flex: 2,
       flexDirection: 'column',
       marginHorizontal: 10,
-      // marginVertical: 10,
-      // borderWidth: 1,
     },
     itemTitle: {
       flex: 1,
-      // borderWidth: 1,
       fontSize: 16,
       paddingTop: 10,
     },
     itemMrp: {
       flex: 1,
-      // borderWidth: 1,
       fontSize: 16,
       paddingBottom: 5,
       color: 'green',
@@ -78,24 +72,18 @@ const styles = StyleSheet.create({
     num: {
       width: 50,
       fontSize: 16,
-      // borderWidth: 1,
-      // borderColor: 'lightgray',
       textAlign: 'center',
       paddingTop: 6,
     },
     inc: {
       width: 30,
       color: 'white',
-      // borderWidth: 1,
-      // borderLeftWidth: 1,
       fontSize: 20,
       textAlign: 'center',
       paddingTop: 3,
-      // justifyContent: 'center'
     },
     dec: {
       width: 30,
-      // borderWidth: 1,
       fontSize: 20,
       textAlign: 'center',
       paddingTop: 3,
@@ -143,6 +131,40 @@ const styles = StyleSheet.create({
       textAlign: 'right',
       color: '#70c03b',
       fontWeight: '600',
+    },
+    billingBoxStyling: {
+      marginHorizontal: 5,
+    },
+    billBoxHeader: {
+      fontSize: 22,
+      marginVertical: 15,
+    },
+    billDetailTxt: {
+      fontSize: 16,
+      marginVertical: 15,
+      borderBottomWidth: 1,
+      borderBottomColor: 'black'
+    },
+    billingTxtBorder: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      borderBottomWidth: 1, 
+      borderBottomColor: 'lightgray',
+    },
+    pricingStyl: {
+      fontSize: 16,
+      fontWeight: '500',
+      marginVertical: 15,
+    },
+    billingTotalTxt: {
+      fontSize: 17,
+      fontWeight: '700',
+      marginVertical: 15,
+    },
+    totalPricingStyl: {
+      fontSize: 17,
+      fontWeight: '700',
+      marginVertical: 15,
     },
   });
   

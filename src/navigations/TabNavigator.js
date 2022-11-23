@@ -2,8 +2,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import HomeScreen from '../screens/tabNavigatorScreen/homeScreen';
-import SearchScreen from '../screens/tabNavigatorScreen/searchScreen';
+import SearchScreen from '../screens/tabNavigatorScreen/SearchScreen';
+import HomeScreen from '../screens/tabNavigatorScreen/HomeScreen';
 import AccountScreen from '../screens/tabNavigatorScreen/AccountScreen';
 import FruitsGalleryScreen from '../screens/nativeStackScreens/FruitsGalleryScreen';
 import Sort from '../screens/nativeStackScreens/Sort';
@@ -15,6 +15,7 @@ import OrderHistory from '../screens/nativeStackScreens/OrderHistory';
 import MyWishlist from '../screens/nativeStackScreens/MyWishlist';
 import PulsesGalleryScreen from '../screens/nativeStackScreens/PulsesGalleryScreen';
 import CartScreen from '../screens/tabNavigatorScreen/CartScreen';
+import FilterScreen from '../screens/nativeStackScreens/FilterScreen';
 
 
 
@@ -25,15 +26,17 @@ const TabNavigator = () => {
     <tabStack.Navigator>
       <tabStack.Screen
         name="Home"
-        component={HomeScreen}
+        // component={HomeScreen}
+        component={FilterStackNavigator}
         options={{
           headerShown: false,
           tabBarIcon: props => <Feather name={'home'} size={25} {...props} />,
         }}
       />
       <tabStack.Screen
-        name="Searchh"
-        component={FilterStackNavigator}
+        name="Search"
+        // component={FilterStackNavigator}
+        component={SearchScreen}
         options={{
           headerShown: false,
           tabBarIcon: props => <Feather name={'search'} size={25} {...props} />,
@@ -66,8 +69,8 @@ const FilterStackNavigator = () => {
   return (
     <Filter.Navigator>
       <Filter.Screen
-        name="Search"
-        component={SearchScreen}
+        name="HomeScreen"
+        component={HomeScreen}
         options={{headerShown: false}}
       />
       <Filter.Screen
@@ -109,6 +112,11 @@ const FilterStackNavigator = () => {
       <Filter.Screen
         name="Sort"
         component={Sort}
+        options={{headerShown: false}}
+      />
+      <Filter.Screen
+        name="Filter"
+        component={FilterScreen}
         options={{headerShown: false}}
       />
     </Filter.Navigator>
@@ -178,7 +186,6 @@ const MyAccountScreen = () => {
         }}
       />
     </MyAccount.Navigator>
-
   );
 };
 

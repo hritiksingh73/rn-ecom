@@ -1,70 +1,115 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
   SafeAreaView,
-  TextInput,
   FlatList,
   Image,
+  TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import styles from './styles';
-import Feather from 'react-native-vector-icons/Feather';
-import DropDown from '../../../components/dropDown';
-import colors from '../../../redux/constants/colors';
 
-const data = [
-  {name: 'Name 1', rating: '* * * * *', url: require('../../../assets/images/vegetables5.jpeg')},
-  {name: 'Name 2', rating: '* * * * *', url: require('../../../assets/images/vegetables4.jpeg')},
-  {name: 'Name 3', rating: '* * * * *', url: require('../../../assets/images/vegetables7.jpeg')},
-  {name: 'Name 4', rating: '* * * * *', url: require('../../../assets/images/vegetables6.jpeg')},
-  {name: 'Name 5', rating: '* * * * *', url: require('../../../assets/images/vegetables11.jpg')},
-  {name: 'Name 6', rating: '* * * * *', url: require('../../../assets/images/vegetables12.jpeg')},
-  {name: 'Name 7', rating: '* * * * *', url: require('../../../assets/images/vegetables3.jpeg')},
-  {name: 'Name 8', rating: '* * * * *', url: require('../../../assets/images/vegetables8.jpeg')},
-  {name: 'Name 9', rating: '* * * * *', url: require('../../../assets/images/vegetables9.jpg')},
-  {name: 'Name 10', rating: '* * * * *', url: require('../../../assets/images/vegetables10.jpeg')},
-  {name: 'Name 11', rating: '* * * * *', url: require('../../../assets/images/vegetables14.jpeg')},
-  {name: 'Name 12', rating: '* * * * *', url: require('../../../assets/images/vegetables15.jpeg')},
-  {name: 'Name 13', rating: '* * * * *', url: require('../../../assets/images/vegetables13.jpeg')},
-];
+const SearchScreen = ({navigation}) => {
+  const veggiImages = [
+    {
+      id: 1,
+      name: 'vegetables1',
+      path: require('../../../assets/images/vegetables1.jpeg'),
+    },
+    {
+      id: 2,
+      name: 'vegetables2',
+      path: require('../../../assets/images/vegetables2.webp'),
+    },
+    {
+      id: 3,
+      name: 'vegetables3',
+      path: require('../../../assets/images/vegetables3.jpeg'),
+    },
+  ];
 
-const HomeScreen = () => {
+  const [data, setData] = useState({});
+
+  const CallingApi = async () => {
+    const response = await fetch('https://fakestoreapi.com/products');
+    const jsonResponse = await response.json();
+    // console.log(jsonResponse[0]);
+    setData(jsonResponse);
+  };
+  useEffect(() => {
+    CallingApi();
+  }, []);
+
   return (
-    <View>
-      <SafeAreaView style={styles.container}>
-        <View style={{backgroundColor: colors.primary}}>
-          <DropDown />
-
-          <View style={styles.txtContainer}>
-            <Feather name={'search'} size={22} />
-            <TextInput style={styles.txtFields} placeholder="Find Store" />
-          </View>
-
-          <FlatList
-            data={data}
-            numColumns="2"
-            renderItem={({item}) => {
-              return (
-                <View style={styles.itemOuterContainer}>
-                  <View style={styles.itemContainer}>
-                    <Image
-                      style={styles.itemImage}
-                      resizeMode="cover"
-                      source={item.url}
-                    />
-                  </View>
-                  <View style={styles.itemTextContainer}>
-                    <Text style={styles.itemName}>{item.name}</Text>
-                    <Text style={styles.itemRating}>{item.rating}</Text>
-                  </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Text style={styles.heading}>Super Fresh</Text>
+        <FlatList
+          data={veggiImages}
+          horizontal={true}
+          renderItem={({item}) => {
+            return (
+              <View style={styles.horizontalSlidebar}>
+                <Image
+                  style={styles.itemImage}
+                  resizeMode="cover"
+                  showsHorizontalScrollIndicator={true}
+                  source={item.path}
+                />
+              </View>
+            );
+          }}
+        />
+        <Text style={[styles.heading, {textAlign: 'left', margin: 15}]}>
+          Poppular Product
+        </Text>
+        {/* <FlatList
+          data={data}
+          horizontal={true}
+          renderItem={({item}) => {
+            return (
+              <View style={styles.productList}>
+                <View style={styles.imgContainer}>
+                  <Image
+                    style={styles.itemImage}
+                    resizeMode="contain"
+                    showsHorizontalScrollIndicator={true}
+                    source={{uri: item.image}}
+                  />
                 </View>
-              );
-            }}
-          />
-        </View>
-      </SafeAreaView>
-    </View>
+                <View style={styles.txtContainer}>
+                  <Text style={styles.itemTitle}>{item.category}</Text>
+                  <Text style={styles.itemTitle}>Price: {item.price}$</Text>
+                  <Text style={styles.itemTitle}>
+                    Rating: {item.rating.rate}
+                  </Text>
+                  <TouchableOpacity style={styles.addToCartContainer}>
+                    <Text style={styles.addToCartBtn}>Add to Cart</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            );
+          }}
+        /> */}
+        <TouchableOpacity
+          style={styles.category}
+          onPress={() => navigation.navigate('Fruits')}>
+          <Text style={styles.categoryTxt}>Fruits Screen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.category}
+          onPress={() => navigation.navigate('Vegetables')}>
+          <Text style={styles.categoryTxt}>Vegetables Screen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.category}
+          onPress={() => navigation.navigate('Pulses')}>
+          <Text style={styles.categoryTxt}>Pulses Screen</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default SearchScreen;

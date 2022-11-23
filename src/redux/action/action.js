@@ -10,8 +10,13 @@ export const AddFruitsToCart = (val) => ({
   payload: val,
 });
 
-export const NumberOfItems = (number, index, itemId) => ({
-  type: ActionTypes.NUMBER_OF_ITEMS,
-  payload: {number, index, itemId},
+export const IncrementCartItem = itemId => ({
+  type: ActionTypes.ITEMS_INCRIMENT,
+  payload: itemId,
+});
+
+export const DecrementCartItem = itemId => ({
+  type: ActionTypes.ITEMS_DECREMENT,
+  payload: itemId,
 });
 

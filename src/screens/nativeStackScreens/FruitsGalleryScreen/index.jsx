@@ -17,7 +17,7 @@ const FruitsGalleryScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.topRightHeader}
-          onPress={() => navigation.navigate('VegetablesGallery')}>
+          onPress={() => navigation.navigate('Filter')}>
           <MaterialCommunityIcons name={'sort-variant'} size={25} />
           <Text style={styles.sortStyl}>Filter</Text>
         </TouchableOpacity>

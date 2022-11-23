@@ -7,7 +7,7 @@ const FruitsApi = [
         maxPrice: 50,
         quantity: '1dozen',
         url: require('../../../src/assets/images/fruits/Banana/Banana_img1.webp'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1002',
@@ -17,7 +17,7 @@ const FruitsApi = [
         maxPrice: 150,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Apple/Apple_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1003',
@@ -27,7 +27,7 @@ const FruitsApi = [
         maxPrice: 40,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Orange/orange_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1004',
@@ -37,7 +37,7 @@ const FruitsApi = [
         maxPrice: 80,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Grapes/graps_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1005',
@@ -47,7 +47,7 @@ const FruitsApi = [
         maxPrice: 100,
         quantity: '500gm',
         url: require('../../../src/assets/images/fruits/Strowberry/strawberry_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1006',
@@ -57,7 +57,7 @@ const FruitsApi = [
         maxPrice: 60,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Mango/mango_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1007',
@@ -67,7 +67,7 @@ const FruitsApi = [
         maxPrice: 40,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Watermelon/watermelon_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1008',
@@ -77,7 +77,7 @@ const FruitsApi = [
         maxPrice: 100,
         quantity: '500gm',
         url: require('../../../src/assets/images/fruits/Cherry/cherry_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1009',
@@ -87,7 +87,7 @@ const FruitsApi = [
         maxPrice: 25,
         quantity: '100gm',
         url: require('../../../src/assets/images/fruits/Lemon/Lemon_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1010',
@@ -97,7 +97,7 @@ const FruitsApi = [
         maxPrice: 60,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Pineapple/pineapple_img1.webp'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1011',
@@ -107,7 +107,7 @@ const FruitsApi = [
         maxPrice: 40,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Papaya/papaya_img1.jpg'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1012',
@@ -117,7 +117,7 @@ const FruitsApi = [
         maxPrice: 45,
         quantity: '1kg',
         url: require('../../../src/assets/images/fruits/Avocado/Avocado_img1.webp'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
     {   
         id: '1013',
@@ -127,7 +127,7 @@ const FruitsApi = [
         maxPrice: 25,
         quantity: 'each',
         url: require('../../../src/assets/images/fruits/Coconut/coconut_img1.webp'),
-        numberOfItem: '1',
+        numberOfItem: 1,
     },
 ]
 

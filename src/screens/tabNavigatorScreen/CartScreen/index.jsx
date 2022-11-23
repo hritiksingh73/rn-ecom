@@ -7,22 +7,53 @@ import {
   FlatList,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {NumberOfItems} from '../../../redux/action/action';
-import Entype from 'react-native-vector-icons/Entypo';
+import { IncrementCartItem, DecrementCartItem } from '../../../redux/action/action';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './style';
 
 const CartScreen = () => {
-  const [number, setNumber] = useState(1);
+  const [coupon, setCoupon] = useState(0);
 
   const dispatch = useDispatch();
   const data = useSelector(state => state.user.fruitCart);
-  const numberOfItems = useSelector(state => state.user.numberOfItems);
 
+  const UserItemPrice = () => {
+    const ItemPrice = data.map((value) => {
+      let tot = value.price * value.numberOfItem;
+      return tot;
+    })
+    // console.log(BillPrice)
+    const TotalItemPrices = ItemPrice.reduce((tot, val) => {
+      return tot + val;
+    });
+    // console.log(BillPrices)
+    return TotalItemPrices;
+  }
+
+  const DeliveryCharge = () => {
+    return 100;
+  }
+
+  const Coupon = () => {
+    return 100;
+  }
+
+  const ItemTax = () => {
+    let tot = UserItemPrice()
+    return (tot*18)/100;
+  }
+
+  const TotalBilling = () => {
+    return (UserItemPrice() + DeliveryCharge() + ItemTax()) 
+  }
+  
+  
   return (
     <SafeAreaView style={styles.constainer}>
+    <ScrollView>
       <View style={styles.horizontlmrgn}>
         <View>
           <Text style={styles.title}>Cart</Text>
@@ -39,7 +70,7 @@ const CartScreen = () => {
           <View>
             <FlatList
               data={data}
-              renderItem={({item, index}) => {
+              renderItem={({item}) => {
                 return (
                   <View>
                     <View style={styles.cartItemContainer}>
@@ -58,25 +89,14 @@ const CartScreen = () => {
 
                       <View style={styles.countingCntnr}>
                         <View style={styles.counterBorder}>
-                          <TouchableOpacity
-                            onPress={() => {
-                              if (number > 0) {
-                                setNumber(number - 1);
-                              }
-                            }}>
+                          <TouchableOpacity onPress={() => dispatch(DecrementCartItem(item.id))}>
                             <Text style={styles.dec}>- </Text>
                           </TouchableOpacity>
                         </View>
 
-                        <Text style={styles.num}>{number}</Text>
-                        {/* <Text style={styles.num}>{item.numberOfItem}</Text> */}
+                        <Text style={styles.num}>{item.numberOfItem}</Text>
                         <View style={styles.incrementBtnStyle}>
-                          <TouchableOpacity
-                            onPress={() => {
-                              setNumber(number + 1);
-                                // dispatch(NumberOfItems(number, index, item.id))
-                              // console.log(item, 'indexis',index, number)
-                            }}>
+                          <TouchableOpacity onPress={() => dispatch(IncrementCartItem(item.id))}>
                             <Text style={styles.inc}>+ </Text>
                           </TouchableOpacity>
                         </View>
@@ -106,24 +126,39 @@ const CartScreen = () => {
                 </TouchableOpacity>
               </View>
             </View>
+
+
+            <View style={styles.billingBoxStyling}>
+              <Text style={styles.billBoxHeader}>Bill Details</Text>
+
+              <View style={styles.billingTxtBorder}>
+                <Text style={styles.billDetailTxt}>Total</Text>
+                <Text style={styles.pricingStyl}>₹{UserItemPrice()}</Text>
+              </View>
+
+              <View style={styles.billingTxtBorder}>
+                <Text style={styles.billDetailTxt}>Delivery Charge</Text>
+                <Text style={styles.pricingStyl}>₹{DeliveryCharge()}</Text>
+              </View>
+              <View style={styles.billingTxtBorder}>
+                <Text style={styles.billDetailTxt}>Coupon</Text>
+                <Text style={styles.pricingStyl}>₹{Coupon()}</Text>
+              </View>
+              <View style={styles.billingTxtBorder}>
+                <Text style={styles.billDetailTxt}>Tax</Text>
+                <Text style={styles.pricingStyl}>₹{ItemTax()}</Text>
+              </View>
+
+              <View style={styles.billingTxtBorder}>
+                <Text style={styles.billingTotalTxt}>Sub Total</Text>
+                <Text style={styles.totalPricingStyl}>₹{TotalBilling()}</Text>
+              </View>
+
+            </View>
           </View>
         </View>
-
-        {/* <View style={styles.itemHeader}>
-            <Image  
-                style={styles.imgStyl}
-                source={require('../../../assets/images/MVegetables1.jpg')}
-            />
-            <Text style={styles.headerTxt}>Fresh Vegetables</Text>
-        </View>
-        <View style={styles.itemHeader}>
-            <Image  
-                style={styles.imgStyl}
-                source={require('../../../assets/images/MPulses1.webp')}
-            />
-            <Text style={styles.headerTxt}>Fresh Pulses</Text>
-        </View> */}
       </View>
+    </ScrollView>
     </SafeAreaView>
   );
 };
