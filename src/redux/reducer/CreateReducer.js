@@ -25,10 +25,15 @@ const createReducer = (state = initialState, action) => {
       return {...state, cartProducts: [...state.cartProducts, action.payload]};
 
     case ActionType.REMOVE_CART:
-      const deleted = state.filter((item, index) =>{
-        return index !== action.payload;
-      });
-        return deleted;
+      return {
+        ...state,
+        cartProducts: state.cartProducts.filter( item => action.payload !== item.id)
+      };
+
+      case ActionType.ADD_TO_CART:
+        return {...state, cartProducts: [...state.cartProducts, action.payload]};
+  
+      
 
     default:
       return state;

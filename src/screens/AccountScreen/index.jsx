@@ -4,7 +4,7 @@ import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
-//import styles from './styles.js'
+import styles from './styles.js'
 
 const AccountScreen = () => {
   const signOut = () => {
@@ -48,32 +48,5 @@ const AccountScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  constainer: {
-    flex: 1,
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  txt: {
-    fontSize: 15,
-    //padding:10,
-    margin: 5,
-  },
-  account: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 20,
-    marginTop: 30,
-  },
-  input: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    margin: 15,
-    borderBottomColor: 'lightgrey',
-  },
-});
 
 export default AccountScreen;

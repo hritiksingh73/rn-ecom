@@ -15,43 +15,49 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Rating} from 'react-native-ratings';
 import {useDispatch, useSelector} from 'react-redux';
-import {getInitialData} from '../../redux/thunk/productThunk.js';
 import Data from '../../homeData/Data.js';
-import Veggies from '../../homeData/Veggies.js';
-import {addToCart} from '../../redux/action/Action.js'
+import {addToCart} from '../../redux/action/Action.js';
+import List from '../../homeData/List.js';
+import styles from './styles.js'
 
-const veggiesItem = ({item}) => {
-    
-  return (
-    <View style={styles.item}>
-        <TouchableOpacity
-          style={styles.imgContainer}
-          onPress={() => {
-            //addItem(item);
-            console.log(item);
-          }}>
-      <Image source={item.image} style={styles.flatlist} />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const renderItem = ({item}) => {
-  return (
-    <View style={styles.data}>
-      <Image source={item.image} style={styles.flatlistData} />
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.dollar}>{item.dollar}</Text>
-      <TouchableOpacity style={styles.button}>
-        <Text>Add to Cart</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
 const SuperFreshScreen = ({navigation}) => {
-    const dispatch = useDispatch();
-    const userRecord = useSelector(state => state.userData.cartProduct);
-    
+  const dispatch = useDispatch();
+  const userRecord = useSelector(state => state.userData.cartProduct);
+
+  const addList = item => {
+    dispatch(addToCart(item));
+  };
+
+  const VeggiesItem = ({item}) => {
+    return (
+      <View style={styles.item}>
+        <ImageBackground style={styles.flatlist} source={item.image} />
+        <Text style={styles.fresh}>Superfresh</Text>
+        <Text style={styles.title}>{item.title}</Text>
+      </View>
+    );
+  };
+
+  const PopularProducts = ({item}) => {
+    return (
+      <View style={styles.data}>
+        <Image source={item.image} style={styles.flatlistData} 
+        resizeMode='center'
+        />
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.dollar}>{item.dollar}</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            addList(item);
+            console.log(item.id);
+          }}>
+          <Text style={styles.cart}>Add to Cart</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.icon}>
@@ -59,26 +65,34 @@ const SuperFreshScreen = ({navigation}) => {
         <Text style={styles.text}>Super Fresh</Text>
         <Icon name="bells" size={20} />
       </View>
-      <View style={styles.vegetableImage}>
-        <Image
-          source={require('../../assets/image3.jpeg')}
-          style={styles.freshImage}
-        />
-        <View style={styles.superImage}>
-          <Text style={{fontSize: 20, margin: 15}}>Super Fresh</Text>
-          <Rating imageSize={15} ratingCount={5} />
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Cart');
+        }}>
+        <View style={styles.vegetableImage}>
+          <Image
+            source={require('../../assets/image3.jpeg')}
+            style={styles.freshImage}
+          />
+          <View>
+            <Text style={styles.superFresh}>Super Fresh</Text>
+            <Rating imageSize={15} ratingCount={5} />
+          </View>
+          <View style={styles.heart}>
+            <Icon name="hearto" size={24} />
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
       <FlatList
-        data={Veggies}
-        renderItem={veggiesItem}
+        data={List}
+        renderItem={VeggiesItem}
         horizontal={true}
         keyExtractor={item => item.id}
       />
       <Text style={styles.popular}>Popular Products</Text>
       <FlatList
         data={Data}
-        renderItem={renderItem}
+        renderItem={PopularProducts}
         horizontal={true}
         keyExtractor={item => item.id}
       />
@@ -88,78 +102,5 @@ const SuperFreshScreen = ({navigation}) => {
     </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  icon: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 15,
-    marginTop: 15,
-  },
-  vegetableImage: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  freshImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginHorizontal: 10,
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  item: {
-    marginTop: 20,
-  },
-  data: {
-    borderWidth: 1,
-    borderColor: 'grey',
-  },
-  button: {
-    margin: 20,
-  },
-  popular: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    bottom: 25,
-    marginLeft: 20,
-  },
-  flatlist: {
-    height: '40%',
-    width: 200,
-    margin: 5,
-  },
-  dollar: {
-    fontSize: 18,
-    color: 'green',
-    marginLeft: 10,
-  },
-  products: {
-    fontSize: 20,
-    margin: 10,
-  },
-  title: {
-    fontSize: 18,
-    marginLeft: 10,
-    margin: 10,
-  },
-
-  superImage: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  flatlistData: {
-    marginTop: 20,
-    height: 180,
-    width: 220,
-    margin: 5,
-  },
-});
 
 export default SuperFreshScreen;
