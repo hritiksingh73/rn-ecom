@@ -4,7 +4,7 @@ import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
-import styles from './styles.js'
+import styles from './styles.js';
 
 const AccountScreen = () => {
   const signOut = () => {
@@ -47,6 +47,5 @@ const AccountScreen = () => {
     </SafeAreaView>
   );
 };
-
 
 export default AccountScreen;

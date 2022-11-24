@@ -16,8 +16,8 @@ import {userFullInfo} from '../../redux/action/Action.js';
 import TextInputComponent from '../../components/TextInputComponent.js';
 import styles from '../LoginScreen/styles.js';
 import auth from '@react-native-firebase/auth';
-import image from '../../config/Image.js'
-import SocialMedia from '../../components/SocialMedia.js'
+import image from '../../config/Image.js';
+import SocialMedia from '../../components/SocialMedia.js';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -34,13 +34,13 @@ const LoginScreen = ({navigation}) => {
       try {
         const userRes = auth().signInWithEmailAndPassword(email, password);
         let userInfo = {
-        //uid: userRes.user.uid,
-        email: email,
-        password: password
+          //uid: userRes.user.uid,
+          email: email,
+          password: password,
         };
 
         const res = dispatch(userFullInfo(userInfo));
-        
+
         console.log('---->', userRes);
         console.log('userEmail, password---->', email, password);
       } catch (error) {
@@ -72,10 +72,7 @@ const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Image
-          source={image.grocery}
-          style={styles.groceryImage}
-        />
+        <Image source={image.grocery} style={styles.groceryImage} />
         <Text style={styles.welcome}>Welcome Back!</Text>
         <View style={styles.input}>
           <Icon name="mail" size={20} />
@@ -113,17 +110,11 @@ const LoginScreen = ({navigation}) => {
         <Text style={styles.continuewith}>Continue With</Text>
         <View style={styles.button}>
           <TouchableOpacity onPress={facebook}>
-            <SocialMedia
-              source={image.facebook}
-              style={styles.facebook}
-            />
+            <SocialMedia source={image.facebook} style={styles.facebook} />
           </TouchableOpacity>
           <View>
             <TouchableOpacity onPress={google}>
-              <SocialMedia
-                source={image.googlebtn}
-                style={styles.google}
-              />
+              <SocialMedia source={image.googlebtn} style={styles.google} />
             </TouchableOpacity>
           </View>
         </View>

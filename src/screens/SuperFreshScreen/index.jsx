@@ -18,7 +18,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import Data from '../../homeData/Data.js';
 import {addToCart} from '../../redux/action/Action.js';
 import List from '../../homeData/List.js';
-import styles from './styles.js'
+import styles from './styles.js';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -41,8 +41,10 @@ const SuperFreshScreen = ({navigation}) => {
   const PopularProducts = ({item}) => {
     return (
       <View style={styles.data}>
-        <Image source={item.image} style={styles.flatlistData} 
-        resizeMode='center'
+        <Image
+          source={item.image}
+          style={styles.flatlistData}
+          resizeMode="center"
         />
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.dollar}>{item.dollar}</Text>

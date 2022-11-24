@@ -122,9 +122,9 @@ const styles = StyleSheet.create({
   fruitImage: {
     width: 100,
     height: 100,
-    //borderRadius: 10,
-    //marginRight: 15,
-    //marginLeft: 10,
+    borderRadius: 10,
+    marginRight: 15,
+    marginLeft: 10,
   },
 });
 

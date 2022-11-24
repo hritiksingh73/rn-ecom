@@ -16,14 +16,11 @@ export const removeToCart = user => ({
 });
 
 export const increaseToCart = item => ({
-  type: ActionType.INCREASE_CART,
+  type: ActionType.INCREASE_CART_ITEM,
   payload: item,
 });
 
 export const decreaseToCart = item => ({
-  type: ActionType.DECREASE_CART,
+  type: ActionType.DECREASE_CART_ITEM,
   payload: item,
 });
-
-
-

@@ -17,24 +17,20 @@ import Veggies from '../../homeData/Veggies.js';
 import {Rating} from 'react-native-ratings';
 import styles from './styles.js';
 
-
 const HomeScreen = ({navigation}) => {
-
-const renderItem = ({item}) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.veggies}>
-      <TouchableOpacity onPress={() => navigation.navigate('Super Fresh')}>
-      <Image source={item.image} style={styles.image} />
-      </TouchableOpacity>
-        <Rating imageSize={20} ratingCount={5} />
-        <Text style={styles.text}>{item.title}</Text>
+  const renderItem = ({item}) => {
+    return (
+      <View style={styles.container}>
+        <View style={styles.veggies}>
+          <TouchableOpacity onPress={() => navigation.navigate('Super Fresh')}>
+            <Image source={item.image} style={styles.image} />
+          </TouchableOpacity>
+          <Rating imageSize={20} ratingCount={5} />
+          <Text style={styles.text}>{item.title}</Text>
+        </View>
       </View>
-    </View>
-    
-  );
-};
-
+    );
+  };
 
   return (
     <SafeAreaView>
@@ -44,7 +40,6 @@ const renderItem = ({item}) => {
         <TextInput placeholder="Find Store" />
       </View>
       <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
-      
     </SafeAreaView>
   );
 };
