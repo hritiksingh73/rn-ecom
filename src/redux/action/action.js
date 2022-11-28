@@ -20,3 +20,8 @@ export const DecrementCartItem = itemId => ({
   payload: itemId,
 });
 
+export const UserId = val => ({
+  type: ActionTypes.USER_ID,
+  payload: val,
+});
+

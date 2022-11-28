@@ -3,6 +3,7 @@ import {Text, View, TouchableOpacity, Image, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {AddFruitsToCart} from '../../redux/action/action';
 import styles from './styles';
+import firestore from '@react-native-firebase/firestore';
 
 const ItemList = props => {
   const data = props.data;
@@ -11,6 +12,27 @@ const ItemList = props => {
   const [itemId, setItemId] = useState(0);
   const dispatch = useDispatch();
   const cartData = useSelector(state => state.user.fruitCart);
+  const userID = useSelector(state => state.user.userID);
+
+  const FireSotreDataHandler = (item) => {
+
+    firestore()
+      .collection('Praveen')
+      .doc(userID)
+      .set({cartData}
+        // {
+        //   id: item.id,
+        //   title: item.title,
+        //   rating: item.rating,
+        //   price: item.price,
+        //   maxPrice: item.maxPrice,
+        //   quantity: item.quantity,
+        // }
+      )
+      .then(() => {
+        console.log('User added!');       
+    }); 
+  }
 
   return (
     <FlatList
@@ -45,7 +67,7 @@ const ItemList = props => {
                     if(!isItemAvailable){
                       // console.log('----->>>>>: item Not Available')
                       dispatch(AddFruitsToCart(item));
-                      
+                      FireSotreDataHandler(item)       
                     }else{
                       // console.log('----->>>>>: item Available')
                     }

@@ -3,9 +3,10 @@ import {Text, View, SafeAreaView, ScrollView} from 'react-native';
 import styles from './styles';
 import LoginTextField from '../../../components/textInputField';
 import LoginBtn from '../../../components/loginBtn';
-import {useDispatch} from 'react-redux';
-import {registerDetails} from '../../../redux/action/action';
+import {useDispatch, useSelector} from 'react-redux';
+import {registerDetails, UserId} from '../../../redux/action/action';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Register = ({navigation}) => {
   const [userName, setUserName] = useState('');
@@ -19,8 +20,9 @@ const Register = ({navigation}) => {
   const [isValidPassword, setIsValidPassword] = useState('');
 
   const dispatch = useDispatch();
+  const userID = useSelector(state => state.user.userID);
 
-  const LoginHandler = () => {
+  const LoginHandler = async () => {
     if (
       userName === '' ||
       userEmail === '' ||
@@ -42,8 +44,21 @@ const Register = ({navigation}) => {
           .then(({user, additionalUserInfo}) => {
             user.updateProfile({
               displayName: userName,
-            });
+            })
+            // firebase userid store in reducer
+            dispatch(UserId(user.uid))
             console.log('User account created & signed in!');
+
+            firestore()
+              .collection('Praveen')
+              .doc(user.uid)
+              .set({
+                name: userName,
+                email: userEmail,
+              })
+              .then(() => {
+                console.log('User added!', userID);
+            });
           })
 
           .catch(error => {

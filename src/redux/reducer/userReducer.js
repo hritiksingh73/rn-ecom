@@ -1,6 +1,7 @@
 import {ActionTypes} from '../constants/constants';
 
 const initialState = {
+  userID: '',
   registerData: [],
   fruitCart: [],
   numberOfItems: '',
@@ -83,6 +84,13 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         fruitCart: decQuantity,
       };
+
+    case ActionTypes.USER_ID:
+      console.log('Reducer userid --> ', payload)
+      return {
+        ...state,
+        userID: payload,
+      }
 
     default:
       return state;
