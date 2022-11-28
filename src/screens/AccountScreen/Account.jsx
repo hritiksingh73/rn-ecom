@@ -27,33 +27,33 @@ const Account = () => {
     <SafeAreaView>
       <View style={styles.headerBar}>
         <Tree name="ios-menu-outline" size={30} style={styles.favourite}/>
-        <Text style={{fontSize: 25}}>My Account</Text>
+        <Text style={styles.header}>My Account</Text>
         <Bell name="bell-badge-outline" size={30} />
       </View>
 
       <TouchableOpacity style={styles.menuList}>
         <Icon name="profile" size={30} style={styles.favourite} />
-        <Text style={{fontSize: 18}}>My Profile</Text>
+        <Text style={styles.mycarticonsize}>My Profile</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.menuList}>
         <Address name="address-book" size={30} style={styles.favourite} />
-        <Text style={{fontSize: 18}}>Manage Addresses</Text>
+        <Text style={styles.mycarticonsize}>Manage Addresses</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.menuList}>
         <Branch name="family-tree" size={30} style={styles.favourite} />
-        <Text style={{fontSize: 18}}>Order History</Text>
+        <Text style={styles.mycarticonsize}>Order History</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.menuList}>
         <Icon name="hearto" size={30} style={styles.favourite} />
-        <Text style={{fontSize: 18}}>My Wishlist</Text>
+        <Text style={styles.mycarticonsize}>My Wishlist</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.menuList} onPress={signOut}>
         <Logout name="logout" size={30} style={styles.favourite} />
-        <Text style={{fontSize: 18}}>Logout</Text>
+        <Text style={styles.mycarticonsize}>Logout</Text>
       </TouchableOpacity>
 
 

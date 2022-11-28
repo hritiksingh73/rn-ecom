@@ -4,19 +4,20 @@ import {
   SafeAreaView,
   FlatList,
   TouchableOpacity,
-  Image,
-  Button,
-  TouchableOpacityComponent,
+  Image
 } from 'react-native';
+
 import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import {getInitialData} from '../../redux/thunk/ProductThunk';
-import {useDispatch, useSelector} from 'react-redux';
 import styles from './styles';
 import Sort from 'react-native-vector-icons/Octicons';
 import Filter from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+
 
 const PopularProducts = () => {
   const Dispatch = useDispatch();
@@ -34,7 +35,7 @@ const PopularProducts = () => {
           <Image source={{uri: item.image}} style={styles.imgStyle} />
           <Text style={styles.mainContainer}>{item.title}</Text>
           <Text style={styles.price}>${item.price}</Text>
-          <Text style={{color: 'black'}}>Add to Cart</Text>
+          <Text>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     );

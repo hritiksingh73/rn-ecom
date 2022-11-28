@@ -1,15 +1,23 @@
-import {Text, View, SafeAreaView, Image, TouchableOpacity,Button} from 'react-native';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+
 import Email from 'react-native-vector-icons/Fontisto';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-// import {addUser} from '../../redux/action/Action';
 import styles from '../LoginScreen/styles';
-import FormContainer from '../../component/FormComponent/FormInput'
+import FormContainer from '../../component/FormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import imagePath from '../../config/Image';
-import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
+import SocialMedia from '../../reUsable/SocialMediaButton';
+import firestore from '@react-native-firebase/firestore';
 
 
 // const Anonimous = () => {
@@ -24,7 +32,7 @@ import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
 //     }
 //     console.error(error);
 //   });
-// } 
+// }
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -33,6 +41,9 @@ const LoginPage = () => {
     emailError: '',
     passwordError: '',
   });
+  const userData = useSelector(state => state.userInfo.loginpage);
+
+  
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -63,28 +74,43 @@ const LoginPage = () => {
       : setValidation({passwordError: ''});
   };
 
-  const dispatchCredentials = async () => {
+  const dispatchCredentials = async () => { 
     try {
+       firestore()
+      .collection(userData.name)
+      .doc(userData.uid)
+      .set({
+        CustomerCredentials: userData,
+      })
+      .then(() => {
+        console.log('User added! by Aditya');
+      });
+
       const userRes = await auth().signInWithEmailAndPassword(
         email,
         userPassword,
       );
-      console.log('from login page----->', userRes.user.displayName);
-      console.log('from login page----->', userRes.user.uid);
-      console.log('from login page----->', userRes.user.email);
-      console.log('from login page----->', userRes);
-      //dispatch(addUser( email,userPassword));
+      // console.log('from login page----->', userRes.user.displayName);
+      // console.log('from login page----->', userRes.user.uid);
+      // console.log('from login page----->', userRes.user.email);
+      // console.log('from login page----->', userRes);
+      
     } catch (error) {
       console.log(error.code);
     }
   };
- const facebookButton=()=>{
-  alert('Facebook Login Successfull!!! ')
- }
- const googleButton=()=>{
-  alert('Google Login Successfull!!! ')
- }
- 
+  
+
+
+
+
+  const facebookButton = () => {
+    alert('Facebook Login Successfull!!! ');
+  };
+  const googleButton = () => {
+    alert('Google Login Successfull!!! ');
+  };
+
   return (
     <SafeAreaView>
       <Image source={imagePath.grocerryMain} style={styles.groceryHeader} />
@@ -143,7 +169,9 @@ const LoginPage = () => {
       <Text style={styles.continuewith}>Continue With</Text>
 
       <View style={styles.bottomSocialMedia}>
-        <TouchableOpacity style={styles.bottomFacebook} onPress={facebookButton}>
+        <TouchableOpacity
+          style={styles.bottomFacebook}
+          onPress={facebookButton}>
           <SocialMedia style={styles.facebook} source={imagePath.facebook} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomGoogle} onPress={googleButton}>
@@ -151,11 +179,7 @@ const LoginPage = () => {
         </TouchableOpacity>
       </View>
 
-
-      
-{/* <Button title='Login As Guest' onPress={()=> Anonimous}></Button> */}
-
-
+      {/* <Button title='Login As Guest' onPress={()=> Anonimous}></Button> */}
 
       <View style={styles.bottomHeadline}>
         <Text>Dont have an account?</Text>

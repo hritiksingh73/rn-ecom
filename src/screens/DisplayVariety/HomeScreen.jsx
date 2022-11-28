@@ -7,12 +7,13 @@ import {
   Image,
   FlatList,
 } from 'react-native';
+
 import React from 'react';
+import {useSelector} from 'react-redux';
+
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Rating} from 'react-native-ratings';
 import styles from './styles';
-import {useSelector} from 'react-redux';
-
 
 const shoppingCards = ({item}) => {
   return (
@@ -31,10 +32,9 @@ const shoppingCards = ({item}) => {
 };
 
 const HomeScreen = () => {
-  const {productData} =  useSelector(state => state.userInfo) ;
+  const {productData} = useSelector(state => state.userInfo);
   return (
     <SafeAreaView>
-      {/* <Dropdown data={country} label='Favorite Fruit'/> */}
       <View style={styles.searchBar}>
         <Icon name="search1" size={28} />
         <TextInput placeholder="Find Store" />

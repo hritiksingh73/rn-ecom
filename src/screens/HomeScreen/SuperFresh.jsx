@@ -8,19 +8,21 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+
 import React, {useEffect} from 'react';
+import {ScrollView} from 'react-native-virtualized-view';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Tree from 'react-native-vector-icons/Ionicons';
-import Hearto from 'react-native-vector-icons/AntDesign';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Rating} from 'react-native-ratings';
-import {useDispatch, useSelector} from 'react-redux';
 import {getInitialData} from '../../redux/thunk/ProductThunk';
 import {addItemToCart} from '../../redux/action/Action';
-import {useNavigation} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 import styles from './styles';
 import Banner from './Banner';
-import {ScrollView} from 'react-native-virtualized-view';
 
 const SuperFresh = () => {
   const Dispatch = useDispatch();
@@ -31,43 +33,50 @@ const SuperFresh = () => {
     Dispatch(getInitialData());
   }, []);
 
+  const selecteditems = useSelector(state => state.userInfo.cart);
+  const userData = useSelector(state => state.userInfo.loginpage);
 
-  function User({ userId }) {
-    useEffect(() => {
-      const subscriber = firestore()
-        .collection('Users')
-        .doc(userId)
-        .onSnapshot(documentSnapshot => {
-          console.log('User data: ', documentSnapshot.data());
-        });
-  
-      // Stop listening for updates when no longer required
-      return () => subscriber();
-    }, [userId]);
-  }
+  // const productList = {
+  //   ...productData,
+  //   qnty: 1,
+  // };
+ // console.log(productData)
+ 
 
-  const addItem = item => {
-    Dispatch(addItemToCart(item));
-  };
-
-  const items = useSelector(state => state);
-  let addedItems = [];
-  addedItems = items;
-//console.log(addedItems)
 
   const ListData = ({item}) => {
     return (
       <View style={styles.card}>
         <Image source={{uri: item.image}} style={styles.imgStyle} />
         <Text style={styles.mainContainer}>{item.title}</Text>
-        <Rating imageSize={15} ratingCount={5} />
+        <Text style={styles.mainContainer}>{item.rating.rate}</Text>
         <TouchableOpacity
           style={styles.imgContainer}
           onPress={() => {
-            addItem(item);
-            console.log(item);
+            Dispatch(addItemToCart(item));
+            console.log({item})
+            firestore()
+              .collection(userData.name)
+              .doc(userData.email)
+              .set({
+                uid:userData.uid,
+                selecteditems
+              })
+              .then(() => {
+                console.log('item added to firestore added!!');
+              });
+
+            // firestore()
+            //   .collection(userData.name)
+            //   .add({
+            //     name: userData.name,
+            //     item: item,
+            //   })
+            //   .then(() => {
+            //     console.log('item added to firestore added!');
+            //   });
           }}>
-          <Text style={{color: 'black'}}>Add to Cart</Text>
+          <Text style={styles.addtocart}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     );
@@ -93,35 +102,18 @@ const SuperFresh = () => {
         <ActivityIndicator animating={isFetching} />
         <View style={styles.headerBar}>
           <Tree name="ios-menu-outline" size={30} />
-          <Text style={{fontSize: 25}}>Super Fresh</Text>
+          <Text style={styles.headertitle}>Super Fresh</Text>
           <Bell name="bell-badge-outline" size={30} />
         </View>
-        <TouchableOpacity
-          style={styles.cart}
-          onPress={() => {
-            navigation.navigate('Cart');
-          }}>
-          <Image
-            source={require('../../asset/bag.png')}
-            style={{width: 24, height: 24}}
-          />
-          <Text style={{marginLeft: 10, fontSize: 20, fontWeight: '800'}}>
-            {' '}
-            {items.length}
-            {''}
-          </Text>
-        </TouchableOpacity>
+
         <View style={styles.ratingcontainerchild}>
           <Image
             source={require('../../asset/grocerry.jpeg')}
             style={styles.tinyIcon}
           />
           <View style={styles.ratingcontainer}>
-            <Text style={{fontSize: 18}}>Super Fresh</Text>
+            <Text style={styles.secondheader}>Super Fresh</Text>
             <Rating imageSize={15} ratingCount={5} />
-          </View>
-          <View style={{marginLeft: '10%'}}>
-            <Hearto name="hearto" size={24} style={styles.favourite} />
           </View>
         </View>
 
@@ -132,8 +124,9 @@ const SuperFresh = () => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{fontSize: 20, paddingLeft: 20}}>Poppular Product </Text>
+        {/* <Button title='press' onPress={()=>{productList}}/> */}
+        <View style={styles.popularproductcontainer}>
+          <Text style={styles.poppularproducts}>Poppular Product </Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('PopularProduct')}>
             <Text style={styles.viewMore}>View More </Text>

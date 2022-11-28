@@ -89,6 +89,23 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingLeft: '25%',
   },
+  addtocart: {
+    color: 'black',
+  },
+  headertitle: {
+    fontSize: 25
+  },
+  secondheader:{
+    fontSize: 18
+  },
+  poppularproducts:{
+    fontSize: 20, 
+    paddingLeft: 20
+  },
+  popularproductcontainer:{
+    flexDirection: 'row'
+  }
+
 });
 
 export default styles;

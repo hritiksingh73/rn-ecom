@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -10,38 +10,22 @@ import {
 import {addItemToCart} from '../../redux/action/Action';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-
-
+import styles from './styles';
 import {
   //removeItemFromCart,
   increaseItemQuantity,
   DecreaseItemCountInCartAction,
 } from '../../redux/action/Action';
-import styles from './styles';
 
 const Cart = () => {
-  const navigation = useNavigation();
   const item = useSelector(state => state.userInfo.cart);
-  const quantity = useSelector(state => state.userInfo.quantity);
-  const [itemCount, setItemCount] = useState(1);
-
-  console.log(item);
+  //console.log(counter)
   const dispatch = useDispatch();
 
-  const removeItem = item => {
-    dispatch(DecreaseItemCountInCartAction(item.id));
-  };
-  // const increaseItem = item => {
-  //   dispatch(increaseItemQuantity(item));
-  //   //console.log(item);
-  // };
-  const addItem = item => {
-    dispatch(increaseItemQuantity(item.id));
-  };
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1}}>
+      
         <View style={styles.mainHeader}></View>
         <FlatList
           data={item}
@@ -58,25 +42,16 @@ const Cart = () => {
                     <Text style={styles.itemPrice}>${item.price}</Text>
                     <View style={styles.Quantityadjustment}>
                       <TouchableOpacity
-                        style={styles.increarseButton}
-                        // onPress={() => {
-                        //   removeItem(item.id);
-                        // }}
-                        onClick={() => {
-                          setItemCount(itemCount + 1);
-                        }}>
+                        style={styles.decreaseButton}
+                        onPress={() => dispatch(DecreaseItemCountInCartAction(item.id))} >
                         <Text>-</Text>
                       </TouchableOpacity>
-                      <Text style={styles.increarseButton}>{itemCount}</Text>
-                      {/*Need to work here */}
+
+                      <Text style={styles.increarseButton}>zero</Text>{/*Need to work here */}
+                      
                       <TouchableOpacity
-                        style={styles.decreaseButton}
-                        // onPress={() => {
-                        //    addItem(item.id);
-                        //   }}
-                        onClick={() => {
-                          setItemCount(itemCount - 1);
-                        }}>
+                        style={styles.increarseButton}
+                        onPress={() => dispatch(increaseItemQuantity(item.id))} >
                         <Text>+</Text>
                       </TouchableOpacity>
                     </View>
@@ -86,7 +61,7 @@ const Cart = () => {
             );
           }}
         />
-      </View>
+      
     </SafeAreaView>
   );
 };

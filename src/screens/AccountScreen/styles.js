@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
     favourite: {
       paddingRight: 30,
     },
+    mycarticonsize:{
+      fontSize: 18
+    },
+    header:{
+      fontSize: 25
+    }
   });
 
 
