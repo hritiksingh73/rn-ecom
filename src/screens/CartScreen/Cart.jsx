@@ -47,7 +47,7 @@ const Cart = () => {
                         <Text>-</Text>
                       </TouchableOpacity>
 
-                      <Text style={styles.increarseButton}>zero</Text>{/*Need to work here */}
+                      <Text style={styles.increarseButton}>{item.quantity}</Text>{/*Need to work here */}
                       
                       <TouchableOpacity
                         style={styles.increarseButton}

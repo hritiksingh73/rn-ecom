@@ -33,10 +33,9 @@ const userReducer = (state = InitialState, action) => {
       return {...state, isFetching: action.payload};
 
     case ActionType.ADD_ITEM:
-      console.log(action.payload)
-      return {...state, cart: [...state.cart,action.payload]};
-      
-
+      //  console.log([...state.cart,{...action.payload,quantity:1}])
+      return {...state, cart: [...state.cart,{...action.payload,quantity:1}]};
+     
     case ActionType.REMOVE_ITEM:
       //console.log(...state.cart.filter( (item) => action.payload !== item))
       return {

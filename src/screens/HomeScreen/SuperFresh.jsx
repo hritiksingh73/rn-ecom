@@ -40,9 +40,7 @@ const SuperFresh = () => {
   //   ...productData,
   //   qnty: 1,
   // };
- // console.log(productData)
- 
-
+  // console.log(productData)
 
   const ListData = ({item}) => {
     return (
@@ -54,13 +52,13 @@ const SuperFresh = () => {
           style={styles.imgContainer}
           onPress={() => {
             Dispatch(addItemToCart(item));
-            console.log({item})
+            // console.log(item);
             firestore()
               .collection(userData.name)
               .doc(userData.email)
               .set({
-                uid:userData.uid,
-                selecteditems
+                uid: userData.uid,
+                selecteditems,
               })
               .then(() => {
                 console.log('item added to firestore added!!');
