@@ -35,7 +35,7 @@ const PopularProductScreen = ({navigation}) => {
           resizeMode="center"
         />
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.dollar}>{item.dollar}</Text>
+        <Text style={styles.dollar}>{item.price}</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => {

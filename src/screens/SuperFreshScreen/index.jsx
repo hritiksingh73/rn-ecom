@@ -19,14 +19,68 @@ import Data from '../../homeData/Data.js';
 import {addToCart} from '../../redux/action/Action.js';
 import List from '../../homeData/List.js';
 import styles from './styles.js';
+import firestore from '@react-native-firebase/firestore';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const userRecord = useSelector(state => state.userData.cartProduct);
+  const usersCollection = firestore().collection('Users');
+  const userDocument = firestore().collection('Users').doc('ABC');
 
   const addList = item => {
     dispatch(addToCart(item));
   };
+
+  const onResult = QuerySnapshot => {
+    console.log('Got Users collection result.');
+  };
+
+  const onError = error => {
+    console.error(error);
+  };
+
+  firestore().collection('Users').onSnapshot(onResult, onError);
+
+  const User = ({userId}) => {
+    useEffect(() => {
+      const subscriber = firestore()
+        .collection('Users')
+        .doc(userId)
+        .onSnapshot(documentSnapshot => {
+          console.log('User data: ', documentSnapshot.data());
+        });
+
+      // Stop listening for updates when no longer required
+      return () => subscriber();
+    }, [userId]);
+  };
+
+  const Firestore = item => {
+  //   firestore()
+  //     .collection('Nishi')
+  //     .add({
+  //       title: item.title,
+  //       id: item.id,
+  //       quantity: item.quantity,
+  //       price: item.price,
+  //       oldPrice: item.oldPrice
+  //     })
+  //     .then(() => {
+  //       console.log('User added!');
+  //     });
+  // };
+
+  firestore()
+  .collection('Users')
+  .get()
+  .then(querySnapshot => {
+    console.log('Total users: ', querySnapshot.size);
+
+    querySnapshot.forEach(documentSnapshot => {
+      console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+    });
+  });
+}
 
   const VeggiesItem = ({item}) => {
     return (
@@ -47,13 +101,14 @@ const SuperFreshScreen = ({navigation}) => {
           resizeMode="center"
         />
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.dollar}>{item.dollar}</Text>
-        <TouchableOpacity
+        <Text style={styles.dollar}>{item.price}</Text>
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => {
             addList(item);
             console.log(item.id);
-          }}>
+          }}> */}
+        <TouchableOpacity onPress={() => Firestore(item) }>
           <Text style={styles.cart}>Add to Cart</Text>
         </TouchableOpacity>
       </View>

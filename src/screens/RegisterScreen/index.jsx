@@ -16,6 +16,7 @@ import {userFullInfo} from '../../redux/action/Action.js';
 import TextInputComponent from '../../components/TextInputComponent.js';
 import styles from './styles.js';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const RegisterScreen = ({navigation}) => {
   const [fullname, setFullName] = useState('');
@@ -27,13 +28,55 @@ const RegisterScreen = ({navigation}) => {
   const [fullnameValid, setFullNameValid] = useState(true);
   const [mobilenoValid, setMobileNoValid] = useState(true);
   const dispatch = useDispatch();
-
   const userRecord = useSelector(state => state.userData.userRecord);
+
+  const usersCollection = firestore().collection('Users');
+  const userDocument = firestore().collection('Users').doc('userId');
 
   const updateRegister = async () => {
     if (email === '' && password === '') {
       alert('Empty email and password');
     } else {
+//       auth()
+//       .createUserWithEmailAndPassword(email, password)
+//       .then(({user}) => {
+//         user.updateProfile({
+//           displayName: fullname,
+//         });
+//         console.log(email);
+//       })
+
+//       firestore()
+//      .collection('Users')
+//      .doc(user.uid)
+//      .set({
+//       name: fullname,
+//       email: email,
+//       })
+//     .then(() => {
+//       console.log('User added!', userID);
+//     })
+
+//       .catch(error => {
+//         if (error.code === 'auth/email-already-in-use') {
+//           console.log('That email  in use!');
+//         }
+
+//         if (error.code === 'auth/invalid-email') {
+//           console.log(' email invalid!');
+//         }
+//         console.error(error);
+//       });
+//       let userInfo = {
+//             fullname: fullname,
+//             email: email,
+//             mobileno: mobileno,
+//             password: password,
+//           };
+//     dispatch(userFullInfo(userInfo));;
+//     console.log(userInfo);
+//   };
+// }
       try {
         const userRes = await auth().createUserWithEmailAndPassword(
           email,
@@ -46,7 +89,20 @@ const RegisterScreen = ({navigation}) => {
           phoneNumber: mobileno,
         });
         console.log('userRes=======>>', userRes);
-      } catch (error) {
+        
+      firestore()
+     .collection('Users')
+     .doc(User.uid)
+     .set({
+      name: fullname,
+      email: email,
+      })
+    .then(() => {
+      console.log('User added!', userID);
+    });
+
+    
+    } catch (error) {
         console.error(error.code);
       }
     }
@@ -56,8 +112,24 @@ const RegisterScreen = ({navigation}) => {
       mobileno: mobileno,
       password: password,
     };
+    // const res = dispatch(userId([user.uid]));
+    console.log('User account created')
     const res = dispatch(userFullInfo(userInfo));
   };
+  
+  
+
+  // firestore()
+  // .collection('Users')
+  // .doc('ABC')
+  // .update({
+  //   email: email
+    
+  // })
+  // .then(() => {
+  //   console.log('User updated!');
+  // })
+
 
   const checkValidFullName = () => {
     let reg = /[a-zA-Z][a-zA-Z ]*/;

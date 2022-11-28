@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'lightgray',
   },
-  superImage:{
+  superImage: {
     fontSize: 16,
     fontWeight: '500',
     marginHorizontal: 5,
@@ -101,9 +101,9 @@ const styles = StyleSheet.create({
   },
   freshImage: {
     width: 40,
-      height: 40,
-      margin: 10,
-      borderRadius: 20
+    height: 40,
+    margin: 10,
+    borderRadius: 20,
   },
   mainList: {
     flexDirection: 'row',
@@ -125,6 +125,56 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginRight: 15,
     marginLeft: 10,
+  },
+  coupon: {
+    backgroundColor: 'white',
+    marginVertical: 12,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+  },
+  couponBlock: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
+    padding: 10,
+    paddingBottom: 16,
+    paddingLeft: 0,
+  },
+  couponInput: {
+    marginLeft: 10,
+  },
+  apply: {
+    color: 'green',
+    padding: 30,
+    marginLeft: 150,
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  billing: {
+    marginLeft: 20,
+  },
+  billingText: {
+    fontSize: 20,
+  },
+  billingTextStyling: {
+    fontSize: 16,
+    marginVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+  },
+  billingStyling: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray',
+    padding: 10,
+    margin: 10,
+  },
+  price: {
+    fontSize: 15,
+    fontWeight: 'bold',
   },
 });
 

@@ -6,6 +6,7 @@ const initialState = {
     email: '',
     mobileno: '',
     password: '',
+    uid: uid
   },
   cartProducts: [],
   quantity: '',
@@ -31,10 +32,10 @@ const userReducer = (state = initialState, action) => {
             id: payload.id,
             title: payload.title,
             rating: payload.rating,
-            dollar: payload.dollar,
+            price: payload.price,
             quantity: payload.quantity,
             image: payload.image,
-            numberOfItem: payload.numberOfItem,
+            oldPrice: payload.oldPrice,
           },
         ],
       };
