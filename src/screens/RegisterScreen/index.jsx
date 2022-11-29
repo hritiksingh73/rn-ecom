@@ -6,8 +6,8 @@ import {
   View,
 } from 'react-native';
 
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React, { useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Email from 'react-native-vector-icons/Fontisto';
@@ -15,7 +15,7 @@ import styles from './styles';
 import {addUser} from '../../redux/action/Action';
 import FormContainer from '../../component/FormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
-
+import firestore from '@react-native-firebase/firestore';
 const RegisterPage = () => {
   const [name, setName] = useState('');
   const [registeremail, setRegisterEmail] = useState('');
@@ -23,6 +23,9 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const selecteditems = useSelector(state => state.userInfo.cart);
+  // console.log(selecteditems)
+  const userData = useSelector(state => state.userInfo.loginpage);
 
   const [validation, setValidation] = useState({
     errorname: '',
@@ -59,7 +62,23 @@ const RegisterPage = () => {
         displayName: name,
       });
       dispatch(addUser(registeremail, userRes.user.uid, name));
-      console.log('userRes=======>>', userRes);
+      //console.log('userRes=======>>', userRes);
+      // firestore()
+      //   .collection('Users')
+      //   .doc(userRes.user.uid)
+      //   .set({
+      //     // name:name,
+      //     // id:userRes.user.uid,
+      //     // email:registeremail,
+      //     userData,
+      //     selecteditems
+      //   })
+      //   .then(() => {
+      //     console.log('item added to firestore !!!');
+      //   });
+
+
+
     } catch (error) {
       console.error(error.code);
     }

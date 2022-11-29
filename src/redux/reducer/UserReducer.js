@@ -16,7 +16,6 @@ const InitialState = {
   cart: [],
 };
 
-
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ActionType.LOGIN_USER:
@@ -34,30 +33,28 @@ const userReducer = (state = InitialState, action) => {
 
     case ActionType.ADD_ITEM:
       //  console.log([...state.cart,{...action.payload,quantity:1}])
-      return {...state, cart: [...state.cart,{...action.payload,quantity:1}]};
-     
-    case ActionType.REMOVE_ITEM:
-      //console.log(...state.cart.filter( (item) => action.payload !== item))
       return {
         ...state,
-        cart: state.cart.filter(item => action.payload !== item.id),
+        cart: [...state.cart, {...action.payload, quantity: 1}],
       };
+
+    // case ActionType.REMOVE_ITEM:
+    //   //console.log(...state.cart.filter( (item) => action.payload !== item))
+    //   return {
+    //     ...state,
+    //     cart: state.cart.filter(item => action.payload !== item.id),
+    //   };
 
     case ActionType.INCREASE_ITEM_QUANTITY:
       const increaseItem = state.cart.map(item => {
-        // let quantity=[state.cart.quantity]
-     // console.log(item)  
-
         return item.id === action.payload
-          ? {...item, quantity:item.quantity+1}
-          : item; 
+          ? {...item, quantity: item.quantity + 1}
+          : item;
       });
       return {
         ...state,
         cart: increaseItem,
       };
-
-      
 
     case ActionType.DECREASE_ITEM_QUANTITY:
       const decreaseItem = state.cart.map(item => {
@@ -72,13 +69,6 @@ const userReducer = (state = InitialState, action) => {
         ...state,
         cart: decreaseItem,
       };
-
-    // case ActionType.DECREASE_ITEM_QUANTITY:
-    //   //console.log(...state.cart.filter( (item) => action.payload !== item))
-    //   return {
-    //     ...state,
-    //     cart: state.cart.filter(item => action.payload !== item.id),
-    //   };
 
     default:
       return state;

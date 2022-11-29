@@ -1,6 +1,5 @@
 import {
   ActivityIndicator,
-  Button,
   FlatList,
   Image,
   ImageBackground,
@@ -33,14 +32,8 @@ const SuperFresh = () => {
     Dispatch(getInitialData());
   }, []);
 
-  const selecteditems = useSelector(state => state.userInfo.cart);
+   const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
-
-  // const productList = {
-  //   ...productData,
-  //   qnty: 1,
-  // };
-  // console.log(productData)
 
   const ListData = ({item}) => {
     return (
@@ -52,28 +45,18 @@ const SuperFresh = () => {
           style={styles.imgContainer}
           onPress={() => {
             Dispatch(addItemToCart(item));
-            // console.log(item);
+
             firestore()
-              .collection(userData.name)
-              .doc(userData.email)
-              .set({
-                uid: userData.uid,
-                selecteditems,
+            .collection('Users')
+            .doc(userData.uid)
+              .set({ 
+             userData,selecteditems
               })
               .then(() => {
-                console.log('item added to firestore added!!');
+                console.log('item added to firestore!!');
               });
-
-            // firestore()
-            //   .collection(userData.name)
-            //   .add({
-            //     name: userData.name,
-            //     item: item,
-            //   })
-            //   .then(() => {
-            //     console.log('item added to firestore added!');
-            //   });
-          }}>
+          }}
+          >
           <Text style={styles.addtocart}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
