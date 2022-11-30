@@ -24,3 +24,8 @@ export const decreaseToCart = item => ({
   type: ActionType.DECREASE_CART_ITEM,
   payload: item,
 });
+
+export const userCreate = id => ({
+  type: ActionType.USER_ID,
+  payload: id,
+});

@@ -5,11 +5,11 @@ const initialState = {
     fullname: '',
     email: '',
     mobileno: '',
-    password: '',
-    uid: uid
+    uid:'',
   },
   cartProducts: [],
   quantity: '',
+  userID: ''
 };
 
 const userReducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const userReducer = (state = initialState, action) => {
 
   switch (type) {
     case ActionType.USER_DETAILS:
-      console.log('user details----->', action.payload);
+      // console.log('user details----->', action.payload);
       return {
         ...state,
         userRecord: payload,
@@ -31,7 +31,7 @@ const userReducer = (state = initialState, action) => {
           {
             id: payload.id,
             title: payload.title,
-            rating: payload.rating,
+            //rating: payload.rating,
             price: payload.price,
             quantity: payload.quantity,
             image: payload.image,
@@ -75,6 +75,13 @@ const userReducer = (state = initialState, action) => {
         ...state,
         cartProducts: decreaseItem,
       };
+
+      case ActionType.USER_ID:
+      // console.log('userid --> ', payload)
+      return {
+        ...state,
+        userID: payload,
+      }
     default:
       return state;
   }

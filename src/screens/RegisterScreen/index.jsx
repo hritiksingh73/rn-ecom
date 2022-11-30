@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
-import {registerUser} from '../../redux/action/Action.js';
-import {userFullInfo} from '../../redux/action/Action.js';
+//import {registerUser} from '../../redux/action/Action.js';
+import {userFullInfo, userCreate} from '../../redux/action/Action.js';
 import TextInputComponent from '../../components/TextInputComponent.js';
 import styles from './styles.js';
 import auth from '@react-native-firebase/auth';
@@ -28,108 +28,55 @@ const RegisterScreen = ({navigation}) => {
   const [fullnameValid, setFullNameValid] = useState(true);
   const [mobilenoValid, setMobileNoValid] = useState(true);
   const dispatch = useDispatch();
-  const userRecord = useSelector(state => state.userData.userRecord);
+  const cartList = useSelector(state => state.userData.cartProducts);
 
-  const usersCollection = firestore().collection('Users');
-  const userDocument = firestore().collection('Users').doc('userId');
-
+  const uID = useSelector(state => state.userData.userID);
   const updateRegister = async () => {
     if (email === '' && password === '') {
       alert('Empty email and password');
     } else {
-//       auth()
-//       .createUserWithEmailAndPassword(email, password)
-//       .then(({user}) => {
-//         user.updateProfile({
-//           displayName: fullname,
-//         });
-//         console.log(email);
-//       })
+      auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(({user}) => {
+          user.updateProfile({
+            displayName: fullname,
+          });
+          dispatch(userCreate(user.uid));
+          console.log('User account created & signed in!');
 
-//       firestore()
-//      .collection('Users')
-//      .doc(user.uid)
-//      .set({
-//       name: fullname,
-//       email: email,
-//       })
-//     .then(() => {
-//       console.log('User added!', userID);
-//     })
+          firestore()
+            .collection('Users')
+            .doc(user.uid)
+            .set({
+              name: fullname,
+              email: email,
+              mobile: mobileno,
+            })
+            .then(() => {
+              console.log('User added!', uID);
+            });
+        })
 
-//       .catch(error => {
-//         if (error.code === 'auth/email-already-in-use') {
-//           console.log('That email  in use!');
-//         }
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('That email  in use!');
+          }
 
-//         if (error.code === 'auth/invalid-email') {
-//           console.log(' email invalid!');
-//         }
-//         console.error(error);
-//       });
-//       let userInfo = {
-//             fullname: fullname,
-//             email: email,
-//             mobileno: mobileno,
-//             password: password,
-//           };
-//     dispatch(userFullInfo(userInfo));;
-//     console.log(userInfo);
-//   };
-// }
-      try {
-        const userRes = await auth().createUserWithEmailAndPassword(
-          email,
-          password,
-        );
-        await userRes.user.updateProfile({
-          displayName: fullname,
+          if (error.code === 'auth/invalid-email') {
+            console.log(' email invalid!');
+          }
+          console.error(error);
         });
-        await userRes.user.additionaluserInfo({
-          phoneNumber: mobileno,
-        });
-        console.log('userRes=======>>', userRes);
-        
-      firestore()
-     .collection('Users')
-     .doc(User.uid)
-     .set({
-      name: fullname,
-      email: email,
-      })
-    .then(() => {
-      console.log('User added!', userID);
-    });
+      let userInfo = {
+        fullname: fullname,
+        email: email,
+        mobileno: mobileno,
+      };
 
-    
-    } catch (error) {
-        console.error(error.code);
-      }
+      dispatch(userFullInfo(userInfo));
+      // console.log(userInfo);
     }
-    let userInfo = {
-      fullname: fullname,
-      email: email,
-      mobileno: mobileno,
-      password: password,
-    };
-    // const res = dispatch(userId([user.uid]));
-    console.log('User account created')
-    const res = dispatch(userFullInfo(userInfo));
   };
-  
-  
-
-  // firestore()
-  // .collection('Users')
-  // .doc('ABC')
-  // .update({
-  //   email: email
-    
-  // })
-  // .then(() => {
-  //   console.log('User updated!');
-  // })
-
 
   const checkValidFullName = () => {
     let reg = /[a-zA-Z][a-zA-Z ]*/;

@@ -23,64 +23,21 @@ import firestore from '@react-native-firebase/firestore';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const userRecord = useSelector(state => state.userData.cartProduct);
-  const usersCollection = firestore().collection('Users');
-  const userDocument = firestore().collection('Users').doc('ABC');
-
-  const addList = item => {
-    dispatch(addToCart(item));
-  };
-
-  const onResult = QuerySnapshot => {
-    console.log('Got Users collection result.');
-  };
-
-  const onError = error => {
-    console.error(error);
-  };
-
-  firestore().collection('Users').onSnapshot(onResult, onError);
-
-  const User = ({userId}) => {
-    useEffect(() => {
-      const subscriber = firestore()
-        .collection('Users')
-        .doc(userId)
-        .onSnapshot(documentSnapshot => {
-          console.log('User data: ', documentSnapshot.data());
-        });
-
-      // Stop listening for updates when no longer required
-      return () => subscriber();
-    }, [userId]);
-  };
-
+  const userRecord = useSelector(state => state.userData.userRecord);
+  const cartList = useSelector(state => state.userData.cartProducts);
+  const uID = useSelector(state => state.userData.userID);
   const Firestore = item => {
-  //   firestore()
-  //     .collection('Nishi')
-  //     .add({
-  //       title: item.title,
-  //       id: item.id,
-  //       quantity: item.quantity,
-  //       price: item.price,
-  //       oldPrice: item.oldPrice
-  //     })
-  //     .then(() => {
-  //       console.log('User added!');
-  //     });
-  // };
-
-  firestore()
-  .collection('Users')
-  .get()
-  .then(querySnapshot => {
-    console.log('Total users: ', querySnapshot.size);
-
-    querySnapshot.forEach(documentSnapshot => {
-      console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-    });
-  });
-}
+    firestore()
+      .collection('Users')
+      .doc(uID)
+      .set({
+        cartList,
+        userRecord,
+      })
+      .then(() => {
+        console.log('User added!');
+      });
+  };
 
   const VeggiesItem = ({item}) => {
     return (
@@ -102,13 +59,11 @@ const SuperFreshScreen = ({navigation}) => {
         />
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.dollar}>{item.price}</Text>
-        {/* <TouchableOpacity
-          style={styles.button}
+        <TouchableOpacity
           onPress={() => {
-            addList(item);
-            console.log(item.id);
-          }}> */}
-        <TouchableOpacity onPress={() => Firestore(item) }>
+            dispatch(addToCart(item));
+            Firestore(item);
+          }}>
           <Text style={styles.cart}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
@@ -142,7 +97,7 @@ const SuperFreshScreen = ({navigation}) => {
       </TouchableOpacity>
       <FlatList
         data={List}
-        renderItem={VeggiesItem}
+        renderItem={item => VeggiesItem(item)}
         horizontal={true}
         keyExtractor={item => item.id}
       />
