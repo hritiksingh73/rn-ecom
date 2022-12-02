@@ -32,7 +32,7 @@ const PopularProductScreen = ({navigation}) => {
         <Image
           source={item.image}
           style={styles.flatlistData}
-          resizeMode="center"
+          resizeMode="contain"
         />
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.dollar}>{item.price}</Text>

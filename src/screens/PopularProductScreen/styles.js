@@ -10,6 +10,12 @@ const styles = StyleSheet.create({
       marginHorizontal: 15,
       marginTop: 15,
     },
+    flatlistData: {
+      width: 150,
+      height: 150,
+      borderWidth: 1,
+      borderColor: 'lightgray',
+    },
     button: {
       paddingHorizontal: 5,
       alignItems: 'center',
@@ -46,6 +52,8 @@ const styles = StyleSheet.create({
       padding:10
     },
     data: {
+      height:250,
+      width:220,
       borderWidth: 1,
       borderColor: 'grey',
     },

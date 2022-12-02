@@ -28,11 +28,10 @@ const SuperFreshScreen = ({navigation}) => {
   const uID = useSelector(state => state.userData.userID);
   const Firestore = item => {
     firestore()
-      .collection('Users')
+      .collection('Cart')
       .doc(uID)
       .set({
         cartList,
-        userRecord,
       })
       .then(() => {
         console.log('User added!');
@@ -52,11 +51,7 @@ const SuperFreshScreen = ({navigation}) => {
   const PopularProducts = ({item}) => {
     return (
       <View style={styles.data}>
-        <Image
-          source={item.image}
-          style={styles.flatlistData}
-          resizeMode="center"
-        />
+        <Image source={item.image} style={styles.image} />
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.dollar}>{item.price}</Text>
         <TouchableOpacity

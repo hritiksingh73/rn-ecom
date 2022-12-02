@@ -1,15 +1,18 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
-      flexDirection: 'row',
-    },
-    dropdown: {
-      borderColor: 'white',
-      marginLeft: 80,
-      height: 18,
-      width: 200,
-    },
-  });
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 120,
+  },
+  dropdown: {
+    borderColor: 'white',
+    alignItems: 'center',
+    height: 18,
+    width: 120,
+    margin: 10,
+  },
+});
 
-  export default styles;
+export default styles;

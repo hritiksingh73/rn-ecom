@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import DropDownPicker from 'react-native-dropdown-picker';
+import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles.js'
 
 const DropDown = () => {
@@ -25,6 +26,10 @@ const DropDown = () => {
     {label: 'Jabalpur', value: 'Jabalpur'},
   ]);
   return (
+    
+      <View style={styles.container}>
+        <Feather name={'map-pin'} size={22} />
+        
     <DropDownPicker
       style={styles.dropdown}
       open={open}
@@ -35,6 +40,9 @@ const DropDown = () => {
       placeholder="AI Hamra"
       setItems={setItems}
     />
+ 
+        </View>
+   
   );
 };
 

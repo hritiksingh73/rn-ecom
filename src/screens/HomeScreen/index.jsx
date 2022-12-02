@@ -20,10 +20,14 @@ import styles from './styles.js';
 const HomeScreen = ({navigation}) => {
   const renderItem = ({item}) => {
     return (
-      <View style={styles.container}>
+      <View style={styles.itemContainer}>
         <View style={styles.veggies}>
           <TouchableOpacity onPress={() => navigation.navigate('Super Fresh')}>
-            <Image source={item.image} style={styles.image} />
+            <Image
+              source={item.image}
+              style={styles.image}
+              resizeMode="cover"
+            />
           </TouchableOpacity>
           <Rating imageSize={20} ratingCount={5} />
           <Text style={styles.text}>{item.title}</Text>
@@ -33,13 +37,15 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView>
-      <DropDown />
-      <View style={styles.input}>
-        <Icon name="search1" size={20} />
-        <TextInput placeholder="Find Store" />
+    <SafeAreaView style={styles.container}>
+      <View style={{backgroundColor: 'white'}}>
+        <DropDown />
+        <View style={styles.input}>
+          <Icon name="search1" size={20} />
+          <TextInput placeholder="Find Store" style={styles.textInput} />
+        </View>
+        <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
       </View>
-      <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
     </SafeAreaView>
   );
 };
