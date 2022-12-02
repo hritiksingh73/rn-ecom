@@ -28,11 +28,23 @@ const SuperFresh = () => {
   const {isFetching, productData} = useSelector(state => state.userInfo);
   const navigation = useNavigation();
 
+  const Firestore = (item) => {
+    firestore()
+      .collection('Cart')
+      .doc(userData.uid)
+      .set({
+        selecteditems,
+      })
+      .then(() => {
+        console.log('item added to firestore!!');
+      });
+  };
+
   useEffect(() => {
     Dispatch(getInitialData());
   }, []);
 
-   const selecteditems = useSelector(state => state.userInfo.cart);
+  const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
 
   const ListData = ({item}) => {
@@ -44,19 +56,9 @@ const SuperFresh = () => {
         <TouchableOpacity
           style={styles.imgContainer}
           onPress={() => {
-            Dispatch(addItemToCart(item));
-
-            firestore()
-            .collection('Users')
-            .doc(userData.uid)
-              .set({ 
-             userData,selecteditems
-              })
-              .then(() => {
-                console.log('item added to firestore!!');
-              });
-          }}
-          >
+            Dispatch(addItemToCart(item)),
+            Firestore(item)
+          }}>
           <Text style={styles.addtocart}>Add to Cart</Text>
         </TouchableOpacity>
       </View>

@@ -23,8 +23,6 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const selecteditems = useSelector(state => state.userInfo.cart);
-  // console.log(selecteditems)
   const userData = useSelector(state => state.userInfo.loginpage);
 
   const [validation, setValidation] = useState({
@@ -63,19 +61,17 @@ const RegisterPage = () => {
       });
       dispatch(addUser(registeremail, userRes.user.uid, name));
       //console.log('userRes=======>>', userRes);
-      // firestore()
-      //   .collection('Users')
-      //   .doc(userRes.user.uid)
-      //   .set({
-      //     // name:name,
-      //     // id:userRes.user.uid,
-      //     // email:registeremail,
-      //     userData,
-      //     selecteditems
-      //   })
-      //   .then(() => {
-      //     console.log('item added to firestore !!!');
-      //   });
+      firestore()
+        .collection('Users')
+        .doc(userRes.user.uid)
+        .set({
+          name:name,
+          id:userRes.user.uid,
+          email:registeremail,
+        })
+        .then(() => {
+          console.log('User Details has been saved to firestore !!!');
+        });
 
 
 
