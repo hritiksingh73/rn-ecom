@@ -1,7 +1,6 @@
 import {
   SafeAreaView,
   View,
-  StyleSheet,
   TextInput,
   Text,
   Image,
@@ -12,19 +11,18 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 
 import Icon from 'react-native-vector-icons/AntDesign';
-import {Rating} from 'react-native-ratings';
 import styles from './styles';
+import DropDown from '../../component/DropDown';
 
 const shoppingCards = ({item}) => {
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.selectionCard}>
+      <View style={styles.imageContainer}>
         <Image
-          style={styles.selectionCard}
+          style={styles.imageCard}
           source={{uri: item.image}}
-          resizeMode="contain"
         />
-        <Rating imageSize={15} ratingCount={5} />
+        <Text style={styles.imagerating}>Rating:-{item.rating.rate}</Text>
         <Text style={styles.imageTitle}>{item.title}</Text>
       </View>
     </View>
@@ -35,9 +33,10 @@ const HomeScreen = () => {
   const {productData} = useSelector(state => state.userInfo);
   return (
     <SafeAreaView>
+        <DropDown />
       <View style={styles.searchBar}>
-        <Icon name="search1" size={28} />
-        <TextInput placeholder="Find Store" />
+        <Icon name="search1" size={20} style={styles.searchIcon} />
+        <TextInput placeholder="Find Store" style={styles.txtFields} />
       </View>
       <FlatList
         keyExtractor={item => item.id}

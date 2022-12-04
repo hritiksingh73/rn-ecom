@@ -1347,6 +1347,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-16.4.6.tgz#8e5cff6ab27256134d92ad3d86d8fccfb1c16c28"
   integrity sha512-8O0k0Usx908I5Ra+H2ALCxYDvmcvIL+dUYGRn+oUrnDkIL2crKU7QqV157phpC74tFMMWXIaUuFrqtGQgXBCww==
 
+"@react-native-firebase/remote-config@^16.4.6":
+  version "16.4.6"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/remote-config/-/remote-config-16.4.6.tgz#dec215f2448f555cdba893a31f5cdf419b47b33e"
+  integrity sha512-2KPUao9xby+gp+JQUmikx9N0zcCLb0+6GkgI8//sYJ6Z3EaI53kx5kJHJDgYqdjF/zFjv3rm+yhm5LAgARPMHA==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/assets/-/assets-1.0.0.tgz#c6f9bf63d274bafc8e970628de24986b30a55c8e"
@@ -5877,6 +5882,11 @@ react-native-codegen@^0.70.5:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-dropdown-picker@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.3.tgz#adc16cfa52e8f3481220b377dd780040c3debf96"
+  integrity sha512-cwZzFcpyx/Stw3lZH2bvXxcsgwkR8c3rRZtOnlvyuN5pAplzA/9AiAxYlnJuspP9VvyU1XMePKOpgcHce6iyhA==
 
 react-native-gradle-plugin@^0.70.3:
   version "0.70.3"

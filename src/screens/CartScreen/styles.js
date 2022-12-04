@@ -64,6 +64,53 @@ const styles = StyleSheet.create({
   Quantityadjustment: {
     flexDirection: 'row',
   },
+  billingText: {
+    fontSize: 20,
+  },
+  billingTextStyling: {
+    fontSize: 16,
+    marginVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+  },
+  billingStyling: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray',
+    padding: 10,
+    margin: 10,
+  },
+  billing: {
+    marginLeft: 20,
+  },
+  apply: {
+    color: 'green',
+    padding: 30,
+    paddingLeft: 170,
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  couponInput: {
+    paddingLeft: 10,
+    paddingTop:0
+  },
+  coupon: {
+    backgroundColor: 'white',
+    marginVertical: 12,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+  },
+  couponBlock: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
+    padding: 10,
+    paddingBottom: 16,
+    paddingLeft: 0,
+  }
 });
 
 export default styles;
