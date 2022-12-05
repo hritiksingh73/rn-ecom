@@ -50,7 +50,7 @@ const WishlistScreen = props => {
     <SafeAreaView>
       <View style={styles.header}>
         <AntDesign name="left" size={30} onPress={() => goBack()} />
-        <Text style={styles.headerText}>Popular Products</Text>
+        <Text style={styles.headerText}>Wishlist</Text>
         <AntDesign
           name="shoppingcart"
           size={30}

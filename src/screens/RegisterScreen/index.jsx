@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {userInfoDetails} from '../../redux/actions/userAction';
+import {userInfoDetails, userId} from '../../redux/actions/userAction';
 import color from '../../constant/color';
 import TextField from '../../components/TextField';
 import {useDispatch, useSelector} from 'react-redux';
@@ -11,6 +11,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import ButtonComponent from '../../components/ButtonComponent';
 import {styles} from './styles';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const RegisterScreen = () => {
   const [fullName, setFullName] = useState('');
@@ -35,7 +36,19 @@ const RegisterScreen = () => {
         user.updateProfile({
           displayName: fullName,
         });
+        dispatch(userId(user.uid));
         console.log('User account created & signed in!');
+
+        firestore()
+          .collection('Users')
+          .doc(user.uid)
+          .set({
+            name: fullName,
+            email: email,
+          })
+          .then(() => {
+            console.log('User added!', userId);
+          });
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -54,6 +67,7 @@ const RegisterScreen = () => {
     };
     const reduxRes = dispatch(userInfoDetails(userInfo));
   };
+
   const nameValidator = () => {
     fullName == ''
       ? setValidation({nameError: 'please enter your name'})

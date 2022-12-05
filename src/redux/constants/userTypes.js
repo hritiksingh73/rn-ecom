@@ -5,3 +5,4 @@ export const INCREASE_CART = 'INCREASE_CART';
 export const DECREASE_CART = 'DECREASE_CART';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
+export const USER_ID = 'USER_ID';

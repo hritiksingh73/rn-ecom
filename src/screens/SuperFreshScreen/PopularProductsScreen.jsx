@@ -7,12 +7,15 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addCartProduct} from '../../redux/actions/userAction';
 import ListItem from '../../components/ListItem';
+import firestore from '@react-native-firebase/firestore';
 
 const PopularProductsScreen = () => {
   const dispatch = useDispatch();
+  const cartItems = useSelector(state => state.userDataReducer.cartProducts);
+  const userInfo = useSelector(state => state.userDataReducer.userDetails);
   const {goBack} = useNavigation();
 
   return (
@@ -37,12 +40,21 @@ const PopularProductsScreen = () => {
 
       <ListItem
         data={GROCERYPRODUCTS}
-        renderItem={({item, index}) => {
+        renderItem={({item}) => {
           return (
             <ProductItem
               item={item}
               onAddToCart={() => {
                 dispatch(addCartProduct(item));
+                firestore()
+                  .collection('Cart')
+                  .doc(userInfo.uid)
+                  .set({
+                    cartItems,
+                  })
+                  .then(() => {
+                    console.log('Item added!');
+                  });
               }}
             />
           );
