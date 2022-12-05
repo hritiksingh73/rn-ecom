@@ -1,6 +1,5 @@
 import {
   ActivityIndicator,
-  Button,
   FlatList,
   Image,
   ImageBackground,
@@ -30,8 +29,10 @@ const SuperFresh = () => {
   const Dispatch = useDispatch();
   const {isFetching, productData} = useSelector(state => state.userInfo);
   const navigation = useNavigation();
+  const selecteditems = useSelector(state => state.userInfo.cart);
+  const userData = useSelector(state => state.userInfo.loginpage);
 
-  const Firestore = item => {
+  const cartItem =( item )=> {
     firestore()
       .collection('Cart')
       .doc(userData.uid)
@@ -47,54 +48,20 @@ const SuperFresh = () => {
     Dispatch(getInitialData());
   }, []);
 
-  //remoteConfig part
-  // useEffect(() => {
-  //   remoteConfig()
-  //     .setDefaults({
-  //       awesome_new_feature: 'disabled',
-  //     })
-  //     .then(() => {
-  //       console.log('Default values set.');
-  //     });
-  // }, []);
-
-
-
-  // const config = () => {
-  //   remoteConfig()
-  //     .setDefaults({
-  //       awesome_new_feature: 'disabled',
-  //     })
-  //     .then(() => remoteConfig().fetchAndActivate())
-  //     .then(fetchedRemotely => {
-  //       if (fetchedRemotely) {
-  //         console.log('Configs were retrieved from the backend and activated.');
-  //       } else {
-  //         console.log(
-  //           'No configs were fetched from the backend, and the local configs were already activated',
-  //         );
-  //       }
-  //     });
-  // };
-
-  const selecteditems = useSelector(state => state.userInfo.cart);
-  const userData = useSelector(state => state.userInfo.loginpage);
-
   const ListData = ({item}) => {
     return (
-      <View style={styles.card}>
-        <Image source={{uri: item.image}} style={styles.imgStyle} />
-        <Text style={styles.mainContainer}>{item.title}</Text>
-        {/* <Text style={styles.mainContainer}>{item.rating.rate}</Text> */}
-        <Text style={styles.price}>${item.price} each</Text>
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => {
-            Dispatch(addItemToCart(item)), Firestore(item);
-          }}>
-          <Text style={styles.addtocart}>Add to Cart</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.card}>
+          <Image source={{uri: item.image}} style={styles.imgStyle} />
+          <Text style={styles.itemTitle}>{item.title}</Text>
+          <Text style={styles.price}>${item.price} each</Text>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => {
+              Dispatch(addItemToCart(item)), cartItem(item);
+            }}>
+            <Text style={styles.addtocart}>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
     );
   };
 
@@ -110,8 +77,8 @@ const SuperFresh = () => {
 
   return (
     <ScrollView nestedScrollEnabled={true}>
-    {/* <Button title="Press" onPress={config} /> */}
-      <SafeAreaView>
+      {/* <Button title="Press" onPress={config} /> */}
+      <SafeAreaView style={{backgroundColor: 'white'}}>
         <ActivityIndicator animating={isFetching} />
         <View style={styles.headerBar}>
           <Tree name="ios-menu-outline" size={25} color={Color.black} />
@@ -126,7 +93,7 @@ const SuperFresh = () => {
           />
           <View style={styles.ratingcontainer}>
             <Text style={styles.secondheader}>Super Fresh</Text>
-            <Rating imageSize={15} ratingCount={5} />
+            <Rating imageSize={15} ratingCount={5} /*ratingColor="red"*/  />
           </View>
         </View>
 

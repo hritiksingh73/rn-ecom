@@ -33,6 +33,7 @@ const AppNavigator = () => {
         name="Cart"
         component={Cart}
         options={{
+          headerShown: false,
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />

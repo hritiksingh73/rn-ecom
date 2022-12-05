@@ -1,12 +1,22 @@
 import {StyleSheet} from 'react-native';
+import {Color} from '../../constant/Color';
 
 const styles = StyleSheet.create({
   mainHeader: {
-    width: '100%',
-    height: 70,
-    alignItems: 'center',
-    justifyContent: 'space-between',
     flexDirection: 'row',
+  },
+  icon:{
+    paddingTop:30,
+    paddingLeft:10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: '700',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: "center",
+    paddingTop:28,
+    paddingLeft:150
   },
   headerNavigation: {
     paddingLeft: 20,
@@ -30,12 +40,13 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '75%',
-    padding: 20,
+    padding: 5,
   },
   itemPrice: {
     fontSize: 20,
     fontWeight: '600',
-    paddingRight:20
+    paddingRight: 20,
+    color: Color.green,
   },
   decreaseButton: {
     height: 30,
@@ -52,8 +63,18 @@ const styles = StyleSheet.create({
     width: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 0.8,
+    borderWidth: 1,
     marginTop: 5,
+  },
+  quantityupdate:{
+    height: 30,
+    borderRadius: 5,
+    width: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    marginTop: 5,
+    paddingLeft:10
   },
   flatlistImage: {
     width: 100,
@@ -62,7 +83,12 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   Quantityadjustment: {
+    flex: 1,
     flexDirection: 'row',
+    paddingTop: '3%',
+    justifyContent: 'flex-end',
+    paddingRight:20
+    
   },
   billingText: {
     fontSize: 20,
@@ -93,7 +119,7 @@ const styles = StyleSheet.create({
   },
   couponInput: {
     paddingLeft: 10,
-    paddingTop:0
+    paddingTop: 0,
   },
   coupon: {
     backgroundColor: 'white',
@@ -110,7 +136,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 16,
     paddingLeft: 0,
-  }
+  },
 });
 
 export default styles;

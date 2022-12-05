@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -59,22 +59,20 @@ const RegisterPage = () => {
       await userRes.user.updateProfile({
         displayName: name,
       });
-      dispatch(addUser(registeremail, userRes.user.uid, name));
+
       //console.log('userRes=======>>', userRes);
       firestore()
         .collection('Users')
         .doc(userRes.user.uid)
         .set({
-          name:name,
-          id:userRes.user.uid,
-          email:registeremail,
+          name: name,
+          id: userRes.user.uid,
+          email: registeremail,
         })
         .then(() => {
           console.log('User Details has been saved to firestore !!!');
         });
-
-
-
+      dispatch(addUser(registeremail, userRes.user.uid, name));
     } catch (error) {
       console.error(error.code);
     }

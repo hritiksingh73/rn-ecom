@@ -29,7 +29,7 @@ const shoppingCards = ({item}) => {
 const HomeScreen = () => {
   const {productData} = useSelector(state => state.userInfo);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:"white"}}>
       <DropDown />
       <View style={styles.searchBar}>
         <Icon name="search1" size={20} style={styles.searchIcon} />

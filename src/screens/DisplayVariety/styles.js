@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal:20,
     marginHorizontal:20
-    
   },
   txtFields: {
     fontSize: 18,
@@ -26,16 +25,22 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: 185,
+    height:310,
     borderRadius: 10,
-    // borderWidth: 1,
+    borderWidth: 1,
+    borderColor:"#e5e5e5"
   },
   imageTitle: {
     fontSize: 15,
     color: '#344055',
+    fontWeight:"500",
+    paddingLeft:20,
   },
   imagerating: {
     fontSize: 15,
     color: '#344055',
+    fontWeight:"500",
+    paddingLeft:20
   },
   searchIcon:{
     paddingTop:13

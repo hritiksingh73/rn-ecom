@@ -22,29 +22,32 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   addButton: {
-    paddingHorizontal: 5,
     alignItems: 'center',
+    paddingVertical:10
   },
   imgStyle: {
     width: '60%',
     height: 160,
     marginLeft: '15%',
+    resizeMode: 'contain',
   },
   card: {
     width: '50%',
     backgroundColor: '#fff',
     borderRadius: 5,
     marginVertical: 20,
-    // paddingHorizontal:10,
-    marginHorizontal:10
+    borderColor:"#e5e5e5",
+    borderWidth:1,
+    height:310
   },
-  mainContainer: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+  itemTitle: {
+    fontWeight:"400",
+    paddingLeft:20,
+    color: '#1d1e20'
   },
   price:{
-    color:Color.green
+    color:Color.green,
+    paddingLeft:20,
   },
   ratingcontainerchild: {
     flexDirection: 'row',
@@ -82,7 +85,8 @@ const styles = StyleSheet.create({
     // justifyContent:"space-around",
     // alignItems: "center",
     left: '30%',
-    fontWeight:"800"
+    fontWeight:"800",
+   
   },
   imagedescription: {
     position: 'absolute',
@@ -99,16 +103,24 @@ const styles = StyleSheet.create({
     paddingLeft: '25%',
   },
   addtocart: {
-    color: 'black',
-    borderWidth:0.5
+    color: '838383',
+    borderColor:"#e5e5e5",
+    borderWidth:1,
+    paddingHorizontal:40,
+    paddingVertical:10,
+    fontWeight:"500",
+    marginTop:20
   },
   headertitle: {
     fontSize: 20,
-    fontWeight:"700",
-    color: Color.black
+    fontWeight:"600",
+    //color:"1b2320",
+    color:"#3d4442"
   },
   secondheader:{
-    fontSize: 18
+    fontSize: 18,
+    color:"#3d4442",
+    fontWeight:"600"
   },
   poppularproducts:{
     fontSize: 18, 

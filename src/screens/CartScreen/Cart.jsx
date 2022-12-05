@@ -9,6 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Arrow from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
 import styles from './styles';
 import firestore from '@react-native-firebase/firestore';
@@ -23,13 +24,14 @@ const Cart = () => {
   const dispatch = useDispatch();
   const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
-  
- 
 
   return (
     <ScrollView nestedScrollEnabled={true}>
       <SafeAreaView style={{flex: 1}}>
-        <View style={styles.mainHeader}></View>
+        <View style={styles.mainHeader}>
+          <Arrow name="left" size={24} color="black" style={styles.icon} />
+          <Text style={styles.title}>Cart</Text>
+        </View>
         <FlatList
           data={item}
           renderItem={({item, index}) => {
@@ -47,23 +49,21 @@ const Cart = () => {
                       <TouchableOpacity
                         style={styles.decreaseButton}
                         onPress={() => {
+                          // firestore()
+                          //   .collection('Users')
+                          //   .doc(userData.uid)
+                          //   .update({
+                          //     // 'info.address.zipcode': 94040,
+                          //     'selecteditems.item.id': 94040,
+                          //   })
+                          //   .then(() => {
+                          //     console.log('User updated!');
+                          //   });
                           dispatch(DecreaseItemCountInCartAction(item.id));
-
-                          firestore()
-                            .collection('Users')
-                            .doc(userData.uid)
-                            .update({
-                              // 'info.address.zipcode': 94040,
-                              'selecteditems.item.id': 94040,
-                            })
-                            .then(() => {
-                              console.log('User updated!');
-                            });
-
                         }}>
                         <Text>-</Text>
                       </TouchableOpacity>
-                      <Text style={styles.increarseButton}>
+                      <Text style={styles.quantityupdate}>
                         {item.quantity}
                       </Text>
                       <TouchableOpacity
