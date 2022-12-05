@@ -18,10 +18,7 @@ const shoppingCards = ({item}) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.imageContainer}>
-        <Image
-          style={styles.imageCard}
-          source={{uri: item.image}}
-        />
+        <Image style={styles.imageCard} source={{uri: item.image}} />
         <Text style={styles.imagerating}>Rating:-{item.rating.rate}</Text>
         <Text style={styles.imageTitle}>{item.title}</Text>
       </View>
@@ -33,7 +30,7 @@ const HomeScreen = () => {
   const {productData} = useSelector(state => state.userInfo);
   return (
     <SafeAreaView>
-        <DropDown />
+      <DropDown />
       <View style={styles.searchBar}>
         <Icon name="search1" size={20} style={styles.searchIcon} />
         <TextInput placeholder="Find Store" style={styles.txtFields} />
