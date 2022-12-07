@@ -25,14 +25,14 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    height: '9%',
+    height: '7%',
     backgroundColor: 'lightgrey',
   },
   input: {
     padding: 8,
   },
   shopTitle: {
-    fontSize: 18,
-    color: 'black',
+    fontSize: 15,
+    margin: 3,
   },
 });

@@ -6,9 +6,11 @@ import DropDown from '../../components/DropDown';
 import {styles} from './styles';
 import ListItem from '../../components/ListItem';
 import {useNavigation} from '@react-navigation/native';
+import {useState} from 'react';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [selectedCity, setSelectedCity] = useState();
 
   const renderGroceryShops = grocery => {
     return (

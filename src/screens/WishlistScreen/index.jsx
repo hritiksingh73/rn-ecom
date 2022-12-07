@@ -32,7 +32,7 @@ const WishlistScreen = props => {
             name="heart"
             size={20}
             color={color.primary}
-            style={{marginLeft: '70%'}}
+            style={{marginLeft: '60%'}}
             onPress={removeProduct}
           />
         </View>
