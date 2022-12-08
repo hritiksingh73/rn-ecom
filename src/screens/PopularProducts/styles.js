@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     headerBar: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+      padding:10
     },
     card: {
       width: '50%',
@@ -22,13 +23,17 @@ const styles = StyleSheet.create({
     imgStyle: {
       width: '70%',
       height: 180,
+     marginTop:10
     },
     imgContainer: {
       paddingHorizontal:0,
       alignItems: 'center',
+      paddingTop:10
     },
     choices:{
-      flexDirection:"row"
+      flexDirection:"row",
+      borderWidth:1,
+      borderColor: '#e5e5e5'
     },
     filter:{
       flexDirection:"row",
@@ -36,7 +41,9 @@ const styles = StyleSheet.create({
       alignItems:"center",
       alignContent:"center",
       justifyContent: 'center',
-      paddingVertical:10
+      paddingVertical:10,
+      borderWidth:1,
+      borderColor: '#e5e5e5',
     },
   });
 

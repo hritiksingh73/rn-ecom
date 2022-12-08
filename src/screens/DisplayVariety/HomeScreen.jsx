@@ -7,9 +7,10 @@ import {
   FlatList,
 } from 'react-native';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useSelector} from 'react-redux';
 
+import remoteConfig from '@react-native-firebase/remote-config';
 import Icon from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import DropDown from '../../component/DropDown';
@@ -28,6 +29,18 @@ const shoppingCards = ({item}) => {
 
 const HomeScreen = () => {
   const {productData} = useSelector(state => state.userInfo);
+
+
+  // useEffect(() => {
+  //   remoteConfig()
+  //     .setDefaults({
+  //       selectedCiti: 'Banglore',
+  //     })
+  //     .then(() => {
+  //       console.log('Default values set.');
+  //     });
+  // }, []);
+
   return (
     <SafeAreaView style={{backgroundColor:"white"}}>
       <DropDown />

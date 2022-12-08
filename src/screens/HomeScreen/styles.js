@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { Color } from '../../constant/Color';
+import {Color} from '../../constant/Color';
 const styles = StyleSheet.create({
   headerBar: {
     flexDirection: 'row',
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     alignItems: 'center',
-    paddingVertical:10
+    paddingVertical: 10,
   },
   imgStyle: {
     width: '60%',
@@ -35,19 +35,18 @@ const styles = StyleSheet.create({
     width: '50%',
     backgroundColor: '#fff',
     borderRadius: 5,
-    marginVertical: 20,
-    borderColor:"#e5e5e5",
-    borderWidth:1,
-    height:310
+    borderColor: '#e5e5e5',
+    borderWidth: 1,
+    height: 310,
   },
   itemTitle: {
-    fontWeight:"400",
-    paddingLeft:20,
-    color: '#1d1e20'
+    fontWeight: '400',
+    paddingLeft: 20,
+    color: '#1d1e20',
   },
-  price:{
-    color:Color.green,
-    paddingLeft:20,
+  price: {
+    color: Color.green,
+    paddingLeft: 20,
   },
   ratingcontainerchild: {
     flexDirection: 'row',
@@ -70,32 +69,26 @@ const styles = StyleSheet.create({
   },
   selectionCard: {
     height: 190,
-    paddingRight:10,
-    // width: 380,
+    paddingRight: 10,
     marginVertical: 20,
     flexDirection: 'row',
   },
   imageTitle: {
     color: 'white',
-    // textAlign: 'center',
+
     top: '30%',
     position: 'absolute',
     fontSize: 30,
-    // display:'flex',
-    // justifyContent:"space-around",
-    // alignItems: "center",
     left: '30%',
-    fontWeight:"800",
-   
+    fontWeight: '800',
   },
   imagedescription: {
     position: 'absolute',
     top: '50%',
     color: 'white',
-    // alignItems: 'center',
-    paddingHorizontal:30,
-    width:350,
-    fontWeight:"400"
+    paddingHorizontal: 30,
+    width: 350,
+    fontWeight: '400',
   },
   viewMore: {
     fontSize: 20,
@@ -103,36 +96,33 @@ const styles = StyleSheet.create({
     paddingLeft: '25%',
   },
   addtocart: {
-    color: '838383',
-    borderColor:"#e5e5e5",
-    borderWidth:1,
-    paddingHorizontal:40,
-    paddingVertical:10,
-    fontWeight:"500",
-    marginTop:20
+    borderColor: '#e5e5e5',
+    borderWidth: 1,
+    paddingHorizontal: 40,
+    paddingVertical: 10,
+    fontWeight: '500',
+    marginTop: 20,
   },
   headertitle: {
     fontSize: 20,
-    fontWeight:"600",
-    //color:"1b2320",
-    color:"#3d4442"
+    fontWeight: '600',
+    color: '#3d4442',
   },
-  secondheader:{
+  secondheader: {
     fontSize: 18,
-    color:"#3d4442",
-    fontWeight:"600"
+    color: '#3d4442',
+    fontWeight: '600',
   },
-  poppularproducts:{
-    fontSize: 18, 
+  poppularproducts: {
+    fontSize: 18,
     paddingLeft: 20,
-    fontWeight:"700",
-    color:Color.black
-
+    fontWeight: '700',
+    color: Color.black,
   },
-  popularproductcontainer:{
-    flexDirection: 'row'
-  }
-
+  popularproductcontainer: {
+    flexDirection: 'row',
+    marginVertical: 15,
+  },
 });
 
 export default styles;

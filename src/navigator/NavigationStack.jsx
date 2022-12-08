@@ -1,6 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import PopularProducts from '../screens/Popular_Products/PopularProducts';
+import PopularProducts from '../screens/PopularProducts/PopularProducts';
 import SuperFresh from '../screens/HomeScreen/SuperFresh';
 
 const stack = createNativeStackNavigator();
