@@ -5,18 +5,18 @@ const styles = StyleSheet.create({
   mainHeader: {
     flexDirection: 'row',
   },
-  icon:{
-    paddingTop:30,
-    paddingLeft:10,
+  icon: {
+    paddingTop: 30,
+    paddingLeft: 10,
   },
   title: {
     fontSize: 20,
     fontWeight: '700',
     textAlign: 'center',
     alignItems: 'center',
-    justifyContent: "center",
-    paddingTop:28,
-    paddingLeft:150
+    justifyContent: 'center',
+    paddingTop: 28,
+    paddingLeft: 150,
   },
   headerNavigation: {
     paddingLeft: 20,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginTop: 5,
   },
-  quantityupdate:{
+  quantityupdate: {
     height: 30,
     borderRadius: 5,
     width: 30,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     marginTop: 5,
-    paddingLeft:10
+    paddingLeft: 10,
   },
   flatlistImage: {
     width: 100,
@@ -87,17 +87,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: '3%',
     justifyContent: 'flex-end',
-    paddingRight:20
-    
+    paddingRight: 20,
   },
   billingText: {
     fontSize: 20,
+    color: '#1a1b1d',
   },
   billingTextStyling: {
     fontSize: 16,
     marginVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: 'black',
+    borderBottomColor: '#2a2b2d',
+    color: '#2d2f37',
+  },
+  total: {
+    fontSize: 16,
+    fontWeight: '500',
+    marginVertical: 15,
   },
   billingStyling: {
     flexDirection: 'row',
@@ -109,34 +115,68 @@ const styles = StyleSheet.create({
   },
   billing: {
     marginLeft: 20,
+    paddingTop:30
   },
   apply: {
     color: 'green',
-    padding: 30,
-    paddingLeft: 170,
-    fontSize: 15,
-    fontWeight: 'bold',
+    paddingLeft: 150,
+    paddingTop:20,
+    fontSize: 16,
+     fontWeight: '450',
   },
   couponInput: {
     paddingLeft: 10,
     paddingTop: 0,
+    placeholderTextColor: Color.black,
+    fontWeight: '550',
+    fontSize:20,
+    paddingTop:10,
+    
   },
-  coupon: {
-    backgroundColor: 'white',
-    marginVertical: 12,
+  couponContainer: {
     paddingHorizontal: 20,
     flexDirection: 'row',
+    borderWidth: 1,
+    width:370,
+    
+    backgroundColor: '#f9f9f9',
+    paddingTop:20,
+    borderColor:'white',
+    borderBottomColor:"'#2a2b2d'",
+    
   },
-  couponBlock: {
+  couponCode: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 18,
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
-    padding: 10,
-    paddingBottom: 16,
-    paddingLeft: 0,
+    // marginVertical: 18,
+    // padding: 10,
+    // paddingBottom: 16
+    paddingTop:10
   },
+  couponIcon:{
+paddingTop:10
+  },
+  billingUnits: {
+    fontWeight: '800',
+    fontSize: 15,
+  },
+  bottom:{
+   backgroundColor:"#161e1b",
+   padding:10
+  },
+  bottomApply:{
+    color:'green'
+  },
+  subTotal:{
+    color:"white",
+    fontWeight:"500",
+    fontSize:20
+  },
+  saveMsg:{
+    color:"white",
+    fontWeight:"500",
+    fontSize:13
+  }
 });
 
 export default styles;

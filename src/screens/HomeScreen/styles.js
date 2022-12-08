@@ -35,9 +35,12 @@ const styles = StyleSheet.create({
     width: '50%',
     backgroundColor: '#fff',
     borderRadius: 5,
-    borderColor: '#e5e5e5',
+    borderColor: '#bfbfbf',
     borderWidth: 1,
     height: 310,
+    marginLeft:10,
+    marginRight:-10,
+    borderRightWidth:0.0
   },
   itemTitle: {
     fontWeight: '400',
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
     paddingLeft: '25%',
   },
   addtocart: {
-    borderColor: '#e5e5e5',
+    borderColor: '#bfbfbf',
     borderWidth: 1,
     paddingHorizontal: 40,
     paddingVertical: 10,

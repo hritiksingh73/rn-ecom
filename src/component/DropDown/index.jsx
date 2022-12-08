@@ -30,7 +30,7 @@ const DropDown = () => {
           //console.log(value);
           let remoteCities = JSON.parse(value.asString()).cities;
           setCiti(remoteCities);
-          console.log("RemoteCities------>",remoteCities);//Undefine
+          console.log("RemoteCities------>",remoteCities);
           console.log("value------>",value);
           console.log("fetchedRemotely--------->",fetchedRemotely)
           console.log("setCiti------>",setCiti);

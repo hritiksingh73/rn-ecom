@@ -23,7 +23,6 @@ import firestore from '@react-native-firebase/firestore';
 import styles from './styles';
 import Banner from './Banner';
 import {Color} from '../../constant/Color';
-import remoteConfig from '@react-native-firebase/remote-config';
 
 const SuperFresh = () => {
   const Dispatch = useDispatch();
@@ -50,6 +49,7 @@ const SuperFresh = () => {
 
   const ListData = ({item}) => {
     return (
+      
         <View style={styles.card}>
           <Image source={{uri: item.image}} style={styles.imgStyle} />
           <Text style={styles.itemTitle}>{item.title}</Text>
