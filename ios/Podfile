@@ -32,7 +32,7 @@ target 'Grocery' do
 
   use_frameworks! :linkage => :static
   $RNFirebaseAsStaticFramework = true
-
+  
   post_install do |installer|
     react_native_post_install(
       installer,

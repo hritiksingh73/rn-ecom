@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     txt: {
       fontSize: 15,
-      margin: 5,
+      margin: 10,
     },
     account: {
       flexDirection: 'row',
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
       borderBottomWidth: 1,
       margin: 15,
       borderBottomColor: 'lightgrey',
+      padding:10
     },
   });
 

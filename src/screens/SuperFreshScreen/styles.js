@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   icon: {
     flexDirection: 'row',
@@ -13,17 +14,30 @@ const styles = StyleSheet.create({
   heart: {
     marginLeft: 100,
   },
+  heartIcon: {
+    color: 'grey',
+  },
   image: {
-    width: 200,
-    height: 220,
+    resizeMode: 'cover',
+    width: 180,
+    height: '50%',
+  },
+  buttonText: {
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: 'lightgrey',
+    width: 150,
+    height: 45,
+    marginLeft: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 15,
   },
   fresh: {
     color: 'white',
     marginTop: 50,
     position: 'absolute',
     fontSize: 35,
+    fontWeight: 'bold',
     marginLeft: 100,
   },
   superFresh: {
@@ -31,49 +45,53 @@ const styles = StyleSheet.create({
     margnLeft: 50,
     margin: 10,
   },
+  rating: {
+    fontSize: 30,
+    color: 'green',
+    marginLeft: 10,
+  },
   title: {
     position: 'absolute',
-    marginTop: 50,
+    top: '50%',
     color: 'white',
-    justifyContent: 'space-around',
-    alignitems: 'center',
+    fontSize: 15,
+    paddingHorizontal: 30,
+    width: 350,
+    fontWeight: 'bold',
   },
   vegetableImage: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    margin: 5,
+    marginLeft: 100,
   },
- freshImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginHorizontal: 10,
+  titleText: {
+    fontSize: 18,
+    margin: 10,
+    marginLeft: 10,
+  },
+  freshImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 40,
   },
   text: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  cart: {
-    textAlign: 'center',
-    margin: 5,
-    fontSize: 15,
-    borderWidth: 1,
-    borderColor: 'grey',
-    padding: 10,
-  },
   item: {
-    height: 250,
-    width: 310,
-    marginVertical: 20,
+    height: 270,
+    width: 390,
     flexDirection: 'row',
+    marginLeft: 8,
   },
   data: {
     width: 200,
-    height: '100%',
+    height: 300,
     borderWidth: 1,
-    borderColor: 'grey',
+    borderColor: 'rgb(216,216,216)',
+    marginBottom: 120,
   },
   button: {
     paddingHorizontal: 5,
@@ -83,11 +101,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     bottom: 25,
-    marginLeft: 20,
+    padding: 10,
   },
   flatlist: {
     height: 200,
-    width: 300,
+    width: 390,
     resizeMode: 'center',
   },
   dollar: {
@@ -97,11 +115,6 @@ const styles = StyleSheet.create({
   },
   products: {
     fontSize: 20,
-    margin: 10,
-  },
-  title: {
-    fontSize: 18,
-    marginLeft: 10,
     margin: 10,
   },
   superImage: {

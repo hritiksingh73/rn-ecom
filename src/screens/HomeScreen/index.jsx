@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -14,8 +14,8 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import DropDown from '../../components/DropDown/index';
 import Veggies from '../../homeData/Veggies.js';
-import {Rating} from 'react-native-ratings';
 import styles from './styles.js';
+import remoteConfig from '@react-native-firebase/remote-config';
 
 const HomeScreen = ({navigation}) => {
   const renderItem = ({item}) => {
@@ -29,24 +29,22 @@ const HomeScreen = ({navigation}) => {
               resizeMode="cover"
             />
           </TouchableOpacity>
-          <Rating imageSize={20} ratingCount={5} />
           <Text style={styles.text}>{item.title}</Text>
+          <Text style={styles.rating}>{item.rating}</Text>
         </View>
       </View>
     );
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{backgroundColor: 'white'}}>
-        <DropDown />
-        <View style={styles.input}>
-          <Icon name="search1" size={20} />
-          <TextInput placeholder="Find Store" style={styles.textInput} />
-        </View>
-        <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
+    <View style={{backgroundColor: 'white'}}>
+      <DropDown />
+      <View style={styles.input}>
+        <Icon name="search1" size={20} style={styles.textInput} />
+        <TextInput placeholder="Find Store" style={styles.textInput} />
       </View>
-    </SafeAreaView>
+      <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
+    </View>
   );
 };
 

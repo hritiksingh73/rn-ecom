@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   cart: {
     fontSize: 20,
@@ -37,11 +38,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: 'lightgray',
-    width: 110,
+    width: 100,
     height: 40,
-    //marginLeft: 10,
-    //marginRight: 15,
-    marginTop: 20,
+    marginLeft: 280,
   },
   increase: {
     backgroundColor: 'green',
@@ -95,7 +94,6 @@ const styles = StyleSheet.create({
   dollarText: {
     fontSize: 15,
     fontWeight: 'bold',
-    //bottom: 5,
     marginRight: 10,
     color: 'green',
   },
@@ -110,9 +108,8 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   imageStyle: {
-    padding: 5,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: 'rgb(216,216,216)',
   },
   itemStyle: {
     flex: 2,
@@ -120,11 +117,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   fruitImage: {
-    width: 100,
-    height: 100,
+    width: 40,
+    height: 50,
     borderRadius: 10,
     marginRight: 15,
     marginLeft: 10,
+    resizeMode: 'center',
   },
   coupon: {
     backgroundColor: 'white',
@@ -151,6 +149,34 @@ const styles = StyleSheet.create({
     marginLeft: 150,
     fontSize: 15,
     fontWeight: 'bold',
+  },
+  total: {
+    backgroundColor: 'rgb(20,30,27)',
+    flexDirection: 'row',
+    height: 200,
+    width: 500,
+  },
+  totalBlock: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 18,
+    padding: 10,
+    marginBottom: 90,
+  },
+  totalInput: {
+    fontSize: 20,
+  },
+  checkout: {
+    color: 'white',
+    marginTop: 20,
+    backgroundColor: 'rgb(89,193,80)',
+    padding: 20,
+    marginLeft: 180,
+    fontSize: 25,
+    fontWeight: 'bold',
+    height: 70,
+    width: 160,
+    borderWidth: 1,
   },
   billing: {
     marginLeft: 20,

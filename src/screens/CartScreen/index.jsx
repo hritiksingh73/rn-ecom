@@ -9,7 +9,6 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
-  ScrollView,
   ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -19,29 +18,16 @@ import Data from '../../homeData/Data.js';
 import {increaseToCart, decreaseToCart} from '../../redux/action/Action.js';
 import styles from './styles.js';
 import firestore from '@react-native-firebase/firestore';
+import {ScrollView} from 'react-native-virtualized-view';
 
 const Cart = ({navigation}) => {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.userData.cartProducts);
-  const usersCollection = firestore().collection('Users');
-  const userDocument = firestore().collection('Users').doc('ABC');
-  // const users = await firestore().collection('Users').get();
-  // const user = await firestore().collection('Users').doc('ABC').get();
 
   const removeList = item => {
     dispatch(removeToCart(item));
     console.log(item);
   };
-
-  const onResult = QuerySnapshot => {
-    console.log('Got Users collection result.');
-  };
-
-  const onError = error => {
-    console.error(error);
-  };
-
-  firestore().collection('Users').onSnapshot(onResult, onError);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -72,12 +58,12 @@ const Cart = ({navigation}) => {
                           <Image
                             source={item.image}
                             style={styles.fruitImage}
-                            resizeMode="contain"
+                            resizeMode="center"
                           />
                         </View>
                         <View style={styles.itemStyle}>
                           <Text style={styles.titleText}>{item.title}</Text>
-                          <Text style={styles.dollarText}>{item.dollar}</Text>
+                          <Text style={styles.dollarText}>{item.price}</Text>
                         </View>
                         <TouchableOpacity
                           style={styles.remove}
@@ -91,6 +77,8 @@ const Cart = ({navigation}) => {
                       <View style={styles.counting}>
                         <View style={styles.addButton}>
                           <TouchableOpacity
+                            style={styles.increaseButton}
+                            style={styles.minusButton}
                             onPress={() =>
                               dispatch(
                                 decreaseToCart(item.id),
@@ -149,6 +137,18 @@ const Cart = ({navigation}) => {
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Sub Total</Text>
             </View>
+          </View>
+          <View style={styles.total}>
+            <View style={styles.totalBlock}>
+              <TextInput
+                style={styles.totalInput}
+                placeholder="Total"
+                placeholderTextColor="green"
+              />
+            </View>
+            <TouchableOpacity>
+              <Text style={styles.checkout}>Checkout</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

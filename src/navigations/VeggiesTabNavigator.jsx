@@ -33,6 +33,7 @@ const VeggiesTabNavigator = () => {
         component={CartScreen}
         options={{
           headerShown: false,
+          tabBarBadge: 2,
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />

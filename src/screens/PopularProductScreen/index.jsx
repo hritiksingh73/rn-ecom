@@ -32,7 +32,7 @@ const PopularProductScreen = ({navigation}) => {
         <Image
           source={item.image}
           style={styles.flatlistData}
-          resizeMode="contain"
+          resizeMode="center"
         />
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.dollar}>{item.price}</Text>
@@ -49,7 +49,7 @@ const PopularProductScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <View style={styles.product}>
         <AntDesign name="left" size={30} onPress={() => goBack()} />
         <Text style={styles.text}>Poppular Products</Text>

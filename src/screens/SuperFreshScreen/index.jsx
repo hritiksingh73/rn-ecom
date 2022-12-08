@@ -26,12 +26,12 @@ const SuperFreshScreen = ({navigation}) => {
   const userRecord = useSelector(state => state.userData.userRecord);
   const cartList = useSelector(state => state.userData.cartProducts);
   const uID = useSelector(state => state.userData.userID);
-  const Firestore = item => {
+  const FirestoreItem = item => {
     firestore()
       .collection('Cart')
       .doc(uID)
       .set({
-        cartList,
+        ...cartList,
       })
       .then(() => {
         console.log('User added!');
@@ -42,7 +42,7 @@ const SuperFreshScreen = ({navigation}) => {
     return (
       <View style={styles.item}>
         <ImageBackground style={styles.flatlist} source={item.image} />
-        <Text style={styles.fresh}>Superfresh</Text>
+        <Text style={styles.fresh}>Super Fresh</Text>
         <Text style={styles.title}>{item.title}</Text>
       </View>
     );
@@ -52,14 +52,15 @@ const SuperFreshScreen = ({navigation}) => {
     return (
       <View style={styles.data}>
         <Image source={item.image} style={styles.image} />
-        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.titleText}>{item.title}</Text>
         <Text style={styles.dollar}>{item.price}</Text>
         <TouchableOpacity
+          style={styles.buttonText}
           onPress={() => {
             dispatch(addToCart(item));
-            Firestore(item);
+            FirestoreItem(item);
           }}>
-          <Text style={styles.cart}>Add to Cart</Text>
+          <Text>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     );
@@ -83,10 +84,10 @@ const SuperFreshScreen = ({navigation}) => {
           />
           <View>
             <Text style={styles.superFresh}>Super Fresh</Text>
-            <Rating imageSize={15} ratingCount={5} />
+            <Text style={styles.rating}>*****</Text>
           </View>
           <View style={styles.heart}>
-            <Icon name="hearto" size={24} />
+            <Icon name="hearto" size={24} style={styles.heartIcon} />
           </View>
         </View>
       </TouchableOpacity>
@@ -96,7 +97,7 @@ const SuperFreshScreen = ({navigation}) => {
         horizontal={true}
         keyExtractor={item => item.id}
       />
-      <Text style={styles.popular}>Popular Products</Text>
+      <Text style={styles.popular}>Poppular Products</Text>
       <FlatList
         data={Data}
         renderItem={PopularProducts}
