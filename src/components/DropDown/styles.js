@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import color from '../../constant/color.js';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,9 +8,10 @@ const styles = StyleSheet.create({
     marginLeft: 120,
     zIndex: 2,
     marginTop: 20,
+    marginRight: 100,
   },
   dropdown: {
-    borderColor: 'white',
+    borderColor: color.white,
     alignItems: 'center',
     height: 18,
     width: 120,

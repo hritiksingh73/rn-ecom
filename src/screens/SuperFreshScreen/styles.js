@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import color from '../../constant/color.js';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: color.white,
   },
   icon: {
     flexDirection: 'row',
@@ -15,16 +16,22 @@ const styles = StyleSheet.create({
     marginLeft: 100,
   },
   heartIcon: {
-    color: 'grey',
+    color: color.grey,
   },
   image: {
     resizeMode: 'cover',
     width: 180,
     height: '50%',
   },
+  iconCircle: {
+    flexDirection: 'row',
+  },
+  iconSize: {
+    marginLeft: 180,
+  },
   buttonText: {
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: color.lightgrey,
     width: 150,
     height: 45,
     marginLeft: 20,
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   fresh: {
-    color: 'white',
+    color: color.white,
     marginTop: 50,
     position: 'absolute',
     fontSize: 35,
@@ -47,13 +54,13 @@ const styles = StyleSheet.create({
   },
   rating: {
     fontSize: 30,
-    color: 'green',
+    color: color.primary,
     marginLeft: 10,
   },
   title: {
     position: 'absolute',
     top: '50%',
-    color: 'white',
+    color: color.white,
     fontSize: 15,
     paddingHorizontal: 30,
     width: 350,
@@ -90,7 +97,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 300,
     borderWidth: 1,
-    borderColor: 'rgb(216,216,216)',
+    borderColor: color.lightgrey,
     marginBottom: 120,
   },
   button: {
@@ -110,7 +117,7 @@ const styles = StyleSheet.create({
   },
   dollar: {
     fontSize: 18,
-    color: 'green',
+    color: color.primary,
     marginLeft: 10,
   },
   products: {

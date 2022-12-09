@@ -20,6 +20,7 @@ import {addToCart} from '../../redux/action/Action.js';
 import List from '../../homeData/List.js';
 import styles from './styles.js';
 import firestore from '@react-native-firebase/firestore';
+import color from '../../constant/color.js';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -97,16 +98,19 @@ const SuperFreshScreen = ({navigation}) => {
         horizontal={true}
         keyExtractor={item => item.id}
       />
-      <Text style={styles.popular}>Poppular Products</Text>
+      <View style={styles.iconCircle}>
+        <Text style={styles.popular}>Poppular Products</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Popular Products')}>
+          <Icon name="arrowright" size={25} style={styles.iconSize} />
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={Data}
         renderItem={PopularProducts}
         horizontal={true}
         keyExtractor={item => item.id}
       />
-      <TouchableOpacity onPress={() => navigation.navigate('Popular Products')}>
-        <Text>More</Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };

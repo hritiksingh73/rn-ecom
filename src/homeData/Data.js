@@ -4,7 +4,7 @@ const Data = [
   {
     id: '1',
     title:'Fennel',
-    price: '$0.27 each',
+    price: 27,
     image: require('../assets/fresh-fennel.webp'),
     quantity:2,
     oldPrice: 240,
@@ -12,7 +12,7 @@ const Data = [
   {
     id: '2',
     title:'Radishes',
-    price: '$0.27 each',
+    price: 27,
     image: require('../assets/reddishimage.jpeg'),
     quantity:3,
     oldPrice: 20,
@@ -20,7 +20,7 @@ const Data = [
   {
     id: '3',
     title:'Banana',
-    price: '$0.27 each',
+    price: 20,
     image: require('../assets/banana.jpeg'),
     quantity:4,
     oldPrice: 10,
@@ -28,7 +28,7 @@ const Data = [
   {
     id: '4',
     title:'Carrots',
-    price: '$0.27 each',
+    price: 40,
     image: require('../assets/carrots.jpeg'),
     quantity:5,
     oldPrice: 20,
@@ -36,7 +36,7 @@ const Data = [
   {
     id: '5',
     title:'Beetroot',
-    price: '$0.27 each',
+    price: 50,
     image: require('../assets/beetroot.jpeg'),
     quantity:6,
     oldPrice: 30,
@@ -44,7 +44,7 @@ const Data = [
   {
     id: '6',
     title:'Garlic',
-    price: '$0.27 each',
+    price: 20,
     image: require('../assets/garlic.jpeg'),
     quantity:7,
     oldPrice: 20,
@@ -52,7 +52,7 @@ const Data = [
   {
     id: '7',
     title:'Ladyfinger',
-    price: '$0.27 each',
+    price: 80,
     image: require('../assets/ladyfinger.jpeg'),
     quantity:8,
     oldPrice: 2,
@@ -60,7 +60,7 @@ const Data = [
   {
     id: '8',
     title:'Brinjal',
-    price: '$0.27 each',
+    price: 15,
     image: require('../assets/brinjal.jpeg'),
     quantity:9,
     oldPrice: 70,
@@ -68,7 +68,7 @@ const Data = [
   {
     id: '9',
     title:'Brocolli',
-    price: '$0.27 each',
+    price: 30,
     image: require('../assets/brocolli.jpeg'),
     quantity:10,
     oldPrice: 10,
@@ -76,7 +76,7 @@ const Data = [
   {
     id: '10',
     title:'Mushroom',
-    price: '$0.27 each',
+    price: 35,
     image: require('../assets/mushroom.jpeg'),
     quantity:11,
     oldPrice: 50,

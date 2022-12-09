@@ -16,6 +16,7 @@ import {addToCart} from '../../redux/action/Action.js';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles.js';
+import color from '../../constant/color'
 
 const PopularProductScreen = ({navigation}) => {
   const dispatch = useDispatch();

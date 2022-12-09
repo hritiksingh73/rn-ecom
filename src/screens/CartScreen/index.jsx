@@ -24,9 +24,34 @@ const Cart = ({navigation}) => {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.userData.cartProducts);
 
+  const UserTotalPrice = () => {
+    const ItemTotalPrice = cart.map(value => {
+      let total = value.price * value.quantity;
+      return total;
+      console.log(ItemTotalPrice);
+    });
+    const TotalItemPrices = ItemTotalPrice.reduce((total, value) => {
+      return total + value;
+    }, 0);
+    return TotalItemPrices;
+  };
+  const DeliveryRate = () => {
+    return 100;
+  };
+  const Coupon = () => {
+    return 100;
+  };
+  const Tax = () => {
+    let total = UserTotalPrice();
+    return (total * 12) / 100;
+  };
+  const SubTotal = () => {
+    return UserTotalPrice() + DeliveryRate() + Tax();
+  };
+
   const removeList = item => {
     dispatch(removeToCart(item));
-    console.log(item);
+    // console.log(item);
   };
 
   return (
@@ -65,14 +90,14 @@ const Cart = ({navigation}) => {
                           <Text style={styles.titleText}>{item.title}</Text>
                           <Text style={styles.dollarText}>{item.price}</Text>
                         </View>
-                        <TouchableOpacity
+                        {/* <TouchableOpacity
                           style={styles.remove}
                           onPress={() => {
                             removeList(item.id);
                             console.log(item.id);
                           }}>
                           <Text style={styles.delete}>Remove</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                       </View>
                       <View style={styles.counting}>
                         <View style={styles.addButton}>
@@ -82,19 +107,20 @@ const Cart = ({navigation}) => {
                             onPress={() =>
                               dispatch(
                                 decreaseToCart(item.id),
-                                console.log(item.id),
+                                // console.log(item.id),
                               )
                             }>
                             <Text style={styles.minus}> - </Text>
                           </TouchableOpacity>
                         </View>
+
                         <Text style={styles.number}>{item.quantity}</Text>
                         <View style={styles.increase}>
                           <TouchableOpacity
                             onPress={() =>
                               dispatch(
                                 increaseToCart(item.id),
-                                console.log(item.id),
+                                // console.log(item.id),
                               )
                             }>
                             <Text style={styles.plus}> + </Text>
@@ -124,31 +150,34 @@ const Cart = ({navigation}) => {
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Total</Text>
+              <Text style={styles.billingUnits}>${UserTotalPrice()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Delivery Charge</Text>
+              <Text style={styles.totalPrice}>${DeliveryRate()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Coupon</Text>
+              <Text style={styles.totalPrice}>${Coupon()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Tax</Text>
+              <Text style={styles.totalPrice}>${Tax()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Sub Total</Text>
+              <Text style={styles.totalPrice}>${SubTotal()}</Text>
             </View>
           </View>
-          <View style={styles.total}>
-            <View style={styles.totalBlock}>
-              <TextInput
-                style={styles.totalInput}
-                placeholder="Total"
-                placeholderTextColor="green"
-              />
+          <View style={styles.totalBlock}>
+            <View style={styles.total}>
+              <Text style={styles.totalText}>Total</Text>
+              <Text style={styles.totalPrice}>${SubTotal()}</Text>
+              <Text style={styles.save}>You Save $ 5 on this</Text>
+              <TouchableOpacity>
+                <Text style={styles.checkout}>Checkout</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity>
-              <Text style={styles.checkout}>Checkout</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

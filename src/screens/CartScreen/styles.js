@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import color from '../../constant/color.js';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: color.white,
   },
   cart: {
     fontSize: 20,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   vegetableImage: {
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: color.lightgrey,
   },
   superImage: {
     fontSize: 16,
@@ -27,17 +28,17 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   delete: {
-    color: 'white',
+    color: color.white,
   },
   itemDivide: {
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: color.lightgrey,
     margin: 8,
   },
   counting: {
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: color.lightgrey,
     width: 100,
     height: 40,
     marginLeft: 280,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   increase: {
     backgroundColor: 'green',
     borderLeftWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: color.lightgrey,
     padding: 5,
   },
   plus: {
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: 'green',
     borderLeftWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: color.lightgrey,
     padding: 5,
   },
   titleText: {
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     borderWidth: 1,
-    borderColor: 'rgb(216,216,216)',
+    borderColor: color.lightgrey,
   },
   itemStyle: {
     flex: 2,
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     resizeMode: 'center',
   },
   coupon: {
-    backgroundColor: 'white',
+    backgroundColor: color.white,
     marginVertical: 12,
     paddingHorizontal: 20,
     flexDirection: 'row',
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: 18,
     borderBottomWidth: 1,
-    borderBottomColor: 'white',
+    borderBottomColor: color.white,
     padding: 10,
     paddingBottom: 16,
     paddingLeft: 0,
@@ -150,25 +151,32 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
-  total: {
-    backgroundColor: 'rgb(20,30,27)',
-    flexDirection: 'row',
-    height: 200,
-    width: 500,
+
+  totalPrice: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginVertical: 15,
+    color: color.white,
   },
-  totalBlock: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 18,
+  total: {
+    backgroundColor: color.black,
     padding: 10,
-    marginBottom: 90,
+  },
+  totalText: {
+    color: 'green',
+  },
+  save: {
+    color: color.white,
+    fontWeight: 'bold',
+    fontSize: 13,
   },
   totalInput: {
     fontSize: 20,
   },
   checkout: {
     color: 'white',
-    marginTop: 20,
+    marginTop: 100,
+    //marginBottom:100,
     backgroundColor: 'rgb(89,193,80)',
     padding: 20,
     marginLeft: 180,
@@ -188,13 +196,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: 'black',
+    borderBottomColor: color.black,
   },
   billingStyling: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: color.lightgrey,
     padding: 10,
     margin: 10,
   },

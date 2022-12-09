@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import color from '../../constant/color';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: color.white,
   },
   product: {
     flexDirection: 'row',
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: color.lightgrey,
   },
   button: {
     paddingHorizontal: 5,
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   dollar: {
     fontSize: 15,
     marginLeft: 10,
-    color: 'green',
+    color: color.primary,
   },
   flatlistData: {
     resizeMode: 'center',
@@ -48,20 +49,20 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 15,
     borderWidth: 1,
-    borderColor: 'rgb(216,216,216)',
+    borderColor: color.grey,
     padding: 10,
   },
   data: {
     width: 220,
     height: 250,
     borderWidth: 1,
-    borderColor: 'rgb(216,216,216)',
-    backgroundColor: 'white',
+    borderColor: color.grey,
+    backgroundColor: color.white,
   },
   main: {
-    backgroundColor: 'white',
+    backgroundColor: color.white,
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: color.lightgrey,
     margin: 8,
   },
   item: {
