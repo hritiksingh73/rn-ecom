@@ -115,35 +115,33 @@ const styles = StyleSheet.create({
   },
   billing: {
     marginLeft: 20,
-    paddingTop:30
+    paddingTop: 30,
   },
   apply: {
     color: 'green',
     paddingLeft: 150,
-    paddingTop:20,
+    paddingTop: 20,
     fontSize: 16,
-     fontWeight: '450',
+    fontWeight: '450',
   },
   couponInput: {
     paddingLeft: 10,
     paddingTop: 0,
     placeholderTextColor: Color.black,
     fontWeight: '550',
-    fontSize:20,
-    paddingTop:10,
-    
+    fontSize: 20,
+    paddingTop: 10,
   },
   couponContainer: {
     paddingHorizontal: 20,
     flexDirection: 'row',
     borderWidth: 1,
-    width:370,
-    
+    width: 370,
+
     backgroundColor: '#f9f9f9',
-    paddingTop:20,
-    borderColor:'white',
-    borderBottomColor:"'#2a2b2d'",
-    
+    paddingTop: 20,
+    borderColor: 'white',
+    borderBottomColor: "'#2a2b2d'",
   },
   couponCode: {
     flexDirection: 'row',
@@ -151,32 +149,32 @@ const styles = StyleSheet.create({
     // marginVertical: 18,
     // padding: 10,
     // paddingBottom: 16
-    paddingTop:10
+    paddingTop: 10,
   },
-  couponIcon:{
-paddingTop:10
+  couponIcon: {
+    paddingTop: 10,
   },
   billingUnits: {
     fontWeight: '800',
     fontSize: 15,
   },
-  bottom:{
-   backgroundColor:"#161e1b",
-   padding:10
+  bottom: {
+    backgroundColor: '#161e1b',
+    padding: 10,
   },
-  bottomApply:{
-    color:'green'
+  bottomApply: {
+    color: 'green',
   },
-  subTotal:{
-    color:"white",
-    fontWeight:"500",
-    fontSize:20
+  subTotal: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 20,
   },
-  saveMsg:{
-    color:"white",
-    fontWeight:"500",
-    fontSize:13
-  }
+  saveMsg: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 13,
+  },
 });
 
 export default styles;

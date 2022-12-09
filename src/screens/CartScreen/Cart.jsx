@@ -24,12 +24,7 @@ const Cart = () => {
   const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
 
-  // const TotalItemPrice = () => {
-  //   const ItemPrice = item.map(value => {
-  //     let total = value.price * value.quantity;
-  //     return total;
-  //
-  // }
+ 
 
   const ItemPrice = item.map(value => {
     const total = value.price * value.quantity;
@@ -42,10 +37,9 @@ const Cart = () => {
 
   const DeliveryCharges = (TotalItemPrices * 3) / 100;
 
-  const Tax = (TotalItemPrices * 12) / 100 ;
+  const Tax = (TotalItemPrices * 12) / 100;
 
   const SubTotal = Math.round(TotalItemPrices + DeliveryCharges + Tax);
-
 
   return (
     <ScrollView nestedScrollEnabled={true}>
@@ -90,7 +84,11 @@ const Cart = () => {
         />
         <View style={styles.couponContainer}>
           <View style={styles.couponCode}>
-            <Icon name="ticket-percent-outline" size={30} style={styles.couponIcon} />
+            <Icon
+              name="ticket-percent-outline"
+              size={30}
+              style={styles.couponIcon}
+            />
             <TextInput style={styles.couponInput} placeholder="Coupon Code" />
           </View>
           <TouchableOpacity>

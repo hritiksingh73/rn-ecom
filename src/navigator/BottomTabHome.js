@@ -6,9 +6,11 @@ import Account from '../screens/AccountScreen/Account';
 import Icon from 'react-native-vector-icons/AntDesign';
 import HomeScreen from '../screens/DisplayVariety/HomeScreen';
 import NavigationStack from './NavigationStack';
+import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
+  const item = useSelector(state => state.userInfo.cart);
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -34,6 +36,7 @@ const AppNavigator = () => {
         component={Cart}
         options={{
           headerShown: false,
+          tabBarBadge: item.length,
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />
