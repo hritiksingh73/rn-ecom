@@ -35,15 +35,10 @@ const Cart = ({navigation}) => {
     }, 0);
     return TotalItemPrices;
   };
-  const DeliveryRate = () => {
-    return 100;
-  };
-  const Coupon = () => {
-    return 100;
-  };
+
   const Tax = () => {
     let total = UserTotalPrice();
-    return (total * 18) / 100;
+    return (total * 12) / 100;
   };
   const SubTotal = () => {
     return UserTotalPrice() + DeliveryRate() + Tax();
@@ -154,11 +149,9 @@ const Cart = ({navigation}) => {
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Delivery Charge</Text>
-              <Text>${DeliveryRate()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Coupon</Text>
-              <Text>${Coupon()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Tax</Text>
@@ -169,15 +162,15 @@ const Cart = ({navigation}) => {
               <Text>${SubTotal()}</Text>
             </View>
           </View>
-          <View style={styles.totalBlock}>
-            <View style={styles.total}>
-              <Text style={styles.totalText}>Total</Text>
-              <Text style={styles.totalPrice}>${SubTotal()}</Text>
-              <Text style={styles.save}>You Save $ 5 on this</Text>
-              <TouchableOpacity>
-                <Text style={styles.checkout}>Checkout</Text>
-              </TouchableOpacity>
-            </View>
+        </View>
+        <View style={styles.totalBlock}>
+          <View style={styles.total}>
+            <Text style={styles.totalText}>Total</Text>
+            <Text style={styles.totalPrice}>${SubTotal()}</Text>
+            <Text style={styles.save}>You Save $ 5 on this</Text>
+            <TouchableOpacity>
+              <Text style={styles.checkout}>Checkout</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
