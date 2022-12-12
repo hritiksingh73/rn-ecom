@@ -13,14 +13,6 @@ export const styles = StyleSheet.create({
   textStyle: {
     fontSize: 18,
   },
-  textInput: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'lightgrey',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '90%',
-    marginHorizontal: 20,
-  },
   forgotStyle: {
     textAlign: 'center',
     color: color.primary,

@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import styles from './styles';
 import {useSelector} from 'react-redux';
+
+import styles from './styles';
 import CartItems from './CartItems';
 import ListItem from '../../components/ListItem';
 

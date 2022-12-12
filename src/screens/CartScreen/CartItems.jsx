@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-import Icons from '../../components/Icons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 import styles from './styles';
 import {decreaseCartProduct} from '../../redux/actions/userAction';
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,14 +27,14 @@ const CartItems = ({item}) => {
         <TouchableOpacity
           style={styles.cartButton}
           onPress={() => dispatch(decreaseCartProduct(item.id))}>
-          <Icons name="minus" size={20} />
+          <AntDesign name="minus" size={20} />
         </TouchableOpacity>
         <Text style={[styles.cartButton, styles.numTxt]}>{item.qty}</Text>
 
         <TouchableOpacity
           style={styles.cartButton}
           onPress={() => dispatch(increaseCartProduct(item.id))}>
-          <Icons name="plus" size={20} />
+          <AntDesign name="plus" size={20} />
         </TouchableOpacity>
       </View>
     </View>

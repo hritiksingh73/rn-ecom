@@ -7,17 +7,19 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import auth from '@react-native-firebase/auth';
+
 import TextField from '../../components/TextField';
 import ButtonComponent from '../../components/ButtonComponent';
 import color from '../../constant/color';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
 import {userInfoDetails} from '../../redux/actions/userAction';
-import ImageBtn from '../../components/ImageBtn';
-import Icon from 'react-native-vector-icons/AntDesign';
-import TxtComponent from '../../components/TxtComponent';
+import LoginBtn from '../../components/LoginBtn';
 import {styles} from './styles';
-import auth from '@react-native-firebase/auth';
+import {validateEmail} from '../../utils/validation';
+import {validatePassword} from '../../utils/validation';
+import image from '../../config/image';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -43,16 +45,6 @@ const LoginScreen = () => {
     }
   };
 
-  validateEmail = email => {
-    var re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return re.test(email);
-  };
-  validatePassword = password => {
-    var re =
-      /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-    return re.test(password);
-  };
-
   const emailValidator = () => {
     email == '' || !validateEmail(email)
       ? setValidation({emailError: 'please enter a valid email'})
@@ -71,35 +63,30 @@ const LoginScreen = () => {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
         <View style={styles.headerImage}>
-          <Image source={require('../../assets/grocery.png')} />
+          <Image source={image.grocery} />
           <Text style={[styles.textStyle]}>Welcome back!</Text>
         </View>
 
-        <View style={styles.textInput}>
-          <Icon name="mail" size={20} style={{marginLeft: 30}} />
-          <TextField
-            placeholder="Email"
-            placeholderTextColor="black"
-            value={email}
-            onBlur={() => emailValidator()}
-            onChangeText={val => setEmail(val)}
-          />
-        </View>
-        <TxtComponent>{validation.emailError}</TxtComponent>
+        <TextField
+          name="mail"
+          placeholder="Email"
+          value={email}
+          onBlur={() => emailValidator()}
+          onChangeText={val => setEmail(val)}
+          text={validation.emailError}
+        />
 
-        <View style={styles.textInput}>
-          <Icon name="key" size={20} style={{marginLeft: 30}} />
-          <TextField
-            placeholder="Password"
-            placeholderTextColor="black"
-            value={password}
-            onBlur={() => passwordValidator()}
-            onChangeText={val => setPassword(val)}
-            secureTextEntry={true}
-            maxLength={9}
-          />
-        </View>
-        <TxtComponent>{validation.passwordError}</TxtComponent>
+        <TextField
+          name="key"
+          placeholder="Password"
+          value={password}
+          onBlur={() => passwordValidator()}
+          onChangeText={val => setPassword(val)}
+          secureTextEntry={true}
+          maxLength={9}
+          text={validation.passwordError}
+        />
+
         <Text style={styles.forgotStyle}>Forgot Password?</Text>
 
         <ButtonComponent
@@ -112,11 +99,11 @@ const LoginScreen = () => {
         </ButtonComponent>
 
         <View style={styles.orImage}>
-          <Image source={require('../../assets/or.png')} />
+          <Image source={image.orImage} />
           <Text style={styles.textStyle}>Continue with</Text>
         </View>
 
-        <ImageBtn />
+        <LoginBtn />
 
         <View style={styles.accountText}>
           <Text style={styles.textStyle}>Don't have an account?</Text>

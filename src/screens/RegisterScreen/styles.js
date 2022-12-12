@@ -11,14 +11,6 @@ export const styles = StyleSheet.create({
   loginText: {
     color: color.primary,
   },
-  textInput: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'lightgrey',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '90%',
-    padding: 10,
-  },
   textStyle: {
     fontSize: 18,
   },

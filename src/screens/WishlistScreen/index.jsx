@@ -1,16 +1,16 @@
 import React from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
-import {styles} from '../SuperFreshScreen/styles';
+import {View, TouchableOpacity, Text, SafeAreaView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import Icon from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
+
+import {styles} from '../SuperFreshScreen/styles';
 import ListItem from '../../components/ListItem';
 import {addCartProduct} from '../../redux/actions/userAction';
 import {removeFromWishlist} from '../../redux/actions/userAction';
 import CategoryGridItem from '../../components/CategoryGridItem';
-import Icon from 'react-native-vector-icons/Entypo';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import color from '../../constant/color';
-import {useNavigation} from '@react-navigation/native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const WishlistScreen = props => {
   const dispatch = useDispatch();
@@ -57,6 +57,7 @@ const WishlistScreen = props => {
           onPress={() => props.navigation.navigate('Cart')}
         />
       </View>
+
       <ListItem
         data={wishlistProduct}
         renderItem={({item}) => ProductItem(item)}

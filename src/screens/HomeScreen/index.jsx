@@ -1,30 +1,28 @@
 import React from 'react';
 import {Text, Image, View, TextInput, TouchableOpacity} from 'react-native';
-import {CATEGORIES} from '../../data/dummy-data';
-import Icon from 'react-native-vector-icons/AntDesign';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
+
+import CATEGORIES from '../../data/dummy-data';
 import DropDown from '../../components/DropDown';
 import {styles} from './styles';
 import ListItem from '../../components/ListItem';
-import {useNavigation} from '@react-navigation/native';
-import {useState} from 'react';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  const [selectedCity, setSelectedCity] = useState();
 
-  const renderGroceryShops = grocery => {
+  const renderGroceryShops = props => {
+    const {item} = props;
+
     return (
       <View style={styles.renderItemScreen}>
         <TouchableOpacity
           style={styles.imageContainer}
           onPress={() => navigation.navigate('Super Fresh')}>
-          <Image
-            source={{uri: grocery.item.imageUrl}}
-            style={styles.imgStyle}
-          />
+          <Image source={item.image} style={styles.imgStyle} />
         </TouchableOpacity>
-        <Text style={styles.shopTitle}>{grocery.item.title}</Text>
-        <Text style={styles.shopTitle}>{grocery.item.rating}</Text>
+        <Text style={styles.shopTitle}>{item.title}</Text>
+        <Text style={styles.shopTitle}>{item.rating}</Text>
       </View>
     );
   };
@@ -34,7 +32,12 @@ const HomeScreen = () => {
       <DropDown />
 
       <View style={styles.searchSection}>
-        <Icon name="search1" size={20} color="black" style={styles.input} />
+        <AntDesign
+          name="search1"
+          size={20}
+          color="black"
+          style={styles.input}
+        />
         <TextInput placeholder="Find Store" style={styles.input} />
       </View>
 

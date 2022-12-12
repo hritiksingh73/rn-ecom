@@ -1,17 +1,12 @@
 import React from 'react';
 import {TouchableOpacity, Image, StyleSheet} from 'react-native';
+import image from '../config/image';
 
-export default function ImageBtn() {
+export default function LoginBtn() {
   return (
-    <TouchableOpacity style={styles.continueButton}>
-      <Image
-        style={styles.btnImage}
-        source={require('../assets/facebook.jpeg')}
-      />
-      <Image
-        style={styles.btnImage}
-        source={require('../assets/google1.jpeg')}
-      />
+    <TouchableOpacity style={styles.continueButton} activeOpacity={0.9}>
+      <Image style={styles.btnImage} source={image.facebook} />
+      <Image style={styles.btnImage} source={image.google} />
     </TouchableOpacity>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 
-export default function TxtComponent(props) {
+export default function ErrorMessage(props) {
   return <Text style={styles.txtStyle} {...props} />;
 }
 const styles = StyleSheet.create({

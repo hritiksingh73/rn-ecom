@@ -1,4 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import HomeScreen from '../screens/HomeScreen';
 import SuperFreshScreen from '../screens/SuperFreshScreen';
 import PopularProductsScreen from '../screens/SuperFreshScreen/PopularProductsScreen';

@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useNavigation} from '@react-navigation/native';
+
 import {GROCERIES} from '../../data/groceryICarousel';
 import {GROCERYPRODUCTS} from '../../data/groceryProducts';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styles';
-import {useNavigation} from '@react-navigation/native';
 import ListItem from '../../components/ListItem';
 
 const renderSuperFreshItem = grocery => {
@@ -37,9 +38,9 @@ const SuperFreshScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Icon name="menu" size={30} />
+        <MaterialIcon name="menu" size={30} />
         <Text style={styles.headerText}>Super Fresh</Text>
-        <Icon name="bell-badge-outline" size={30} />
+        <MaterialIcon name="bell-badge-outline" size={30} />
       </View>
       <ListItem
         data={GROCERIES}
