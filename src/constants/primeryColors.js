@@ -1,6 +1,6 @@
 const colors = {
     primary: 'white',
-    findingBar: "red",
+    // findingBar: "red",
     lightgrayy : '#bfbfbf',
     redClr: '#eb4034',
 };

@@ -9,32 +9,14 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles';
+import homeScreenData from '../../../data/homeScreenData';
 
 const SearchScreen = ({navigation}) => {
-  const veggiImages = [
-    {
-      id: 1,
-      name: 'vegetables1',
-      path: require('../../../assets/images/vegetables1.jpeg'),
-    },
-    {
-      id: 2,
-      name: 'vegetables2',
-      path: require('../../../assets/images/vegetables2.webp'),
-    },
-    {
-      id: 3,
-      name: 'vegetables3',
-      path: require('../../../assets/images/vegetables3.jpeg'),
-    },
-  ];
-
   const [data, setData] = useState({});
 
   const CallingApi = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
     const jsonResponse = await response.json();
-    // console.log(jsonResponse[0]);
     setData(jsonResponse);
   };
   useEffect(() => {
@@ -61,7 +43,7 @@ const SearchScreen = ({navigation}) => {
             );
           }}
         />
-        <Text style={[styles.heading, {textAlign: 'left', margin: 15}]}>
+        <Text style={styles.productHeading}>
           Poppular Product
         </Text>
         {/* <FlatList

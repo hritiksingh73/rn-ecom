@@ -3,19 +3,11 @@ import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import DropDownPicker from 'react-native-dropdown-picker';
-
-const places = [
-  {id: '1', place: 'indore'},
-  {id: '2', place: 'dewas'},
-  {id: '3', place: 'ujjain'},
-  {id: '4', place: 'bhopal'},
-  {id: '5', place: 'sagar'},
-];
+import dropDownData from '../../data/dropDownData';
 
 const DropDown = props => {
   const data = props.data;
   const SelectedCity = props.SelectedCity;
-  // console.log('DropDown component data: --> ', data);
 
   const [isTrue, setIsTrue] = useState(true);
   var val = true;
@@ -25,8 +17,6 @@ const DropDown = props => {
   // const [items, setItems] = useState([
   //   {label: 'Apple', value: 'apple'},
   //   {label: 'Banana', value: 'banana'},
-  //   {label: 'Banana', value: 'banana'},
-  //   {label: 'Banana', value: 'banana'}
   // ]);
 
   return (

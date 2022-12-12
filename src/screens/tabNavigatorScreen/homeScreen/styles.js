@@ -10,6 +10,14 @@ const styles = StyleSheet.create({
       fontWeight: '500',
       margin: 10,
     },
+    productHeading: {
+      textAlign: 'center',
+      fontSize: 18,
+      fontWeight: '500',
+      margin: 10,
+      textAlign: 'left', 
+      margin: 15
+    },
     horizontalSlidebar: {
       width: 350,
       height: 200,

@@ -12,100 +12,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import DropDown from '../../../components/dropDown';
 import colors from '../../../redux/constants/colors';
 import remoteConfig from '@react-native-firebase/remote-config';
-
-const data = [
-  {
-    id: '1',
-    name: 'Ajay Vege store',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables5.jpeg'),
-    place: 'indore',
-  },
-  {
-    id: '2',
-    name: 'Chourasia stall',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables4.jpeg'),
-    place: 'dewas',
-  },
-  {
-    id: '3',
-    name: 'Mukesh stall',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables7.jpeg'),
-    place: 'ujjain',
-  },
-  {
-    id: '4',
-    name: 'Ram Fruit',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables6.jpeg'),
-    place: 'bhopal',
-  },
-  {
-    id: '5',
-    name: 'Apna stall',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables11.jpg'),
-    place: 'sagar',
-  },
-  {
-    id: '6',
-    name: 'Gatuam Fruits',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables12.jpeg'),
-    place: 'ujjain',
-  },
-  {
-    id: '7',
-    name: 'Chouhan vegies',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables3.jpeg'),
-    place: 'sagar',
-  },
-  {
-    id: '8',
-    name: 'Om fruit suppliers',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables8.jpeg'),
-    place: 'bhopal',
-  },
-  {
-    id: '9',
-    name: 'Mustafa Shop',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables9.jpg'),
-    place: 'indore',
-  },
-  {
-    id: '10',
-    name: 'Pralahd Shop',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables10.jpeg'),
-    place: 'dewas',
-  },
-  {
-    id: '11',
-    name: 'A One Fruit Center',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables14.jpeg'),
-    place: 'indore',
-  },
-  {
-    id: '12',
-    name: 'Vegies bhandar',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables15.jpeg'),
-    place: 'dewas',
-  },
-  {
-    id: '13',
-    name: 'Fruit Shop',
-    rating: '* * * * *',
-    url: require('../../../assets/images/vegetables13.jpeg'),
-    place: 'bhopal',
-  },
-];
+import data from '../../../data/searchSrnData';
 
 const HomeScreen = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -144,7 +51,6 @@ const HomeScreen = () => {
     setIsEmptyString(val.name);
     console.log('isEmptyString::::::', isEmptyString)
     console.log('SelectedCity:   ', val.name) 
-
     let response = data.filter(item => {
       return item.place.toUpperCase().includes((val.name).toUpperCase());
     });
@@ -159,19 +65,18 @@ const HomeScreen = () => {
           <DropDown data={remoteConf} SelectedCity={SelectedCity}/>
 
           <View>
-          <FlatList
-            data={cities}
-            renderItem={({item}) => {
-              return (
-                  <View>
-                    <Text>{item.label}</Text>
-                    <Text>{item.rating}</Text>
-                </View>
-              );
-            }}
-          />
+            <FlatList
+              data={cities}
+              renderItem={({item}) => {
+                return (
+                    <View>
+                      <Text>{item.label}</Text>
+                      <Text>{item.rating}</Text>
+                  </View>
+                );
+              }}
+            />
           </View>
-         
  
           <View style={styles.txtContainer}>
             <Feather name={'search'} size={22} />

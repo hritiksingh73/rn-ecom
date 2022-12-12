@@ -18,21 +18,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import styles from './style';
 import firestore from '@react-native-firebase/firestore';
 import LoginBtn from '../../../components/loginBtn';
-
-const gorceryCoupon = [
-  {
-    coupon: 'Coupon10',
-    discount: 10,
-  },
-  {
-    coupon: 'Coupon15',
-    discount: 15,
-  },
-  {
-    coupon: 'Coupon30',
-    discount: 30,
-  },
-];
+import cartSrnData from '../../../data/cartSrnData';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
