@@ -16,23 +16,9 @@ import styles from '../LoginScreen/styles';
 import FormContainer from '../../component/FormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import imagePath from '../../config/Image';
-import SocialMedia from '../../reUsable/SocialMediaButton';
+import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
 import firestore from '@react-native-firebase/firestore';
 
-
-// const Anonimous = () => {
-//   auth()
-//   .signInAnonymously()
-//   .then(() => {
-//     console.log('User signed in anonymously');
-//   })
-//   .catch(error => {
-//     if (error.code === 'auth/operation-not-allowed') {
-//       console.log('Enable anonymous in your firebase console.');
-//     }
-//     console.error(error);
-//   });
-// }
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -90,10 +76,6 @@ const LoginPage = () => {
         email,
         userPassword,
       );
-      // console.log('from login page----->', userRes.user.displayName);
-      // console.log('from login page----->', userRes.user.uid);
-      // console.log('from login page----->', userRes.user.email);
-      // console.log('from login page----->', userRes);
       
     } catch (error) {
       console.log(error.code);
@@ -178,8 +160,6 @@ const LoginPage = () => {
           <SocialMedia style={styles.googleImage} source={imagePath.google} />
         </TouchableOpacity>
       </View>
-
-      {/* <Button title='Login As Guest' onPress={()=> Anonimous}></Button> */}
 
       <View style={styles.bottomHeadline}>
         <Text>Dont have an account?</Text>

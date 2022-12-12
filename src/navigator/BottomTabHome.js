@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import HomeScreen from '../screens/DisplayVariety/HomeScreen';
 import NavigationStack from './NavigationStack';
 import {useSelector} from 'react-redux';
+import {Color} from '../constant/Color';
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
@@ -37,6 +38,7 @@ const AppNavigator = () => {
         options={{
           headerShown: false,
           tabBarBadge: item.length,
+          backgroundColor: Color.green,
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />

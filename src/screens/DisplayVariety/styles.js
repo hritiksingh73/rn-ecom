@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { Color } from '../../constant/Color';
 
 const styles = StyleSheet.create({
   searchBar: {
@@ -15,8 +16,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   mainContainer: {
-    paddingBottom: 20,
-    paddingLeft: 10,
+    paddingBottom: 8,
+    paddingLeft: 8,
   },
   imageCard: {
     resizeMode: 'contain',
@@ -25,20 +26,20 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: 185,
-    height:310,
+    height:315,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor:"#e5e5e5"
+    borderColor:Color.darkGrey
   },
   imageTitle: {
     fontSize: 15,
-    color: '#344055',
+    color: Color.black,
     fontWeight:"500",
     paddingLeft:20,
   },
   imagerating: {
     fontSize: 15,
-    color: '#344055',
+    color: Color.black,
     fontWeight:"500",
     paddingLeft:20
   },

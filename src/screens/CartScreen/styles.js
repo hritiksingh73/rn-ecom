@@ -2,6 +2,9 @@ import {StyleSheet} from 'react-native';
 import {Color} from '../../constant/Color';
 
 const styles = StyleSheet.create({
+  parent: {
+    backgroundColor: '#f9f9f9',
+  },
   mainHeader: {
     flexDirection: 'row',
   },
@@ -26,17 +29,16 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   mainContainer: {
-    width: '90%',
+    width: '95%',
     height: 100,
-    borderRadius: 15,
     alignSelf: 'center',
     marginTop: 10,
-    borderWidth: 0.2,
-    borderColor: '#8e8e8e',
+    borderWidth: 1,
+    borderColor: Color.white,
+    borderBottomColor: Color.darkGrey,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#fff',
   },
   container: {
     width: '75%',
@@ -47,6 +49,10 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     paddingRight: 20,
     color: Color.green,
+    paddingTop: 5,
+  },
+  itemtitle: {
+    width: '91%',
   },
   decreaseButton: {
     height: 30,
@@ -55,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    marginTop: 5,
+    borderColor: Color.darkGrey,
   },
   increarseButton: {
     height: 30,
@@ -64,30 +70,48 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    marginTop: 5,
+    borderColor: Color.darkGrey,
   },
   quantityupdate: {
     height: 30,
     borderRadius: 5,
-    width: 30,
+    width: 40,
+    borderColor: Color.darkGrey,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    marginTop: 5,
-    paddingLeft: 10,
+    paddingLeft: 15,
+    paddingTop: 5,
   },
   flatlistImage: {
-    width: 100,
-    height: 90,
-    borderRadius: 10,
-    marginRight: 15,
+    width: 70,
+    height: 70,
+    resizeMode: 'contain',
+    borderWidth: 1,
+    marginLeft: 10,
+    borderColor: Color.darkGrey,
   },
   Quantityadjustment: {
+    flexDirection: 'row',
+    paddingTop: '3%',
+    paddingRight: 20,
+    alignItems: 'center',
+    textAlign: 'center',
+    alignContent: 'center',
+
+    paddingTop: 5,
+  },
+  QuantityHandler: {
     flex: 1,
     flexDirection: 'row',
     paddingTop: '3%',
     justifyContent: 'flex-end',
     paddingRight: 20,
+    alignItems: 'center',
+    textAlign: 'center',
+    alignContent: 'center',
+
+    paddingTop: 5,
   },
   billingText: {
     fontSize: 20,
@@ -97,8 +121,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#2a2b2d',
-    color: '#2d2f37',
+    borderBottomColor: Color.darkGrey,
+    color: Color.black,
   },
   total: {
     fontSize: 16,
@@ -109,7 +133,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: Color.darkGrey,
     padding: 10,
     margin: 10,
   },
@@ -119,7 +143,7 @@ const styles = StyleSheet.create({
   },
   apply: {
     color: 'green',
-    paddingLeft: 150,
+    paddingLeft: 140,
     paddingTop: 20,
     fontSize: 16,
     fontWeight: '450',
@@ -133,22 +157,18 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   couponContainer: {
-    paddingHorizontal: 20,
+    paddingLeft: 20,
     flexDirection: 'row',
     borderWidth: 1,
-    width: 370,
-
-    backgroundColor: '#f9f9f9',
+    width: '95%',
     paddingTop: 20,
-    borderColor: 'white',
-    borderBottomColor: "'#2a2b2d'",
+    borderColor: Color.white,
+    marginLeft: 10,
+    borderBottomColor: Color.darkGrey,
   },
   couponCode: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // marginVertical: 18,
-    // padding: 10,
-    // paddingBottom: 16
     paddingTop: 10,
   },
   couponIcon: {
@@ -161,6 +181,7 @@ const styles = StyleSheet.create({
   bottom: {
     backgroundColor: '#161e1b',
     padding: 10,
+    flexDirection: 'row',
   },
   bottomApply: {
     color: 'green',
@@ -174,6 +195,20 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '500',
     fontSize: 13,
+  },
+  checkOut: {
+    marginLeft: 120,
+    marginTop: 10,
+    width: 130,
+    padding: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    height: 40,
+    backgroundColor: Color.green,
+  },
+  checkoutButton: {
+    color: Color.white,
+    fontSize: 17,
   },
 });
 

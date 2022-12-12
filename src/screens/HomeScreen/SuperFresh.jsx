@@ -15,6 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Tree from 'react-native-vector-icons/Ionicons';
+import Viewright from 'react-native-vector-icons/AntDesign';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Rating} from 'react-native-ratings';
 import {getInitialData} from '../../redux/thunk/ProductThunk';
@@ -93,7 +94,7 @@ const SuperFresh = () => {
           />
           <View style={styles.ratingcontainer}>
             <Text style={styles.secondheader}>Super Fresh</Text>
-            <Rating imageSize={15} ratingCount={5} /*ratingColor="red"*/  />
+            <Rating imageSize={15} ratingCount={5}   />
           </View>
         </View>
 
@@ -109,7 +110,7 @@ const SuperFresh = () => {
           <Text style={styles.poppularproducts}>Poppular Product </Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('PopularProduct')}>
-            <Text style={styles.viewMore}>View More </Text>
+            <Viewright name="right" size={25} style={styles.viewMore} />
           </TouchableOpacity>
         </View>
 

@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  SafeAreaView,
-  Button,
-} from 'react-native';
+import {Text, TouchableOpacity, View, SafeAreaView} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import auth from '@react-native-firebase/auth';
@@ -26,7 +19,7 @@ const Account = () => {
   return (
     <SafeAreaView>
       <View style={styles.headerBar}>
-        <Tree name="ios-menu-outline" size={30} style={styles.favourite}/>
+        <Tree name="ios-menu-outline" size={30} style={styles.favourite} />
         <Text style={styles.header}>My Account</Text>
         <Bell name="bell-badge-outline" size={30} />
       </View>
@@ -57,23 +50,8 @@ const Account = () => {
       </TouchableOpacity>
 
 
-      <View>
-      <Button
-        title="Add To Basket"
-        onPress={async () =>
-          await analytics().logEvent('basket', {
-            id: 3745092,
-            item: 'mens grey t-shirt',
-            description: ['round neck', 'long sleeved'],
-            size: 'L',
-          })
-        }
-      />
-    </View>
     </SafeAreaView>
   );
 };
-
-
 
 export default Account;

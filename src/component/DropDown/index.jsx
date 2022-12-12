@@ -13,32 +13,27 @@ const DropDown = () => {
     {label: 'Banglore', value: 'Banglore'},
     {label: 'Hyderabad', value: 'Hyderabad'},
     {label: 'Kolkata', value: 'Kolkata'},
-    // {label: 'JamshedPur', value: 'JamshedPur'},
-    // {label: 'Wardha', value: 'Wardha'},
   ]);
 
   const fetchRemoteData = () => {
     remoteConfig().setDefaults({
-      citi
+      citi,
     });
-    remoteConfig().fetch(5)
+    remoteConfig()
+      .fetch(5)
       .then(() => remoteConfig().fetchAndActivate())
       .then(fetchedRemotely => {
-        if (fetchedRemotely)
-        {
-          const value = remoteConfig().getValue("citi");
-          //console.log(value);
+        if (fetchedRemotely) {
+          const value = remoteConfig().getValue('citi');
           let remoteCities = JSON.parse(value.asString()).cities;
           setCiti(remoteCities);
-          console.log("RemoteCities------>",remoteCities);
-          console.log("value------>",value);
-          console.log("fetchedRemotely--------->",fetchedRemotely)
-          console.log("setCiti------>",setCiti);
+          console.log('RemoteCities------>', remoteCities);
+          console.log('value------>', value);
+          console.log('fetchedRemotely--------->', fetchedRemotely);
+          console.log('setCiti------>', setCiti);
           console.log(' new city has been added to flatlist');
         } else {
-          console.log(
-            'No new Data has been Fetched',
-          );
+          console.log('No new Data has been Fetched');
         }
       });
   };

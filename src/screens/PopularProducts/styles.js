@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Color } from "../../constant/Color";
 
 const styles = StyleSheet.create({
     headerBar: {
@@ -8,14 +9,15 @@ const styles = StyleSheet.create({
     },
     card: {
       width: '50%',
-      backgroundColor: '#fff',
-      marginVertical: 2,
+      borderColor: Color.darkGrey,
+      marginVertical: 0,
+      borderWidth:1,
+      backgroundColor:Color.white
     },
     mainContainer: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      
     },
     price:{
       color:"green"

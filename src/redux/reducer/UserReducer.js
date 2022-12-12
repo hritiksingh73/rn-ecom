@@ -59,10 +59,7 @@ const userReducer = (state = InitialState, action) => {
     case ActionType.DECREASE_ITEM_QUANTITY:
       const decreaseItem = state.cart.map(item => {
         return item.id === action.payload && item.quantity > 0
-          ? {
-              ...item,
-              quantity: item.quantity - 1,
-            }
+          ? {...item, quantity: item.quantity - 1}
           : item;
       });
       return {

@@ -11,16 +11,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginHorizontal: 10,
   },
-  cart: {
-    width: 100,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#b3ffd9',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginRight: 20,
-  },
   addButton: {
     alignItems: 'center',
     paddingVertical: 10,
@@ -33,9 +23,9 @@ const styles = StyleSheet.create({
   },
   card: {
     width: '50%',
-    backgroundColor: '#fff',
+    backgroundColor: Color.white,
     borderRadius: 5,
-    borderColor: '#bfbfbf',
+    borderColor: Color.darkGrey,
     borderWidth: 1,
     height: 310,
     marginLeft:10,
@@ -95,11 +85,10 @@ const styles = StyleSheet.create({
   },
   viewMore: {
     fontSize: 20,
-    paddingLeft: 20,
-    paddingLeft: '25%',
+    paddingLeft: '45%',
   },
   addtocart: {
-    borderColor: '#bfbfbf',
+    borderColor: Color.darkGrey,
     borderWidth: 1,
     paddingHorizontal: 40,
     paddingVertical: 10,
@@ -109,11 +98,11 @@ const styles = StyleSheet.create({
   headertitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#3d4442',
+    color: Color.black,
   },
   secondheader: {
     fontSize: 18,
-    color: '#3d4442',
+    color: Color.black,
     fontWeight: '600',
   },
   poppularproducts: {

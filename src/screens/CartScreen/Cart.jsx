@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  Button,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Arrow from 'react-native-vector-icons/AntDesign';
@@ -23,8 +24,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
-
- 
 
   const ItemPrice = item.map(value => {
     const total = value.price * value.quantity;
@@ -43,7 +42,7 @@ const Cart = () => {
 
   return (
     <ScrollView nestedScrollEnabled={true}>
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={styles.parent}>
         <View style={styles.mainHeader}>
           <Arrow name="left" size={24} color="black" style={styles.icon} />
           <Text style={styles.title}>Cart</Text>
@@ -58,10 +57,10 @@ const Cart = () => {
                   style={styles.flatlistImage}
                 />
                 <View style={styles.container}>
-                  <Text>{item.title}</Text>
+                  <Text style={styles.itemtitle}>{item.title}</Text>
                   <View style={styles.Quantityadjustment}>
                     <Text style={styles.itemPrice}>${item.price}</Text>
-                    <View style={styles.Quantityadjustment}>
+                    <View style={styles.QuantityHandler}>
                       <TouchableOpacity
                         style={styles.decreaseButton}
                         onPress={() => {
@@ -119,9 +118,16 @@ const Cart = () => {
           <Text style={styles.billingUnits}>${SubTotal}</Text>
         </View>
         <View style={styles.bottom}>
-          <Text style={styles.bottomApply}>Total</Text>
-          <Text style={styles.subTotal}>${SubTotal}</Text>
-          <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
+          <View>
+            <Text style={styles.bottomApply}>Total</Text>
+            <Text style={styles.subTotal}>${SubTotal}</Text>
+            <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
+          </View>
+          <View style={styles.checkOut}>
+            <TouchableOpacity>
+              <Text style={styles.checkoutButton}>Checkout</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     </ScrollView>
