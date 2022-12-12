@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import Login from '../screen/authetic/Login';
-import Registration from '../screen/authetic/Registration';
+import LoginScreen from '../screen/authetic/LoginScreen';
+import RegistrationScreen from '../screen/authetic/RegistrationScreen';
 import TabNavigator from './TabNavigator';
 
 const Auth = createNativeStackNavigator();
@@ -9,8 +9,8 @@ const Auth = createNativeStackNavigator();
 export default function AuthNavigator() {
   return (
     <Auth.Navigator screenOptions={{headerShown: false}}>
-      <Auth.Screen name="Login" component={Login} />
-      <Auth.Screen name="Registration" component={Registration} />
+      <Auth.Screen name="Login" component={LoginScreen} />
+      <Auth.Screen name="Registration" component={RegistrationScreen} />
       <Auth.Screen name="Home" component={TabNavigator} />
     </Auth.Navigator>
   );

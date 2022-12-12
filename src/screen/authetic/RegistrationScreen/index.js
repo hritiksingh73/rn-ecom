@@ -1,15 +1,17 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
-import Textinput from '../../components/Textinput';
+import Textinput from '../../../components/Textinput';
 import {useDispatch} from 'react-redux';
-import {updateReg} from '../../redux/action/action';
-import Colors from '../../constants/Colors';
-import auth from '@react-native-firebase/auth';
+import {updateReg} from '../../../redux/action/action';
 
-const Registration = ({navigation}) => {
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import {styles} from './styles';
+
+const RegistrationScreen = ({navigation}) => {
   const dispatch = useDispatch();
+
   const [fullName, setfullName] = useState('');
   const [email, setEmail] = useState('');
   const [mobNo, setMobno] = useState('');
@@ -29,7 +31,18 @@ const Registration = ({navigation}) => {
         user.updateProfile({
           displayName: fullName,
         });
-        console.log(email);
+        firestore()
+          .collection('Users')
+          .doc(user.uid)
+          .set({
+            name: fullName,
+            email: email,
+            userUid: user.uid,
+          })
+          .then(() => {
+            console.log('User added!');
+          });
+        //console.log(email);
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -42,12 +55,13 @@ const Registration = ({navigation}) => {
         console.error(error);
       });
     dispatch(updateReg(object));
-    console.log(object);
+
+    //console.log(object);
   };
 
   return (
     <View style={styles.container}>
-      <View style={{flex: 1}}>
+      <View style={styles.subContainer}>
         <Text style={styles.text}>Register</Text>
         <IconAntDesign style={styles.icon} name="left" size={25} />
       </View>
@@ -96,67 +110,9 @@ const Registration = ({navigation}) => {
       <TouchableOpacity
         style={styles.logtwo}
         onPress={() => navigation.navigate('Login')}>
-        <Text
-          style={{color: 'rgb(112,192,59)', fontSize: 15, fontWeight: 'bold'}}>
-          Login here
-        </Text>
+        <Text style={styles.loginText}>Login here</Text>
       </TouchableOpacity>
     </View>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.background,
-  },
-  text: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    top: '20%',
-    right: '33%',
-  },
-  icon: {
-    top: '2%',
-    right: '35%',
-  },
-  field: {
-    bottom: 225,
-    right: 130,
-    fontWeight: 'bold',
-  },
-  btn: {
-    backgroundColor: 'rgb(112,192,59)',
-    height: 40,
-    width: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-    top: -140,
-  },
-  log: {
-    bottom: 60,
-    fontSize: 15,
-    fontWeight: 'bold',
-    right: 20,
-  },
-  logtwo: {
-    bottom: 78,
-    left: 112,
-  },
-  icontwo: {
-    bottom: 230,
-    right: 165,
-  },
-  errorMsg: {
-    color: 'red',
-    bottom: '20%',
-    right: '30%',
-  },
-  errorMsgofPass: {
-    color: 'red',
-    bottom: '380%',
-    right: '30%',
-  },
-});
-export default Registration;
+export default RegistrationScreen;

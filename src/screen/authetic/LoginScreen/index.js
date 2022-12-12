@@ -1,24 +1,16 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
-import Colors from '../../constants/Colors';
+import {Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch} from 'react-redux';
-import {updateUser} from '../../redux/action/action';
+import {updateUser} from '../../../redux/action/action';
 import auth from '@react-native-firebase/auth';
+import {styles} from './styles';
 
 let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/; // for mail pattern
 const passRegex =
   /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/; // for password
 
-const Login = ({navigation}) => {
+const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const [mail, setmail] = useState('');
   const [pass, setpass] = useState('');
@@ -33,18 +25,15 @@ const Login = ({navigation}) => {
     } catch (error) {
       console.error(error.code);
     }
-    // eslint-disable-next-line no-lone-blocks
-    {
-      navigation.navigate('Home');
-    }
+
     dispatch(updateUser(object));
-    //console.log(object);
+    navigation.navigate('Home');
   };
 
   return (
     <View style={styles.conatiner}>
       <View style={styles.top}>
-        <Image source={require('../../assests/grocery1.png')} />
+        <Image source={require('../../../assests/grocery1.png')} />
 
         <Text style={styles.textDesign}>Welcome back!</Text>
       </View>
@@ -85,147 +74,29 @@ const Login = ({navigation}) => {
         <Text style={styles.btnOne}>Login</Text>
       </TouchableOpacity>
       <Text style={styles.or}>OR</Text>
-      <Text style={{top: '10%', fontSize: 23, fontWeight: '500'}}>
-        Continue with
-      </Text>
+      <Text style={styles.text}>Continue with</Text>
 
-      <TouchableOpacity style={{right: 100}}>
+      <TouchableOpacity style={styles.position}>
         <Text style={styles.design}>Facebook</Text>
         <Image
           style={styles.designThree}
-          source={require('../../assests/facebook.png')}
+          source={require('../../../assests/facebook.png')}
         />
       </TouchableOpacity>
-      <TouchableOpacity style={{top: 28, left: 90}}>
+      <TouchableOpacity style={styles.googlePosition}>
         <Text style={styles.designFour}>Google</Text>
         <Image
           style={styles.designFive}
-          source={require('../../assests/google-logo.png')}
+          source={require('../../../assests/google-logo.png')}
         />
       </TouchableOpacity>
       <Text style={styles.log}>Didn't have an account?</Text>
       <TouchableOpacity
         style={styles.logtwo}
         onPress={() => navigation.navigate('Registration')}>
-        <Text
-          style={{color: 'rgb(112,192,59)', fontSize: 15, fontWeight: 'bold'}}>
-          Register Here
-        </Text>
+        <Text style={styles.textRegister}>Register Here</Text>
       </TouchableOpacity>
     </View>
   );
 };
-const styles = StyleSheet.create({
-  conatiner: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.background,
-  },
-  textDesign: {
-    fontSize: 20,
-    fontWeight: '500',
-    textAlign: 'center',
-    padding: '2%',
-  },
-  top: {
-    bottom: '5%',
-  },
-  icon: {
-    bottom: '620%',
-    right: '44%',
-  },
-  iconTwo: {
-    bottom: '12%',
-    right: '45%',
-  },
-  iconThree: {
-    bottom: '14%',
-    left: '38%',
-  },
-  touchable: {
-    bottom: '400%',
-    color: 'rgb(119,193,78)',
-  },
-  btn: {
-    backgroundColor: 'rgb(112,192,59)',
-    height: 40,
-    width: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-    top: 1,
-  },
-  or: {
-    fontSize: 20,
-    fontWeight: '400',
-    top: '5%',
-  },
-  design: {
-    fontSize: 20,
-    color: 'rgb(255,255,255)',
-    backgroundColor: 'rgb(59,89,152)',
-    paddingTop: 14,
-    paddingLeft: 55,
-
-    left: 15,
-    paddingBottom: 14,
-
-    paddingRight: 30,
-    top: 130,
-    // right:300
-  },
-
-  designThree: {
-    top: 88,
-    height: 30,
-    width: 30,
-    left: 35,
-    // right:40
-  },
-  designFour: {
-    fontSize: 18,
-    fontWeight: '700',
-    top: 20,
-    backgroundColor: 'rgb(255,255,255)',
-    paddingTop: 14,
-    paddingLeft: 55,
-
-    borderColor: 'rgb(210,210,210)',
-    borderWidth: 2,
-    paddingBottom: 14,
-
-    paddingRight: 30,
-  },
-  designFive: {
-    bottom: 23,
-    height: 30,
-    width: 30,
-    left: 20,
-  },
-  textField: {
-    fontSize: 20,
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    width: '85%',
-    top: '-2%',
-    padding: '2%',
-    margin: '3%',
-  },
-  log: {
-    bottom: -60,
-    fontSize: 15,
-    fontWeight: 'bold',
-    right: 40,
-  },
-  logtwo: {
-    top: 42,
-    left: 100,
-  },
-  errorMsg: {
-    color: 'red',
-    bottom: '3%',
-    right: '30%',
-    fontSize: 15,
-  },
-});
-export default Login;
+export default LoginScreen;

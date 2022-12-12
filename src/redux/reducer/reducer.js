@@ -6,6 +6,7 @@ const initialState = {
     email: '',
     Mobileno: '',
     Password: '',
+    user: '',
   },
   userLoginData: {
     mail: '',
