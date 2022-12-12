@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   imageStyle: {
+    flexDirection: 'row',
     borderWidth: 1,
     borderColor: color.lightgrey,
   },

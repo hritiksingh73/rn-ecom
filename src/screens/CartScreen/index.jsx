@@ -43,7 +43,7 @@ const Cart = ({navigation}) => {
   };
   const Tax = () => {
     let total = UserTotalPrice();
-    return (total * 12) / 100;
+    return (total * 18) / 100;
   };
   const SubTotal = () => {
     return UserTotalPrice() + DeliveryRate() + Tax();
@@ -150,23 +150,23 @@ const Cart = ({navigation}) => {
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Total</Text>
-              <Text style={styles.billingUnits}>${UserTotalPrice()}</Text>
+              <Text>${UserTotalPrice()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Delivery Charge</Text>
-              <Text style={styles.totalPrice}>${DeliveryRate()}</Text>
+              <Text>${DeliveryRate()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Coupon</Text>
-              <Text style={styles.totalPrice}>${Coupon()}</Text>
+              <Text>${Coupon()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Tax</Text>
-              <Text style={styles.totalPrice}>${Tax()}</Text>
+              <Text>${Tax()}</Text>
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingTextStyling}>Sub Total</Text>
-              <Text style={styles.totalPrice}>${SubTotal()}</Text>
+              <Text>${SubTotal()}</Text>
             </View>
           </View>
           <View style={styles.totalBlock}>
