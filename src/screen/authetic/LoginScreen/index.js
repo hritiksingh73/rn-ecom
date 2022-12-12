@@ -5,10 +5,9 @@ import {useDispatch} from 'react-redux';
 import {updateUser} from '../../../redux/action/action';
 import auth from '@react-native-firebase/auth';
 import {styles} from './styles';
+import images from '../../../config/image';
 
-let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/; // for mail pattern
-const passRegex =
-  /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/; // for password
+import regex from '../../../utils/regex';
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -33,7 +32,7 @@ const LoginScreen = ({navigation}) => {
   return (
     <View style={styles.conatiner}>
       <View style={styles.top}>
-        <Image source={require('../../../assests/grocery1.png')} />
+        <Image source={images.grocery1} />
 
         <Text style={styles.textDesign}>Welcome back!</Text>
       </View>
@@ -45,7 +44,9 @@ const LoginScreen = ({navigation}) => {
         onChangeText={Name => setmail(Name)}
         defaultValue={mail}
         onBlur={() => {
-          setisValidemail(reg.test(mail) === true ? '' : 'Incorrect email');
+          setisValidemail(
+            regex.reg.test(mail) === true ? '' : 'Incorrect email',
+          );
         }}
       />
       <Text style={styles.errorMsg}>{isValidemail}</Text>
@@ -57,7 +58,9 @@ const LoginScreen = ({navigation}) => {
         onChangeText={val => setpass(val)}
         defaultValue={pass}
         onBlur={() => {
-          setisPassValid(passRegex.test(pass) === true ? '' : 'NeedStrongPass');
+          setisPassValid(
+            regex.passRegex.test(pass) === true ? '' : 'NeedStrongPass',
+          );
         }}
       />
       <Text style={styles.errorMsg}>{isPassValid}</Text>
@@ -78,17 +81,11 @@ const LoginScreen = ({navigation}) => {
 
       <TouchableOpacity style={styles.position}>
         <Text style={styles.design}>Facebook</Text>
-        <Image
-          style={styles.designThree}
-          source={require('../../../assests/facebook.png')}
-        />
+        <Image style={styles.designThree} source={images.facebook} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.googlePosition}>
         <Text style={styles.designFour}>Google</Text>
-        <Image
-          style={styles.designFive}
-          source={require('../../../assests/google-logo.png')}
-        />
+        <Image style={styles.designFive} source={images.googleLogo} />
       </TouchableOpacity>
       <Text style={styles.log}>Didn't have an account?</Text>
       <TouchableOpacity

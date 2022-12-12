@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {IncCartItem, DecCartItem} from '../../../redux/action/action';
 
 import {styles} from './styles';
+import images from '../../../config/image';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,7 @@ const CartScreen = () => {
     <SafeAreaView style={styles.conatiner}>
       <Text style={styles.title}>Cart</Text>
       <View>
-        <Image
-          source={require('../../../assests/shopkeeper1.jpeg')}
-          style={styles.headImg}
-        />
+        <Image source={images.shopKeeper1} style={styles.headImg} />
         <Text style={styles.headTxt}>Super Fresh</Text>
       </View>
 

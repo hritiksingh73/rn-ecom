@@ -4,7 +4,7 @@ import {TextInput, StyleSheet} from 'react-native';
 const Textinput = props => {
   return (
     <TextInput
-      style={styles.design}
+      style={styles.textStyle}
       placeholder={props.placeholder}
       placeholderTextColor={props.placeholderTextColor}
       secureTextEntry={props.secureTextEntry}
@@ -20,7 +20,7 @@ const Textinput = props => {
 };
 
 const styles = StyleSheet.create({
-  design: {
+  textStyle: {
     fontSize: 20,
     borderBottomColor: 'black',
     borderBottomWidth: 1,

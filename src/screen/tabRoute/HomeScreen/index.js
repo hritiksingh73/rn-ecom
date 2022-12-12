@@ -11,89 +11,16 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useDispatch} from 'react-redux';
-
+import homedata from '../../../staticData/homedata';
 import {addtoCart} from '../../../redux/action/action';
 import firestore from '@react-native-firebase/firestore';
 import {styles} from './styles';
-
-const data = [
-  {
-    id: 1,
-    name: 'mango',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/mango.jpeg'),
-    quantity: 0,
-  },
-
-  {
-    id: 2,
-    name: 'pineapple',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/pineapple.jpeg'),
-    quantity: 0,
-  },
-
-  {
-    id: 3,
-    name: 'grapes',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/grapes.png'),
-    quantity: 0,
-  },
-
-  {
-    id: 4,
-    name: 'banana',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/banana.webp'),
-    quantity: 0,
-  },
-
-  {
-    id: 5,
-    name: 'Broccoli',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/Broccoli.jpeg'),
-    quantity: 0,
-  },
-
-  {
-    id: 6,
-    name: 'cabbage',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/cabbage.jpeg'),
-    quantity: 0,
-  },
-  {
-    id: 7,
-    name: 'Tomato',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/Tomato.webp'),
-    quantity: 0,
-  },
-  {
-    id: 8,
-    name: 'radish',
-    Price: 100,
-    oldPrice: 200,
-    image: require('../../../assests/radish.jpeg'),
-    quantity: 0,
-  },
-];
+import images from '../../../config/image';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
 
   const deliverData = item => {
-    navigation.navigate('Cart');
-
     dispatch(addtoCart(item));
     //console.log(item.id);
     firestore()
@@ -130,10 +57,7 @@ const HomeScreen = ({navigation}) => {
 
           <View style={styles.superFresh}>
             <View style={styles.flexStyl}>
-              <Image
-                style={styles.imgStyle}
-                source={require('../../../assests/Lettuce.jpeg')}
-              />
+              <Image style={styles.imgStyle} source={images.Lettuce} />
               <Text style={styles.headertitle}>Super Fresh</Text>
               <Feather name={'chevron-down'} size={20} />
               <Feather name={'heart'} size={28} style={styles.heartIcon} />
@@ -141,7 +65,7 @@ const HomeScreen = ({navigation}) => {
           </View>
           <View>
             <FlatList
-              data={data}
+              data={homedata}
               horizontal={true}
               renderItem={({item}) => {
                 return (
@@ -158,7 +82,7 @@ const HomeScreen = ({navigation}) => {
 
           <View>
             <FlatList
-              data={data}
+              data={homedata}
               horizontal={true}
               renderItem={({item}) => {
                 return (
@@ -192,7 +116,7 @@ const HomeScreen = ({navigation}) => {
 
           <View>
             <FlatList
-              data={data}
+              data={homedata}
               numColumns={'2'}
               renderItem={({item}) => {
                 return (

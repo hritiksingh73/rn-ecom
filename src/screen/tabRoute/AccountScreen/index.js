@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
+import {Text, View, SafeAreaView} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import IconAntDesign from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
+import Touchable from '../../../components/touchableOpacity';
 
 const AccountScreen = () => {
   const signOut = () => {
@@ -21,46 +22,19 @@ const AccountScreen = () => {
         </View>
       </View>
       <View style={styles.subContainer}>
-        <TouchableOpacity style={styles.arrange}>
-          <IconAntDesign
-            name={'person-outline'}
-            size={35}
-            style={styles.icondesign}
-          />
-          <Text>My Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.arrange}>
-          <IconAntDesign
-            name={'md-reader-outline'}
-            size={35}
-            style={styles.icondesign}
-          />
-          <Text>Manage Addresses</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.arrange}>
-          <IconAntDesign
-            name={'ios-menu-outline'}
-            size={35}
-            style={styles.icondesign}
-          />
-          <Text>Order History</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.arrange}>
-          <IconAntDesign
-            name={'heart-outline'}
-            size={35}
-            style={styles.icondesign}
-          />
-          <Text>My Wishlist</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.arrange} onPress={signOut}>
-          <IconAntDesign
-            name={'md-lock-closed-outline'}
-            size={35}
-            style={styles.icondesign}
-          />
-          <Text>Logout</Text>
-        </TouchableOpacity>
+        <Touchable name="person-outline" text="My Profile" />
+
+        <Touchable name="md-reader-outline" text="Manage Addresses" />
+
+        <Touchable name="ios-menu-outline" text="Order History" />
+
+        <Touchable name="heart-outline" text="My Wishlist" />
+
+        <Touchable
+          name="md-lock-closed-outline"
+          text="Logout"
+          onPress={signOut}
+        />
       </View>
     </SafeAreaView>
   );

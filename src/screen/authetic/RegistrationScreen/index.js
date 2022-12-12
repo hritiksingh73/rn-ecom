@@ -9,6 +9,8 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import {styles} from './styles';
 
+import regex from '../../../utils/regex';
+
 const RegistrationScreen = ({navigation}) => {
   const dispatch = useDispatch();
 
@@ -18,10 +20,6 @@ const RegistrationScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [isValidemail, setisValidemail] = useState(true);
   const [isPassValid, setisPassValid] = useState(true);
-
-  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/; // for mail pattern
-  const passRegex =
-    /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/; // for password
 
   const RegisterDetails = () => {
     const object = {fullName, email, mobNo, password};
@@ -77,7 +75,9 @@ const RegistrationScreen = ({navigation}) => {
         onChangeText={Email => setEmail(Email)}
         defaultValue={email}
         onBlur={() => {
-          setisValidemail(reg.test(email) === true ? '' : 'Incorrect email');
+          setisValidemail(
+            regex.reg.test(email) === true ? '' : 'Incorrect email',
+          );
         }}
       />
       <Text style={styles.errorMsg}>{isValidemail}</Text>
@@ -93,7 +93,7 @@ const RegistrationScreen = ({navigation}) => {
         secureTextEntry
         onBlur={() => {
           setisPassValid(
-            passRegex.test(password) === true ? '' : 'NeedStrongPass',
+            regex.passRegex.test(password) === true ? '' : 'NeedStrongPass',
           );
         }}
       />
