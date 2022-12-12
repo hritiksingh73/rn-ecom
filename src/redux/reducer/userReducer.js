@@ -56,12 +56,12 @@ export const userReducer = (state = initialState, action) => {
     case ActionTypes.ITEMS_INCRIMENT:
       let increaseItem = [...state.fruitCart];
       const incQuantity = increaseItem.map(item => {
-        return (item.id === payload) ? 
-              {
-                ...item,
-                numberOfItem: item.numberOfItem + 1,
-              } :
-               item
+        return item.id === payload
+          ? {
+              ...item,
+              numberOfItem: item.numberOfItem + 1,
+            }
+          : item;
       });
       return {
         ...state,
@@ -72,13 +72,12 @@ export const userReducer = (state = initialState, action) => {
     case ActionTypes.ITEMS_DECREMENT:
       let decreaseItem = [...state.fruitCart];
       const decQuantity = decreaseItem.map(item => {
-        return (item.id === payload && item.numberOfItem > 0) ?
-              {
-                ...item,
-                numberOfItem: item.numberOfItem - 1,
-              } 
-              :
-               item
+        return item.id === payload && item.numberOfItem > 0
+          ? {
+              ...item,
+              numberOfItem: item.numberOfItem - 1,
+            }
+          : item;
       });
       return {
         ...state,
@@ -86,11 +85,11 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case ActionTypes.USER_ID:
-      console.log('Reducer userid --> ', payload)
+      // console.log('Reducer userid --> ', payload);
       return {
         ...state,
         userID: payload,
-      }
+      };
 
     default:
       return state;

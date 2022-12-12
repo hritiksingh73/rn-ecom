@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import primeryColors from '../../../constants/primeryColors';
 
 const styles = StyleSheet.create({
     constainer: {
@@ -165,6 +166,31 @@ const styles = StyleSheet.create({
       fontSize: 17,
       fontWeight: '700',
       marginVertical: 15,
+    },
+    checkoutTxtBorder: {
+      flexDirection: 'row',
+      backgroundColor: 'black',
+      justifyContent: 'space-between',
+      marginTop: 20,
+      padding: 20,
+    },
+    checkoutTotalTxt: {
+      color: 'white',
+      fontSize: 22,
+      fontWeight: '500',
+    },
+    totClr: {
+      color: '#70c03b',
+      fontWeight: '600',
+      marginTop: 20,
+    },
+    totMsg: {
+      color: 'gray',
+      fontWeight: '500', 
+      marginBottom: 20, 
+    },
+    topMrgn: {
+      marginTop: 10
     },
   });
   

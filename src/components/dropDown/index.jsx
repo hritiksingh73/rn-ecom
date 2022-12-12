@@ -2,24 +2,49 @@ import React, {useState} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const places = [
-  {id: '1', place: 'Assam'},
-  {id: '2', place: 'Bihar'},
-  {id: '3', place: 'Gujarat'},
-  {id: '4', place: 'Haryana'},
-  {id: '5', place: 'Karnatak'},
-  {id: '6', place: 'Madhya Pradesh'},
-  {id: '7', place: 'Maharashtra'},
-  {id: '8', place: 'Punjab'},
+  {id: '1', place: 'indore'},
+  {id: '2', place: 'dewas'},
+  {id: '3', place: 'ujjain'},
+  {id: '4', place: 'bhopal'},
+  {id: '5', place: 'sagar'},
 ];
 
-const DropDown = () => {
+const DropDown = props => {
+  const data = props.data;
+  const SelectedCity = props.SelectedCity;
+  // console.log('DropDown component data: --> ', data);
+
   const [isTrue, setIsTrue] = useState(true);
   var val = true;
 
+  // const [open, setOpen] = useState(false);
+  // const [value, setValue] = useState(null);
+  // const [items, setItems] = useState([
+  //   {label: 'Apple', value: 'apple'},
+  //   {label: 'Banana', value: 'banana'},
+  //   {label: 'Banana', value: 'banana'},
+  //   {label: 'Banana', value: 'banana'}
+  // ]);
+
   return (
-    <View style={{alignItems: 'center'}}>
+    // <View>
+    //   <DropDownPicker
+    //     style={styles.testing}
+    //     open={open}
+    //     value={value}
+    //     items={items}
+    //     setOpen={setOpen}
+    //     setValue={setValue}
+    //     setItems={setItems}
+    //     zIndex={1000}
+    //     zIndexInverse={3000}
+    //   />
+    // </View>
+
+    <View style={styles.alinCntr}>
       <View style={styles.container}>
         <Feather name={'map-pin'} size={22} />
         <TouchableOpacity
@@ -29,18 +54,23 @@ const DropDown = () => {
             }
             setIsTrue(val);
           }}>
-          <Text style={{padding: 10}}>Choose Area</Text>
+          <Text style={styles.padig}>Choose Area</Text>
         </TouchableOpacity>
       </View>
 
       {isTrue ? (
         <Text></Text>
       ) : (
-        places.map((value, index) => {
+        data.map((value, index) => {
           return (
-            <View style={styles.DropDownStyle}>
-              <Text key={String(index)}>{value.place}</Text>
-            </View>
+            <TouchableOpacity
+              style={styles.DropDownStyle}
+              onPress={() => {
+                // console.log('value ---: ',value);
+                SelectedCity(value);
+              }}>
+              <Text key={String(index)}>{value.name}</Text>
+            </TouchableOpacity>
           );
         })
       )}

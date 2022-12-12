@@ -5,7 +5,7 @@ export const registerDetails = (name, email, number, password) => ({
   payload: {name, email, number, password},
 });
 
-export const AddFruitsToCart = (val) => ({
+export const AddFruitsToCart = val => ({
   type: ActionTypes.ADD_FRUITS_TO_CART,
   payload: val,
 });
@@ -24,4 +24,3 @@ export const UserId = val => ({
   type: ActionTypes.USER_ID,
   payload: val,
 });
-

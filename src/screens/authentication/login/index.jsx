@@ -14,9 +14,9 @@ import LoginBtn from '../../../components/loginBtn';
 import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) => {
+  
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
-
   const [isValidEmail, setIsValidEmail] = useState('');
   const [isValidPassword, setIsValidPassword] = useState('');
 

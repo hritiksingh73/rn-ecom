@@ -17,16 +17,12 @@ import PulsesGalleryScreen from '../screens/nativeStackScreens/PulsesGalleryScre
 import CartScreen from '../screens/tabNavigatorScreen/CartScreen';
 import FilterScreen from '../screens/nativeStackScreens/FilterScreen';
 
-
-
 const TabNavigator = () => {
   const tabStack = createBottomTabNavigator();
-
   return (
     <tabStack.Navigator>
       <tabStack.Screen
         name="Home"
-        // component={HomeScreen}
         component={FilterStackNavigator}
         options={{
           headerShown: false,
@@ -35,7 +31,6 @@ const TabNavigator = () => {
       />
       <tabStack.Screen
         name="Search"
-        // component={FilterStackNavigator}
         component={SearchScreen}
         options={{
           headerShown: false,
@@ -76,38 +71,47 @@ const FilterStackNavigator = () => {
       <Filter.Screen
         name="Fruits"
         component={FruitsGalleryScreen}
-        options={{headerShown: true, headerBackTitleVisible: false, 
-          headerRight: (() => {
-          return(
-            <TouchableOpacity>
-              <Feather name={'bell'} size={25}/>
-            </TouchableOpacity>
-          )})
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+          headerRight: () => {
+            return (
+              <TouchableOpacity>
+                <Feather name={'bell'} size={25} />
+              </TouchableOpacity>
+            );
+          },
         }}
       />
       <Filter.Screen
         name="Vegetables"
         component={VegetablesGalleryScreen}
-        options={{headerShown: true, headerBackTitleVisible: false,
-          headerRight: (() => {
-            return(
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+          headerRight: () => {
+            return (
               <TouchableOpacity>
-                <Feather name={'bell'} size={25}/>
+                <Feather name={'bell'} size={25} />
               </TouchableOpacity>
-            )})
-          }}
+            );
+          },
+        }}
       />
       <Filter.Screen
         name="Pulses"
         component={PulsesGalleryScreen}
-        options={{headerShown: true, headerBackTitleVisible: false,
-          headerRight: (() => {
-            return(
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+          headerRight: () => {
+            return (
               <TouchableOpacity>
-                <Feather name={'bell'} size={25}/>
+                <Feather name={'bell'} size={25} />
               </TouchableOpacity>
-            )})
-          }}
+            );
+          },
+        }}
       />
       <Filter.Screen
         name="Sort"
@@ -130,13 +134,15 @@ const MyAccountScreen = () => {
       <MyAccount.Screen
         name="My Account"
         component={AccountScreen}
-        options={{headerShown: true, 
-          headerRight: (() => {
-          return(
-            <TouchableOpacity onPress={()=>alert('bell ringing!')}>
-              <Feather name={'bell'} size={25}/>
-            </TouchableOpacity>
-          )})
+        options={{
+          headerShown: true,
+          headerRight: () => {
+            return (
+              <TouchableOpacity onPress={() => alert('bell ringing!')}>
+                <Feather name={'bell'} size={25} />
+              </TouchableOpacity>
+            );
+          },
         }}
       />
       <MyAccount.Screen
@@ -145,12 +151,13 @@ const MyAccountScreen = () => {
         options={{
           headerShown: true,
           headerBackTitleVisible: false,
-          headerRight: (() => {
-            return(
+          headerRight: () => {
+            return (
               <TouchableOpacity>
-                <Feather name={'edit'} size={25}/>
+                <Feather name={'edit'} size={25} />
               </TouchableOpacity>
-            )})
+            );
+          },
         }}
       />
       <MyAccount.Screen

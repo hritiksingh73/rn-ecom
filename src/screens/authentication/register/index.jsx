@@ -19,6 +19,8 @@ const Register = ({navigation}) => {
   const [isValidNumber, setIsValidNumber] = useState('');
   const [isValidPassword, setIsValidPassword] = useState('');
 
+  const [cartItem, setCartItem] = useState([]);
+
   const dispatch = useDispatch();
   const userID = useSelector(state => state.user.userID);
 
@@ -44,21 +46,22 @@ const Register = ({navigation}) => {
           .then(({user, additionalUserInfo}) => {
             user.updateProfile({
               displayName: userName,
-            })
+            });
             // firebase userid store in reducer
-            dispatch(UserId(user.uid))
+            dispatch(UserId(user.uid));
             console.log('User account created & signed in!');
 
-            firestore()
-              .collection('Praveen')
-              .doc(user.uid)
-              .set({
-                name: userName,
-                email: userEmail,
-              })
-              .then(() => {
-                console.log('User added!', userID);
+            // user details store in Users collection in firestore
+            firestore().collection('Users').doc(user.uid).set({
+              name: userName,
+              email: userEmail,
             });
+
+            // Empty array of Document created in Cart collection in firestore
+            firestore()
+              .collection('Cart')
+              .doc('ABC')
+              .set({cartItem})
           })
 
           .catch(error => {

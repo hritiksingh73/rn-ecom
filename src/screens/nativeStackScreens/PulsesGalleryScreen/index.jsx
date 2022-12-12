@@ -15,7 +15,7 @@ const PulsesGalleryScreen = ({navigation}) => {
           <MaterialCommunityIcons name={'sort-descending'} size={25} />
           <Text style={styles.sortStyl}>Sort</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.topRightHeader}
           onPress={() => navigation.navigate('VegetablesGallery')}>
           <MaterialCommunityIcons name={'sort-variant'} size={25} />
