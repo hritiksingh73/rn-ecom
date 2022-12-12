@@ -36,14 +36,14 @@ const Cart = ({navigation}) => {
     return TotalItemPrices;
   };
   const DeliveryRate = () => {
-    return 100;
+    return 10;
   };
   const Coupon = () => {
-    return 100;
+    return 10;
   };
   const Tax = () => {
     let total = UserTotalPrice();
-    return (total * 18) / 100;
+    return (total * 12) / 100;
   };
   const SubTotal = () => {
     return UserTotalPrice() + DeliveryRate() + Tax();
