@@ -18,6 +18,12 @@ import firestore from '@react-native-firebase/firestore';
 import {userFullInfo, userCreate} from '../../../redux/action/Action.js';
 import TextInputComponent from '../../../components/TextInputComponent.js';
 import styles from './styles.js';
+import {
+  EmailValid,
+  PasswordValid,
+  NameValid,
+  PhoneValid,
+} from '../../../../src/utils/rejexValidate';
 
 const RegisterScreen = ({navigation}) => {
   const [fullname, setFullName] = useState('');
@@ -78,27 +84,25 @@ const RegisterScreen = ({navigation}) => {
   };
 
   const checkValidFullName = () => {
-    let reg = /[a-zA-Z][a-zA-Z ]*/;
-    setFullNameValid(reg.test(fullname) === true ? '' : 'Enter a full name');
+    NameValid().test(fullname)
+      ? setFullNameValid('')
+      : setFullNameValid('Enter a valid name');
   };
 
   const checkValidEmail = () => {
-    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    setEmailValid(reg.test(email) === true ? '' : 'Wrong email');
+    EmailValid().test(email) ? setEmailValid('') : setEmailValid('Wrong Email');
   };
 
   const checkValidPassword = () => {
-    var Regex = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
-    setPasswordValid(
-      Regex.test(password) === true ? '' : 'Enter a valid password',
-    );
+    PasswordValid().test(password)
+      ? setPasswordValid('')
+      : setPasswordValid('Enter a Valid Password');
   };
 
   const checkValidMobileNo = () => {
-    var Regex = /^(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$/;
-    setMobileNoValid(
-      Regex.test(mobileno) === true ? '' : 'Enter a valid mobile no',
-    );
+    PhoneValid().test(mobileno)
+      ? setMobileNoValid('')
+      : setMobileNoValid('Enter a Valid mobile no');
   };
 
   return (
