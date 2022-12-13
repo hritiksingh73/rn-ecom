@@ -27,10 +27,6 @@ const DropDown = () => {
           const value = remoteConfig().getValue('citi');
           let remoteCities = JSON.parse(value.asString()).cities;
           setCiti(remoteCities);
-          console.log('RemoteCities------>', remoteCities);
-          console.log('value------>', value);
-          console.log('fetchedRemotely--------->', fetchedRemotely);
-          console.log('setCiti------>', setCiti);
           console.log(' new city has been added to flatlist');
         } else {
           console.log('No new Data has been Fetched');

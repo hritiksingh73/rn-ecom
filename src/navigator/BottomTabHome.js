@@ -1,12 +1,12 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Search from '../screens/SearchScreen/Search';
 import Cart from '../screens/CartScreen/Cart';
 import Account from '../screens/AccountScreen/Account';
 import Icon from 'react-native-vector-icons/AntDesign';
-import HomeScreen from '../screens/DisplayVariety/HomeScreen';
+import DisplayVariety from '../screens/DisplayVariety/DisplayVariety';
 import NavigationStack from './NavigationStack';
-import {useSelector} from 'react-redux';
 import {Color} from '../constant/Color';
 
 const Tab = createBottomTabNavigator();
@@ -25,7 +25,7 @@ const AppNavigator = () => {
 
       <Tab.Screen
         name="Search"
-        component={HomeScreen}
+        component={DisplayVariety}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="search1" {...props} />,
@@ -38,7 +38,7 @@ const AppNavigator = () => {
         options={{
           headerShown: false,
           tabBarBadge: item.length,
-          backgroundColor: Color.green,
+          tabBarBadgeStyle: { backgroundColor:Color.green },
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />

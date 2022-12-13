@@ -5,12 +5,6 @@ const InitialState = {
     name: '',
     uid: '',
   },
-  // RegisterPage: {
-  //   name: '',
-  //   registeremail: '',
-  //   cellNumber: '',
-  //   password: '',
-  // },
   isFetching: false,
   productData: [],
   cart: [],
@@ -19,11 +13,7 @@ const InitialState = {
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ActionType.LOGIN_USER:
-      // console.log(action.payload);
       return {...state, loginpage: {...action.payload}};
-
-    // case ActionType.REGISTER_USER:
-    // return {...state, RegisterPage: {...action.payload}};
 
     case ActionType.SET_INIT_DATA:
       return {...state, productData: action.payload};
@@ -32,7 +22,6 @@ const userReducer = (state = InitialState, action) => {
       return {...state, isFetching: action.payload};
 
     case ActionType.ADD_ITEM:
-      //  console.log([...state.cart,{...action.payload,quantity:1}])
       return {
         ...state,
         cart: [...state.cart, {...action.payload, quantity: 1}],

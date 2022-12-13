@@ -22,17 +22,17 @@ import {getInitialData} from '../../redux/thunk/ProductThunk';
 import {addItemToCart} from '../../redux/action/Action';
 import firestore from '@react-native-firebase/firestore';
 import styles from './styles';
-import Banner from './Banner';
+import {Banner} from '../../dummyData/Cards';
 import {Color} from '../../constant/Color';
 
 const SuperFresh = () => {
-  const Dispatch = useDispatch();
+  const dispatch = useDispatch();
   const {isFetching, productData} = useSelector(state => state.userInfo);
   const navigation = useNavigation();
   const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
 
-  const cartItem =( item )=> {
+  const cartItem = item => {
     firestore()
       .collection('Cart')
       .doc(userData.uid)
@@ -45,24 +45,31 @@ const SuperFresh = () => {
   };
 
   useEffect(() => {
-    Dispatch(getInitialData());
+    dispatch(getInitialData());
   }, []);
 
   const ListData = ({item}) => {
     return (
-      
-        <View style={styles.card}>
-          <Image source={{uri: item.image}} style={styles.imgStyle} />
-          <Text style={styles.itemTitle}>{item.title}</Text>
-          <Text style={styles.price}>${item.price} each</Text>
-          <TouchableOpacity
-            style={styles.addButton}
-            onPress={() => {
-              Dispatch(addItemToCart(item)), cartItem(item);
-            }}>
-            <Text style={styles.addtocart}>Add to Cart</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.card}>
+        <Image source={{uri: item.image}} style={styles.imgStyle} />
+        <Text style={styles.itemTitle} numberOfLines={1}>
+          {item.title}
+        </Text>
+        <Text style={styles.price}>${item.price} each</Text>
+        <Rating
+          ratingCount={item.rating.rate}
+          style={styles.rating}
+          imageSize={15}
+          readonly="true"
+        />
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => {
+            dispatch(addItemToCart(item)), cartItem(item);
+          }}>
+          <Text style={styles.addtocart}>Add to Cart</Text>
+        </TouchableOpacity>
+      </View>
     );
   };
 
@@ -78,7 +85,6 @@ const SuperFresh = () => {
 
   return (
     <ScrollView nestedScrollEnabled={true}>
-      {/* <Button title="Press" onPress={config} /> */}
       <SafeAreaView style={{backgroundColor: 'white'}}>
         <ActivityIndicator animating={isFetching} />
         <View style={styles.headerBar}>
@@ -94,7 +100,7 @@ const SuperFresh = () => {
           />
           <View style={styles.ratingcontainer}>
             <Text style={styles.secondheader}>Super Fresh</Text>
-            <Rating imageSize={15} ratingCount={5}   />
+            <Rating imageSize={15} ratingCount={5} />
           </View>
         </View>
 
@@ -105,7 +111,6 @@ const SuperFresh = () => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />
-        {/* <Button title='press' onPress={()=>{productList}}/> */}
         <View style={styles.popularproductcontainer}>
           <Text style={styles.poppularproducts}>Poppular Product </Text>
           <TouchableOpacity

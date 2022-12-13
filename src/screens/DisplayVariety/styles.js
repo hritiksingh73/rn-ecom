@@ -26,16 +26,21 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: 185,
-    height:315,
+    height:280,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor:Color.darkGrey
+    borderColor:Color.darkGrey,
+    paddingLeft:15
   },
   imageTitle: {
     fontSize: 15,
     color: Color.black,
     fontWeight:"500",
     paddingLeft:20,
+  },
+  rating:{
+    paddingRight:70,
+    
   },
   imagerating: {
     fontSize: 15,

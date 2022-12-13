@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Color} from '../../constant/Color';
+
 const styles = StyleSheet.create({
   headerBar: {
     flexDirection: 'row',
@@ -28,9 +29,9 @@ const styles = StyleSheet.create({
     borderColor: Color.darkGrey,
     borderWidth: 1,
     height: 310,
-    marginLeft:10,
-    marginRight:-10,
-    borderRightWidth:0.0
+    marginLeft: 10,
+    marginRight: -10,
+    borderRightWidth: 0.0,
   },
   itemTitle: {
     fontWeight: '400',
@@ -114,6 +115,9 @@ const styles = StyleSheet.create({
   popularproductcontainer: {
     flexDirection: 'row',
     marginVertical: 15,
+  },
+  rating: {
+    paddingRight: 100,
   },
 });
 

@@ -5,17 +5,6 @@ export const addUser = (email, uid, name) => ({
   payload: {email, uid, name},
 });
 
-// export const registerUser = (
-//   name,
-//   registeremail,
-//   cellNumber,
-//   phoneNumber,
-//   photoURL,
-// ) => ({
-//   type: ActionType.REGISTER_USER,
-//   payload: {name, registeremail, cellNumber, phoneNumber, photoURL},
-// });
-
 export const addItemToCart = data => ({
   type: ActionType.ADD_ITEM,
   payload: data,
@@ -31,7 +20,7 @@ export const increaseItemQuantity = item => ({
   payload: item,
 });
 
-export const DecreaseItemCountInCartAction = item => ({
+export const decreaseItemCountInCartAction = item => ({
   type: ActionType.DECREASE_ITEM_QUANTITY,
   payload: item
 })

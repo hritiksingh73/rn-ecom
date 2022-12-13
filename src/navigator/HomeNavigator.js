@@ -4,7 +4,7 @@ import AuthNavigator from './AuthNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import {addUser} from '../redux/action/Action';
-import {useDispatch /* useSelector*/} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 const HomeNavigator = () => {
   const [user, setUser] = useState('');

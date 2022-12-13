@@ -4,6 +4,7 @@ import { Color } from '../../constant/Color';
 const styles = StyleSheet.create({
   contaienr: {
     paddingTop: 10,
+    backgroundColor: Color.white
   },
   userDetails: {
     flexDirection: 'row',
@@ -13,7 +14,10 @@ const styles = StyleSheet.create({
     borderRightColor: Color.white,
     borderLeftColor: Color.white,
     borderTopColor: Color.white,
+    
     paddingTop: 40,
+    borderWidth:1,
+    borderBottomColor:Color.darkGrey
   },
   bottomHeadline: {
     paddingTop: '30%',
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
     paddingLeft:"13%"
   },
   loginButton: {
-    color: Color.green,
+    color: Color.green
   },
 });
 

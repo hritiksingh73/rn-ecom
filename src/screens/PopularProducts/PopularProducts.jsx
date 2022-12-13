@@ -20,12 +20,12 @@ import Filter from 'react-native-vector-icons/Ionicons';
 
 
 const PopularProducts = () => {
-  const Dispatch = useDispatch();
+  const dispatch = useDispatch();
   const items = useSelector(state => state.userInfo.productData);
   const navigation = useNavigation();
 
   useEffect(() => {
-    Dispatch(getInitialData());
+    dispatch(getInitialData());
   }, []);
 
   const ListData = ({item}) => {
@@ -51,7 +51,7 @@ const PopularProducts = () => {
             onPress={() => navigation.navigate('SuperFresh')}
           />
         </TouchableOpacity>
-        <Text style={{fontSize: 25}}>Popular Product</Text>
+        <Text style={styles.popularProducts}>Popular Product</Text>
         <Bell name="bell-badge-outline" size={30} />
       </View>
 

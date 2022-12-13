@@ -1,8 +1,6 @@
 import {ActionType} from '../action/ActionType';
 import axios from 'axios';
 
-
- 
 export const getInitialData = () => async Dispatch => {
   Dispatch({type: ActionType.SET_FETCHING, payload: true});
   try {

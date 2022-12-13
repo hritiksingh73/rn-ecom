@@ -1,41 +1,25 @@
 import imagePath from '../config/Image';
 
-const Cards = [
+export const  Banner = [
   {
     id: '1',
-    title: 'Contrary to Popular',
-    image: imagePath.artifacts,
+    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    image: imagePath.banner1,
   },
   {
     id: '2',
-    title: 'The standard ',
-    image: imagePath.shoes,
+    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    image: imagePath.banner2,
   },
   {
     id: '3',
-    title: 'Hampden-Sydney',
-    image: imagePath.clothing,
+    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    image: imagePath.banner3,
   },
   {
     id: '4',
-    title: 'Nullam amare',
-    image: imagePath.flowering,
-  },
-  {
-    id: '5',
-    title: 'FlowerShop',
-    image: imagePath.grocerry,
-  },
-  {
-    id: '6',
-    title: 'Mall',
-    image: imagePath.flowering,
-  },
-  {
-    id: '7',
-    title: 'Web Development',
-    image: imagePath.shoes,
-  },
+    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    image: imagePath.banner2,
+  }
 ];
 
-export default Cards;

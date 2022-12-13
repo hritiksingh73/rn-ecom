@@ -8,7 +8,7 @@ import Tree from 'react-native-vector-icons/Ionicons';
 import Branch from 'react-native-vector-icons/MaterialCommunityIcons';
 import Logout from 'react-native-vector-icons/MaterialIcons';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
-import analytics from '@react-native-firebase/analytics';
+
 const Account = () => {
   const signOut = () => {
     auth()
@@ -48,8 +48,6 @@ const Account = () => {
         <Logout name="logout" size={30} style={styles.favourite} />
         <Text style={styles.mycarticonsize}>Logout</Text>
       </TouchableOpacity>
-
-
     </SafeAreaView>
   );
 };

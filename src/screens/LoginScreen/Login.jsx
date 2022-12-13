@@ -1,14 +1,8 @@
-import {
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import Email from 'react-native-vector-icons/Fontisto';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -18,7 +12,7 @@ import auth from '@react-native-firebase/auth';
 import imagePath from '../../config/Image';
 import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
 import firestore from '@react-native-firebase/firestore';
-
+import {validateEmail, validatePassword} from '../../utils/Validation';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -29,23 +23,10 @@ const LoginPage = () => {
   });
   const userData = useSelector(state => state.userInfo.loginpage);
 
-  
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-
-  validateEmail = email => {
-    var rejx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return rejx.test(email);
-  };
-
-  validatePassword = userPassword => {
-    var rejx =
-      /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-    return rejx.test(userPassword);
-  };
 
   const emailValidator = () => {
-    email == '' || !validateEmail(email)
+    email === '' || !validateEmail(email)
       ? setValidation({
           emailError: 'please enter a valid email (eg: A@123@Indianic.com)',
         })
@@ -53,38 +34,33 @@ const LoginPage = () => {
   };
 
   const passwordValidator = () => {
-    userPassword == '' || !validatePassword(userPassword)
+    userPassword === '' || !validatePassword(userPassword)
       ? setValidation({
           passwordError: 'please enter a valid password ',
         })
       : setValidation({passwordError: ''});
   };
 
-  const dispatchCredentials = async () => { 
+  const dispatchCredentials = async () => {
     try {
-       firestore()
-      .collection(userData.name)
-      .doc(userData.uid)
-      .set({
-        CustomerCredentials: userData,
-      })
-      .then(() => {
-        console.log('User added! by Aditya');
-      });
+      firestore()
+        .collection(userData.name)
+        .doc(userData.uid)
+        .set({
+          CustomerCredentials: userData,
+        })
+        .then(() => {
+          console.log('User added! by Aditya');
+        });
 
       const userRes = await auth().signInWithEmailAndPassword(
         email,
         userPassword,
       );
-      
     } catch (error) {
       console.log(error.code);
     }
   };
-  
-
-
-
 
   const facebookButton = () => {
     alert('Facebook Login Successfull!!! ');

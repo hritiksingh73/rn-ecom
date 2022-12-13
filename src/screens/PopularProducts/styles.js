@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       paddingTop:10
     },
+    popularProducts:{fontSize: 25},
     choices:{
       flexDirection:"row",
       borderWidth:1,

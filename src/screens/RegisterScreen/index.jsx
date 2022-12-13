@@ -9,13 +9,19 @@ import {
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
+
 import Icon from 'react-native-vector-icons/AntDesign';
-import Email from 'react-native-vector-icons/Fontisto';
 import styles from './styles';
 import {addUser} from '../../redux/action/Action';
 import FormContainer from '../../component/FormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {
+  emailValidator,
+  contactValidator,
+  passwordValidator,
+} from '../../utils/Validation';
+
 const RegisterPage = () => {
   const [name, setName] = useState('');
   const [registeremail, setRegisterEmail] = useState('');
@@ -23,7 +29,6 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const userData = useSelector(state => state.userInfo.loginpage);
 
   const [validation, setValidation] = useState({
     errorname: '',
@@ -31,25 +36,6 @@ const RegisterPage = () => {
     errorcellNumber: '',
     errorpassword: '',
   });
-  // const registerUserDetails = () => {
-  //   auth()
-  // .createUserWithEmailAndPassword(registeremail, password)
-  // .then(() => {
-  //   console.log('User account created & signed in!');
-  // })
-  // .catch(error => {
-  //   if (error.code === 'auth/email-already-in-use') {
-  //     console.log('That email address is already in use!');
-  //   }
-
-  //   if (error.code === 'auth/invalid-email') {
-  //     console.log('That email address is invalid!');
-  //   }
-
-  //   console.error(error);
-  // });
-  //   // dispatch(registerUser(name, registeremail, cellNumber, password));
-  // };
   const registerUserDetails = async () => {
     try {
       const userRes = await auth().createUserWithEmailAndPassword(
@@ -59,8 +45,6 @@ const RegisterPage = () => {
       await userRes.user.updateProfile({
         displayName: name,
       });
-
-      //console.log('userRes=======>>', userRes);
       firestore()
         .collection('Users')
         .doc(userRes.user.uid)
@@ -79,33 +63,20 @@ const RegisterPage = () => {
   };
 
   const nameValidator = () => {
-    name == ''
+    name === ''
       ? setValidation({
           setErrorName: 'Name Should not contain Special Character ',
         })
       : setValidation({setErrorName: ''});
   };
-  const emailValidator = registeremail => {
-    var regx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return regx.test(registeremail);
-  };
-  const contactValidator = cellNumber => {
-    var regx = /^(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$/;
-    return regx.test(cellNumber);
-  };
-  const passwordValidator = password => {
-    var regx =
-      /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-    return regx.test(password);
-  };
 
   const validatorEmail = () => {
-    registeremail == '' || !emailValidator(registeremail)
+    registeremail === '' || !emailValidator(registeremail)
       ? setValidation({errorregisteremail: 'please enter a valid email'})
       : setValidation({errorregisteremail: ''});
   };
   const validatorMobile = () => {
-    cellNumber == '' || !contactValidator(cellNumber)
+    cellNumber === '' || !contactValidator(cellNumber)
       ? setValidation({errorcellNumber: 'please enter a valid mobile number'})
       : setValidation({errorcellNumber: ''});
   };
@@ -118,22 +89,20 @@ const RegisterPage = () => {
   };
   return (
     <KeyboardAvoidingView>
-      <SafeAreaView>
-        <View style={styles.contaienr}>
-          <View style={styles.userDetails}>
-            <Icon name="user" size={24} />
-            <FormContainer
-              placeholder="Full Name"
-              autoCapitalize="words"
-              onChangeText={text => setName(text)}
-              onBlur={() => nameValidator()}
-              value={name}
-            />
-          </View>
+      <SafeAreaView style={styles.contaienr}>
+        <View style={styles.userDetails}>
+          <Icon name="user" size={24} />
+          <FormContainer
+            placeholder="Full Name"
+            autoCapitalize="words"
+            onChangeText={text => setName(text)}
+            onBlur={() => nameValidator()}
+            value={name}
+          />
         </View>
         <Text style={styles.errormsg}>{validation.errorname}</Text>
         <View style={styles.userDetails}>
-          <Email name="email" size={24} />
+          <Icon name="mail" size={24} />
           <FormContainer
             keyboardType="email-address"
             placeholder="Email"

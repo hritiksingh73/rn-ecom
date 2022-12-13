@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput, StyleSheet, View} from 'react-native';
 
-const FormContainer = props => {
+const FormContainer = ({...props}) => {
   //const {placeholder, autoCapitalize, onChangeText, onBlur, value} = props;
   return (
     <TextInput
