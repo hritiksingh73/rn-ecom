@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 
-const SocialMedia = props => {
+const SocialMediaImage = props => {
   return (
     <Image source = {props.source} style = {props.style}
     />
   );
 };
-export default SocialMedia;
+export default SocialMediaImage;

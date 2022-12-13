@@ -8,26 +8,26 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import Data from '../../homeData/Data.js';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
+
 import {addToCart} from '../../redux/action/Action.js';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useNavigation} from '@react-navigation/native';
 import styles from './styles.js';
-import color from '../../constant/color'
+import color from '../../constant/color';
+import GroceryProduct from '../../data/GroceryProduct.js';
 
 const PopularProductScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
-  const userRecord = useSelector(state => state.userData.cartProduct);
 
   const addList = item => {
     dispatch(addToCart(item));
   };
 
-  const FlatListData = ({item}) => {
+  const PopularProductData = ({item}) => {
     return (
       <View style={styles.data}>
         <Image
@@ -41,7 +41,7 @@ const PopularProductScreen = ({navigation}) => {
           style={styles.button}
           onPress={() => {
             addList(item);
-            console.log(item.id);
+            // console.log(item.id);
           }}>
           <Text style={styles.cart}>Add to Cart</Text>
         </TouchableOpacity>
@@ -72,7 +72,11 @@ const PopularProductScreen = ({navigation}) => {
           </View>
         </View>
       </View>
-      <FlatList data={Data} numColumns={2} renderItem={FlatListData} />
+      <FlatList
+        data={GroceryProduct}
+        numColumns={2}
+        renderItem={PopularProductData}
+      />
     </SafeAreaView>
   );
 };

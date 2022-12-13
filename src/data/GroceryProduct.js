@@ -1,11 +1,12 @@
 import React from 'react';
+import image from '../config/Image'
 
-const Data = [
+const GroceryProduct = [
   {
     id: '1',
-    title:'Fennel',
+    title:'Mango',
     price: 27,
-    image: require('../assets/fresh-fennel.webp'),
+    image: image.mango,
     quantity:2,
     oldPrice: 240,
   },
@@ -13,7 +14,7 @@ const Data = [
     id: '2',
     title:'Radishes',
     price: 27,
-    image: require('../assets/reddishimage.jpeg'),
+    image: image.radishes,
     quantity:3,
     oldPrice: 20,
   },
@@ -21,7 +22,7 @@ const Data = [
     id: '3',
     title:'Banana',
     price: 20,
-    image: require('../assets/banana.jpeg'),
+    image: image.banana,
     quantity:4,
     oldPrice: 10,
   },
@@ -29,7 +30,7 @@ const Data = [
     id: '4',
     title:'Carrots',
     price: 40,
-    image: require('../assets/carrots.jpeg'),
+    image: image.carrots,
     quantity:5,
     oldPrice: 20,
   },
@@ -37,7 +38,7 @@ const Data = [
     id: '5',
     title:'Beetroot',
     price: 50,
-    image: require('../assets/beetroot.jpeg'),
+    image: image.beetroot,
     quantity:6,
     oldPrice: 30,
   },
@@ -45,7 +46,7 @@ const Data = [
     id: '6',
     title:'Garlic',
     price: 20,
-    image: require('../assets/garlic.jpeg'),
+    image: image.garlic,
     quantity:7,
     oldPrice: 20,
   },
@@ -53,7 +54,7 @@ const Data = [
     id: '7',
     title:'Ladyfinger',
     price: 80,
-    image: require('../assets/ladyfinger.jpeg'),
+    image: image.ladyfinger,
     quantity:8,
     oldPrice: 2,
   },
@@ -61,7 +62,7 @@ const Data = [
     id: '8',
     title:'Brinjal',
     price: 15,
-    image: require('../assets/brinjal.jpeg'),
+    image: image.brinjal,
     quantity:9,
     oldPrice: 70,
   },
@@ -69,7 +70,7 @@ const Data = [
     id: '9',
     title:'Brocolli',
     price: 30,
-    image: require('../assets/brocolli.jpeg'),
+    image: image.brocolli,
     quantity:10,
     oldPrice: 10,
   },
@@ -77,10 +78,10 @@ const Data = [
     id: '10',
     title:'Mushroom',
     price: 35,
-    image: require('../assets/mushroom.jpeg'),
+    image: image.mushroom,
     quantity:11,
     oldPrice: 50,
   },
 ];
 
-export default Data;
+export default GroceryProduct;

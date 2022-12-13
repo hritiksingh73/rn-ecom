@@ -15,27 +15,29 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Rating} from 'react-native-ratings';
 import {useDispatch, useSelector} from 'react-redux';
-import Data from '../../homeData/Data.js';
-import {addToCart} from '../../redux/action/Action.js';
-import List from '../../homeData/List.js';
-import styles from './styles.js';
 import firestore from '@react-native-firebase/firestore';
+
+import GroceryProduct from '../../data/GroceryProduct.js';
+import {addToCart} from '../../redux/action/Action.js';
+import SuperFreshItem from '../../data/SuperFreshItem.js';
+import styles from './styles.js';
 import color from '../../constant/color.js';
+import image from '../../config/Image.js';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const userRecord = useSelector(state => state.userData.userRecord);
+  const data = useSelector(state => state.userData.userRecord);
   const cartList = useSelector(state => state.userData.cartProducts);
-  const uID = useSelector(state => state.userData.userID);
+  const userID = useSelector(state => state.userData.userID);
   const FirestoreItem = item => {
     firestore()
       .collection('Cart')
-      .doc(uID)
+      .doc(userID)
       .set({
         ...cartList,
       })
       .then(() => {
-        console.log('User added!');
+        // console.log('User added!');
       });
   };
 
@@ -79,10 +81,7 @@ const SuperFreshScreen = ({navigation}) => {
           navigation.navigate('Cart');
         }}>
         <View style={styles.vegetableImage}>
-          <Image
-            source={require('../../assets/image3.jpeg')}
-            style={styles.freshImage}
-          />
+          <Image source={image.vegetable} style={styles.freshImage} />
           <View>
             <Text style={styles.superFresh}>Super Fresh</Text>
             <Text style={styles.rating}>*****</Text>
@@ -93,9 +92,10 @@ const SuperFreshScreen = ({navigation}) => {
         </View>
       </TouchableOpacity>
       <FlatList
-        data={List}
+        data={SuperFreshItem}
         renderItem={item => VeggiesItem(item)}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.id}
       />
       <View style={styles.iconCircle}>
@@ -106,9 +106,10 @@ const SuperFreshScreen = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <FlatList
-        data={Data}
+        data={GroceryProduct}
         renderItem={PopularProducts}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.id}
       />
     </SafeAreaView>

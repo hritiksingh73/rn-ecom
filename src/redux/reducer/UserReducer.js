@@ -5,11 +5,11 @@ const initialState = {
     fullname: '',
     email: '',
     mobileno: '',
-    uid:'',
+    uid: '',
   },
   cartProducts: [],
   quantity: '',
-  userID: ''
+  userID: '',
 };
 
 const userReducer = (state = initialState, action) => {
@@ -76,12 +76,11 @@ const userReducer = (state = initialState, action) => {
         cartProducts: decreaseItem,
       };
 
-      case ActionType.USER_ID:
-      // console.log('userid --> ', payload)
+    case ActionType.USER_ID:
       return {
         ...state,
         userID: payload,
-      }
+      };
     default:
       return state;
   }

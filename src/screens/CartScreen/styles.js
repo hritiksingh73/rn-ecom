@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
   },
   cart: {
     fontSize: 20,
-    marginLeft: 200,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   mainMargin: {
     marginHorizontal: 12,
@@ -23,9 +24,9 @@ const styles = StyleSheet.create({
   },
   superImage: {
     fontSize: 16,
-    fontWeight: '500',
-    marginHorizontal: 5,
-    paddingVertical: 20,
+    fontWeight: 'bold',
+    marginHorizontal: 7,
+    paddingVertical: 18,
   },
   delete: {
     color: color.white,
@@ -54,18 +55,20 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20,
     textAlign: 'center',
+    paddingTop: 3,
   },
   minus: {
     width: 30,
     fontSize: 20,
     color: 'black',
     textAlign: 'center',
+    paddingTop: 3,
   },
   number: {
     width: 50,
     fontSize: 16,
     textAlign: 'center',
-    paddingTop: 5,
+    paddingTop: 6,
   },
   itemDetail: {
     width: '60%',
@@ -103,6 +106,10 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 10,
     borderRadius: 20,
+  },
+  borderBotm: {
+    borderBottomWidth: 1,
+    borderColor: 'lightgray',
   },
   mainList: {
     flexDirection: 'row',
@@ -152,40 +159,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
-
   totalPrice: {
     fontSize: 15,
     fontWeight: 'bold',
     marginVertical: 15,
     color: color.white,
-  },
-  total: {
-    backgroundColor: color.black,
-    padding: 10,
-  },
-  totalText: {
-    color: 'green',
-  },
-  save: {
-    color: color.white,
-    fontWeight: 'bold',
-    fontSize: 13,
-  },
-  totalInput: {
-    fontSize: 20,
-  },
-  checkout: {
-    color: 'white',
-    marginTop: 100,
-    //marginBottom:100,
-    backgroundColor: 'rgb(89,193,80)',
-    padding: 20,
-    marginLeft: 180,
-    fontSize: 25,
-    fontWeight: 'bold',
-    height: 70,
-    width: 160,
-    borderWidth: 1,
   },
   billing: {
     marginLeft: 20,
@@ -207,9 +185,35 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
   },
-  price: {
-    fontSize: 15,
+  checkoutText: {
+    flexDirection: 'row',
+    backgroundColor: 'black',
+    justifyContent: 'space-between',
+    marginTop: 15,
+    padding: 20,
+  },
+  subTotalText: {
+    color: color.white,
+    fontSize: 20,
+    padding: 5,
     fontWeight: 'bold',
+  },
+  totalText: {
+    color: color.primary,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  saveText: {
+    color: 'gray',
+    fontWeight: 'bold',
+    marginBottom: 18,
+  },
+  checkoutButton: {
+    marginTop: 10,
+    height: 50,
+    width: 120,
+    backgroundColor: 'green',
+    padding: 5,
   },
 });
 

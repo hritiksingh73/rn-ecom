@@ -10,14 +10,15 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import color from '../../constant/color.js';
-import {useDispatch, useSelector} from 'react-redux';
-import {userFullInfo} from '../../redux/action/Action.js';
-import TextInputComponent from '../../components/TextInputComponent.js';
-import styles from '../LoginScreen/styles.js';
 import auth from '@react-native-firebase/auth';
-import image from '../../config/Image.js';
-import SocialMedia from '../../components/SocialMedia.js';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {userFullInfo} from '../../../redux/action/Action.js';
+import TextInputComponent from '../../../components/TextInputComponent.js';
+import styles from '../LoginScreen/styles.js';
+import image from '../../../config/Image.js';
+import SocialMediaImage from '../../../components/SocialMediaImage.js';
+import color from '../../../constant/color.js';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -25,7 +26,7 @@ const LoginScreen = ({navigation}) => {
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
   const dispatch = useDispatch();
-  const userRecord = useSelector(state => state.userData.userRecord);
+  const data = useSelector(state => state.userData.userRecord);
 
   const updateLogin = async () => {
     if (email === '' && password === '') {
@@ -41,10 +42,10 @@ const LoginScreen = ({navigation}) => {
 
         const res = dispatch(userFullInfo(userInfo));
 
-        console.log('---->', userRes);
-        console.log('userEmail, password---->', email, password);
+        // console.log('---->', userRes);
+        // console.log('userEmail, password---->', email, password);
       } catch (error) {
-        console.error(error.code);
+        // console.error(error.code);
       }
     }
   };
@@ -74,11 +75,11 @@ const LoginScreen = ({navigation}) => {
       <View style={styles.container}>
         <Image source={image.grocery} style={styles.groceryImage} />
         <Text style={styles.welcome}>Welcome Back!</Text>
-        <View style={styles.input}>
+        <View style={styles.inputText}>
           <Icon name="mail" size={20} />
           <TextInputComponent
             placeholder="Email"
-            style={styles.placeholder}
+            style={styles.placeholderInput}
             value={email}
             onBlur={validEmail}
             autoCapitalize="words"
@@ -86,12 +87,12 @@ const LoginScreen = ({navigation}) => {
           />
         </View>
         <Text style={styles.error}>{emailValid}</Text>
-        <View style={styles.input}>
+        <View style={styles.inputText}>
           <Icon name="key" size={20} />
           <TextInputComponent
             placeholder="Password"
             value={password}
-            style={styles.placeholder}
+            style={styles.placeholderInput}
             secureTextEntry={true}
             onBlur={validPassword}
             onChangeText={val => setPassword(val)}
@@ -110,11 +111,14 @@ const LoginScreen = ({navigation}) => {
         <Text style={styles.continuewith}>Continue With</Text>
         <View style={styles.button}>
           <TouchableOpacity onPress={facebook}>
-            <SocialMedia source={image.facebook} style={styles.facebook} />
+            <SocialMediaImage source={image.facebook} style={styles.facebook} />
           </TouchableOpacity>
           <View>
             <TouchableOpacity onPress={google}>
-              <SocialMedia source={image.googlebtn} style={styles.google} />
+              <SocialMediaImage
+                source={image.googlebtn}
+                style={styles.google}
+              />
             </TouchableOpacity>
           </View>
         </View>

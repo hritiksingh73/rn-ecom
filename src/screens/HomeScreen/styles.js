@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import color from '../../constant/color.js';
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -31,6 +32,9 @@ const styles = StyleSheet.create({
     margin: 7,
     borderWidth: 1,
     borderColor: 'silver',
+  },
+  mainHeader:{
+    backgroundColor:color.white
   },
   rating: {
     fontSize: 20,

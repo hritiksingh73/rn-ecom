@@ -12,13 +12,14 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import DropDown from '../../components/DropDown/index';
-import Veggies from '../../homeData/Veggies.js';
-import styles from './styles.js';
 import remoteConfig from '@react-native-firebase/remote-config';
 
+import DropDown from '../../components/DropDown/index';
+import Veggies from '../../data/Veggies.js';
+import styles from './styles.js';
+
 const HomeScreen = ({navigation}) => {
-  const renderItem = ({item}) => {
+  const homeItem = ({item}) => {
     return (
       <View style={styles.itemContainer}>
         <View style={styles.veggies}>
@@ -37,13 +38,13 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <View style={styles.mainHeader}>
       <DropDown />
       <View style={styles.input}>
         <Icon name="search1" size={20} style={styles.textInput} />
         <TextInput placeholder="Find Store" style={styles.textInput} />
       </View>
-      <FlatList data={Veggies} renderItem={renderItem} numColumns={2} />
+      <FlatList data={Veggies} renderItem={homeItem} numColumns={2} />
     </View>
   );
 };
