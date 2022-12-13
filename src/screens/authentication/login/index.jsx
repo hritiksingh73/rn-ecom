@@ -8,10 +8,10 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles';
-import {useDispatch, useSelector} from 'react-redux';
 import LoginTextField from '../../../components/textInputField';
 import LoginBtn from '../../../components/loginBtn';
 import auth from '@react-native-firebase/auth';
+import {ValidateEmail, ValidatePassword} from '../../../regexValidation';
 
 const Login = ({navigation}) => {
   
@@ -19,9 +19,6 @@ const Login = ({navigation}) => {
   const [userPassword, setUserPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState('');
   const [isValidPassword, setIsValidPassword] = useState('');
-
-  const dispatch = useDispatch();
-  const registerData = useSelector(state => state.user.registerData);
 
   const isValidate = async () => {
     if (userEmail === '' || userPassword === '') {
@@ -35,9 +32,8 @@ const Login = ({navigation}) => {
             userEmail,
             userPassword,
           );
-          // console.log('Login user ++> ', Response);
+          // console.log('Login user --> ', Response);
           console.log('\n\n===========userDetails==========');
-          // console.log('userName :', Response.additionalUserInfo.username);
           console.log('userName :', Response.user.displayName);
           console.log('userEmail :', Response.user.email);
           console.log('userNumber :', Response.user.phoneNumber);
@@ -49,27 +45,26 @@ const Login = ({navigation}) => {
           if (error.code === 'auth/wrong-password') {
             alert('you entered wrong password!');
           }
-          // console.error(error.code);
         }
       }
     }
   };
 
-  const ValidateEmail = () => {
-    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail)
+  const IsEmailValid = () => {
+    ValidateEmail().test(userEmail)
       ? setIsValidEmail('')
       : setIsValidEmail('Enter valid Email');
   };
 
-  const ValidatePassword = () => {
-    /^[a-zA-Z0-9!@#$%^&*]{6,12}$/.test(userPassword)
+  const IsPasswordValid = () => {
+    ValidatePassword().test(userPassword)
       ? setIsValidPassword('')
       : setIsValidPassword('Enter valid Password');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView style={styles.screenMargin}>
         <View style={styles.cntrItm}>
           <Image
             style={styles.headerImg}
@@ -84,7 +79,7 @@ const Login = ({navigation}) => {
           warrning={isValidEmail}
           onChangeText={val => {
             setUserEmail(val);
-            ValidateEmail();
+            IsEmailValid();
           }}
         />
         <LoginTextField
@@ -96,7 +91,7 @@ const Login = ({navigation}) => {
           warrning={isValidPassword}
           onChangeText={val => {
             setUserPassword(val);
-            ValidatePassword();
+            IsPasswordValid();
           }}
         />
 
@@ -116,11 +111,11 @@ const Login = ({navigation}) => {
 
         <View style={styles.imgContainer}>
           <Image
-            style={[styles.fbGoogleBtn, {marginRight: 6}]}
+            style={styles.fbBtn}
             source={require('../../../assets/images/facebook.jpg')}
           />
           <Image
-            style={[styles.fbGoogleBtn, {marginLeft: 6}]}
+            style={styles.googleBtn}
             source={require('../../../assets/images/google.jpg')}
           />
         </View>
@@ -128,7 +123,7 @@ const Login = ({navigation}) => {
         <Text style={styles.footerTxt}>
           <Text>Dont't have an account?</Text>
           <Text
-            style={{color: '#70c03b'}}
+            style={styles.rgstrTxt}
             onPress={() => {
               navigation.navigate('Register');
             }}>

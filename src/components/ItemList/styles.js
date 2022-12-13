@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   itemOuterContainer: {
     width: '50%',
     height: 300,
     borderWidth: 1,
-    borderColor: '#bfbfbf',
+    borderColor: colors.lightgray,
     borderRadius: 3,
   },
   imgContainer: {
@@ -37,13 +38,13 @@ const styles = StyleSheet.create({
   },
   itemMaxMrp: {
     fontSize: 14,
-    color: 'gray',
+    color: colors.gray,
     textDecorationLine: 'line-through',
     fontWeight: '500',
   },
   itemQnty: {
     fontSize: 14,
-    color: 'gray',
+    color: colors.gray,
     fontWeight: '500',
   },
   addToCartBtn: {
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   addToCartContainer: {
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: colors.lightgray,
     marginHorizontal: 25,
     marginVertical: 10,
     padding: 15,

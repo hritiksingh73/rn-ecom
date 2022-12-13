@@ -18,7 +18,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import styles from './style';
 import firestore from '@react-native-firebase/firestore';
 import LoginBtn from '../../../components/loginBtn';
-import cartSrnData from '../../../data/cartSrnData';
+import BillingDetail from '../../../components/billingDetailField';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -35,10 +35,6 @@ const CartScreen = () => {
       return tot + val;
     }, 0);
     return TotalItemPrices;
-  };
-
-  const DeliveryCharge = () => {
-    return 100;
   };
 
   const Coupon = () => {
@@ -61,8 +57,12 @@ const CartScreen = () => {
       }
     }
   };
-  const IsCouponApplied = () => {};
 
+  const IsCouponApplied = () => {};
+  
+  const DeliveryCharge = () => {
+    return 100;
+  };
   const ItemTax = () => {
     let tot = UserItemPrice();
     return (tot * 18) / 100;
@@ -87,6 +87,7 @@ const CartScreen = () => {
             />
             <Text style={styles.headerTxt}>Fresh Fruits</Text>
           </View>
+
           <View>
             <FlatList
               data={data}
@@ -120,7 +121,6 @@ const CartScreen = () => {
                             <Text style={styles.dec}>- </Text>
                           </TouchableOpacity>
                         </View>
-
                         <Text style={styles.num}>{item.numberOfItem}</Text>
                         <View style={styles.incrementBtnStyle}>
                           <TouchableOpacity
@@ -141,6 +141,7 @@ const CartScreen = () => {
                 );
               }}
             />
+
             <View style={styles.couponBlock}>
               <View style={styles.couponInnerBlock}>
                 <View style={styles.flxdir}>
@@ -169,25 +170,10 @@ const CartScreen = () => {
 
             <View style={styles.billingBoxStyling}>
               <Text style={styles.billBoxHeader}>Bill Details</Text>
-
-              <View style={styles.billingTxtBorder}>
-                <Text style={styles.billDetailTxt}>Total</Text>
-                <Text style={styles.pricingStyl}>₹{UserItemPrice()}</Text>
-              </View>
-
-              <View style={styles.billingTxtBorder}>
-                <Text style={styles.billDetailTxt}>Delivery Charge</Text>
-                <Text style={styles.pricingStyl}>₹{DeliveryCharge()}</Text>
-              </View>
-              <View style={styles.billingTxtBorder}>
-                <Text style={styles.billDetailTxt}>Coupon</Text>
-                <Text style={styles.pricingStyl}>₹{Coupon()}</Text>
-              </View>
-              <View style={styles.billingTxtBorder}>
-                <Text style={styles.billDetailTxt}>Tax</Text>
-                <Text style={styles.pricingStyl}>₹{ItemTax()}</Text>
-              </View>
-
+              <BillingDetail name={'Total'} myFunction={UserItemPrice}/>
+              <BillingDetail name={'Delivery Charge'} myFunction={DeliveryCharge}/>
+              <BillingDetail name={'Coupon'} myFunction={Coupon}/>
+              <BillingDetail name={'Tax'} myFunction={ItemTax}/>
               <View style={[styles.billingTxtBorder, {borderBottomWidth: 0}]}>
                 <Text style={styles.billingTotalTxt}>Sub Total</Text>
                 <Text style={styles.totalPricingStyl}>₹{TotalBilling()}</Text>
@@ -196,13 +182,13 @@ const CartScreen = () => {
           </View>
         </View>
       </View>
+
       <View style={styles.checkoutTxtBorder}>
         <View>
           <Text style={styles.totClr}>Total</Text>
           <Text style={styles.checkoutTotalTxt}>₹ {TotalBilling()}</Text>
           <Text style={styles.totMsg}>You save $ 5 on this</Text>
         </View>
-
         <View style={styles.topMrgn}>
           <LoginBtn name={'Checkout'} />
         </View>

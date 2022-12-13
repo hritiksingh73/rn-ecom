@@ -10,7 +10,7 @@ import {
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import DropDown from '../../../components/dropDown';
-import colors from '../../../redux/constants/colors';
+import colors from '../../../constants/colors';
 import remoteConfig from '@react-native-firebase/remote-config';
 import data from '../../../data/searchSrnData';
 
@@ -60,7 +60,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.HorizMargin}>
-        <View style={{backgroundColor: colors.primary}}>
+        <View style={styles.bgColor}>
           
           <DropDown data={remoteConf} SelectedCity={SelectedCity}/>
 

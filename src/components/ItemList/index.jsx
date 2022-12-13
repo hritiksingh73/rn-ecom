@@ -16,7 +16,6 @@ const ItemList = props => {
   const userID = useSelector(state => state.user.userID);
 
   const FireSotreDataHandler  = async (item) => {
-
     await firestore()
     .collection('Cart')
     .doc('ABC')
@@ -37,7 +36,6 @@ const ItemList = props => {
       // setAddToCartData(a)
       // console.log('data: ', addToCartData)
       }
-      
     })
     firestore()
       .collection('Cart')
@@ -46,7 +44,7 @@ const ItemList = props => {
       .set({resp})
       .then(() => {
         // console.log('Cart data added!');
-      });
+    });
   };
 
   const SetDataToCartScreen = item => {

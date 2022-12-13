@@ -1,17 +1,16 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   constainer: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   header: {
     flexDirection: 'row',
     width: '100%',
     borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
-    borderColor: 'gray',
+    borderColor: colors.gray,
   },
   topRightHeader: {
     flex: 1,

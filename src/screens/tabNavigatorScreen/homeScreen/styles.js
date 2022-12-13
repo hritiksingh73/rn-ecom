@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
       width: 200,
       height: 340,
       borderWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
       marginVertical: 10,
       marginRight: 10,
     },
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     },
     addToCartContainer: {
       borderWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
       marginHorizontal: 25,
       marginVertical: 10,
       padding: 15,
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     },
     category:{
       borderWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
       paddingVertical: 20,
       paddingHorizontal: 15,
       marginVertical: 2,

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   alinCntr: {
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: colors.lightgray,
     borderRadius: 3,
     margin: 2,
   },

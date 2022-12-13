@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {registerDetails, UserId} from '../../../redux/action/action';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {ValidateEmail, ValidatePassword, ValidateName, ValidateNumber} from '../../../regexValidation';
 
 const Register = ({navigation}) => {
   const [userName, setUserName] = useState('');
@@ -58,10 +59,7 @@ const Register = ({navigation}) => {
             });
 
             // Empty array of Document created in Cart collection in firestore
-            firestore()
-              .collection('Cart')
-              .doc('ABC')
-              .set({cartItem})
+            firestore().collection('Cart').doc('ABC').set({cartItem});
           })
 
           .catch(error => {
@@ -85,27 +83,26 @@ const Register = ({navigation}) => {
     }
   };
 
-  const ValidateName = () => {
-    /^[a-zA-Z ]+$/.test(userName)
+  const IsNameValidate = () => {
+    ValidateName().test(userName)
       ? setIsValidName('')
       : setIsValidName('Invalid Name');
   };
 
-  const ValidateEmail = () => {
-    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail)
+  const IsEmailValidate = () => {
+    ValidateEmail().test(userEmail)
       ? setIsValidEmail('')
       : setIsValidEmail('Invalid Email');
   };
 
-  const ValidateNumber = () => {
-    // /^[0]?[789]\d{9}$/.test(userNumber)
-    /^[789]\d{8}$/.test(userNumber)
+  const IsNumberValidate = () => {
+    ValidateNumber().test(userNumber)
       ? setIsValidNumber('')
       : setIsValidNumber('Invalid Number');
   };
 
-  const ValidatePassword = () => {
-    /^[a-zA-Z0-9!@#$%^&*]{6,12}$/.test(userPassword)
+  const IsPasswordValidate = () => {
+    ValidatePassword().test(userPassword)
       ? setIsValidPassword('')
       : setIsValidPassword('Enter Strong Password');
   };
@@ -124,7 +121,8 @@ const Register = ({navigation}) => {
             warrning={isValidName}
             onChangeText={val => {
               setUserName(val);
-              ValidateName();
+              // ValidateName();
+              IsNameValidate();
             }}
           />
           <LoginTextField
@@ -135,7 +133,8 @@ const Register = ({navigation}) => {
             warrning={isValidEmail}
             onChangeText={val => {
               setUserEmail(val);
-              ValidateEmail();
+              // ValidateEmail();
+              IsEmailValidate();
             }}
           />
           <LoginTextField
@@ -144,10 +143,10 @@ const Register = ({navigation}) => {
             maxLength={14}
             value={userNumber}
             warrning={isValidNumber}
-            // keyboardType='phone-pad'
             onChangeText={val => {
               setUserNumber(val);
-              ValidateNumber();
+              // ValidateNumber();
+              IsNumberValidate();
             }}
           />
           <LoginTextField
@@ -160,7 +159,8 @@ const Register = ({navigation}) => {
             warrning={isValidPassword}
             onChangeText={val => {
               setUserPassword(val);
-              ValidatePassword();
+              // ValidatePassword();
+              IsPasswordValidate();
             }}
           />
 
@@ -169,7 +169,7 @@ const Register = ({navigation}) => {
           <Text style={styles.footer}>
             <Text>Already have an account?</Text>
             <Text
-              style={{color: '#70c03b'}}
+              style={styles.loginHereTxt}
               onPress={() => {
                 navigation.navigate('Login');
               }}>

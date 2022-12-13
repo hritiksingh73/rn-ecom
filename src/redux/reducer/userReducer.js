@@ -12,42 +12,37 @@ export const userReducer = (state = initialState, action) => {
 
   switch (type) {
     case ActionTypes.REGISTER_DETAILS:
-      console.log(
-        'Registerd Details ----->',
-        payload.name,
-        payload.email,
-        payload.number,
-        payload.password,
-      );
+      const {name, email, number, password} = payload;
+      console.log('Registerd Details ----->', name, email, number, password);
       return {
         ...state,
         registerData: [
           ...state.registerData,
           {
-            Name: payload.name,
-            Email: payload.email,
-            Number: payload.number,
-            Password: payload.password,
+            Name: name,
+            Email: email,
+            Number: number,
+            Password: password,
           },
         ],
       };
 
     // Add FruitScreen items to CartScreen
     case ActionTypes.ADD_FRUITS_TO_CART:
-      // console.log('Add fruits to cart', payload)
+      const {id, title, rating, price, maxPrice, quantity, url, numberOfItem} = payload;
       return {
         ...state,
         fruitCart: [
           ...state.fruitCart,
           {
-            id: payload.id,
-            title: payload.title,
-            rating: payload.rating,
-            price: payload.price,
-            maxPrice: payload.maxPrice,
-            quantity: payload.quantity,
-            url: payload.url,
-            numberOfItem: payload.numberOfItem,
+            id: id,
+            title: title,
+            rating: rating,
+            price: price,
+            maxPrice: maxPrice,
+            quantity: quantity,
+            url: url,
+            numberOfItem: numberOfItem,
           },
         ],
       };

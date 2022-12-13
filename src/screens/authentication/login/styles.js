@@ -1,7 +1,11 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
+      backgroundColor: colors.white,
+    },
+    screenMargin: {
       marginHorizontal: '8%',
     },
     cntrItm: {
@@ -12,7 +16,7 @@ const styles = StyleSheet.create({
       marginBottom: '2%',
     },
     headerfnt: {
-      color: 'black',
+      color: colors.black,
       textAlign: 'center',
       fontSize: 20,
       fontWeight: '600',
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     },
     forgotTxt: {
       fontSize: 18,
-      color: '#70c03b',
+      color: colors.green,
       fontWeight: '500',
     },
     flxDirectn: {
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
     orTxtRow: {
       width: '43%',
       textAlign: 'center',
-      color: '#bfbfbf',
+      color: colors.lightgray,
       marginTop: '4%',
       marginBottom: '8%',
     },
@@ -40,13 +44,13 @@ const styles = StyleSheet.create({
       width: '8%',
       textAlign: 'center',
       fontSize: 18,
-      color: 'Black',
+      color: colors.black,
       marginHorizontal: 10,
       marginTop: '4%',
       marginBottom: '8%',
     },
     footerTxt: {
-      color: 'black',
+      color: colors.black,
       textAlign: 'center',
       fontSize: 16,
       fontWeight: '500',
@@ -56,12 +60,23 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       marginVertical: '12%',
     },
-    fbGoogleBtn: {
+    fbBtn: {
       flex: 1,
       borderWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
       borderRadius: 3,
+      marginRight: 6,
     },
+    googleBtn: {
+      flex: 1,
+      borderWidth: 1,
+      borderColor: colors.lightgray,
+      borderRadius: 3,
+      marginLeft: 6,
+    },
+    rgstrTxt: {
+      color: colors.green,
+    }
   });
 
 export default styles;

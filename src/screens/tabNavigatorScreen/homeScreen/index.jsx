@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles';
-import homeScreenData from '../../../data/homeScreenData';
+import veggiImages from '../../../data/homeScreenData';
 
 const SearchScreen = ({navigation}) => {
   const [data, setData] = useState({});
@@ -43,9 +43,7 @@ const SearchScreen = ({navigation}) => {
             );
           }}
         />
-        <Text style={styles.productHeading}>
-          Poppular Product
-        </Text>
+        <Text style={styles.productHeading}>Poppular Product</Text>
         {/* <FlatList
           data={data}
           horizontal={true}
@@ -79,12 +77,12 @@ const SearchScreen = ({navigation}) => {
           onPress={() => navigation.navigate('Fruits')}>
           <Text style={styles.categoryTxt}>Fruits Screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.category}
           onPress={() => navigation.navigate('Vegetables')}>
           <Text style={styles.categoryTxt}>Vegetables Screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.category}
           onPress={() => navigation.navigate('Pulses')}>
           <Text style={styles.categoryTxt}>Pulses Screen</Text>

@@ -4,19 +4,20 @@ import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 
 const LoginTextField = props => {
+  const {icon, secureTextEntry, rightIcon, warrning} = props;
   const [isEyeOn, setIsEyeOn] = useState(true);
 
   return (
     <>
       <View style={styles.container}>
-        <Feather name={props.icon} size={20} style={styles.icons} />
+        <Feather name={icon} size={20} style={styles.icons} />
         <TextInput
           style={styles.txtField}
           {...props}
-          secureTextEntry={props.secureTextEntry ? isEyeOn : false}
+          secureTextEntry={secureTextEntry ? isEyeOn : false}
         />
 
-        {props.secureTextEntry ? (
+        {secureTextEntry ? (
           <TouchableOpacity
             style={styles.rightIconsArea}
             onPress={() => {
@@ -26,7 +27,7 @@ const LoginTextField = props => {
               <Feather name="eye-off" size={20} style={styles.rightIcons} />
             ) : (
               <Feather
-                name={props.rightIcon}
+                name={rightIcon}
                 size={20}
                 style={styles.rightIcons}
               />
@@ -36,7 +37,7 @@ const LoginTextField = props => {
           <Text></Text>
         )}
       </View>
-      <Text style={styles.warningTxt}>{props.warrning}</Text>
+      <Text style={styles.warningTxt}>{warrning}</Text>
     </>
   );
 };

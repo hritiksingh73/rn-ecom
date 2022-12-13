@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
       borderBottomWidth: 1,
-      borderBottomColor: '#bfbfbf',
+      borderBottomColor: colors.lightgray,
       paddingVertical: '3%',
       marginTop: '6%',
       marginBottom: 4,
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
       width: '100%',
     },
     warningTxt: {
-      color: 'red',
+      color: colors.red,
     }
   });
 

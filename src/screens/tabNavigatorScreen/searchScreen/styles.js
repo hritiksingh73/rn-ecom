@@ -1,13 +1,17 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: 'white',
+      backgroundColor: colors.white,
     },
     HorizMargin: {
       marginHorizontal: '2%',
+    },
+    bgColor: {
+      backgroundColor: colors.white
     },
     txtContainer: {
       backgroundColor: '#e6e6e6',
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
       width: '46%',
       height: 200,
       borderWidth: 1,
-      borderColor: '#bfbfbf',
+      borderColor: colors.lightgray,
       borderRadius: 3,
       margin: '2%',
     },
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '70%',
       borderWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
     },
     itemTextContainer: {
       width: '100%',

@@ -6,8 +6,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import dropDownData from '../../data/dropDownData';
 
 const DropDown = props => {
-  const data = props.data;
-  const SelectedCity = props.SelectedCity;
+  const {data, SelectedCity} = props;
 
   const [isTrue, setIsTrue] = useState(true);
   var val = true;

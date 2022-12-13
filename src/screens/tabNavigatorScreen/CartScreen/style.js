@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
-import primeryColors from '../../../constants/primeryColors';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
     constainer: {
       width: '100%',
       height: '100%',
-      backgroundColor: 'white',
+      backgroundColor: colors.white,
     },
     horizontlmrgn: {
       marginHorizontal: 12,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     itemHeader: {
       flexDirection: 'row',
       borderBottomWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
     },
     headerTxt: {
       fontSize: 16,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     imgCntnr: {
       padding: 5,
       borderWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
     },
     itemImg: {
       width: 60,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     countingCntnr: {
       flexDirection: 'row',
       borderWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
       width: 110,
       height: 35,
       marginRight: 5,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     inc: {
       width: 30,
-      color: 'white',
+      color: colors.white,
       fontSize: 20,
       textAlign: 'center',
       paddingTop: 3,
@@ -91,16 +91,16 @@ const styles = StyleSheet.create({
     },
     counterBorder: {
       borderRightWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
     },
     incrementBtnStyle: {
-      backgroundColor: '#70c03b',
+      backgroundColor: colors.green,
       borderLeftWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
     },
     borderBotm: {
       borderBottomWidth: 1,
-      borderColor: 'lightgray',
+      borderColor: colors.lightgray,
     },
     couponBlock: {
       backgroundColor: '#e6e6e6',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     applyBtn: {
       fontSize: 18,
       textAlign: 'right',
-      color: '#70c03b',
+      color: colors.green,
       fontWeight: '600',
     },
     billingBoxStyling: {
@@ -140,22 +140,11 @@ const styles = StyleSheet.create({
       fontSize: 22,
       marginVertical: 15,
     },
-    billDetailTxt: {
-      fontSize: 16,
-      marginVertical: 15,
-      borderBottomWidth: 1,
-      borderBottomColor: 'black'
-    },
     billingTxtBorder: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       borderBottomWidth: 1, 
-      borderBottomColor: 'lightgray',
-    },
-    pricingStyl: {
-      fontSize: 16,
-      fontWeight: '500',
-      marginVertical: 15,
+      borderBottomColor: colors.lightgray,
     },
     billingTotalTxt: {
       fontSize: 17,
@@ -169,23 +158,23 @@ const styles = StyleSheet.create({
     },
     checkoutTxtBorder: {
       flexDirection: 'row',
-      backgroundColor: 'black',
+      backgroundColor: colors.black,
       justifyContent: 'space-between',
       marginTop: 20,
       padding: 20,
     },
     checkoutTotalTxt: {
-      color: 'white',
+      color: colors.white,
       fontSize: 22,
       fontWeight: '500',
     },
     totClr: {
-      color: '#70c03b',
+      color: colors.green,
       fontWeight: '600',
       marginTop: 20,
     },
     totMsg: {
-      color: 'gray',
+      color: colors.gray,
       fontWeight: '500', 
       marginBottom: 20, 
     },
