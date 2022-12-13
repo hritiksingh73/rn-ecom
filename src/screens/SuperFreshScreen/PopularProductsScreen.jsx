@@ -15,7 +15,7 @@ import ListItem from '../../components/ListItem';
 
 const PopularProductsScreen = () => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(state => state.userDataReducer.cartProducts);
+  const cartItems = useSelector(state => state.cartProductReducer.cartProducts);
   const userInfo = useSelector(state => state.userDataReducer.userDetails);
   const {goBack} = useNavigation();
 

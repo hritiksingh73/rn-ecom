@@ -15,7 +15,9 @@ import color from '../../constant/color';
 const WishlistScreen = props => {
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
-  const wishlistProduct = useSelector(state => state.userDataReducer.wishList);
+  const wishlistProduct = useSelector(
+    state => state.cartProductReducer.wishList,
+  );
 
   const removeProduct = item => {
     alert('Product removed from yout wishlist');

@@ -5,19 +5,13 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import ErrorMessage from './ErrorMessage';
 
 export default function TextField(props) {
-  const {name, text, placeholder, value, onPress, onChangeText} = props;
+  const {name, text} = props;
 
   return (
     <View style={styles.inputContainer}>
       <View style={styles.textInput}>
         <AntDesign name={name} size={20} style={{margin: 15}} />
-        <TextInput
-          placeholder={placeholder}
-          value={value}
-          onBlur={onPress}
-          onChangeText={onChangeText}
-          placeholderTextColor="black"
-        />
+        <TextInput {...props} placeholderTextColor="black" />
       </View>
       <ErrorMessage>{text}</ErrorMessage>
     </View>

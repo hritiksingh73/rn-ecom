@@ -7,7 +7,7 @@ import CartItems from './CartItems';
 import ListItem from '../../components/ListItem';
 
 export default function CartScreen() {
-  const cartData = useSelector(state => state.userDataReducer.cartProducts);
+  const cartData = useSelector(state => state.cartProductReducer.cartProducts);
 
   return (
     <ListItem

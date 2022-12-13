@@ -35,6 +35,7 @@ const renderGroceryProducts = products => {
 };
 const SuperFreshScreen = () => {
   const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -42,6 +43,7 @@ const SuperFreshScreen = () => {
         <Text style={styles.headerText}>Super Fresh</Text>
         <MaterialIcon name="bell-badge-outline" size={30} />
       </View>
+
       <ListItem
         data={GROCERIES}
         renderItem={renderSuperFreshItem}

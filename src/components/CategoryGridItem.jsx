@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imgStyle: {
-    width: 190,
-    height: 200,
+    width: 150,
+    height: 150,
     resizeMode: 'stretch',
   },
 });

@@ -13,6 +13,7 @@ const ProductItem = ({item, onAddToCart}) => {
   return (
     <View style={styles.productDetailContainer}>
       <CategoryGridItem imgSource={{uri: item.imageUrl}} />
+
       <View style={styles.itemDirection}>
         <Text>{item.title}</Text>
         <TouchableOpacity onPress={() => dispatch(addToWishlist(item))}>
@@ -21,6 +22,7 @@ const ProductItem = ({item, onAddToCart}) => {
       </View>
 
       <Text style={styles.priceTxt}>{item.price}</Text>
+
       <TouchableOpacity
         style={styles.btnContainer}
         onPress={() => onAddToCart(item)}>
