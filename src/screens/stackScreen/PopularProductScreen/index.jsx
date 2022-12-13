@@ -14,10 +14,10 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {addToCart} from '../../redux/action/Action.js';
+import {addToCart} from '../../../redux/action/Action.js';
 import styles from './styles.js';
-import color from '../../constant/color';
-import GroceryProduct from '../../data/GroceryProduct.js';
+import color from '../../../constant/color.js';
+import GroceryProduct from '../../../data/GroceryProduct.js';
 
 const PopularProductScreen = ({navigation}) => {
   const dispatch = useDispatch();

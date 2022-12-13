@@ -17,12 +17,12 @@ import {Rating} from 'react-native-ratings';
 import {useDispatch, useSelector} from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 
-import GroceryProduct from '../../data/GroceryProduct.js';
-import {addToCart} from '../../redux/action/Action.js';
-import SuperFreshItem from '../../data/SuperFreshItem.js';
+import GroceryProduct from '../../../data/GroceryProduct.js';
+import {addToCart} from '../../../redux/action/Action.js';
+import SuperFreshItem from '../../../data/SuperFreshItem.js';
 import styles from './styles.js';
-import color from '../../constant/color.js';
-import image from '../../config/Image.js';
+import color from '../../../constant/color.js';
+import image from '../../../config/Image.js';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -55,7 +55,9 @@ const SuperFreshScreen = ({navigation}) => {
     return (
       <View style={styles.data}>
         <Image source={item.image} style={styles.image} />
-        <Text style={styles.titleText}>{item.title}</Text>
+        <Text style={styles.titleText} numberOfLines={1}>
+          {item.title}
+        </Text>
         <Text style={styles.dollar}>{item.price}</Text>
         <TouchableOpacity
           style={styles.buttonText}
@@ -84,7 +86,7 @@ const SuperFreshScreen = ({navigation}) => {
           <Image source={image.vegetable} style={styles.freshImage} />
           <View>
             <Text style={styles.superFresh}>Super Fresh</Text>
-            <Text style={styles.rating}>*****</Text>
+            <Rating imageSize={15} ratingCount={5} />
           </View>
           <View style={styles.heart}>
             <Icon name="hearto" size={24} style={styles.heartIcon} />

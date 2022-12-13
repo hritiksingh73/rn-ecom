@@ -13,9 +13,10 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import remoteConfig from '@react-native-firebase/remote-config';
+import {Rating} from 'react-native-ratings'
 
-import DropDown from '../../components/DropDown/index';
-import Veggies from '../../data/Veggies.js';
+import DropDown from '../../../components/DropDown';
+import Veggies from '../../../data/Veggies';
 import styles from './styles.js';
 
 const HomeScreen = ({navigation}) => {
@@ -30,9 +31,13 @@ const HomeScreen = ({navigation}) => {
               resizeMode="cover"
             />
           </TouchableOpacity>
-          <Text style={styles.text}>{item.title}</Text>
-          <Text style={styles.rating}>{item.rating}</Text>
-        </View>
+          <Text style={styles.text} numberOfLines={1}>{item.title}</Text>
+          <Rating
+          ratingCount={item.rating.rate}
+          style={styles.rating}
+          imageSize={15}
+        />
+          </View>
       </View>
     );
   };

@@ -1,11 +1,12 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-//import HomeScreen from '../screens/HomeScreen';
-import CartScreen from '../screens/CartScreen/index';
-import SearchScreen from '../screens/SearchScreen';
-import AccountScreen from '../screens/AccountScreen/index';
-import VeggiesStackNavigator from '../navigations/VeggiesStackNavigator'
 import Icon from 'react-native-vector-icons/AntDesign';
+
+import CartScreen from '../screens/tabScreen/CartScreen/index';
+import SearchScreen from '../screens/tabScreen/SearchScreen/index';
+import AccountScreen from '../screens/tabScreen/AccountScreen/index';
+import VeggiesStackNavigator from '../navigations/VeggiesStackNavigator';
+import color from '../constant/color.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,6 +35,7 @@ const VeggiesTabNavigator = () => {
         options={{
           headerShown: false,
           tabBarBadge: 2,
+          tabBarBadgeStyle: {backgroundColor: 'green'},
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />

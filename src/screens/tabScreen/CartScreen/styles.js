@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import color from '../../constant/color.js';
+import color from '../../../constant/color';
 
 const styles = StyleSheet.create({
   container: {
@@ -171,12 +171,7 @@ const styles = StyleSheet.create({
   billingText: {
     fontSize: 20,
   },
-  billingTextStyling: {
-    fontSize: 16,
-    marginVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: color.black,
-  },
+
   billingStyling: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -184,6 +179,16 @@ const styles = StyleSheet.create({
     borderBottomColor: color.lightgrey,
     padding: 10,
     margin: 10,
+  },
+  billingText: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginVertical: 15,
+  },
+  priceTotal: {
+    fontSize: 17,
+    fontWeight: '700',
+    marginVertical: 15,
   },
   checkoutText: {
     flexDirection: 'row',

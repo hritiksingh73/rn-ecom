@@ -16,11 +16,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView} from 'react-native-virtualized-view';
 import firestore from '@react-native-firebase/firestore';
 
-import {removeToCart} from '../../redux/action/Action.js';
-import GroceryProduct from '../../data/GroceryProduct.js';
-import {increaseToCart, decreaseToCart} from '../../redux/action/Action.js';
+import {removeToCart} from '../../../redux/action/Action.js';
+import GroceryProduct from '../../../data/GroceryProduct.js';
+import {increaseToCart, decreaseToCart} from '../../../redux/action/Action.js';
 import styles from './styles.js';
-import image from '../../config/Image.js';
+import image from '../../../config/Image.js';
+import BillInfo from '../../../components/BillInfo';
+import LoginButton from '../../../components/LoginButton';
 
 const Cart = ({navigation}) => {
   const dispatch = useDispatch();
@@ -100,7 +102,10 @@ const Cart = ({navigation}) => {
                       <View style={styles.counting}>
                         <View style={styles.addButton}>
                           <TouchableOpacity
-                            onPress={() => dispatch(decreaseToCart(item.id))}>
+                            onPress={() => {
+                              dispatch(decreaseToCart(item.id));
+                              removeToCart(item.id);
+                            }}>
                             <Text style={styles.minus}> - </Text>
                           </TouchableOpacity>
                         </View>
@@ -133,26 +138,14 @@ const Cart = ({navigation}) => {
             </View>
             <View style={styles.billing}>
               <Text style={styles.billingText}>Bill Details</Text>
+              <BillInfo title="Total" functionName={UserTotalPrice} />
+              <BillInfo title="Delivery Charge" functionName={DeliveryRate} />
+              <BillInfo title="Coupon" functionName={Coupon} />
+              <BillInfo title="Tax" functionName={Tax} />
             </View>
             <View style={styles.billingStyling}>
-              <Text styles={styles.billingTextStyling}>Total</Text>
-              <Text>${UserTotalPrice()}</Text>
-            </View>
-            <View style={styles.billingStyling}>
-              <Text styles={styles.billingTextStyling}>Delivery Charge</Text>
-              <Text>${DeliveryRate()}</Text>
-            </View>
-            <View style={styles.billingStyling}>
-              <Text styles={styles.billingTextStyling}>Coupon</Text>
-              <Text>${Coupon()}</Text>
-            </View>
-            <View style={styles.billingStyling}>
-              <Text styles={styles.billingTextStyling}>Tax</Text>
-              <Text>${Tax()}</Text>
-            </View>
-            <View style={styles.billingStyling}>
-              <Text styles={styles.billingTextStyling}>Sub Total</Text>
-              <Text>${SubTotal()}</Text>
+              <Text styles={styles.billingText}>Sub Total</Text>
+              <Text styles={styles.priceTotal}>${SubTotal()}</Text>
             </View>
           </View>
         </View>
@@ -163,7 +156,7 @@ const Cart = ({navigation}) => {
             <Text style={styles.saveText}>You save $ 5 on this</Text>
           </View>
           <View style={styles.checkoutButton}>
-            <Button title="Checkout" color="white" />
+            <LoginButton name="Checkout" />
           </View>
         </View>
       </ScrollView>

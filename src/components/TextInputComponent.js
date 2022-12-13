@@ -1,16 +1,20 @@
 import React from 'react';
-import {TextInput, StyleSheet} from 'react-native';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const TextInputComponent = props => {
+  const {placeholder, style, value, onBlur, onChangeText, autoCapitalize} = props;
   return (
     <TextInput
-      style={props.style}
-      placeholder={props.placeholder}
-      autoCapitalize={props.autoCapitalize}
-      onChangeText={props.onChangeText}
-      onBlur={props.onBlur}
-      value={props.onvalue}
+      style={style}
+      placeholder={placeholder}
+      autoCapitalize={autoCapitalize}
+      onChangeText={onChangeText}
+      onBlur={onBlur}
+      value={value}
     />
   );
 };
+
+const styles = StyleSheet.create({});
 export default TextInputComponent;

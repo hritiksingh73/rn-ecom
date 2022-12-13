@@ -1,7 +1,8 @@
 import React from 'react';
 import {Text, View, StyleSheet, SafeAreaView, Button} from 'react-native';
+import styles from './styles.js';
 
-const Sort = () => {
+const SortScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -12,30 +13,14 @@ const Sort = () => {
         <Text style={styles.text}>Discount</Text>
       </View>
       <View style={styles.button}>
-        <Button title="Cancel" />
+        <Button
+          title="Cancel"
+          onPress={() => navigation.navigate('Popular Products')}
+        />
         <Button title="Apply" />
       </View>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    marginLeft: 20,
-  },
-  sort: {
-    textAlign: 'center',
-    fontSize: 20,
-    margin: 15,
-  },
-  text: {
-    padding: 10,
-  },
-  button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-export default Sort;
+export default SortScreen;

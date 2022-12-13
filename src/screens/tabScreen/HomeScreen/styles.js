@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
-import color from '../../constant/color.js';
+import color from '../../../constant/color';
 
 const styles = StyleSheet.create({
   itemContainer: {
     width: 190,
     height: 230,
-    marginLeft:15,
-    marginRight:1,
+    marginLeft: 15,
+    marginRight: 1,
     borderWidth: 1,
     borderColor: 'silver',
     borderRadius: 5,
@@ -33,14 +33,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'silver',
   },
-  mainHeader:{
-    backgroundColor:color.white
+  mainHeader: {
+    backgroundColor: color.white,
   },
   rating: {
     fontSize: 20,
-    marginLeft: 80,
     fontWeight: 'bold',
-    color:'green'
   },
   textInput: {
     fontSize: 16,
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     fontWeight: 'bold',
-    marginLeft: 30,
     margin: 7,
   },
 });

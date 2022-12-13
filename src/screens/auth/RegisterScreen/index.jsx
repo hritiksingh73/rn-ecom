@@ -24,6 +24,7 @@ import {
   NameValid,
   PhoneValid,
 } from '../../../../src/utils/rejexValidate';
+import LoginButton from '../../../components/LoginButton';
 
 const RegisterScreen = ({navigation}) => {
   const [fullname, setFullName] = useState('');
@@ -157,11 +158,7 @@ const RegisterScreen = ({navigation}) => {
       </View>
       <Text style={styles.text}>{passwordValid}</Text>
       <View style={styles.button}>
-        <Button
-          title="Register"
-          color="limegreen"
-          onPress={() => updateRegister()}
-        />
+        <LoginButton name="Register" onPress={() => updateRegister()} />
       </View>
       <View style={styles.bottomLine}>
         <Text style={styles.account}>Don't have an account?</Text>

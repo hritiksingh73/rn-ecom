@@ -19,6 +19,7 @@ import styles from '../LoginScreen/styles.js';
 import image from '../../../config/Image.js';
 import SocialMediaImage from '../../../components/SocialMediaImage.js';
 import color from '../../../constant/color.js';
+import LoginButton from '../../../components/LoginButton'
 import {EmailValid, PasswordValid} from '../../../../src/utils/rejexValidate';
 
 const LoginScreen = ({navigation}) => {
@@ -93,7 +94,7 @@ const LoginScreen = ({navigation}) => {
         <Text style={styles.error}>{passwordValid}</Text>
         <Text style={styles.forgot}>Forgot Password?</Text>
         <View style={styles.login}>
-          <Button title={'Login'} color="limegreen" onPress={updateLogin} />
+          <LoginButton name='Login' onPress={updateLogin} />
         </View>
         <View style={styles.or}>
           <View style={styles.line} />

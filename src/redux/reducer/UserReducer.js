@@ -24,23 +24,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case ActionType.ADD_TO_CART:
-      return {
-        ...state,
-        cartProducts: [
-          ...state.cartProducts,
-          {
-            id: payload.id,
-            title: payload.title,
-            //rating: payload.rating,
-            price: payload.price,
-            quantity: payload.quantity,
-            image: payload.image,
-            oldPrice: payload.oldPrice,
-          },
-        ],
-      };
-
-    //return {...state, cartProducts: [...state.cartProducts, action.payload]};
+      return {...state, cartProducts: [...state.cartProducts, action.payload]};
 
     case ActionType.REMOVE_CART:
       return {
