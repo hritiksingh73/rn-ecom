@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}) => {
           </TouchableOpacity>
           <Text style={styles.text} numberOfLines={1}>{item.title}</Text>
           <Rating
-          ratingCount={item.rating.rate}
+          ratingCount={item.rating}
           style={styles.rating}
           imageSize={15}
         />
