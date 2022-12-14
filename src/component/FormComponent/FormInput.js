@@ -1,19 +1,18 @@
 import React from 'react';
-import {TextInput, StyleSheet, View} from 'react-native';
+import {TextInput, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
+import styles from './styles';
 
 const FormContainer = ({...props}) => {
-  //const {placeholder, autoCapitalize, onChangeText, onBlur, value} = props;
   return (
-    <TextInput
-      {...props}
-      //placeholder={placeholder}
-      // autoCapitalize={autoCapitalize}
-      // onChangeText={onChangeText}
-      // onBlur={onBlur}
-      // value={value}
-    />
+    <>
+      <Text style={styles.userInputHeader}>{props.Text}</Text>
+      <View style={styles.userDetails}>
+        <Icon name={props.Icon} size={24} />
+        <TextInput {...props} />
+      </View>
+    </>
   );
 };
-const styles = StyleSheet.create({});
 
 export default FormContainer;

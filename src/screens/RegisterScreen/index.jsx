@@ -87,54 +87,47 @@ const RegisterPage = () => {
         })
       : setValidation({errorpassword: ''});
   };
+
   return (
     <KeyboardAvoidingView>
       <SafeAreaView style={styles.contaienr}>
-        <View style={styles.userDetails}>
-          <Icon name="user" size={24} />
-          <FormContainer
-            placeholder="Full Name"
-            autoCapitalize="words"
-            onChangeText={text => setName(text)}
-            onBlur={() => nameValidator()}
-            value={name}
-          />
-        </View>
+        <FormContainer
+          Icon="user"
+          placeholder="Full Name"
+          autoCapitalize="words"
+          onChangeText={text => setName(text)}
+          onBlur={() => nameValidator()}
+          value={name}
+        />
         <Text style={styles.errormsg}>{validation.errorname}</Text>
-        <View style={styles.userDetails}>
-          <Icon name="mail" size={24} />
-          <FormContainer
-            keyboardType="email-address"
-            placeholder="Email"
-            autoCapitalize="words"
-            onChangeText={text => setRegisterEmail(text)}
-            onBlur={() => validatorEmail()}
-            value={registeremail}
-          />
-        </View>
+        <FormContainer
+          Icon="mail"
+          keyboardType="email-address"
+          placeholder="Email"
+          autoCapitalize="words"
+          onChangeText={text => setRegisterEmail(text)}
+          onBlur={() => validatorEmail()}
+          value={registeremail}
+        />
         <Text style={styles.errormsg}>{validation.errorregisteremail}</Text>
-        <View style={styles.userDetails}>
-          <Icon name="mobile1" size={24} />
-          <FormContainer
-            keyboardType="phone-pad"
-            placeholder="Mobile Number"
-            autoCapitalize="words"
-            onChangeText={text => setCellNumber(text)}
-            onBlur={() => validatorMobile()}
-            value={cellNumber}
-          />
-        </View>
+        <FormContainer
+          Icon="mobile1"
+          keyboardType="phone-pad"
+          placeholder="Mobile Number"
+          autoCapitalize="words"
+          onChangeText={text => setCellNumber(text)}
+          onBlur={() => validatorMobile()}
+          value={cellNumber}
+        />
         <Text style={styles.errormsg}>{validation.errorcellNumber}</Text>
-        <View style={styles.userDetails}>
-          <Icon name="key" size={24} />
-          <FormContainer
-            placeholder="Password"
-            autoCapitalize="words"
-            onChangeText={text => setPassword(text)}
-            onBlur={() => validatorPassword()}
-            value={password}
-          />
-        </View>
+        <FormContainer
+          Icon="key"
+          placeholder="Password"
+          autoCapitalize="words"
+          onChangeText={text => setPassword(text)}
+          onBlur={() => validatorPassword()}
+          value={password}
+        />
         <Text style={styles.errormsg}>{validation.errorpassword}</Text>
         <TouchableOpacity
           style={styles.registerButtonContainer}

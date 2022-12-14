@@ -15,7 +15,6 @@ import styles from './styles';
 import DropDown from '../../component/DropDown';
 import {Rating} from 'react-native-ratings';
 
-
 const shoppingCards = ({item}) => {
   return (
     <View style={styles.mainContainer}>

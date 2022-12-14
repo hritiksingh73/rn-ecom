@@ -1,23 +1,10 @@
 import {StyleSheet} from 'react-native';
-import { Color } from '../../constant/Color';
+import {Color} from '../../constant/Color';
 
 const styles = StyleSheet.create({
   contaienr: {
     paddingTop: 10,
-    backgroundColor: Color.white
-  },
-  userDetails: {
-    flexDirection: 'row',
-    alignSelf: 'center',
-    alignItems: 'center',
-    width: 350,
-    borderRightColor: Color.white,
-    borderLeftColor: Color.white,
-    borderTopColor: Color.white,
-    
-    paddingTop: 40,
-    borderWidth:1,
-    borderBottomColor:Color.darkGrey
+    backgroundColor: Color.white,
   },
   bottomHeadline: {
     paddingTop: '30%',
@@ -40,12 +27,11 @@ const styles = StyleSheet.create({
   },
   errormsg: {
     color: Color.red,
-    paddingLeft:"13%"
+    paddingLeft: '13%',
   },
   loginButton: {
-    color: Color.green
+    color: Color.green,
   },
 });
-
 
 export default styles;
