@@ -4,6 +4,7 @@ import color from '../../../constant/color';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   search: {
     alignItems: 'center',
@@ -20,6 +21,8 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 10,
+    borderWidth: 1,
+    borderColor: 'lightgrey',
   },
   data: {
     borderWidth: 1,

@@ -4,24 +4,17 @@ import color from '../../../constant/color';
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    backgroundColor: color.white,
   },
   groceryImage: {
     width: 200,
     height: 50,
-    marginTop: 20,
+    marginTop: 50,
   },
   welcome: {
     margin: 20,
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  inputText: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderColor: 'green',
-    borderTopColor: 'white',
-    borderLeftColor: 'white',
   },
   placeholderInput: {
     padding: 20,
@@ -68,7 +61,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginRight: 20,
     paddingTop: 20,
-    marginLeft:15
+    marginLeft: 15,
   },
   google: {
     flexDirection: 'row',

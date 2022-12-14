@@ -26,9 +26,9 @@ import LoginButton from '../../../components/LoginButton';
 
 const Cart = ({navigation}) => {
   const dispatch = useDispatch();
-  const cart = useSelector(state => state.userData.cartProducts);
+  const cart = useSelector(state => state.cartData.cartProducts);
 
-  const UserTotalPrice = () => {
+  const CalculateUserTotalPrice = () => {
     const ItemTotalPrice = cart.map(value => {
       let total = value.price * value.quantity;
       return total;
@@ -39,18 +39,18 @@ const Cart = ({navigation}) => {
     }, 0);
     return TotalItemPrices;
   };
-  const DeliveryRate = () => {
+  const CalculateDeliveryRate = () => {
     return 10;
   };
-  const Coupon = () => {
+  const CalculateCoupon = () => {
     return 10;
   };
-  const Tax = () => {
-    let total = UserTotalPrice();
+  const CalculateTax = () => {
+    let total = CalculateUserTotalPrice();
     return (total * 12) / 100;
   };
-  const SubTotal = () => {
-    return UserTotalPrice() + DeliveryRate() + Tax();
+  const CalculateSubTotal = () => {
+    return CalculateUserTotalPrice() + CalculateDeliveryRate() + CalculateTax();
   };
 
   const removeList = item => {
@@ -104,7 +104,7 @@ const Cart = ({navigation}) => {
                           <TouchableOpacity
                             onPress={() => {
                               dispatch(decreaseToCart(item.id));
-                              removeToCart(item.id);
+                              // removeToCart(item.id);
                             }}>
                             <Text style={styles.minus}> - </Text>
                           </TouchableOpacity>
@@ -138,21 +138,21 @@ const Cart = ({navigation}) => {
             </View>
             <View style={styles.billing}>
               <Text style={styles.billingText}>Bill Details</Text>
-              <BillInfo title="Total" functionName={UserTotalPrice} />
-              <BillInfo title="Delivery Charge" functionName={DeliveryRate} />
-              <BillInfo title="Coupon" functionName={Coupon} />
-              <BillInfo title="Tax" functionName={Tax} />
+              <BillInfo title="Total" onPress={CalculateUserTotalPrice} />
+              <BillInfo title="Delivery Charge" onPress={CalculateDeliveryRate} />
+              <BillInfo title="Coupon" onPress={CalculateCoupon} />
+              <BillInfo title="Tax" onPress={CalculateTax} />
             </View>
             <View style={styles.billingStyling}>
               <Text styles={styles.billingText}>Sub Total</Text>
-              <Text styles={styles.priceTotal}>${SubTotal()}</Text>
+              <Text styles={styles.priceTotal}>${CalculateSubTotal()}</Text>
             </View>
           </View>
         </View>
         <View style={styles.checkoutText}>
           <View>
             <Text style={styles.totalText}>Total</Text>
-            <Text style={styles.subTotalText}>₹ {SubTotal()}</Text>
+            <Text style={styles.subTotalText}>₹ {CalculateSubTotal()}</Text>
             <Text style={styles.saveText}>You save $ 5 on this</Text>
           </View>
           <View style={styles.checkoutButton}>

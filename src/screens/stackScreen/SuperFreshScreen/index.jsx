@@ -27,7 +27,7 @@ import image from '../../../config/Image.js';
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const data = useSelector(state => state.userData.userRecord);
-  const cartList = useSelector(state => state.userData.cartProducts);
+  const cartList = useSelector(state => state.cartData.cartProducts);
   const userID = useSelector(state => state.userData.userID);
   const FirestoreItem = item => {
     firestore()

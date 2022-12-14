@@ -10,11 +10,11 @@ import {
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
 
 import styles from './styles.js';
+import AccountInfo from '../../../components/AccountInfo';
 
-const AccountScreen = () => {
+const AccountScreen = ({navigation}) => {
   const signOut = () => {
     auth()
       .signOut()
@@ -22,33 +22,16 @@ const AccountScreen = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.account}>
-        <Icon name="menu" size={20} />
+      <View style={styles.mainHeading}>
+        <Icon name="menu" size={25} />
         <Text style={styles.text}>My Account</Text>
         <Icon name="bell-badge-outline" size={25} />
       </View>
-      <View style={styles.input}>
-        <Icon name="account-box-outline" size={25} />
-        <Text style={styles.txt}>My Profile</Text>
-      </View>
-      <View style={styles.input}>
-        <AntDesign name="contacts" size={25} />
-        <Text style={styles.txt}>Manage Addresses</Text>
-      </View>
-      <View style={styles.input}>
-        <Icon name="family-tree" size={25} />
-        <Text style={styles.txt}>Order History</Text>
-      </View>
-      <View style={styles.input}>
-        <AntDesign name="hearto" size={25} />
-        <Text style={styles.txt}>My WishList</Text>
-      </View>
-      <TouchableOpacity onPress={signOut}>
-        <View style={styles.input}>
-          <Icon name="logout" size={25} />
-          <Text style={styles.txt}>Logout</Text>
-        </View>
-      </TouchableOpacity>
+      <AccountInfo name="profile" text="My Profile" />
+      <AccountInfo name="contacts" text="Manage Addresses" />
+      <AccountInfo name="gift" text="OrderHistory" />
+      <AccountInfo name="hearto" text="My Wishlist" />
+      <AccountInfo name="logout" text="Logout" onPress={signOut} />
     </SafeAreaView>
   );
 };

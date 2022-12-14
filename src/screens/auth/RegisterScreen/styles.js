@@ -15,14 +15,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     padding: 10,
   },
-  mainInput: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderColor: 'black',
-    borderTopColor: 'white',
-    borderLeftColor: 'white',
-  },
   placeholderInput: {
     padding: 20,
     width: 320,
@@ -40,8 +32,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
   },
-  bottomLine:{
-    flexDirection:'row'
+  bottomLine: {
+    flexDirection: 'row',
   },
   login: {
     marginTop: 10,

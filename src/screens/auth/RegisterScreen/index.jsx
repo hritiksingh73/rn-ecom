@@ -15,9 +15,9 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 //import {registerUser} from '../../redux/action/Action.js';
-import {userFullInfo, userCreate} from '../../../redux/action/Action.js';
-import TextInputComponent from '../../../components/TextInputComponent.js';
-import styles from './styles.js';
+import {userFullInfo, userCreate} from '../../../redux/action/Action';
+import InputField from '../../../components/InputField';
+import styles from './styles';
 import {
   EmailValid,
   PasswordValid,
@@ -36,7 +36,7 @@ const RegisterScreen = ({navigation}) => {
   const [fullnameValid, setFullNameValid] = useState(true);
   const [mobilenoValid, setMobileNoValid] = useState(true);
   const dispatch = useDispatch();
-  const cartList = useSelector(state => state.userData.cartProducts);
+  const cartList = useSelector(state => state.cartData.cartProducts);
 
   const userID = useSelector(state => state.userData.userID);
   const updateRegister = async () => {
@@ -110,52 +110,44 @@ const RegisterScreen = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Icon name="leftcircleo" size={20} />
       <Text style={styles.register}>Register</Text>
-      <View style={styles.mainInput}>
-        <Icon name="user" size={20} />
-        <TextInputComponent
-          placeholder="Full Name"
-          value={fullname}
-          style={styles.placeholderInput}
-          autoCapitalize="words"
-          onBlur={checkValidFullName}
-          onChangeText={text => setFullName(text)}
-        />
-      </View>
+      <InputField
+        icon="user"
+        placeholder="Full Name"
+        value={fullname}
+        style={styles.placeholderInput}
+        autoCapitalize="words"
+        onBlur={checkValidFullName}
+        onChangeText={text => setFullName(text)}
+      />
       <Text style={styles.text}>{fullnameValid}</Text>
-      <View style={styles.mainInput}>
-        <Icon name="mail" size={20} />
-        <TextInputComponent
-          placeholder="Email"
-          value={email}
-          style={styles.placeholderInput}
-          onBlur={checkValidEmail}
-          autoCapitalize="words"
-          onChangeText={text => setEmail(text)}
-        />
-      </View>
+      <InputField
+        icon="mail"
+        placeholder="Email"
+        value={email}
+        style={styles.placeholderInput}
+        onBlur={checkValidEmail}
+        autoCapitalize="words"
+        onChangeText={text => setEmail(text)}
+      />
       <Text style={styles.text}>{emailValid}</Text>
-      <View style={styles.mainInput}>
-        <Icon name="phone" size={20} />
-        <TextInputComponent
-          placeholder="Mobile No"
-          value={mobileno}
-          style={styles.placeholderInput}
-          onBlur={checkValidMobileNo}
-          onChangeText={text => setMobileNo(text)}
-        />
-      </View>
+      <InputField
+        icon="phone"
+        placeholder="Mobile No"
+        value={mobileno}
+        style={styles.placeholderInput}
+        onBlur={checkValidMobileNo}
+        onChangeText={text => setMobileNo(text)}
+      />
       <Text style={styles.text}>{mobilenoValid}</Text>
-      <View style={styles.mainInput}>
-        <Icon name="key" size={20} />
-        <TextInputComponent
-          placeholder="Password"
-          value={password}
-          style={styles.placeholderInput}
-          autoCapitalize="words"
-          onBlur={checkValidPassword}
-          onChangeText={text => setPassword(text)}
-        />
-      </View>
+      <InputField
+        icon="key"
+        placeholder="Password"
+        value={password}
+        style={styles.placeholderInput}
+        autoCapitalize="words"
+        onBlur={checkValidPassword}
+        onChangeText={text => setPassword(text)}
+      />
       <Text style={styles.text}>{passwordValid}</Text>
       <View style={styles.button}>
         <LoginButton name="Register" onPress={() => updateRegister()} />
