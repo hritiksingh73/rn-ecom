@@ -10,8 +10,9 @@ import {
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import DropDown from '../../../components/dropDown';
-import colors from '../../../constants/colors';
 import remoteConfig from '@react-native-firebase/remote-config';
+import ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import data from '../../../data/searchSrnData';
 
 const HomeScreen = () => {
@@ -21,7 +22,7 @@ const HomeScreen = () => {
 
   const [cities, setCities] = useState();
 
-  Testing = async () => {
+  const RemoteConfigDataHandler = async () => {
     await remoteConfig().setDefaults({
       change_the_city: 'DefaultValue',
     });
@@ -32,11 +33,11 @@ const HomeScreen = () => {
     // console.log('remoteConfig response ---->  ', res);
 
     setRemoteConf(res);
-    // console.log(remoteConf)        
+    // console.log(remoteConf)
   };
 
   useEffect(() => {
-    Testing();
+    RemoteConfigDataHandler();
   }, []);
 
   const SearchCityShop = input => {
@@ -47,37 +48,46 @@ const HomeScreen = () => {
     setFilteredData(response);
   };
 
-  const SelectedCity = (val) => {
+  const StarCounterFun = val => {
+    let a = Math.floor(val);
+    var star = '';
+    for (i = 1; i <= a; i++) {
+      star += '*';
+    }
+    console.log('start:', star);
+    return star;
+  };
+
+  const SelectedCity = val => {
     setIsEmptyString(val.name);
-    console.log('isEmptyString::::::', isEmptyString)
-    console.log('SelectedCity:   ', val.name) 
+    console.log('isEmptyString::::::', isEmptyString);
+    console.log('SelectedCity:   ', val.name);
     let response = data.filter(item => {
-      return item.place.toUpperCase().includes((val.name).toUpperCase());
+      return item.place.toUpperCase().includes(val.name.toUpperCase());
     });
     setFilteredData(response);
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.HorizMargin}>
         <View style={styles.bgColor}>
-          
-          <DropDown data={remoteConf} SelectedCity={SelectedCity}/>
+          <DropDown data={remoteConf} SelectedCity={SelectedCity} />
 
           <View>
             <FlatList
               data={cities}
               renderItem={({item}) => {
                 return (
-                    <View>
-                      <Text>{item.label}</Text>
-                      <Text>{item.rating}</Text>
+                  <View>
+                    <Text>{item.label}</Text>
+                    <Text>{item.rating}</Text>
                   </View>
                 );
               }}
             />
           </View>
- 
+
           <View style={styles.txtContainer}>
             <Feather name={'search'} size={22} />
             <TextInput
@@ -104,7 +114,10 @@ const HomeScreen = () => {
                   </View>
                   <View style={styles.itemTextContainer}>
                     <Text style={styles.itemName}>{item.name}</Text>
-                    <Text style={styles.itemRating}>{item.rating}</Text>
+                    {/* <Text style={styles.itemRating}>{item.rating}</Text> */}
+                    <Text style={styles.itemRating}>
+                      {StarCounterFun(item.rating)}
+                    </Text>
                   </View>
                 </View>
               );

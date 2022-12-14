@@ -48,9 +48,10 @@ const styles = StyleSheet.create({
       paddingBottom: 2,
     },
     itemRating: {
-      fontSize: 25,
+      color: 'green',
+      fontSize: 30,
       padding: 8,
-      paddingTop: 2,
+      paddingTop: 1,
     },
     itemImage: {
       width: '100%',

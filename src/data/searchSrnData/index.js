@@ -2,14 +2,14 @@ const data = [
     {
       id: '1',
       name: 'Ajay Vege store',
-      rating: 4.5,
+      rating: 3.4,
       url: require('../../assets/images/vegetables5.jpeg'),
       place: 'indore',
     },
     {
       id: '2',
       name: 'Chourasia stall',
-      rating: 4.5,
+      rating: 4,
       url: require('../../assets/images/vegetables4.jpeg'),
       place: 'dewas',
     },
@@ -23,7 +23,7 @@ const data = [
     {
       id: '4',
       name: 'Ram Fruit',
-      rating: 4.5,
+      rating: 5,
       url: require('../../assets/images/vegetables6.jpeg'),
       place: 'bhopal',
     },

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
+import {View, SafeAreaView, TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
-import Feather from 'react-native-vector-icons/Feather';
+import MyAccFields from '../../../components/MyAccFields';
 import styles from './styles';
 
 const AccountScreen = ({navigation}) => {
@@ -14,47 +14,27 @@ const AccountScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.horizntlMrgn}>
-        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-          <View style={{flexDirection: 'row', marginLeft: 18}}>
-            <Feather name={'user'} size={25} color={'#404040'} />
-            <Text style={styles.txtArea}>My Profile</Text>
-          </View>
-        </TouchableOpacity>
 
-        <View style={styles.itemSepertor} />
+      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+        <MyAccFields icon={'user'} txt={'My Profile'}/>
+      </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Manage Addresses')}>
-          <View style={{flexDirection: 'row', marginLeft: 18}}>
-            <Feather name={'calendar'} size={25} color={'#404040'} />
-            <Text style={styles.txtArea}>Manage Addresses</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.itemSepertor} />
+      <TouchableOpacity onPress={() => navigation.navigate('Manage Addresses')}>
+        <MyAccFields icon={'calendar'} txt={'Manage Addresses'}/>
+      </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Order History')}>
-          <View style={{flexDirection: 'row', marginLeft: 18}}>
-            <Feather name={'book'} size={25} color={'#404040'} />
-            <Text style={styles.txtArea}>Order History</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.itemSepertor} />
+      <TouchableOpacity onPress={() => navigation.navigate('Order History')}>
+        <MyAccFields icon={'book'} txt={'Order History'}/>
+      </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('My Wishlist')}>
-          <View style={{flexDirection: 'row', marginLeft: 18}}>
-            <Feather name={'gift'} size={25} color={'#404040'} />
-            <Text style={styles.txtArea}>My Wishlist</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.itemSepertor} />
+      <TouchableOpacity onPress={() => navigation.navigate('My Wishlist')}>
+        <MyAccFields icon={'gift'} txt={'My Wishlist'}/>
+      </TouchableOpacity>
 
-        <TouchableOpacity onPress={signOut}>
-          <View style={{flexDirection: 'row', marginLeft: 18}}>
-            <Feather name={'power'} size={25} color={'#404040'} />
-            <Text style={styles.txtArea}>Logout</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.itemSepertor} />
+      <TouchableOpacity onPress={signOut}>
+        <MyAccFields icon={'power'} txt={'Logout'}/>
+      </TouchableOpacity>
+
       </View>
     </SafeAreaView>
   );

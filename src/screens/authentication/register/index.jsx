@@ -121,7 +121,6 @@ const Register = ({navigation}) => {
             warrning={isValidName}
             onChangeText={val => {
               setUserName(val);
-              // ValidateName();
               IsNameValidate();
             }}
           />
@@ -133,7 +132,6 @@ const Register = ({navigation}) => {
             warrning={isValidEmail}
             onChangeText={val => {
               setUserEmail(val);
-              // ValidateEmail();
               IsEmailValidate();
             }}
           />
@@ -145,7 +143,6 @@ const Register = ({navigation}) => {
             warrning={isValidNumber}
             onChangeText={val => {
               setUserNumber(val);
-              // ValidateNumber();
               IsNumberValidate();
             }}
           />
@@ -159,7 +156,6 @@ const Register = ({navigation}) => {
             warrning={isValidPassword}
             onChangeText={val => {
               setUserPassword(val);
-              // ValidatePassword();
               IsPasswordValidate();
             }}
           />

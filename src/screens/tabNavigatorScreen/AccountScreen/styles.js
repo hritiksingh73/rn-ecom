@@ -10,18 +10,6 @@ const styles = StyleSheet.create({
     horizntlMrgn: {
       marginTop: 40,
     },
-    itemSepertor: {
-      width: '100%',
-      borderBottomWidth: 1,
-      borderColor: '#d8d8d8',
-      marginVertical: 22,
-    },
-    txtArea: {
-      fontSize: 16,
-      color: '#1a1a1a',
-      marginHorizontal: 20,
-      marginTop: 5,
-    },
   });
 
 export default styles;
