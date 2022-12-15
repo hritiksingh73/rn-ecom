@@ -117,26 +117,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#1a1b1d',
   },
-  billingTextStyling: {
-    fontSize: 16,
-    marginVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: Color.darkGrey,
-    color: Color.black,
-  },
+  
   total: {
     fontSize: 16,
     fontWeight: '500',
     marginVertical: 15,
   },
-  billingStyling: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderBottomWidth: 1,
-    borderBottomColor: Color.darkGrey,
-    padding: 10,
-    margin: 10,
-  },
+
   billing: {
     marginLeft: 20,
     paddingTop: 30,
@@ -174,10 +161,7 @@ const styles = StyleSheet.create({
   couponIcon: {
     paddingTop: 10,
   },
-  billingUnits: {
-    fontWeight: '800',
-    fontSize: 15,
-  },
+ 
   bottom: {
     backgroundColor: '#161e1b',
     padding: 10,

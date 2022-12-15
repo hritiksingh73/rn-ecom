@@ -4,12 +4,10 @@ import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 
-// import Email from 'react-native-vector-icons/Fontisto';
-// import Icon from 'react-native-vector-icons/AntDesign';
 import styles from '../LoginScreen/styles';
 import FormContainer from '../../component/FormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
-import imagePath from '../../config/Image';
+import ImagePath from '../../config/Image';
 import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
 import firestore from '@react-native-firebase/firestore';
 import {validateEmail, validatePassword} from '../../utils/Validation';
@@ -28,17 +26,19 @@ const LoginPage = () => {
   const emailValidator = () => {
     email === '' || !validateEmail(email)
       ? setValidation({
+          ...validation,
           emailError: 'please enter a valid email (eg: A@123@Indianic.com)',
         })
-      : setValidation({emailError: ''});
+      : setValidation({...validation, emailError: ''});
   };
 
   const passwordValidator = () => {
     userPassword === '' || !validatePassword(userPassword)
       ? setValidation({
+          ...validation,
           passwordError: 'please enter a valid password ',
         })
-      : setValidation({passwordError: ''});
+      : setValidation({...validation, passwordError: ''});
   };
 
   const dispatchCredentials = async () => {
@@ -71,7 +71,7 @@ const LoginPage = () => {
 
   return (
     <SafeAreaView>
-      <Image source={imagePath.grocerryMain} style={styles.groceryHeader} />
+      <Image source={ImagePath.grocerryMain} style={styles.groceryHeader} />
       <FormContainer
         Text="Email"
         Icon="mail"
@@ -95,9 +95,7 @@ const LoginPage = () => {
         maxLength={9}
       />
       <Text style={styles.errormsg}>{validation.passwordError}</Text>
-      <TouchableOpacity
-        style={styles.forgetPassword}
-        onPress={() => console.log(datafetch)}>
+      <TouchableOpacity style={styles.forgetPassword}>
         <Text style={styles.forgetPassword}>Forget Password ?</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -122,10 +120,10 @@ const LoginPage = () => {
         <TouchableOpacity
           style={styles.bottomFacebook}
           onPress={facebookButton}>
-          <SocialMedia style={styles.facebook} source={imagePath.facebook} />
+          <SocialMedia style={styles.facebook} source={ImagePath.facebook} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomGoogle} onPress={googleButton}>
-          <SocialMedia style={styles.googleImage} source={imagePath.google} />
+          <SocialMedia style={styles.googleImage} source={ImagePath.google} />
         </TouchableOpacity>
       </View>
       <View style={styles.bottomHeadline}>

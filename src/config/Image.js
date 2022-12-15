@@ -1,4 +1,4 @@
-const imagePath = {
+const ImagePath = {
   //Login Screen
   grocerryMain: require('../asset/GrocerryMain.jpeg'),
   facebook: require('../asset/facebook.jpeg'),
@@ -14,4 +14,4 @@ const imagePath = {
   splash: require('../asset/SplashScreen.png'),
 };
 
-export default imagePath;
+export default ImagePath;

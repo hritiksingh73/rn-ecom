@@ -7,17 +7,18 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
-  Button,
 } from 'react-native';
+import {ScrollView} from 'react-native-virtualized-view';
+import {useDispatch, useSelector} from 'react-redux';
+
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Arrow from 'react-native-vector-icons/AntDesign';
-import {useDispatch, useSelector} from 'react-redux';
 import styles from './styles';
 import {
   increaseItemQuantity,
   DecreaseItemCountInCartAction,
 } from '../../redux/action/Action';
-import {ScrollView} from 'react-native-virtualized-view';
+import CartBillingData from '../../component/CartBillingData/CartBillingData';
 
 const Cart = () => {
   const item = useSelector(state => state.userInfo.cart);
@@ -30,15 +31,17 @@ const Cart = () => {
     return total;
   });
 
-  const TotalItemPrices = ItemPrice.reduce((total, value) => {
+  const CalculateTotalItemPrices = ItemPrice.reduce((total, value) => {
     return Math.round(total + value);
   }, 0);
 
-  const DeliveryCharges = (TotalItemPrices * 3) / 100;
+  const CalculateDeliveryCharges = (CalculateTotalItemPrices * 3) / 100;
 
-  const Tax = (TotalItemPrices * 12) / 100;
+  const CalculateTax = (CalculateTotalItemPrices * 12) / 100;
 
-  const SubTotal = Math.round(TotalItemPrices + DeliveryCharges + Tax);
+  const CalculateSubTotal = Math.round(
+    CalculateTotalItemPrices + CalculateDeliveryCharges + CalculateTax,
+  );
 
   return (
     <ScrollView nestedScrollEnabled={true}>
@@ -98,29 +101,19 @@ const Cart = () => {
         <View style={styles.billing}>
           <Text style={styles.billingText}>Bill Details</Text>
         </View>
-        <View style={styles.billingStyling}>
-          <Text styles={styles.billingTextStyling}>Total </Text>
-          <Text style={styles.billingUnits}>${TotalItemPrices}</Text>
-        </View>
-        <View style={styles.billingStyling}>
-          <Text styles={styles.billingTextStyling}> Delivery Charge</Text>
-          <Text style={styles.billingUnits}>${DeliveryCharges}</Text>
-        </View>
-        <View style={styles.billingStyling}>
-          <Text styles={styles.billingTextStyling}>Coupon</Text>
-        </View>
-        <View style={styles.billingStyling}>
-          <Text styles={styles.billingTextStyling}>Tax</Text>
-          <Text style={styles.billingUnits}>${Tax}</Text>
-        </View>
-        <View style={styles.billingStyling}>
-          <Text styles={styles.billingTextStyling}>Sub Total </Text>
-          <Text style={styles.billingUnits}>${SubTotal}</Text>
-        </View>
+
+        <CartBillingData text="Total" Count={'$' + CalculateTotalItemPrices} />
+        <CartBillingData
+          text="Delivery Charge"
+          Count={'$' + CalculateDeliveryCharges}
+        />
+        <CartBillingData text="Coupon" />
+        <CartBillingData text="Tax" Count={'$' + CalculateTax} />
+        <CartBillingData text="Total" Count={'$' + CalculateTotalItemPrices} />
         <View style={styles.bottom}>
           <View>
             <Text style={styles.bottomApply}>Total</Text>
-            <Text style={styles.subTotal}>${SubTotal}</Text>
+            <Text style={styles.subTotal}>${CalculateSubTotal}</Text>
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>
           <View style={styles.checkOut}>

@@ -65,24 +65,32 @@ const RegisterPage = () => {
   const nameValidator = () => {
     name === ''
       ? setValidation({
-          setErrorName: 'Name Should not contain Special Character ',
+          ...validation,
+          errorname: 'Name Should not contain Special Character ',
         })
-      : setValidation({setErrorName: ''});
+      : setValidation({errorname: ''});
   };
 
   const validatorEmail = () => {
     registeremail === '' || !emailValidator(registeremail)
-      ? setValidation({errorregisteremail: 'please enter a valid email'})
+      ? setValidation({
+          ...validation,
+          errorregisteremail: 'please enter a valid email',
+        })
       : setValidation({errorregisteremail: ''});
   };
   const validatorMobile = () => {
     cellNumber === '' || !contactValidator(cellNumber)
-      ? setValidation({errorcellNumber: 'please enter a valid mobile number'})
+      ? setValidation({
+          ...validation,
+          errorcellNumber: 'please enter a valid mobile number',
+        })
       : setValidation({errorcellNumber: ''});
   };
   const validatorPassword = () => {
     password == '' || !passwordValidator(password)
       ? setValidation({
+          ...validation,
           errorpassword: 'please enter a valid password (eg: John@1234)',
         })
       : setValidation({errorpassword: ''});
