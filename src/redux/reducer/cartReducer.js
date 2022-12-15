@@ -13,10 +13,18 @@ const cartReducer = (state = initialState, action) => {
       return {...state, cartProducts: [...state.cartProducts, action.payload]};
 
     case ActionType.REMOVE_CART:
-      return {
-        ...state,
-        cartProducts: state.cartProducts.filter(item => payload !== item.id),
-      };
+      let remove = [...state.cartProducts];
+      remove.filter(item => payload !== item.id);
+      return {...state, cartProducts: remove};
+
+    //   let newArr = cartProducts.filter(function (e) {
+    //     return e.quantity > 0;
+    // });
+    // console.log(newArr );
+      // return {
+      //   ...state,
+      //   cartProducts: state.cartProducts.filter(item => payload !== item.id),
+      // };
 
     case ActionType.INCREASE_CART_ITEM:
       const increaseItem = state.cartProducts.map(item => {

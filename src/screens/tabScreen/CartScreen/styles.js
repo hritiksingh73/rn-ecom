@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderColor: color.lightgrey,
     width: 100,
     height: 40,
-    marginLeft: 280,
+    marginRight: 40,
   },
   increase: {
     backgroundColor: 'green',
@@ -171,7 +171,6 @@ const styles = StyleSheet.create({
   billingText: {
     fontSize: 20,
   },
-
   billingStyling: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -194,8 +193,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'black',
     justifyContent: 'space-between',
-    marginTop: 15,
-    padding: 20,
+    marginTop: 10,
+    padding: 10,
   },
   subTotalText: {
     color: color.white,
@@ -206,7 +205,7 @@ const styles = StyleSheet.create({
   totalText: {
     color: color.primary,
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 15,
   },
   saveText: {
     color: 'gray',
@@ -215,10 +214,6 @@ const styles = StyleSheet.create({
   },
   checkoutButton: {
     marginTop: 10,
-    height: 50,
-    width: 120,
-    backgroundColor: 'green',
-    padding: 5,
   },
 });
 

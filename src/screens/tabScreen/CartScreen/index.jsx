@@ -90,32 +90,37 @@ const Cart = ({navigation}) => {
                           <Text style={styles.titleText}>{item.title}</Text>
                           <Text style={styles.dollarText}>{item.price}</Text>
                         </View>
-                        {/* <TouchableOpacity
+                        <TouchableOpacity
                           style={styles.remove}
                           onPress={() => {
                             removeList(item.id);
                             console.log(item.id);
                           }}>
                           <Text style={styles.delete}>Remove</Text>
-                        </TouchableOpacity> */}
-                      </View>
-                      <View style={styles.counting}>
-                        <View style={styles.addButton}>
-                          <TouchableOpacity
-                            onPress={() => {
-                              dispatch(decreaseToCart(item.id));
-                              // removeToCart(item.id);
-                            }}>
-                            <Text style={styles.minus}> - </Text>
-                          </TouchableOpacity>
-                        </View>
+                        </TouchableOpacity> 
 
-                        <Text style={styles.number}>{item.quantity}</Text>
-                        <View style={styles.increase}>
-                          <TouchableOpacity
-                            onPress={() => dispatch(increaseToCart(item.id))}>
-                            <Text style={styles.plus}> + </Text>
-                          </TouchableOpacity>
+                        <View style={{paddingTop: 1}}>
+                          <View style={styles.counting}>
+                            <View style={styles.addButton}>
+                              <TouchableOpacity
+                                onPress={() => {
+                                  dispatch(decreaseToCart(item.id));
+                                  // removeToCart(item.id);
+                                }}>
+                                <Text style={styles.minus}> - </Text>
+                              </TouchableOpacity>
+                            </View>
+
+                            <Text style={styles.number}>{item.quantity}</Text>
+                            <View style={styles.increase}>
+                              <TouchableOpacity
+                                onPress={() =>
+                                  dispatch(increaseToCart(item.id))
+                                }>
+                                <Text style={styles.plus}> + </Text>
+                              </TouchableOpacity>
+                            </View>
+                          </View>
                         </View>
                       </View>
                     </View>
@@ -139,13 +144,17 @@ const Cart = ({navigation}) => {
             <View style={styles.billing}>
               <Text style={styles.billingText}>Bill Details</Text>
               <BillInfo title="Total" onPress={CalculateUserTotalPrice} />
-              <BillInfo title="Delivery Charge" onPress={CalculateDeliveryRate} />
+              <BillInfo
+                title="Delivery Charge"
+                onPress={CalculateDeliveryRate}
+              />
               <BillInfo title="Coupon" onPress={CalculateCoupon} />
               <BillInfo title="Tax" onPress={CalculateTax} />
-            </View>
-            <View style={styles.billingStyling}>
-              <Text styles={styles.billingText}>Sub Total</Text>
-              <Text styles={styles.priceTotal}>${CalculateSubTotal()}</Text>
+
+              <View style={styles.billingStyling}>
+                <Text styles={styles.billingText}>Sub Total</Text>
+                <Text styles={styles.priceTotal}>${CalculateSubTotal()}</Text>
+              </View>
             </View>
           </View>
         </View>

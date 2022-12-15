@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   groceryImage: {
     width: 200,
     height: 50,
-    marginTop: 50,
+    marginTop: 35,
   },
   welcome: {
     margin: 20,

@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Button,
   TextInput,
+  ScrollView,
   Image,
   TouchableOpacity,
   SafeAreaView,
@@ -35,13 +36,20 @@ const LoginScreen = ({navigation}) => {
       alert('Empty email and password');
     } else {
       try {
-        const userRes = auth().signInWithEmailAndPassword(email, password);
+        //console.log('Calling--->')
+        const userRes = await auth().signInWithEmailAndPassword(
+          email,
+          password,
+        );
+        //console.log(userRes)
         let userInfo = {
           email: email,
           password: password,
         };
         const res = dispatch(userFullInfo(userInfo));
-      } catch (error) {}
+      } catch (error) {
+        //console.log(error.code)
+      }
     }
   };
 
@@ -64,56 +72,61 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={image.grocery} style={styles.groceryImage} />
-      <Text style={styles.welcome}>Welcome Back!</Text>
-      <InputField
-        icon="mail"
-        placeholder="Email"
-        style={styles.placeholderInput}
-        value={email}
-        onBlur={validEmail}
-        autoCapitalize="words"
-        onChangeText={val => setEmail(val)}
-      />
-      <Text style={styles.error}>{emailValid}</Text>
-      <InputField
-        icon="key"
-        placeholder="Password"
-        value={password}
-        style={styles.placeholderInput}
-        secureTextEntry={true}
-        onBlur={validPassword}
-        onChangeText={val => setPassword(val)}
-      />
-      <Text style={styles.error}>{passwordValid}</Text>
-      <Text style={styles.forgot}>Forgot Password?</Text>
-      <View style={styles.login}>
-        <LoginButton name="Login" onPress={updateLogin} />
-      </View>
-      <View style={styles.or}>
-        <View style={styles.line} />
-        <Text style={styles.text}>OR</Text>
-        <View style={styles.line} />
-      </View>
-      <Text style={styles.continuewith}>Continue With</Text>
-      <View style={styles.button}>
-        <TouchableOpacity onPress={facebook}>
-          <SocialMediaImage source={image.facebook} style={styles.facebook} />
-        </TouchableOpacity>
-        <View>
-          <TouchableOpacity onPress={google}>
-            <SocialMediaImage source={image.googlebtn} style={styles.google} />
+    <ScrollView>
+      <View style={styles.container}>
+        <Image source={image.grocery} style={styles.groceryImage} />
+        <Text style={styles.welcome}>Welcome Back!</Text>
+        <InputField
+          icon="mail"
+          placeholder="Email"
+          style={styles.placeholderInput}
+          value={email}
+          onBlur={validEmail}
+          autoCapitalize="words"
+          onChangeText={val => setEmail(val)}
+        />
+        <Text style={styles.error}>{emailValid}</Text>
+        <InputField
+          icon="key"
+          placeholder="Password"
+          value={password}
+          style={styles.placeholderInput}
+          secureTextEntry={true}
+          onBlur={validPassword}
+          onChangeText={val => setPassword(val)}
+        />
+        <Text style={styles.error}>{passwordValid}</Text>
+        <Text style={styles.forgot}>Forgot Password?</Text>
+        <View style={styles.login}>
+          <LoginButton name="Login" onPress={updateLogin} />
+        </View>
+        <View style={styles.or}>
+          <View style={styles.line} />
+          <Text style={styles.text}>OR</Text>
+          <View style={styles.line} />
+        </View>
+        <Text style={styles.continuewith}>Continue With</Text>
+        <View style={styles.button}>
+          <TouchableOpacity onPress={facebook}>
+            <SocialMediaImage source={image.facebook} style={styles.facebook} />
+          </TouchableOpacity>
+          <View>
+            <TouchableOpacity onPress={google}>
+              <SocialMediaImage
+                source={image.googlebtn}
+                style={styles.google}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.bottomLine}>
+          <Text style={styles.account}>Don't have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text style={styles.register}>Register here</Text>
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.bottomLine}>
-        <Text style={styles.account}>Don't have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.register}>Register here</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
