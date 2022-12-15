@@ -15,9 +15,9 @@ export const addCartProduct = product => ({
   type: ADD_CART_PRODUCTS,
   payload: product,
 });
-export const removeCartProduct = index => ({
+export const removeCartProduct = id => ({
   type: REMOVE_CART_PRODUCTS,
-  payload: index,
+  payload: id,
 });
 export const increaseCartProduct = itemId => ({
   type: INCREASE_CART,

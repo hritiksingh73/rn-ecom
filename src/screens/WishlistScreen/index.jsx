@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, TouchableOpacity, Text, SafeAreaView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/Entypo';
@@ -10,7 +10,8 @@ import ListItem from '../../components/ListItem';
 import {addCartProduct} from '../../redux/actions/userAction';
 import {removeFromWishlist} from '../../redux/actions/userAction';
 import CategoryGridItem from '../../components/CategoryGridItem';
-import color from '../../constant/color';
+import {color} from '../../constant/color';
+import PopupMsg from '../../components/PopupMsg';
 
 const WishlistScreen = props => {
   const dispatch = useDispatch();
@@ -18,10 +19,11 @@ const WishlistScreen = props => {
   const wishlistProduct = useSelector(
     state => state.cartProductReducer.wishList,
   );
+  const [isModalVisible, setisModalVisible] = useState(false);
 
-  const removeProduct = item => {
-    alert('Product removed from yout wishlist');
-    dispatch(removeFromWishlist(item));
+  const yesBtnHandler = item => {
+    dispatch(removeFromWishlist(item.id));
+    setisModalVisible(false);
   };
 
   const ProductItem = item => {
@@ -35,7 +37,7 @@ const WishlistScreen = props => {
             size={20}
             color={color.primary}
             style={{marginLeft: '60%'}}
-            onPress={removeProduct}
+            onPress={() => setisModalVisible(true)}
           />
         </View>
         <Text style={styles.priceTxt}>{item.price}</Text>
@@ -67,6 +69,11 @@ const WishlistScreen = props => {
         ItemSeparatorComponent={() => {
           return <View style={styles.itemDivider}></View>;
         }}
+      />
+      <PopupMsg
+        visible={isModalVisible}
+        yesBtn={yesBtnHandler}
+        cancelBtn={() => setisModalVisible(false)}
       />
     </SafeAreaView>
   );

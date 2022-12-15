@@ -17,10 +17,15 @@ const cartProductReducer = (state = initialState, action) => {
         ...state,
         cartProducts: [...state.cartProducts, {...action.payload, qty: 1}],
       };
+
     case REMOVE_CART_PRODUCTS:
-      let deleteProduct = [...state.cartProducts];
-      deleteProduct.splice(action.index, 1);
-      return {...state, cartProducts: deleteProduct};
+      const removeCart = state.cartProducts.filter(
+        product => product.id !== action.payload,
+      );
+      return {
+        ...state,
+        cartProducts: removeCart,
+      };
 
     case INCREASE_CART:
       let increaseItem = [...state.cartProducts];

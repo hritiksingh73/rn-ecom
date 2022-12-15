@@ -13,12 +13,11 @@ import auth from '@react-native-firebase/auth';
 
 import TextField from '../../components/TextField';
 import ButtonComponent from '../../components/ButtonComponent';
-import color from '../../constant/color';
+import {color} from '../../constant/color';
 import {userInfoDetails} from '../../redux/actions/userAction';
 import LoginBtn from '../../components/LoginBtn';
 import {styles} from './styles';
-import {validateEmail} from '../../utils/validation';
-import {validatePassword} from '../../utils/validation';
+import {validateEmail, validatePassword} from '../../utils/validation';
 import image from '../../config/image';
 
 const LoginScreen = () => {

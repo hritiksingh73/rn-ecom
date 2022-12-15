@@ -7,13 +7,12 @@ import CATEGORIES from '../../data/dummy-data';
 import DropDown from '../../components/DropDown';
 import {styles} from './styles';
 import ListItem from '../../components/ListItem';
+import {color} from '../../constant/color';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
 
-  const renderGroceryShops = props => {
-    const {item} = props;
-
+  const renderGroceryShops = ({item}) => {
     return (
       <View style={styles.renderItemScreen}>
         <TouchableOpacity
@@ -21,8 +20,13 @@ const HomeScreen = () => {
           onPress={() => navigation.navigate('Super Fresh')}>
           <Image source={item.image} style={styles.imgStyle} />
         </TouchableOpacity>
+
         <Text style={styles.shopTitle}>{item.title}</Text>
-        <Text style={styles.shopTitle}>{item.rating}</Text>
+        <View style={styles.ratingContainer}>
+          {[...Array(item.rating)].map(() => (
+            <AntDesign name="star" size={15} color={color.primary} />
+          ))}
+        </View>
       </View>
     );
   };

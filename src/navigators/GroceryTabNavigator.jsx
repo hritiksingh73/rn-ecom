@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import GroceryStackNavigator from './GroceryStackNavigator';
 import SearchScreen from '../screens/SearchScreen';
 import CartScreen from '../screens/CartScreen';
-import color from '../constant/color';
+import {color} from '../constant/color';
 import AccountNavigator from './AccountNavigator';
 
 const Tab = createBottomTabNavigator();

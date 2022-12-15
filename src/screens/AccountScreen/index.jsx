@@ -5,7 +5,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 
-import AccountElement from '../../components/AccountElement';
+import AccountElement from '../../components/AccountElements';
 import {styles} from './styles';
 
 const AccountScreen = () => {

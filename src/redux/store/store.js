@@ -1,12 +1,24 @@
-import {combineReducers} from '@reduxjs/toolkit';
-import {createStore} from '@reduxjs/toolkit';
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {persistStore, persistReducer} from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import userDataReducer from '../reducers/userReducer';
 import cartProductReducer from '../reducers/cartProductReducer';
 
-const rooteReducer = combineReducers({
-  userDataReducer: userDataReducer,
-  cartProductReducer: cartProductReducer,
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+};
+
+const Store = configureStore({
+  reducer: {
+    userDataReducer: persistReducer(persistConfig, userDataReducer),
+    cartProductReducer: persistReducer(persistConfig, cartProductReducer),
+  },
+  middleware: getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
-const Store = createStore(rooteReducer);
+
 export default Store;
+export const persistor = persistStore(Store);

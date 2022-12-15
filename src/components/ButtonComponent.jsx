@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import color from '../constant/color';
+import {color} from '../constant/color';
 
 export default function ButtonComponent(props) {
   const {disabled, onPress} = props;

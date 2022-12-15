@@ -35,4 +35,7 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     margin: 3,
   },
+  ratingContainer: {
+    flexDirection: 'row',
+  },
 });

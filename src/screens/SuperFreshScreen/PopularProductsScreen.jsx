@@ -20,7 +20,7 @@ const PopularProductsScreen = () => {
   const {goBack} = useNavigation();
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <AntDesign name="left" size={30} onPress={() => goBack()} />
         <Text style={styles.headerText}>Popular Products</Text>

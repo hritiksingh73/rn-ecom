@@ -6,13 +6,15 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 import {userInfoDetails, userId} from '../../redux/actions/userAction';
-import color from '../../constant/color';
+import {color} from '../../constant/color';
 import TextField from '../../components/TextField';
 import ButtonComponent from '../../components/ButtonComponent';
 import {styles} from './styles';
-import {validateEmail} from '../../utils/validation';
-import {validatePassword} from '../../utils/validation';
-import {validatePhNumber} from '../../utils/validation';
+import {
+  validateEmail,
+  validatePassword,
+  validatePhNumber,
+} from '../../utils/validation';
 
 const RegisterScreen = () => {
   const [fullName, setFullName] = useState('');
