@@ -16,15 +16,21 @@ import Arrow from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import {
   increaseItemQuantity,
-  DecreaseItemCountInCartAction,
+  decreaseItemCountInCartAction,
+  removeItemFromCart,
 } from '../../redux/action/Action';
 import CartBillingData from '../../component/CartBillingData/CartBillingData';
 
 const Cart = () => {
   const item = useSelector(state => state.userInfo.cart);
   const dispatch = useDispatch();
-  const selecteditems = useSelector(state => state.userInfo.cart);
-  const userData = useSelector(state => state.userInfo.loginpage);
+
+  const ClearCartItem = item => {
+    if (item <= 1) {
+      dispatch(removeItemFromCart(item));
+    } else {
+    }
+  };
 
   const ItemPrice = item.map(value => {
     const total = value.price * value.quantity;
@@ -67,7 +73,8 @@ const Cart = () => {
                       <TouchableOpacity
                         style={styles.decreaseButton}
                         onPress={() => {
-                          dispatch(DecreaseItemCountInCartAction(item.id));
+                          dispatch(decreaseItemCountInCartAction(item.id)),
+                            ClearCartItem(item.quantity);
                         }}>
                         <Text>-</Text>
                       </TouchableOpacity>

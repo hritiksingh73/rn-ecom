@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     alignContent: 'center',
-
     paddingTop: 5,
   },
   QuantityHandler: {
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#1a1b1d',
   },
-  
+
   total: {
     fontSize: 16,
     fontWeight: '500',
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
   couponIcon: {
     paddingTop: 10,
   },
- 
+
   bottom: {
     backgroundColor: '#161e1b',
     padding: 10,

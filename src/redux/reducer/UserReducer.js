@@ -31,7 +31,7 @@ const userReducer = (state = InitialState, action) => {
       //console.log(...state.cart.filter( (item) => action.payload !== item))
       return {
         ...state,
-        cart: state.cart.filter(item => action.payload !== item.id),
+        cart: state.cart.filter(item => action.payload !== action.payload),
       };
 
     case ActionType.INCREASE_ITEM_QUANTITY:
