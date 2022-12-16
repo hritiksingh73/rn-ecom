@@ -67,13 +67,14 @@ export const userReducer = (state = initialState, action) => {
     case ActionTypes.ITEMS_DECREMENT:
       let decreaseItem = [...state.fruitCart];
       const decQuantity = decreaseItem.map(item => {
-        return item.id === payload && item.numberOfItem > 0
-          ? {
-              ...item,
-              numberOfItem: item.numberOfItem - 1,
-            }
-          : item;
+            return item.id === payload && item.numberOfItem > 0
+            ? {
+                ...item,
+                numberOfItem: item.numberOfItem - 1,
+              }
+            : item;
       });
+      
       return {
         ...state,
         fruitCart: decQuantity,

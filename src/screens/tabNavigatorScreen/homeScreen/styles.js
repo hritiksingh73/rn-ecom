@@ -3,13 +3,46 @@ import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
+      backgroundColor: colors.white,
+    },
+    containerMargin: {
       marginHorizontal: '2%',
     },
-    heading: {
-      textAlign: 'center',
-      fontSize: 18,
-      fontWeight: '500',
+    headerBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 10,
+      marginLeft: 15,
+    },
+    imgBox: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    headerTitleBlock: {
+      paddingVertical: 3
+    },
+    headerTitleTxt: {
+      fontSize: 16, 
+      fontWeight: '600'
+    },
+    headerRatingBlock: {
+      alignItems: 'center', 
+      paddingVertical: 5,
+    },
+    bottomArrowIcon: {
+      paddingLeft: 12
+    },
+    heartIcon: {
+      padding: 10, 
+      paddingLeft: 0,
+      marginTop: 5,
+    },
+    imgStyl: {
+      width: 40,
+      height: 40,
       margin: 10,
+      borderRadius: 20,
     },
     productHeading: {
       textAlign: 'center',
@@ -28,6 +61,7 @@ const styles = StyleSheet.create({
     itemImage: {
       width: '100%',
       height: '100%',
+      opacity: 1,
     },
     productList: {
       width: 200,
@@ -73,7 +107,28 @@ const styles = StyleSheet.create({
     categoryTxt: {
       fontSize: 16,
       fontWeight: '600',
-    }
+    },
+    txtOnImageContainer: {
+      width: '80%',
+      height: '60%',
+      position: 'absolute',
+      // borderWidth: 1, 
+      marginHorizontal: '10%',
+      marginVertical: '10%',
+    },
+    txtOnImageHeader: {
+      color: colors.white,
+      fontWeight: '700',
+      fontSize: 40,
+      textAlign: 'center',
+      paddingVertical: 10,
+    },
+    txtOnImageContent: {
+      color: colors.white,
+      fontWeight: '600',
+      textAlign: 'center',
+      paddingVertical: 10,
+    },
   });
 
 export default styles;

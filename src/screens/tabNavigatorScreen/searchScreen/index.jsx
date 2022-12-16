@@ -11,16 +11,12 @@ import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import DropDown from '../../../components/dropDown';
 import remoteConfig from '@react-native-firebase/remote-config';
-import ionicons from 'react-native-vector-icons/Ionicons';
-import Entypo from 'react-native-vector-icons/Entypo';
 import data from '../../../data/searchSrnData';
 
-const HomeScreen = () => {
+const SearchScreen = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [isEmptyString, setIsEmptyString] = useState('');
   const [remoteConf, setRemoteConf] = useState();
-
-  const [cities, setCities] = useState();
 
   const RemoteConfigDataHandler = async () => {
     await remoteConfig().setDefaults({
@@ -31,7 +27,6 @@ const HomeScreen = () => {
     const response = await remoteConfig()?.getValue('change_the_city');
     const res = JSON.parse(response.asString()).cities;
     // console.log('remoteConfig response ---->  ', res);
-
     setRemoteConf(res);
     // console.log(remoteConf)
   };
@@ -54,7 +49,6 @@ const HomeScreen = () => {
     for (i = 1; i <= a; i++) {
       star += '*';
     }
-    console.log('start:', star);
     return star;
   };
 
@@ -74,22 +68,8 @@ const HomeScreen = () => {
         <View style={styles.bgColor}>
           <DropDown data={remoteConf} SelectedCity={SelectedCity} />
 
-          <View>
-            <FlatList
-              data={cities}
-              renderItem={({item}) => {
-                return (
-                  <View>
-                    <Text>{item.label}</Text>
-                    <Text>{item.rating}</Text>
-                  </View>
-                );
-              }}
-            />
-          </View>
-
           <View style={styles.txtContainer}>
-            <Feather name={'search'} size={22} />
+            <Feather name={'search'} size={22} style={styles.searchIconStyle}/>
             <TextInput
               style={styles.txtFields}
               placeholder="Find Store"
@@ -102,6 +82,7 @@ const HomeScreen = () => {
           <FlatList
             data={isEmptyString === '' ? data : filteredData}
             numColumns="2"
+            showsVerticalScrollIndicator={false}
             renderItem={({item}) => {
               return (
                 <View style={styles.itemOuterContainer}>
@@ -129,4 +110,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default SearchScreen;

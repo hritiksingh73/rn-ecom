@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
     billDetailTxt: {
     fontSize: 16,
     marginVertical: 15,
-    borderBottomWidth: 1,
     borderBottomColor: colors.black,
   },
   pricingStyl: {

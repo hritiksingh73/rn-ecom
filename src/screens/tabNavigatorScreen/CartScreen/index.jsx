@@ -19,6 +19,7 @@ import styles from './style';
 import firestore from '@react-native-firebase/firestore';
 import LoginBtn from '../../../components/loginBtn';
 import BillingDetail from '../../../components/billingDetailField';
+import images from '../../../config/images';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -57,11 +58,9 @@ const CartScreen = () => {
       }
     }
   };
-
-  const IsCouponApplied = () => {};
   
   const DeliveryCharge = () => {
-    return 100;
+    return 0;
   };
   const ItemTax = () => {
     let tot = UserItemPrice();
@@ -72,8 +71,8 @@ const CartScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.constainer}>
-      <ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.horizontlmrgn}>
         <View>
           <Text style={styles.title}>Cart</Text>
@@ -83,7 +82,7 @@ const CartScreen = () => {
           <View style={styles.itemHeader}>
             <Image
               style={styles.imgStyl}
-              source={require('../../../assets/images/MFruits1.jpg')}
+              source={images.source1}
             />
             <Text style={styles.headerTxt}>Fresh Fruits</Text>
           </View>
@@ -117,6 +116,7 @@ const CartScreen = () => {
                                 .collection('Cart')
                                 .doc('ABC')
                                 .set({cartData});
+                                console.log(cartData)
                             }}>
                             <Text style={styles.dec}>- </Text>
                           </TouchableOpacity>
@@ -130,6 +130,7 @@ const CartScreen = () => {
                                 .collection('Cart')
                                 .doc('ABC')
                                 .set({cartData});
+                                console.log(cartData)
                             }}>
                             <Text style={styles.inc}>+ </Text>
                           </TouchableOpacity>
@@ -187,7 +188,7 @@ const CartScreen = () => {
         <View>
           <Text style={styles.totClr}>Total</Text>
           <Text style={styles.checkoutTotalTxt}>₹ {TotalBilling()}</Text>
-          <Text style={styles.totMsg}>You save $ 5 on this</Text>
+          <Text style={styles.totMsg}>You save ₹ 0 on this</Text>
         </View>
         <View style={styles.topMrgn}>
           <LoginBtn name={'Checkout'} />

@@ -1,11 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
-    constainer: {
+  container: {
       width: '100%',
       height: '100%',
       backgroundColor: colors.white,
+      marginTop: Platform.OS === 'ios' ? "0%" : 10,
     },
     horizontlmrgn: {
       marginHorizontal: 12,
@@ -123,6 +124,7 @@ const styles = StyleSheet.create({
     couponIconStyl: {
       paddingHorizontal: 10,
       paddingTop: 1,
+      marginTop: Platform.OS === 'ios' ? "0%" : 12,
     },
     couponTxt: {
       fontSize: 18,
@@ -132,6 +134,7 @@ const styles = StyleSheet.create({
       textAlign: 'right',
       color: colors.green,
       fontWeight: '600',
+      marginTop: Platform.OS === 'ios' ? "0%" : 12,
     },
     billingBoxStyling: {
       marginHorizontal: 5,

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     },
     HorizMargin: {
       marginHorizontal: '2%',
+      marginTop: Platform.OS === 'ios' ? '0%' : '4%',
     },
     bgColor: {
       backgroundColor: colors.white
@@ -16,9 +17,12 @@ const styles = StyleSheet.create({
     txtContainer: {
       backgroundColor: '#e6e6e6',
       padding: 15,
-      marginVertical: 20,
+      marginVertical: 5,
       marginHorizontal: '4%',
       flexDirection: 'row',	
+    },
+    searchIconStyle: {
+      marginTop: Platform.OS === 'ios' ? '0%' : 12,
     },
     txtFields: {
       fontSize: 18,

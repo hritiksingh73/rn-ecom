@@ -64,9 +64,18 @@ const FilterStackNavigator = () => {
   return (
     <Filter.Navigator>
       <Filter.Screen
-        name="HomeScreen"
+        name="Super Fresh"
         component={HomeScreen}
-        options={{headerShown: false}}
+        options={{
+          headerShown: true,
+          headerRight: () => {
+            return (
+              <TouchableOpacity>
+                <Feather name={'bell'} size={25} />
+              </TouchableOpacity>
+            );
+          },
+        }}
       />
       <Filter.Screen
         name="Fruits"

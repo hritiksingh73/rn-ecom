@@ -19,7 +19,7 @@ const DropDown = props => {
   // ]);
 
   return (
-    // <View>
+    // <View style={{zIndex: 2}}>
     //   <DropDownPicker
     //     style={styles.testing}
     //     open={open}
@@ -45,6 +45,7 @@ const DropDown = props => {
           }}>
           <Text style={styles.padig}>Choose Area</Text>
         </TouchableOpacity>
+        <Feather name={'chevron-down'} size={18} />
       </View>
 
       {isTrue ? (

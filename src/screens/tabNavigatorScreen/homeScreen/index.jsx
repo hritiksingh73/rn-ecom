@@ -10,8 +10,12 @@ import {
 } from 'react-native';
 import styles from './styles';
 import veggiImages from '../../../data/homeScreenData';
+import Feather from 'react-native-vector-icons/Feather';
+import {Rating} from 'react-native-ratings';
+import colors from '../../../constants/colors';
+import images from '../../../config/images';
 
-const SearchScreen = ({navigation}) => {
+const HomeScreen = ({navigation}) => {
   const [data, setData] = useState({});
 
   const CallingApi = async () => {
@@ -25,20 +29,54 @@ const SearchScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Text style={styles.heading}>Super Fresh</Text>
+      <ScrollView style={styles.containerMargin}>
+        
+        <View style={styles.headerBar}>
+          <View></View>
+          <View style={styles.imgBox}>
+            <Image style={styles.imgStyl} source={images.source1} />
+            <View>
+              <View style={styles.headerTitleBlock}>
+                <Text style={styles.headerTitleTxt}>Super Fresh</Text>
+              </View>
+              <View style={styles.headerRatingBlock}>
+                <Rating imageSize={15} ratingCount={5} jumpValue={1} />
+              </View>
+            </View>
+            <View style={styles.bottomArrowIcon}>
+              <Feather
+                name={'chevron-down'}
+                size={20}
+                color={colors.lightgray}
+              />
+            </View>
+          </View>
+          <View style={styles.heartIcon}>
+            <TouchableOpacity>
+              <Feather name={'heart'} size={22} color={colors.lightgray} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
         <FlatList
           data={veggiImages}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             return (
               <View style={styles.horizontalSlidebar}>
                 <Image
                   style={styles.itemImage}
                   resizeMode="cover"
-                  showsHorizontalScrollIndicator={true}
                   source={item.path}
                 />
+                <View style={styles.txtOnImageContainer}>
+                  <Text style={styles.txtOnImageHeader}>Super Fresh</Text>
+                  <Text style={styles.txtOnImageContent}>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </Text>
+                </View>
               </View>
             );
           }}
@@ -72,6 +110,8 @@ const SearchScreen = ({navigation}) => {
             );
           }}
         /> */}
+        {/* <ItemList data={PoppularProductsData}/> */}
+
         <TouchableOpacity
           style={styles.category}
           onPress={() => navigation.navigate('Fruits')}>
@@ -92,4 +132,4 @@ const SearchScreen = ({navigation}) => {
   );
 };
 
-export default SearchScreen;
+export default HomeScreen;

@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {registerDetails, UserId} from '../../../redux/action/action';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import {ValidateEmail, ValidatePassword, ValidateName, ValidateNumber} from '../../../regexValidation';
+import {ValidateEmail, ValidatePassword, ValidateName, ValidateNumber} from '../../../utils';
 
 const Register = ({navigation}) => {
   const [userName, setUserName] = useState('');

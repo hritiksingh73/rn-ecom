@@ -11,10 +11,10 @@ import styles from './styles';
 import LoginTextField from '../../../components/textInputField';
 import LoginBtn from '../../../components/loginBtn';
 import auth from '@react-native-firebase/auth';
-import {ValidateEmail, ValidatePassword} from '../../../regexValidation';
+import {ValidateEmail, ValidatePassword} from '../../../utils';
+import images from '../../../config/images';
 
 const Login = ({navigation}) => {
-  
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState('');
@@ -64,12 +64,11 @@ const Login = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.screenMargin}>
+      <ScrollView
+        style={styles.screenMargin}
+        showsVerticalScrollIndicator={false}>
         <View style={styles.cntrItm}>
-          <Image
-            style={styles.headerImg}
-            source={require('../../../assets/images/Grocery.jpg')}
-          />
+          <Image style={styles.headerImg} source={images.grocery} />
         </View>
         <Text style={styles.headerfnt}>Welcome back!</Text>
 
@@ -110,14 +109,8 @@ const Login = ({navigation}) => {
         <Text style={styles.headerfnt}>Continue with</Text>
 
         <View style={styles.imgContainer}>
-          <Image
-            style={styles.fbBtn}
-            source={require('../../../assets/images/facebook.jpg')}
-          />
-          <Image
-            style={styles.googleBtn}
-            source={require('../../../assets/images/google.jpg')}
-          />
+          <Image style={styles.fbBtn} source={images.facebook} />
+          <Image style={styles.googleBtn} source={images.google} />
         </View>
 
         <Text style={styles.footerTxt}>

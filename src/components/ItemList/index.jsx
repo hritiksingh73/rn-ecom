@@ -6,7 +6,7 @@ import styles from './styles';
 import firestore from '@react-native-firebase/firestore';
 
 const ItemList = props => {
-  const data = props.data;
+  const {data} = props;
   var isItemAvailable = false;
   var resp = [];
 
@@ -16,35 +16,35 @@ const ItemList = props => {
   const userID = useSelector(state => state.user.userID);
 
   const FireSotreDataHandler  = async (item) => {
-    await firestore()
-    .collection('Cart')
-    .doc('ABC')
-    .get()
-    .then(documentSnapshot => {
-      if (documentSnapshot.exists) {
-        // setAddToCartData(documentSnapshot.data().resp.push(item))
-        // let res = documentSnapshot.data().cartItem;
-        let res = documentSnapshot.data().resp
-        res.push(item)
-        resp = res
-        // setAddToCartData(res)
-        // documentSnapshot.data().resp.push(item)
-        console.log('User data: ', documentSnapshot.data().resp);
-        // console.log('User data2: ', res);
+    // await firestore()
+    // .collection('Cart')
+    // .doc('ABC')
+    // .get()
+    // .then(documentSnapshot => {
+    //   if (documentSnapshot.exists) {
+    //     // setAddToCartData(documentSnapshot.data().resp.push(item))
+    //     // let res = documentSnapshot.data().cartItem;
+    //     let res = documentSnapshot.data().resp
+    //     res.push(item)
+    //     resp = res
+    //     // setAddToCartData(res)
+    //     // documentSnapshot.data().resp.push(item)
+    //     console.log('User data: ', documentSnapshot.data().resp);
+    //     // console.log('User data2: ', res);
 
-      //   a.push(item)
-      // setAddToCartData(a)
-      // console.log('data: ', addToCartData)
-      }
-    })
-    firestore()
+    //   //   a.push(item)
+    //   // setAddToCartData(a)
+    //   // console.log('data: ', addToCartData)
+    //   }
+    // })
+    await firestore()
       .collection('Cart')
       // .doc(userID)
       .doc('ABC')
-      .set({resp})
-      .then(() => {
+      .set({cartData})
+    //   .then(() => {
         // console.log('Cart data added!');
-    });
+    // });
   };
 
   const SetDataToCartScreen = item => {

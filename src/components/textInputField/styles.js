@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform ,StyleSheet} from 'react-native';
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
@@ -12,13 +12,16 @@ const styles = StyleSheet.create({
       width: '100%',
     },
     txtField: {
+      color: colors.black,
       fontSize: 18,
       width: '78%',
     },
     icons: {
+      color: colors.black,
       width: '6%',
       marginRight: '4%',
       marginLeft: '1%',
+      marginTop: Platform.OS === 'ios' ? '0%' : '4%',
     },
     rightIconsArea: {
       width: '6%',
@@ -26,7 +29,9 @@ const styles = StyleSheet.create({
       marginLeft: '4%',
     },
     rightIcons: {
+      color: colors.black,
       width: '100%',
+      marginTop: Platform.OS === 'ios' ? '0%' : '70%',
     },
     warningTxt: {
       color: colors.red,
