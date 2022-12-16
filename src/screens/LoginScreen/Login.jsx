@@ -10,11 +10,11 @@ import auth from '@react-native-firebase/auth';
 import ImagePath from '../../config/Image';
 import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
 import firestore from '@react-native-firebase/firestore';
-import {validateEmail, validatePassword} from '../../utils/Validation';
+import {emailValidator, passwordValidator} from '../../utils/Validation';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  const [registeremail, setRegisterEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [validation, setValidation] = useState({
     emailError: '',
     passwordError: '',
@@ -23,8 +23,8 @@ const LoginPage = () => {
 
   const navigation = useNavigation();
 
-  const emailValidator = () => {
-    email === '' || !validateEmail(email)
+  const validateEmail = () => {
+    registeremail === '' || !emailValidator(registeremail)
       ? setValidation({
           ...validation,
           emailError: 'please enter a valid email (eg: A@123@Indianic.com)',
@@ -32,8 +32,8 @@ const LoginPage = () => {
       : setValidation({...validation, emailError: ''});
   };
 
-  const passwordValidator = () => {
-    userPassword === '' || !validatePassword(userPassword)
+  const validatePassword = () => {
+    password === '' || !passwordValidator(password)
       ? setValidation({
           ...validation,
           passwordError: 'please enter a valid password ',
@@ -54,8 +54,8 @@ const LoginPage = () => {
         });
 
       const userRes = await auth().signInWithEmailAndPassword(
-        email,
-        userPassword,
+        registeremail,
+        password,
       );
     } catch (error) {
       console.log(error.code);
@@ -75,22 +75,22 @@ const LoginPage = () => {
       <FormContainer
         Text="Email"
         Icon="mail"
-        onChangeText={text => setEmail(text)}
+        onChangeText={text => setRegisterEmail(text)}
         keyboardType="email-address"
-        value={email}
+        value={registeremail}
         placeholder="Email"
         autoCapitalize="words"
-        onBlur={() => emailValidator()}
+        onBlur={() => validateEmail()}
       />
       <Text style={styles.errormsg}>{validation.emailError}</Text>
       <FormContainer
         Text="Password"
         Icon="key"
-        onChangeText={text => setUserPassword(text)}
-        value={userPassword}
+        onChangeText={text => setPassword(text)}
+        value={password}
         placeholder="Password"
         autoCapitalize="words"
-        onBlur={() => passwordValidator()}
+        onBlur={() => validatePassword()}
         secureTextEntry={true}
         maxLength={9}
       />
@@ -100,7 +100,7 @@ const LoginPage = () => {
       </TouchableOpacity>
       <TouchableOpacity
         disabled={
-          !validateEmail(email) || !validatePassword(userPassword)
+          !emailValidator(registeremail) || !passwordValidator(password)
             ? true
             : false
         }

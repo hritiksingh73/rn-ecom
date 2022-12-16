@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 
 const FormContainer = ({...props}) => {
-  // const {Icon, Text} = props;
   return (
     <>
       <Text style={styles.userInputHeader}>{props.Text}</Text>

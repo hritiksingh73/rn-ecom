@@ -9,20 +9,19 @@ import {
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-
-import Icon from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import {addUser} from '../../redux/action/Action';
 import FormContainer from '../../component/FormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+
 import {
   emailValidator,
-  contactValidator,
+  phoneNumberValidator,
   passwordValidator,
 } from '../../utils/Validation';
 
-const RegisterPage = () => {
+const RegisterScreen = () => {
   const [name, setName] = useState('');
   const [registeremail, setRegisterEmail] = useState('');
   const [cellNumber, setCellNumber] = useState('');
@@ -80,7 +79,7 @@ const RegisterPage = () => {
       : setValidation({errorregisteremail: ''});
   };
   const validatorMobile = () => {
-    cellNumber === '' || !contactValidator(cellNumber)
+    cellNumber === '' || !phoneNumberValidator(cellNumber)
       ? setValidation({
           ...validation,
           errorcellNumber: 'please enter a valid mobile number',
@@ -152,4 +151,4 @@ const RegisterPage = () => {
     </KeyboardAvoidingView>
   );
 };
-export default RegisterPage;
+export default RegisterScreen;

@@ -110,8 +110,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     alignContent: 'center',
-
-    paddingTop: 5,
   },
   billingText: {
     fontSize: 20,

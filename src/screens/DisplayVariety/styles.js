@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     paddingBottom: 8,
-    paddingLeft: 8,
+    paddingLeft: 8
   },
   imageCard: {
     resizeMode: 'contain',

@@ -27,12 +27,12 @@ const userReducer = (state = InitialState, action) => {
         cart: [...state.cart, {...action.payload, quantity: 1}],
       };
 
-    // case ActionType.REMOVE_ITEM:
-    //   //console.log(...state.cart.filter( (item) => action.payload !== item))
-    //   return {
-    //     ...state,
-    //     cart: state.cart.filter(item => action.payload !== item.id),
-    //   };
+    case ActionType.REMOVE_ITEM:
+      //console.log(...state.cart.filter( (item) => action.payload !== item))
+      return {
+        ...state,
+        cart: state.cart.filter(item => action.payload !== item.id),
+      };
 
     case ActionType.INCREASE_ITEM_QUANTITY:
       const increaseItem = state.cart.map(item => {
