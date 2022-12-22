@@ -18,15 +18,18 @@ const LoginScreen = ({navigation}) => {
 
   const updateLogin = () => {
     const object = {mail, pass};
-    try {
-      const Response = auth().signInWithEmailAndPassword(mail, pass);
-      console.log('Login user ++> ', Response);
-    } catch (error) {
-      console.error(error.code);
+    if (mail === '' && pass === '') {
+      alert('Fields are Empty');
+    } else {
+      try {
+        const Response = auth().signInWithEmailAndPassword(mail, pass);
+        console.log('Login user ++> ', Response);
+      } catch (error) {
+        console.error(error.code);
+      }
+      dispatch(updateUser(object));
+      navigation.navigate('Home');
     }
-
-    dispatch(updateUser(object));
-    navigation.navigate('Home');
   };
 
   return (

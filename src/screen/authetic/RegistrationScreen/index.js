@@ -53,6 +53,7 @@ const RegistrationScreen = ({navigation}) => {
         console.error(error);
       });
     dispatch(updateReg(object));
+    navigation.navigate('Home');
 
     //console.log(object);
   };

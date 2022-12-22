@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
     width: 200,
     height: 300,
     marginVertical: 10,
-    marginTop: 25,
+    marginTop: -10,
     flexDirection: 'column',
   },
   block1: {
@@ -71,6 +71,8 @@ export const styles = StyleSheet.create({
     //borderWidth: 0.5,
     padding: 15,
     borderRadius: 5,
+    borderColor: 'grey',
+    borderWidth: 0.1,
   },
   touchableArea: {
     marginHorizontal: 30,
@@ -94,10 +96,6 @@ export const styles = StyleSheet.create({
     color: 'green',
   },
   headerIcon: {
-    // fontSize: 18,
-    // fontWeight: '500',
-    //marginVertical: 10,
-    //marginBottom: 30,
     right: 160,
     top: 5,
   },
@@ -108,4 +106,7 @@ export const styles = StyleSheet.create({
   heartIcon: {
     left: 70,
   },
+  trendingNearContain: {
+    marginHorizontal: -20
+  }
 });

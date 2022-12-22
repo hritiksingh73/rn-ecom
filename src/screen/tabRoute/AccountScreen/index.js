@@ -5,11 +5,12 @@ import IconAntDesign from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
 import Touchable from '../../../components/touchableOpacity';
 
-const AccountScreen = () => {
+const AccountScreen = ({navigation}) => {
   const signOut = () => {
     auth()
       .signOut()
       .then(() => console.log('User signed out!'));
+    navigation.navigate('Login');
   };
 
   return (
@@ -36,6 +37,7 @@ const AccountScreen = () => {
           onPress={signOut}
         />
       </View>
+      
     </SafeAreaView>
   );
 };

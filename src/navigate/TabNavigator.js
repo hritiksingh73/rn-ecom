@@ -1,14 +1,11 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
-//import Home from '../screen/tabRoute/Home';
+
 import HomeScreen from '../screen/tabRoute/HomeScreen';
 import CartScreen from '../screen/tabRoute/CartScreen';
 import SearchScreen from '../screen/tabRoute/SearchScreen';
 import AccountScreen from '../screen/tabRoute/AccountScreen';
-//import Cart from '../screen/tabRoute/Cart';
-//import Search from '../screen/tabRoute/Search';
-//import Account from '../screen/tabRoute/Account';
 
 const Tab = createBottomTabNavigator();
 

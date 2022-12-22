@@ -62,17 +62,20 @@ const counterReducer = (state = initialState, action) => {
       };
     case ActionTypes.DECREMENT_ITEM:
       let decrease = [...state.cart];
-      const decreaseItem = decrease.map(item => {
-        return item.id === action.payload && item.quantity > 0
-          ? {
-              ...item,
-              quantity: item.quantity - 1,
-            }
-          : item;
-      });
+      // const decreaseItem = decrease.map(item => {
+      //   return item.id === action.payload && item.quantity > 0
+      //     ? {
+      //         ...item,
+      //         quantity: item.quantity - 1,
+      //       }
+      //     : item;
+      // });
+      const removeCartItem = decrease.filter(
+        item => item.id !== action.payload && item.quantity === 0,
+      );
       return {
         ...state,
-        cart: decreaseItem,
+        cart: removeCartItem,
       };
     default:
       return state;

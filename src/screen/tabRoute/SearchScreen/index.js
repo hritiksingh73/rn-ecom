@@ -17,7 +17,7 @@ import shopKeeperData from '../../../staticData/shopKeeperData';
 
 const SearchScreen = () => {
   const [isSelected, setisSelected] = useState('');
-  const checkCondition = ({item, index}) => {
+  const renderData = ({item, index}) => {
     return (
       <TouchableOpacity>
         <View style={styles.item}>
@@ -60,7 +60,7 @@ const SearchScreen = () => {
       </View>
       <FlatList
         data={shopKeeperData}
-        renderItem={checkCondition}
+        renderItem={renderData}
         numColumns={2}
         //ItemSeparatorComponent={itemseparator}
       />

@@ -7,18 +7,22 @@ import {
   FlatList,
   ScrollView,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useDispatch} from 'react-redux';
+import Carousel from 'react-native-reanimated-carousel';
+import firestore from '@react-native-firebase/firestore';
+
 import homedata from '../../../staticData/homedata';
 import {addtoCart} from '../../../redux/action/action';
-import firestore from '@react-native-firebase/firestore';
 import {styles} from './styles';
 import images from '../../../config/image';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
+  const width = Dimensions.get('window').width;
 
   const deliverData = item => {
     dispatch(addtoCart(item));
@@ -86,25 +90,29 @@ const HomeScreen = ({navigation}) => {
               horizontal={true}
               renderItem={({item}) => {
                 return (
-                  <View style={styles.itemContainer}>
-                    <View style={styles.innerSection}>
-                      <View style={styles.block1}>
-                        <Image style={styles.bgimage} source={item.image} />
-                      </View>
-                      <View style={styles.block1}>
-                        <Text style={styles.productName}>{item.name}</Text>
-                        <Text style={styles.productPrice}>
-                          Rs. {item.price} {item.oldPrice}
-                        </Text>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('popularProduct')}>
+                    <View style={styles.itemContainer}>
+                      <View style={styles.innerSection}>
+                        <View style={styles.block1}>
+                          <Image style={styles.bgimage} source={item.image} />
+                        </View>
 
-                        <TouchableOpacity
-                          style={styles.touchableArea}
-                          onPress={() => deliverData(item)}>
-                          <Text style={styles.AtoCBtn}>Add to Cart</Text>
-                        </TouchableOpacity>
+                        <View style={styles.block1}>
+                          <Text style={styles.productName}>{item.name}</Text>
+                          <Text style={styles.productPrice}>
+                            Rs. {item.Price}
+                          </Text>
+
+                          <TouchableOpacity
+                            style={styles.touchableArea}
+                            onPress={() => deliverData(item)}>
+                            <Text style={styles.AtoCBtn}>Add to Cart</Text>
+                          </TouchableOpacity>
+                        </View>
                       </View>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 );
               }}
             />
@@ -114,7 +122,7 @@ const HomeScreen = ({navigation}) => {
             <Text style={styles.PopTxt}>Trending near you</Text>
           </View>
 
-          <View>
+          <View style={styles.trendingNearContain}>
             <FlatList
               data={homedata}
               numColumns={'2'}
