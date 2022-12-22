@@ -56,7 +56,6 @@ const DropDown = props => {
             <TouchableOpacity
               style={styles.DropDownStyle}
               onPress={() => {
-                // console.log('value ---: ',value);
                 SelectedCity(value);
               }}>
               <Text key={String(index)}>{value.name}</Text>

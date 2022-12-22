@@ -3,20 +3,29 @@ import {
   Text,
   View,
   SafeAreaView,
-  FlatList,
   Image,
   TouchableOpacity,
   ScrollView,
+  Dimensions,
 } from 'react-native';
-import styles from './styles';
 import veggiImages from '../../../data/homeScreenData';
+import Carousel from 'react-native-reanimated-carousel';
 import Feather from 'react-native-vector-icons/Feather';
 import {Rating} from 'react-native-ratings';
-import colors from '../../../constants/colors';
+import globaStyle from '../../../constants/globalStyle';
+import styles from './styles';
+import strings from '../../../constants/strings';
 import images from '../../../config/images';
+import colors from '../../../constants/colors';
+import Fruits from '../../../data/localFruitsapi/FruitsApi';
+import Vegitables from '../../../data/localVegetablesapi/VegetablesApi';
+import Pulses from '../../../data/localPulsesapi/PulsesApi';
+import ItemList from '../../../components/ItemList';
+import TrendingItems from '../../../components/TrendingItems';
 
 const HomeScreen = ({navigation}) => {
   const [data, setData] = useState({});
+  const width = Dimensions.get('window').width;
 
   const CallingApi = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
@@ -28,9 +37,8 @@ const HomeScreen = ({navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.containerMargin}>
-        
+    <SafeAreaView style={globaStyle.outerContainer}>
+      <ScrollView>
         <View style={styles.headerBar}>
           <View></View>
           <View style={styles.imgBox}>
@@ -58,31 +66,48 @@ const HomeScreen = ({navigation}) => {
           </View>
         </View>
 
-        <FlatList
-          data={veggiImages}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => {
-            return (
-              <View style={styles.horizontalSlidebar}>
-                <Image
-                  style={styles.itemImage}
-                  resizeMode="cover"
-                  source={item.path}
-                />
-                <View style={styles.txtOnImageContainer}>
-                  <Text style={styles.txtOnImageHeader}>Super Fresh</Text>
-                  <Text style={styles.txtOnImageContent}>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </Text>
+        <View style={styles.carousalContainer}>
+          <Carousel
+            loop
+            width={width}
+            height={width / 2 + 10}
+            autoPlay={true}
+            data={veggiImages}
+            renderItem={({item}) => {
+              return (
+                <View style={styles.horizontalSlidebar}>
+                  <Image
+                    style={styles.itemImage}
+                    resizeMode="cover"
+                    source={item.path}
+                  />
+                  <View style={styles.txtOnImageContainer}>
+                    <Text style={styles.txtOnImageHeader}>Super Fresh</Text>
+                    <Text style={styles.txtOnImageContent}>{strings.txt1}</Text>
+                  </View>
                 </View>
-              </View>
-            );
-          }}
-        />
-        <Text style={styles.productHeading}>Poppular Product</Text>
-        {/* <FlatList
+              );
+            }}
+          />
+        </View>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Fruits')}>
+          <Text style={styles.productHeading}>Poppular Product</Text>
+        </TouchableOpacity>
+        <TrendingItems data={Fruits} />
+        <TouchableOpacity onPress={() => navigation.navigate('Vegetables')}>
+          <Text style={styles.productHeading}>Trending near you</Text>
+        </TouchableOpacity>
+        <TrendingItems data={Vegitables} />
+        <TouchableOpacity onPress={() => navigation.navigate('Pulses')}>
+          <View style={styles.bottomItemStyl}>
+            <Text style={styles.productHeading}>Other</Text>
+            <ItemList data={Pulses} />
+          </View>
+        </TouchableOpacity>
+
+        {/* Api Data
+        <FlatList
           data={data}
           horizontal={true}
           renderItem={({item}) => {
@@ -110,23 +135,6 @@ const HomeScreen = ({navigation}) => {
             );
           }}
         /> */}
-        {/* <ItemList data={PoppularProductsData}/> */}
-
-        <TouchableOpacity
-          style={styles.category}
-          onPress={() => navigation.navigate('Fruits')}>
-          <Text style={styles.categoryTxt}>Fruits Screen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.category}
-          onPress={() => navigation.navigate('Vegetables')}>
-          <Text style={styles.categoryTxt}>Vegetables Screen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.category}
-          onPress={() => navigation.navigate('Pulses')}>
-          <Text style={styles.categoryTxt}>Pulses Screen</Text>
-        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

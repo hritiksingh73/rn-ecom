@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
-import DropDown from '../../../components/dropDown';
+import DropDown from '../../../components/DropDown';
 import remoteConfig from '@react-native-firebase/remote-config';
 import data from '../../../data/searchSrnData';
+import {Rating} from 'react-native-ratings';
 
 const SearchScreen = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -30,7 +31,6 @@ const SearchScreen = () => {
     setRemoteConf(res);
     // console.log(remoteConf)
   };
-
   useEffect(() => {
     RemoteConfigDataHandler();
   }, []);
@@ -41,15 +41,6 @@ const SearchScreen = () => {
       return item.place.toUpperCase().includes(input.toUpperCase());
     });
     setFilteredData(response);
-  };
-
-  const StarCounterFun = val => {
-    let a = Math.floor(val);
-    var star = '';
-    for (i = 1; i <= a; i++) {
-      star += '*';
-    }
-    return star;
   };
 
   const SelectedCity = val => {
@@ -69,7 +60,7 @@ const SearchScreen = () => {
           <DropDown data={remoteConf} SelectedCity={SelectedCity} />
 
           <View style={styles.txtContainer}>
-            <Feather name={'search'} size={22} style={styles.searchIconStyle}/>
+            <Feather name={'search'} size={22} style={styles.searchIconStyle} />
             <TextInput
               style={styles.txtFields}
               placeholder="Find Store"
@@ -95,10 +86,9 @@ const SearchScreen = () => {
                   </View>
                   <View style={styles.itemTextContainer}>
                     <Text style={styles.itemName}>{item.name}</Text>
-                    {/* <Text style={styles.itemRating}>{item.rating}</Text> */}
-                    <Text style={styles.itemRating}>
-                      {StarCounterFun(item.rating)}
-                    </Text>
+                    <View style={styles.ratingStyl}>
+                      <Rating imageSize={15} ratingCount={5} jumpValue={1} />
+                    </View>
                   </View>
                 </View>
               );

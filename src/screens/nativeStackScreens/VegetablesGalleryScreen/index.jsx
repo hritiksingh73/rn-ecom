@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import VegetablesApi from '../../../api/localVegetablesapi/VegetablesApi';
+import VegetablesApi from '../../../data/localVegetablesapi/VegetablesApi';
 import ItemList from '../../../components/ItemList';
 import styles from './styles';
 

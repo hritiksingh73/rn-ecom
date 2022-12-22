@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles';
-import LoginTextField from '../../../components/textInputField';
+import LoginTextField from '../../../components/TextInputField';
 import LoginBtn from '../../../components/loginBtn';
 import auth from '@react-native-firebase/auth';
 import {ValidateEmail, ValidatePassword} from '../../../utils';
@@ -32,7 +32,6 @@ const Login = ({navigation}) => {
             userEmail,
             userPassword,
           );
-          // console.log('Login user --> ', Response);
           console.log('\n\n===========userDetails==========');
           console.log('userName :', Response.user.displayName);
           console.log('userEmail :', Response.user.email);

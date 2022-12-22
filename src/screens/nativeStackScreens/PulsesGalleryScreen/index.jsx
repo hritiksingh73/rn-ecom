@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import PulsesApi from '../../../api/localPulsesapi/PulsesApi';
+import PulsesApi from '../../../data/localPulsesapi/PulsesApi';
 import ItemList from '../../../components/ItemList';
 import styles from './styles';
 

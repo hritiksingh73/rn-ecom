@@ -1,13 +1,18 @@
 import React, {useState} from 'react';
 import {Text, View, SafeAreaView, ScrollView} from 'react-native';
 import styles from './styles';
-import LoginTextField from '../../../components/textInputField';
+import LoginTextField from '../../../components/TextInputField';
 import LoginBtn from '../../../components/loginBtn';
 import {useDispatch, useSelector} from 'react-redux';
 import {registerDetails, UserId} from '../../../redux/action/action';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import {ValidateEmail, ValidatePassword, ValidateName, ValidateNumber} from '../../../utils';
+import {
+  ValidateEmail,
+  ValidatePassword,
+  ValidateName,
+  ValidateNumber,
+} from '../../../utils';
 
 const Register = ({navigation}) => {
   const [userName, setUserName] = useState('');
@@ -23,7 +28,6 @@ const Register = ({navigation}) => {
   const [cartItem, setCartItem] = useState([]);
 
   const dispatch = useDispatch();
-  const userID = useSelector(state => state.user.userID);
 
   const LoginHandler = async () => {
     if (

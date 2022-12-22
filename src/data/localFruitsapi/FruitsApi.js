@@ -6,7 +6,7 @@ const FruitsApi = [
         price: 40,
         maxPrice: 50,
         quantity: '1dozen',
-        url: require('../../../src/assets/images/fruits/Banana/Banana_img1.webp'),
+        url: require('../../../src/assets/images/fruits/Banana/Banana_img3.jpg'),
         numberOfItem: 1,
     },
     {   

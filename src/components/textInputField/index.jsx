@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {TextInput, View, Text, TouchableOpacity} from 'react-native';
-import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
+import styles from './styles';
 
-const LoginTextField = props => {
+const TextInputField = props => {
   const {icon, secureTextEntry, rightIcon, warrning} = props;
   const [isEyeOn, setIsEyeOn] = useState(true);
 
@@ -26,11 +26,7 @@ const LoginTextField = props => {
             {isEyeOn ? (
               <Feather name="eye-off" size={20} style={styles.rightIcons} />
             ) : (
-              <Feather
-                name={rightIcon}
-                size={20}
-                style={styles.rightIcons}
-              />
+              <Feather name={rightIcon} size={20} style={styles.rightIcons} />
             )}
           </TouchableOpacity>
         ) : (
@@ -42,4 +38,4 @@ const LoginTextField = props => {
   );
 };
 
-export default LoginTextField;
+export default TextInputField;

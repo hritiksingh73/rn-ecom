@@ -1,15 +1,16 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
     itemSepertor: {
       width: '100%',
       borderBottomWidth: 1,
-      borderColor: '#d8d8d8',
+      borderColor: colors.gray_85,
       marginVertical: 22,
     },
     txtArea: {
       fontSize: 16,
-      color: '#1a1a1a',
+      color: colors.black_10,
       marginHorizontal: 20,
       marginTop: 5,
     },

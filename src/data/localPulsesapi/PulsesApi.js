@@ -79,16 +79,6 @@ const PulsesApi = [
         url: require('../../../src/assets/images/Pulses/Chana_Dal/ChanaDal1.jpg'),
         numberOfItem: '1',
     },
-    {   
-        id: '3009',
-        title: 'Whole Moong Beans',
-        rating: 4.5,
-        price: 100,
-        maxPrice: 120,
-        quantity: '1kg',
-        url: require('../../../src/assets/images/Pulses/Whole_Moong_Beans/MoongBeans2.jpg'),
-        numberOfItem: '1',
-    },
 ]
 
 export default PulsesApi;

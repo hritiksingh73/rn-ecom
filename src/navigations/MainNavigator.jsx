@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
+import auth from '@react-native-firebase/auth';
 import AuthNavigator from './AuthNavigator';
 import TabNavigator from './TabNavigator';
-import auth from '@react-native-firebase/auth';
 
 const MainNavigator = () => {
   const [user, setUser] = useState();
