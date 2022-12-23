@@ -2,21 +2,23 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import PopularProducts from '../screens/PopularProducts/PopularProducts';
 import SuperFresh from '../screens/HomeScreen/SuperFresh';
+import DisplayVariety from '../screens/DisplayVariety/DisplayVariety';
+import SearchScreen from '../screens/SearchScreen/SearchScreen';
 
 const stack = createNativeStackNavigator();
-const NavigationStack = () => {
+const SearchNavigationStack = () => {
   return (
     <stack.Navigator>
       <stack.Screen
-        name="SuperFresh"
-        component={SuperFresh}
+        name="DisplayVariety"
+        component={DisplayVariety}
         options={{
           headerShown: false,
         }}
       />
       <stack.Screen
-        name="PopularProduct"
-        component={PopularProducts}
+        name="SearchScreen"
+        component={SearchScreen}
         options={{
           headerShown: false,
         }}
@@ -25,4 +27,4 @@ const NavigationStack = () => {
   );
 };
 
-export default NavigationStack;
+export default SearchNavigationStack;

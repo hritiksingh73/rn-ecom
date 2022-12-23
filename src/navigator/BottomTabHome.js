@@ -6,8 +6,9 @@ import Cart from '../screens/CartScreen/Cart';
 import Account from '../screens/AccountScreen/Account';
 import Icon from 'react-native-vector-icons/AntDesign';
 import DisplayVariety from '../screens/DisplayVariety/DisplayVariety';
-import NavigationStack from './NavigationStack';
+import HomeNavigationStack from './HomeNavigationStack';
 import {Color} from '../constant/Color';
+import SearchNavigationStack from './SearchNavigationStack';
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
@@ -16,7 +17,7 @@ const AppNavigator = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Home"
-        component={NavigationStack}
+        component={HomeNavigationStack}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="home" {...props} />,
@@ -25,7 +26,7 @@ const AppNavigator = () => {
 
       <Tab.Screen
         name="Search"
-        component={DisplayVariety}
+        component={SearchNavigationStack}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="search1" {...props} />,

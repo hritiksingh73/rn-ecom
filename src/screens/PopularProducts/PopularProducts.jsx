@@ -31,12 +31,12 @@ const PopularProducts = () => {
   const ListData = ({item}) => {
     return (
       <View style={styles.card}>
-        <TouchableOpacity style={styles.imgContainer}>
+        <View style={styles.imgContainer}>
           <Image source={{uri: item.image}} style={styles.imgStyle} />
           <Text style={styles.mainContainer}>{item.title}</Text>
           <Text style={styles.price}>${item.price}</Text>
           <Text>Add to Cart</Text>
-        </TouchableOpacity>
+        </View>
       </View>
     );
   };

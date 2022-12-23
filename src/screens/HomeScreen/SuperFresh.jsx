@@ -1,5 +1,6 @@
 import {
   ActivityIndicator,
+  Dimensions,
   FlatList,
   Image,
   ImageBackground,
@@ -24,7 +25,7 @@ import firestore from '@react-native-firebase/firestore';
 import styles from './styles';
 import {Banner} from '../../dummyData/Cards';
 import {Color} from '../../constant/Color';
-
+import Carousel from 'react-native-reanimated-carousel';
 const SuperFresh = () => {
   const dispatch = useDispatch();
   const {isFetching, productData} = useSelector(state => state.userInfo);
@@ -82,7 +83,7 @@ const SuperFresh = () => {
       </View>
     );
   };
-
+  const width = Dimensions.get('window').width;
   return (
     <ScrollView nestedScrollEnabled={true}>
       <SafeAreaView style={{backgroundColor: 'white'}}>
@@ -111,6 +112,27 @@ const SuperFresh = () => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />
+        {/**/}
+        {/* <Carousel
+          loop
+          width={width}
+          height={width / 2}
+          autoPlay={true}
+          data={Banner}
+          scrollAnimationDuration={1000}
+          onSnapToItem={index => console.log('current index:', index)}
+          renderItem={({index}) => (
+            <View
+              style={{
+                flex: 1,
+                borderWidth: 1,
+                justifyContent: 'center',
+              }}>
+              <Text style={{textAlign: 'center', fontSize: 30}}>{index}</Text>
+            </View>
+          )}
+       />   */}
+
         <View style={styles.popularproductcontainer}>
           <Text style={styles.poppularproducts}>Poppular Product </Text>
           <TouchableOpacity
