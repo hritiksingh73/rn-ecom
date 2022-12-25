@@ -4,7 +4,7 @@ import {
   SafeAreaView,
   FlatList,
   TouchableOpacity,
-  Image
+  Image,
 } from 'react-native';
 
 import React, {useEffect} from 'react';
@@ -18,7 +18,6 @@ import styles from './styles';
 import Sort from 'react-native-vector-icons/Octicons';
 import Filter from 'react-native-vector-icons/Ionicons';
 
-
 const PopularProducts = () => {
   const dispatch = useDispatch();
   const items = useSelector(state => state.userInfo.productData);
@@ -31,12 +30,15 @@ const PopularProducts = () => {
   const ListData = ({item}) => {
     return (
       <View style={styles.card}>
-        <View style={styles.imgContainer}>
-          <Image source={{uri: item.image}} style={styles.imgStyle} />
-          <Text style={styles.mainContainer}>{item.title}</Text>
-          <Text style={styles.price}>${item.price}</Text>
-          <Text>Add to Cart</Text>
-        </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ProductDetailsScreen')}>
+          <View style={styles.imgContainer}>
+            <Image source={{uri: item.image}} style={styles.imgStyle} />
+            <Text style={styles.mainContainer}>{item.title}</Text>
+            <Text style={styles.price}>${item.price}</Text>
+            <Text>Add to Cart</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };

@@ -18,9 +18,10 @@ import {ScrollView} from 'react-native-virtualized-view';
 import {addItemToCart} from '../../redux/action/Action';
 
 const SearchScreen = () => {
-  const {productData} = useSelector(state => state.userInfo);
+  const item = useSelector(state => state.userInfo.cart);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+
   const shoppingCards = ({item}) => {
     return (
       <View style={styles.mainContainer}>
@@ -86,7 +87,7 @@ const SearchScreen = () => {
 
         <FlatList
           horizontal={true}
-          data={productData}
+          data={item}
           renderItem={shoppingCards}
           showsHorizontalScrollIndicator={false}
         />

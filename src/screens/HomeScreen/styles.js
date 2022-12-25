@@ -106,6 +106,9 @@ const styles = StyleSheet.create({
     color: Color.black,
     fontWeight: '600',
   },
+  wishlist: {
+    left: 90,
+  },
   poppularproducts: {
     fontSize: 18,
     paddingLeft: 20,

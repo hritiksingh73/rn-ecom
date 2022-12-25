@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  Modal,
+  Button,
 } from 'react-native';
 import {ScrollView} from 'react-native-virtualized-view';
 import {useDispatch, useSelector} from 'react-redux';
@@ -20,12 +22,16 @@ import {
   removeItemFromCart,
 } from '../../redux/action/Action';
 import CartBillingData from '../../component/CartBillingData/CartBillingData';
+import {useNavigation} from '@react-navigation/native';
 
 const Cart = () => {
   const item = useSelector(state => state.userInfo.cart);
   const dispatch = useDispatch();
+  const [isModalVisible, setisModalVisible] = useState(false);
+  const navigation = useNavigation();
 
   const ClearCartItem = item => {
+    console.log('Cart Item Remove on Count ----->', item);
     if (item <= 1) {
       dispatch(removeItemFromCart(item));
     } else {
@@ -48,6 +54,12 @@ const Cart = () => {
   const CalculateSubTotal = Math.round(
     CalculateTotalItemPrices + CalculateDeliveryCharges + CalculateTax,
   );
+  const modalClose = () => {
+    setisModalVisible(false), navigation.navigate('SuperFreshScreen');
+  };
+  const modalOpen = () => {
+    setisModalVisible(true);
+  };
 
   return (
     <ScrollView nestedScrollEnabled={true}>
@@ -73,8 +85,8 @@ const Cart = () => {
                       <TouchableOpacity
                         style={styles.decreaseButton}
                         onPress={() => {
-                          dispatch(decreaseItemCountInCartAction(item.id)),
-                            ClearCartItem(item.quantity);
+                          dispatch(decreaseItemCountInCartAction(item.id));
+                          ClearCartItem(item.quantity);
                         }}>
                         <Text>-</Text>
                       </TouchableOpacity>
@@ -124,10 +136,27 @@ const Cart = () => {
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>
           <View style={styles.checkOut}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={modalOpen}>
               <Text style={styles.checkoutButton}>Checkout</Text>
             </TouchableOpacity>
           </View>
+          <Modal
+            animationType="fade"
+            visible={isModalVisible}
+            transparent={true}>
+            <View style={styles.modalcontainer}>
+              <View style={styles.modal}>
+                <Text style={styles.modalCartMessage}>
+                  Your Order has been placed Successfully
+                </Text>
+                <TouchableOpacity
+                  onPress={modalClose}
+                  style={styles.modalOkButtonContainer}>
+                  <Text style={styles.modalOkButton}>OK</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
         </View>
       </SafeAreaView>
     </ScrollView>

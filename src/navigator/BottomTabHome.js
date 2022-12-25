@@ -5,7 +5,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Cart from '../screens/CartScreen/Cart';
 import Account from '../screens/AccountScreen/Account';
 import Icon from 'react-native-vector-icons/AntDesign';
-import DisplayVariety from '../screens/DisplayVariety/DisplayVariety';
 import HomeNavigationStack from './HomeNavigationStack';
 import {Color} from '../constant/Color';
 import SearchNavigationStack from './SearchNavigationStack';
@@ -39,7 +38,7 @@ const AppNavigator = () => {
         options={{
           headerShown: false,
           tabBarBadge: item.length,
-          tabBarBadgeStyle: { backgroundColor:Color.green },
+          tabBarBadgeStyle: {backgroundColor: Color.green},
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}
       />

@@ -16,7 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Tree from 'react-native-vector-icons/Ionicons';
-import Viewright from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/AntDesign';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Rating} from 'react-native-ratings';
 import {getInitialData} from '../../redux/thunk/ProductThunk';
@@ -25,8 +25,8 @@ import firestore from '@react-native-firebase/firestore';
 import styles from './styles';
 import {Banner} from '../../dummyData/Cards';
 import {Color} from '../../constant/Color';
-import Carousel from 'react-native-reanimated-carousel';
-const SuperFresh = () => {
+
+const SuperFreshScreen = () => {
   const dispatch = useDispatch();
   const {isFetching, productData} = useSelector(state => state.userInfo);
   const navigation = useNavigation();
@@ -83,7 +83,7 @@ const SuperFresh = () => {
       </View>
     );
   };
-  const width = Dimensions.get('window').width;
+
   return (
     <ScrollView nestedScrollEnabled={true}>
       <SafeAreaView style={{backgroundColor: 'white'}}>
@@ -103,6 +103,15 @@ const SuperFresh = () => {
             <Text style={styles.secondheader}>Super Fresh</Text>
             <Rating imageSize={15} ratingCount={5} />
           </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('WishListScreen')}>
+            <Icon
+              name="hearto"
+              size={25}
+              color={Color.black}
+              style={styles.wishlist}
+            />
+          </TouchableOpacity>
         </View>
 
         <FlatList
@@ -114,30 +123,19 @@ const SuperFresh = () => {
         />
         {/**/}
         {/* <Carousel
-          loop
-          width={width}
-          height={width / 2}
-          autoPlay={true}
           data={Banner}
-          scrollAnimationDuration={1000}
-          onSnapToItem={index => console.log('current index:', index)}
-          renderItem={({index}) => (
-            <View
-              style={{
-                flex: 1,
-                borderWidth: 1,
-                justifyContent: 'center',
-              }}>
-              <Text style={{textAlign: 'center', fontSize: 30}}>{index}</Text>
-            </View>
-          )}
-       />   */}
+          renderItem={item => bannerImages(item)}
+          itemWidth={width}
+          //onSnapItem={item => console.log(item)}
+          pagination
+          autoplay
+        /> */}
 
         <View style={styles.popularproductcontainer}>
           <Text style={styles.poppularproducts}>Poppular Product </Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('PopularProduct')}>
-            <Viewright name="right" size={25} style={styles.viewMore} />
+            <Icon name="right" size={25} style={styles.viewMore} />
           </TouchableOpacity>
         </View>
 
@@ -151,4 +149,4 @@ const SuperFresh = () => {
     </ScrollView>
   );
 };
-export default SuperFresh;
+export default SuperFreshScreen;

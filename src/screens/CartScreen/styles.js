@@ -191,6 +191,35 @@ const styles = StyleSheet.create({
     color: Color.white,
     fontSize: 17,
   },
+  modalcontainer: {
+    flex: 1,
+    backgroundColor: Color.blackLite,
+  },
+  modal: {
+    height: '15%',
+    width: '80%',
+    marginLeft: '10%',
+    marginVertical: '70%',
+
+    backgroundColor: Color.white,
+    padding: 20,
+    borderRadius: 10,
+  },
+  modalOkButton: {
+    color: Color.green,
+    fontSize: 20,
+    fontWeight: '500',
+    paddingTop: 20,
+  },
+  modalOkButtonContainer: {
+    alignItems: 'center',
+    flexDirection: 'column-reverse',
+  },
+  modalCartMessage: {
+    fontWeight: '500',
+    fontSize: 15,
+    textAlign: 'center',
+  },
 });
 
 export default styles;

@@ -1,4 +1,4 @@
-import { Image, View} from 'react-native';
+import {Image, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import imagePath from '../../config/Image';
@@ -14,14 +14,9 @@ const Splash = () => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={imagePath.splash}
-        style={styles.image}
-      />
+      <Image source={imagePath.splash} style={styles.image} />
     </View>
   );
 };
-
-
 
 export default Splash;

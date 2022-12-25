@@ -10,6 +10,9 @@ const ImagePath = {
   banner2: require('../asset/sliderposter2.png'),
   banner3: require('../asset/sliderposter3.png'),
 
+  //Product Detail Screen
+  iPhone: require('../asset/iPhone.png'),
+
   //Splash Screen
   splash: require('../asset/SplashScreen.png'),
 };

@@ -10,11 +10,10 @@ const HomeNavigator = () => {
   const [user, setUser] = useState('');
   const dispatch = useDispatch();
 
-
   const onAuthStateChanged = user => {
     setUser(user);
     if (user) {
-    dispatch(addUser(user.displayName, user.email, user.uid));
+      dispatch(addUser(user.displayName, user.email, user.uid));
     }
   };
 
