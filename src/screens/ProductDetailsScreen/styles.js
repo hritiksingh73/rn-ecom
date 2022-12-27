@@ -5,37 +5,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Color.white,
-    paddingLeft: 15,
-  },
-
-  relatedItemContainer: {
-    marginBottom: 500,
+    paddingLeft: 20,
   },
   card: {
-    width: 200,
+    width: '96%',
     backgroundColor: Color.white,
     borderRadius: 5,
     borderColor: Color.darkGrey,
-    borderWidth: 1,
     height: 320,
+    paddingRight: '1%',
   },
   imgStyle: {
-    width: '60%',
-    height: 160,
-    marginLeft: '15%',
+    height: '95%',
     resizeMode: 'contain',
   },
   itemTitle: {
-    fontWeight: '400',
-    paddingLeft: 20,
+    fontWeight: '600',
     color: Color.black,
+    fontSize: 20,
   },
-  relatedItemprice: {
+  priceBracket: {
+    flexDirection: 'row',
+    paddingTop: 10,
+  },
+  price: {
     color: Color.green,
-    paddingLeft: 20,
+    paddingRight: 5,
+    fontWeight: '800',
+    fontSize: 20,
   },
-  rating: {
-    paddingRight: 100,
+  oldPrice: {
+    textDecorationLine: 'line-through',
+    fontSize: 20,
+    paddingLeft: 20,
+    color: Color.greyish,
+    fontWeight: '800',
   },
   addButton: {
     alignItems: 'center',
@@ -49,12 +53,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginTop: 20,
   },
-  cardImage: {
-    height: '100%',
-    resizeMode: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
 
   imageSize: {
     width: '90%',
@@ -67,11 +65,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: Color.black,
   },
-  price: {
-    fontSize: 15,
-    fontWeight: '500',
-    color: Color.green,
-  },
 
   itemDescription: {
     fontSize: 16,
@@ -83,14 +76,14 @@ const styles = StyleSheet.create({
 
   footerheading: {
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: 22,
     color: Color.black,
     marginVertical: 30,
   },
 
   buttonStyle: {
     flexDirection: 'row',
-    marginVertical: 20,
+    marginTop: 20,
   },
   footerButtonLeft: {
     height: '100%',
@@ -112,6 +105,38 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     padding: 20,
+  },
+  relatedItemImagecard: {
+    width: 200,
+    backgroundColor: Color.white,
+    borderRadius: 5,
+    borderColor: Color.liteGrey,
+    borderWidth: 1,
+    height: 320,
+    paddingBottom: 150,
+  },
+  relatedItemImageTitle: {
+    fontWeight: '600',
+    color: Color.black,
+    fontSize: 20,
+    paddingLeft: 20,
+  },
+  relatedItemPriceBracket: {
+    flexDirection: 'row',
+    paddingLeft: 20,
+  },
+  relatedItemprice: {
+    color: Color.green,
+    paddingRight: 5,
+    fontWeight: '800',
+    fontSize: 16,
+  },
+  relatedItemOldPrice: {
+    textDecorationLine: 'line-through',
+    fontSize: 16,
+    paddingLeft: 10,
+    color: Color.greyish,
+    fontWeight: '800',
   },
 });
 
