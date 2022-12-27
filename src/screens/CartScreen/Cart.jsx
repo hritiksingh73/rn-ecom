@@ -8,21 +8,21 @@ import {
   Image,
   FlatList,
   Modal,
-  Button,
 } from 'react-native';
 import {ScrollView} from 'react-native-virtualized-view';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Arrow from 'react-native-vector-icons/AntDesign';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import {
   increaseItemQuantity,
-  decreaseItemCountInCartAction,
+  decreaseItemQuantity,
   removeItemFromCart,
 } from '../../redux/action/Action';
 import CartBillingData from '../../component/CartBillingData/CartBillingData';
-import {useNavigation} from '@react-navigation/native';
+
 
 const Cart = () => {
   const item = useSelector(state => state.userInfo.cart);
@@ -30,7 +30,7 @@ const Cart = () => {
   const [isModalVisible, setisModalVisible] = useState(false);
   const navigation = useNavigation();
 
-  const ClearCartItem = item => {
+  const clearCartItem = item => {
     console.log('Cart Item Remove on Count ----->', item);
     if (item <= 1) {
       dispatch(removeItemFromCart(item));
@@ -61,47 +61,53 @@ const Cart = () => {
     setisModalVisible(true);
   };
 
+  const cartData = ({item}) => {
+    return (
+      <View style={styles.mainContainer}>
+        <Image source={{uri: item.imageUrl}} style={styles.flatlistImage} />
+        <View style={styles.container}>
+          <Text style={styles.itemtitle}>{item.title}</Text>
+          <View style={styles.Quantityadjustment}>
+            <Text style={styles.itemPrice}>${item.price}</Text>
+            <View style={styles.QuantityHandler}>
+              <TouchableOpacity
+                style={styles.decreaseButton}
+                onPress={() => {
+                  dispatch(decreaseItemQuantity(item.id)),
+                    clearCartItem(item.quantity);
+                }}>
+                {item.quantity <= 1 ? (
+                  <AntDesign name="delete" size={20} color="red" />
+                ) : (
+                  <AntDesign name="minus" size={20} />
+                )}
+              </TouchableOpacity>
+
+              <Text style={styles.quantityupdate}>{item.quantity}</Text>
+              <TouchableOpacity
+                style={styles.increarseButton}
+                onPress={() => dispatch(increaseItemQuantity(item.id))}>
+                <Text>+</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   return (
     <ScrollView nestedScrollEnabled={true}>
       <SafeAreaView style={styles.parent}>
         <View style={styles.mainHeader}>
-          <Arrow name="left" size={24} color="black" style={styles.icon} />
+          <AntDesign name="left" size={24} color="black" style={styles.icon} />
           <Text style={styles.title}>Cart</Text>
         </View>
         <FlatList
           data={item}
-          renderItem={({item, index}) => {
-            return (
-              <View style={styles.mainContainer}>
-                <Image
-                  source={{uri: item.image}}
-                  style={styles.flatlistImage}
-                />
-                <View style={styles.container}>
-                  <Text style={styles.itemtitle}>{item.title}</Text>
-                  <View style={styles.Quantityadjustment}>
-                    <Text style={styles.itemPrice}>${item.price}</Text>
-                    <View style={styles.QuantityHandler}>
-                      <TouchableOpacity
-                        style={styles.decreaseButton}
-                        onPress={() => {
-                          dispatch(decreaseItemCountInCartAction(item.id));
-                          ClearCartItem(item.quantity);
-                        }}>
-                        <Text>-</Text>
-                      </TouchableOpacity>
-                      <Text style={styles.quantityupdate}>{item.quantity}</Text>
-                      <TouchableOpacity
-                        style={styles.increarseButton}
-                        onPress={() => dispatch(increaseItemQuantity(item.id))}>
-                        <Text>+</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            );
-          }}
+          renderItem={cartData}
+          numColumns={1}
+          keyExtractor={item => item.id}
         />
         <View style={styles.couponContainer}>
           <View style={styles.couponCode}>
@@ -131,7 +137,7 @@ const Cart = () => {
         <CartBillingData text="Total" Count={'$' + CalculateTotalItemPrices} />
         <View style={styles.bottom}>
           <View>
-            <Text style={styles.bottomApply}>Total</Text>
+            <Text style={styles.footerbottom}>Total</Text>
             <Text style={styles.subTotal}>${CalculateSubTotal}</Text>
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>

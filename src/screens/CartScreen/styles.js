@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   mainContainer: {
-    width: '95%',
+    width: '100%',
     height: 100,
     alignSelf: 'center',
     marginTop: 10,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
   },
-  bottomApply: {
+  footerbottom: {
     color: 'green',
   },
   subTotal: {
