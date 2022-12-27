@@ -54,34 +54,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: 310,
   },
-  main: {
-    backgroundColor: color.white,
-    borderWidth: 1,
-    borderColor: color.lightgrey,
-    margin: 8,
-  },
-  item: {
-    flexDirection: 'row',
-  },
-  sort: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  filter: {
-    flexDirection: 'row',
-  },
-  sortItem: {
-    margin: 20,
-    fontSize: 15,
-    flexDirection: 'row',
-  },
-  filterItem: {
-    margin: 20,
-    fontSize: 15,
-  },
-  size: {
-    margin: 15,
-  },
 });
 
 export default styles;

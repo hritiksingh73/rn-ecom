@@ -215,6 +215,35 @@ const styles = StyleSheet.create({
   checkoutButton: {
     marginTop: 10,
   },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: color.lightgrey,
+  },
+  modalStyle: {
+    height: '20%',
+    width: '80%',
+    marginLeft: '10%',
+    marginVertical: '70%',
+    backgroundColor: color.white,
+    padding: 20,
+    borderRadius: 10,
+  },
+  modalBtnStyle: {
+    color: color.primary,
+    fontSize: 20,
+    fontWeight: '500',
+    paddingTop: 20,
+  },
+  modalBtn: {
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  modalMessage: {
+    fontWeight: '500',
+    fontSize: 15,
+    textAlign: 'center',
+    color: 'black',
+  },
 });
 
 export default styles;

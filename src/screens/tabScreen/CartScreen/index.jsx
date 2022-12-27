@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TextInput,
   Image,
+  Modal,
   FlatList,
   TouchableOpacity,
   ImageBackground,
@@ -25,8 +26,24 @@ import BillInfo from '../../../components/BillInfo';
 import LoginButton from '../../../components/LoginButton';
 
 const Cart = ({navigation}) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cartData.cartProducts);
+
+  const decreaseCartItem = item => {
+    if (item.quantity >= 1) {
+      dispatch(decreaseToCart(item.id));
+    } else {
+      dispatch(removeToCart(item.id));
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false), navigation.navigate('Super Fresh');
+  };
+  const openModal = () => {
+    setIsModalVisible(true);
+  };
 
   const CalculateUserTotalPrice = () => {
     const ItemTotalPrice = cart.map(value => {
@@ -59,7 +76,7 @@ const Cart = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView nestedScrollEnabled={true}>
         <View style={styles.mainMargin}>
           <View>
             <Text style={styles.cart}>Cart</Text>
@@ -81,7 +98,7 @@ const Cart = ({navigation}) => {
                       <View style={styles.mainList}>
                         <View style={styles.imageStyle}>
                           <Image
-                            source={item.image}
+                            source={{uri: item.imageUrl}}
                             style={styles.fruitImage}
                             resizeMode="center"
                           />
@@ -90,23 +107,12 @@ const Cart = ({navigation}) => {
                           <Text style={styles.titleText}>{item.title}</Text>
                           <Text style={styles.dollarText}>{item.price}</Text>
                         </View>
-                        <TouchableOpacity
-                          style={styles.remove}
-                          onPress={() => {
-                            removeList(item.id);
-                            console.log(item.id);
-                          }}>
-                          <Text style={styles.delete}>Remove</Text>
-                        </TouchableOpacity> 
 
-                        <View style={{paddingTop: 1}}>
+                        <View>
                           <View style={styles.counting}>
                             <View style={styles.addButton}>
                               <TouchableOpacity
-                                onPress={() => {
-                                  dispatch(decreaseToCart(item.id));
-                                  // removeToCart(item.id);
-                                }}>
+                                onPress={() => decreaseCartItem(item)}>
                                 <Text style={styles.minus}> - </Text>
                               </TouchableOpacity>
                             </View>
@@ -165,8 +171,23 @@ const Cart = ({navigation}) => {
             <Text style={styles.saveText}>You save $ 5 on this</Text>
           </View>
           <View style={styles.checkoutButton}>
-            <LoginButton name="Checkout" />
+            <LoginButton name="Checkout" onPress={openModal} />
           </View>
+          <Modal
+            animationType="fade"
+            visible={isModalVisible}
+            transparent={true}>
+            <View style={styles.modalContainer}>
+              <View style={styles.modalStyle}>
+                <Text style={styles.modalMessage}>
+                  Your Order has been placed Successfully
+                </Text>
+                <TouchableOpacity onPress={closeModal} style={styles.modalBtn}>
+                  <Text style={styles.modalBtnStyle}>OK</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
         </View>
       </ScrollView>
     </SafeAreaView>

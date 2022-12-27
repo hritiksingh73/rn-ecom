@@ -3,6 +3,8 @@ import {ActionType} from '../action/ActionType';
 const initialState = {
   cartProducts: [],
   quantity: '',
+  isFetching: false,
+  productData: [],
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -10,21 +12,15 @@ const cartReducer = (state = initialState, action) => {
 
   switch (type) {
     case ActionType.ADD_TO_CART:
-      return {...state, cartProducts: [...state.cartProducts, action.payload]};
+      return {
+        ...state,
+        cartProducts: [...state.cartProducts, {...action.payload, quantity: 1}],
+      };
 
     case ActionType.REMOVE_CART:
-      let remove = [...state.cartProducts];
-      remove.filter(item => payload !== item.id);
-      return {...state, cartProducts: remove};
-
-    //   let newArr = cartProducts.filter(function (e) {
-    //     return e.quantity > 0;
-    // });
-    // console.log(newArr );
-      // return {
-      //   ...state,
-      //   cartProducts: state.cartProducts.filter(item => payload !== item.id),
-      // };
+      const remove = [...state.cartProducts];
+      const removeItem = remove.filter(item => item.id !== payload);
+      return {...state, cartProducts: removeItem};
 
     case ActionType.INCREASE_CART_ITEM:
       const increaseItem = state.cartProducts.map(item => {
@@ -53,7 +49,12 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartProducts: decreaseItem,
       };
-      jj;
+
+    case ActionType.SET_INIT_DATA:
+      return {...state, productData: action.payload};
+
+    case ActionType.SET_FETCHING:
+      return {...state, isFetching: action.payload};
 
     default:
       return state;

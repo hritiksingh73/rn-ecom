@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   heart: {
-    marginLeft: 100,
+    paddingLeft: '25%',
   },
   heartIcon: {
     color: color.grey,
@@ -23,11 +23,12 @@ const styles = StyleSheet.create({
     width: 180,
     height: '50%',
   },
-  iconCircle: {
+  mainHeadingStyle: {
     flexDirection: 'row',
+    bottom: 20,
   },
-  iconSize: {
-    marginLeft: 180,
+  arrowIconStyle: {
+    paddingLeft: '45%',
   },
   buttonText: {
     borderWidth: 1,
@@ -87,38 +88,54 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  item: {
-    height: 270,
+  mainImageStyle: {
+    height: 260,
     width: 390,
     flexDirection: 'row',
     marginLeft: 8,
+    top: 20,
   },
-  data: {
+  imageBoxStyle: {
     width: 200,
     height: 300,
     borderWidth: 1,
     borderColor: color.lightgrey,
-    marginBottom: 120,
   },
   button: {
     paddingHorizontal: 5,
     alignItems: 'center',
   },
-  popular: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    bottom: 25,
+  cart: {
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: color.grey,
     padding: 10,
   },
-  flatlist: {
+  headingStyle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    paddingLeft: 20,
+  },
+  imageStyle: {
+    resizeMode: 'center',
+    width: '82%',
+    height: '54%',
+  },
+  imageBrderStyle: {
     height: 200,
     width: 390,
-    resizeMode: 'center',
   },
-  dollar: {
+  price: {
     fontSize: 18,
     color: color.primary,
     marginLeft: 10,
+  },
+  productData: {
+    width: '50%',
+    height: 250,
+    borderWidth: 1,
+    borderColor: color.grey,
+    backgroundColor: color.white,
   },
   products: {
     fontSize: 20,
@@ -128,6 +145,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  trendingTextStyle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    padding: 10,
   },
 });
 

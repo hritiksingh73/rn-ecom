@@ -3,8 +3,8 @@ import color from '../../../constant/color';
 
 const styles = StyleSheet.create({
   itemContainer: {
-    width: 190,
-    height: 230,
+    width: '45%',
+    height: 200,
     marginLeft: 15,
     marginRight: 1,
     borderWidth: 1,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#EBEDEF',
     marginLeft: 15,
-    width: 392,
-    height: 50,
+    width: '93%',
+    height: '6%',
     margin: 7,
     borderWidth: 1,
     borderColor: 'silver',
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   rating: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'green',
   },
   textInput: {
     fontSize: 16,
