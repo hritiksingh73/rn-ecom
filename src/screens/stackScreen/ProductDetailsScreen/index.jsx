@@ -24,7 +24,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
   const {productData} = useSelector(state => state.cartData);
 
   const getProduct = route.params;
-  dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const getClickItem = async () => {
     try {
@@ -52,6 +52,10 @@ const ProductDetailsScreen = ({navigation, route}) => {
 
         <Text style={styles.price}>${item.price} each</Text>
         <Text style={styles.price}>${item.oldPrice}</Text>
+        <Text style={styles.descriptionStyle}>
+          Loreum Ipsum is simply dummy text of the printing and typesetting
+          industry',
+        </Text>
       </View>
     );
   };
