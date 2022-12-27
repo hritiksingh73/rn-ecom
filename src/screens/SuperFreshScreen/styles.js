@@ -12,13 +12,18 @@ export const styles = StyleSheet.create({
     marginHorizontal: 15,
     marginTop: 15,
   },
+  imgStyle: {
+    width: 150,
+    height: 150,
+    resizeMode: 'stretch',
+    margin: 10,
+  },
   headerText: {
     fontSize: 20,
     fontWeight: 'bold',
   },
   carouselImgStyle: {
-    height: '80%',
-    width: 390,
+    height: '69%',
     margin: 5,
   },
   renderItem: {
@@ -27,17 +32,14 @@ export const styles = StyleSheet.create({
   productsTxt: {
     fontWeight: 'bold',
     fontSize: 20,
-    bottom: 25,
+    bottom: 45,
     marginLeft: 20,
-  },
-  groceryImgStyle: {
-    width: 210,
-    height: '50%',
-    margin: 5,
+    marginTop: '30%',
   },
   priceTxt: {
     color: color.primary,
   },
+  txtContainer: {marginHorizontal: 20},
   btnContainer: {
     borderWidth: 1,
     borderColor: 'lightgrey',
@@ -47,19 +49,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 15,
   },
-  viewBtn: {
-    backgroundColor: color.primary,
-    width: '100%',
-  },
-  btnTxt: {
-    fontWeight: 'bold',
-    color: 'white',
-    fontSize: 18,
-  },
   productDetailContainer: {
-    height: '40%',
-    width: '45%',
+    width: 200,
     margin: 10,
+  },
+  productScreen: {
+    borderWidth: 1,
+    borderColor: 'lightgrey',
   },
   itemDivider: {
     borderWidth: 1,
@@ -74,5 +70,6 @@ export const styles = StyleSheet.create({
   },
   itemDirection: {
     flexDirection: 'row',
+    marginBottom: 15,
   },
 });

@@ -24,7 +24,10 @@ export default function GroceryTabNavigator() {
       <Tab.Screen
         name="Search"
         component={SearchScreen}
-        options={{tabBarIcon: () => <Icon name="search1" size={30} />}}
+        options={{
+          tabBarIcon: () => <Icon name="search1" size={30} />,
+          headerShown: false,
+        }}
       />
       <Tab.Screen
         name="Cart"

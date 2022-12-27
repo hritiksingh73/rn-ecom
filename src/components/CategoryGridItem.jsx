@@ -2,23 +2,20 @@ import React from 'react';
 import {TouchableOpacity, StyleSheet, Image} from 'react-native';
 
 const CategoryGridItem = props => {
-  const {imgSource} = props;
+  const {imgSource, onPress} = props;
 
   return (
-    <TouchableOpacity style={styles.imageContainer}>
+    <TouchableOpacity onPress={onPress}>
       <Image style={styles.imgStyle} source={imgSource} />
     </TouchableOpacity>
   );
 };
 const styles = StyleSheet.create({
-  imageContainer: {
-    paddingVertical: 5,
-    alignItems: 'center',
-  },
   imgStyle: {
     width: 150,
     height: 150,
     resizeMode: 'stretch',
+    margin: 10,
   },
 });
 

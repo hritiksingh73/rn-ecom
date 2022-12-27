@@ -6,3 +6,4 @@ export const DECREASE_CART = 'DECREASE_CART';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const USER_ID = 'USER_ID';
+export const GET_PRODUCTS = 'GET_PRODUCTS';

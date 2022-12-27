@@ -1,35 +1,17 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
+import {View, Text, Image, SafeAreaView} from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 
 import {GROCERIES} from '../../data/groceryICarousel';
-import {GROCERYPRODUCTS} from '../../data/groceryProducts';
 import {styles} from './styles';
-import ListItem from '../../components/ListItem';
+import CarouselComponent from '../../components/CarouselComponent';
+import RelatedProducts from '../../components/RelatedProducts';
 
-const renderSuperFreshItem = grocery => {
+const renderSuperFreshItem = ({item}) => {
   return (
     <View style={styles.renderItem}>
-      <Image
-        source={{uri: grocery.item.imageUrl}}
-        style={styles.carouselImgStyle}
-      />
-    </View>
-  );
-};
-const renderGroceryProducts = products => {
-  return (
-    <View>
-      <Image
-        source={{uri: products.item.imageUrl}}
-        style={styles.groceryImgStyle}
-      />
-      <Text>{products.item.title}</Text>
-      <Text style={styles.priceTxt}>{products.item.price}</Text>
-      <TouchableOpacity style={styles.btnContainer}>
-        <Text>Add to Cart</Text>
-      </TouchableOpacity>
+      <Image source={{uri: item.imageUrl}} style={styles.carouselImgStyle} />
     </View>
   );
 };
@@ -44,22 +26,17 @@ const SuperFreshScreen = () => {
         <MaterialIcon name="bell-badge-outline" size={30} />
       </View>
 
-      <ListItem
-        data={GROCERIES}
-        renderItem={renderSuperFreshItem}
-        horizontal={true}
-      />
-      <Text style={styles.productsTxt}>Popular Products</Text>
-      <ListItem
-        data={GROCERYPRODUCTS}
-        renderItem={renderGroceryProducts}
-        horizontal
-      />
-      <TouchableOpacity
-        style={[styles.btnContainer, styles.viewBtn]}
-        onPress={() => navigation.navigate('Popular Products')}>
-        <Text style={styles.btnTxt}>View More 👉 </Text>
-      </TouchableOpacity>
+      <CarouselComponent data={GROCERIES} renderItem={renderSuperFreshItem} />
+
+      <Text style={styles.productsTxt}>
+        Popular Products
+        <MaterialIcon
+          name="arrow-right"
+          size={25}
+          onPress={() => navigation.navigate('Popular Products')}
+        />
+      </Text>
+      <RelatedProducts style={{flex: 1}} />
     </SafeAreaView>
   );
 };

@@ -6,28 +6,43 @@ import {useDispatch} from 'react-redux';
 import {styles} from './styles';
 import CategoryGridItem from '../../components/CategoryGridItem';
 import {addToWishlist} from '../../redux/actions/userAction';
+import {useNavigation} from '@react-navigation/native';
 
-const ProductItem = ({item, onAddToCart}) => {
+const ProductItem = ({item,onAddToCart}) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.productDetailContainer}>
-      <CategoryGridItem imgSource={{uri: item.imageUrl}} />
+    <View style={styles.productScreen}>
+      <View style={styles.productDetailContainer}>
+        <CategoryGridItem
+          imgSource={{uri: item.imageUrl}}
+          onPress={() =>
+            navigation.navigate('Product Details', {
+              productId: item.id,
+            })
+          }
+        />
 
-      <View style={styles.itemDirection}>
-        <Text>{item.title}</Text>
-        <TouchableOpacity onPress={() => dispatch(addToWishlist(item))}>
-          <Entypo name="heart-outlined" size={20} style={{marginLeft: '70%'}} />
+        <View style={styles.itemDirection}>
+          <Text>{item.title}</Text>
+          <TouchableOpacity onPress={() => dispatch(addToWishlist(item))}>
+            <Entypo
+              name="heart-outlined"
+              size={20}
+              style={{marginLeft: '70%'}}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.priceTxt}>${item.price} each</Text>
+
+        <TouchableOpacity
+          style={styles.btnContainer}
+          onPress={() => onAddToCart(item)}>
+          <Text>Add to Cart</Text>
         </TouchableOpacity>
       </View>
-
-      <Text style={styles.priceTxt}>{item.price}</Text>
-
-      <TouchableOpacity
-        style={styles.btnContainer}
-        onPress={() => onAddToCart(item)}>
-        <Text>Add to Cart</Text>
-      </TouchableOpacity>
     </View>
   );
 };

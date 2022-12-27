@@ -21,11 +21,13 @@ const HomeScreen = () => {
           <Image source={item.image} style={styles.imgStyle} />
         </TouchableOpacity>
 
-        <Text style={styles.shopTitle}>{item.title}</Text>
-        <View style={styles.ratingContainer}>
-          {[...Array(item.rating)].map(() => (
-            <AntDesign name="star" size={15} color={color.primary} />
-          ))}
+        <View style={styles.shopContainer}>
+          <Text style={styles.shopTitle}>{item.title}</Text>
+          <View style={styles.ratingContainer}>
+            {[...Array(item.rating)].map(() => (
+              <AntDesign name="star" size={15} color={color.primary} />
+            ))}
+          </View>
         </View>
       </View>
     );

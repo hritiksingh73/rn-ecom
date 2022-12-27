@@ -11,7 +11,7 @@ import {addCartProduct} from '../../redux/actions/userAction';
 import {removeFromWishlist} from '../../redux/actions/userAction';
 import CategoryGridItem from '../../components/CategoryGridItem';
 import {color} from '../../constant/color';
-import PopupMsg from '../../components/PopupMsg';
+import ModalComponent from '../../components/ModalComponent';
 
 const WishlistScreen = props => {
   const dispatch = useDispatch();
@@ -28,25 +28,27 @@ const WishlistScreen = props => {
 
   const ProductItem = item => {
     return (
-      <View style={styles.productDetailContainer}>
-        <CategoryGridItem imgSource={{uri: item.imageUrl}} />
-        <View style={styles.itemDirection}>
-          <Text>{item.title}</Text>
-          <Icon
-            name="heart"
-            size={20}
-            color={color.primary}
-            style={{marginLeft: '60%'}}
-            onPress={() => setisModalVisible(true)}
-          />
-        </View>
-        <Text style={styles.priceTxt}>{item.price}</Text>
+      <View style={styles.productContainer}>
+        <View style={styles.productDetailContainer}>
+          <CategoryGridItem imgSource={{uri: item.imageUrl}} />
+          <View style={styles.itemDirection}>
+            <Text>{item.title}</Text>
+            <Icon
+              name="heart"
+              size={20}
+              color={color.primary}
+              style={{marginLeft: '60%'}}
+              onPress={() => setisModalVisible(true)}
+            />
+          </View>
+          <Text style={styles.priceTxt}>{item.price}</Text>
 
-        <TouchableOpacity
-          style={styles.btnContainer}
-          onPress={() => dispatch(addCartProduct(item))}>
-          <Text>Add to Cart</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btnContainer}
+            onPress={() => dispatch(addCartProduct(item))}>
+            <Text>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
@@ -66,11 +68,8 @@ const WishlistScreen = props => {
         data={wishlistProduct}
         renderItem={({item}) => ProductItem(item)}
         numColumns={2}
-        ItemSeparatorComponent={() => {
-          return <View style={styles.itemDivider}></View>;
-        }}
       />
-      <PopupMsg
+      <ModalComponent
         visible={isModalVisible}
         yesBtn={yesBtnHandler}
         cancelBtn={() => setisModalVisible(false)}

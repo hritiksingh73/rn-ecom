@@ -7,7 +7,9 @@ const ListItem = props => {
       {...props}
       showsHorizontalScrollIndicator={false}
       keyExtractor={item => '#' + item.id}
-      contentContainerStyle={{backgroundColor: 'white'}}
+      contentContainerStyle={{
+        backgroundColor: 'white',
+      }}
     />
   );
 };

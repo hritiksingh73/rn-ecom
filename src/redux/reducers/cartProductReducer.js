@@ -1,13 +1,16 @@
-import {ADD_CART_PRODUCTS} from '../constants/userTypes';
-import {REMOVE_CART_PRODUCTS} from '../constants/userTypes';
-import {INCREASE_CART} from '../constants/userTypes';
-import {DECREASE_CART} from '../constants/userTypes';
-import {ADD_TO_WISHLIST} from '../constants/userTypes';
-import {REMOVE_FROM_WISHLIST} from '../constants/userTypes';
+import {
+  ADD_CART_PRODUCTS,
+  REMOVE_CART_PRODUCTS,
+  INCREASE_CART,
+  DECREASE_CART,
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST,
+} from '../constants/userTypes';
 
 const initialState = {
   cartProducts: [],
   wishList: [],
+  products: [],
 };
 
 const cartProductReducer = (state = initialState, action) => {

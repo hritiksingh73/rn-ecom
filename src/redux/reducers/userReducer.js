@@ -1,5 +1,4 @@
-import {USER_DATA} from '../constants/userTypes';
-import {USER_ID} from '../constants/userTypes';
+import {USER_DATA, USER_ID} from '../constants/userTypes';
 
 const initialState = {
   userDetails: {

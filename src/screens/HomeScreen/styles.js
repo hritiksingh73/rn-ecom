@@ -31,11 +31,16 @@ export const styles = StyleSheet.create({
   input: {
     padding: 8,
   },
+  shopContainer: {
+    borderWidth: 1,
+    borderColor: 'lightgrey',
+  },
   shopTitle: {
     fontSize: 15,
-    margin: 3,
+    margin: 7,
   },
   ratingContainer: {
     flexDirection: 'row',
+    margin: 7,
   },
 });

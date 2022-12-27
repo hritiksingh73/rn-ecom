@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal, View, Button, StyleSheet, Text} from 'react-native';
 
-const PopupMsg = props => {
+const ModalComponent = props => {
   const {visible, cancelBtn, yesBtn} = props;
 
   return (
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
 });
-export default PopupMsg;
+export default ModalComponent;

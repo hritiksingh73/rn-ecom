@@ -4,14 +4,13 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import styles from './styles';
 import {decreaseCartProduct} from '../../redux/actions/userAction';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {increaseCartProduct} from '../../redux/actions/userAction';
 import {removeCartProduct} from '../../redux/actions/userAction';
-import PopupMsg from '../../components/PopupMsg';
+import ModalComponent from '../../components/ModalComponent';
 
 const CartItems = ({item}) => {
   const dispatch = useDispatch();
-  const data = useSelector(state => state.cartProductReducer.cartProducts);
   const [isModalVisible, setisModalVisible] = useState(false);
 
   return (
@@ -44,7 +43,7 @@ const CartItems = ({item}) => {
           )}
         </TouchableOpacity>
 
-        <PopupMsg
+        <ModalComponent
           visible={isModalVisible}
           yesBtn={() => dispatch(removeCartProduct(item.id))}
           cancelBtn={() => setisModalVisible(false)}
