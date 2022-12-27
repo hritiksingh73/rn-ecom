@@ -14,31 +14,26 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
 import {removeItemFromCart, addItemToCart} from '../../redux/action/Action';
-import {Rating} from 'react-native-ratings';
 
 const WishListScreen = () => {
   const item = useSelector(state => state.userInfo.cart);
   const navigation = useNavigation();
   dispatch = useDispatch();
 
-  const ClearCartItem = item => {
+  const clearCartItem = item => {
     dispatch(removeItemFromCart(item));
   };
-
   const ListData = ({item}) => {
     return (
       <View style={styles.card}>
-        <Image source={{uri: item.image}} style={styles.imgStyle} />
+        <Image source={{uri: item.imageUrl}} style={styles.imgStyle} />
         <Text style={styles.itemTitle} numberOfLines={1}>
           {item.title}
         </Text>
-        <Text style={styles.price}>${item.price} each</Text>
-        <Rating
-          ratingCount={item.rating.rate}
-          style={styles.rating}
-          imageSize={15}
-          readonly="true"
-        />
+        <View style={styles.priceBracket}>
+          <Text style={styles.price}>${item.price}each</Text>
+          <Text style={styles.oldPrice}>${item.oldPrice}</Text>
+        </View>
         <View style={styles.itemButtons}>
           <TouchableOpacity
             style={styles.addButton}
@@ -49,9 +44,9 @@ const WishListScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              dispatch(ClearCartItem(item.id));
+              dispatch(clearCartItem(item.id));
             }}>
-            <Icon name="delete" size={35} style={styles.bin} />
+            <Icon name="delete" size={24} style={styles.bin} />
           </TouchableOpacity>
         </View>
       </View>

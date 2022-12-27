@@ -9,6 +9,7 @@ import {
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
+
 import styles from './styles';
 import {addUser} from '../../redux/action/Action';
 import FormContainer from '../../component/FormComponent/FormInput';

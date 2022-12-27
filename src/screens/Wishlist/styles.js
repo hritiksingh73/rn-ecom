@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
     width: '50%',
     backgroundColor: Color.white,
     borderRadius: 5,
-    borderColor: Color.darkGrey,
+    borderColor: Color.liteGrey,
     borderWidth: 1,
-    height: 310,
+    height:  '100%',
     borderRightWidth: 0.0,
   },
   imgStyle: {
@@ -30,13 +30,26 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   itemTitle: {
-    fontWeight: '400',
+    fontWeight: '600',
     paddingLeft: 20,
-    color: '#1d1e20',
+    color: Color.black,
+    fontSize: 16,
+  },
+  priceBracket: {
+    flexDirection: 'row',
   },
   price: {
     color: Color.green,
     paddingLeft: 20,
+    paddingRight:5,
+    fontSize: 16,
+    fontWeight:"800"
+  },
+  oldPrice: {
+    textDecorationLine:'line-through',
+    fontSize: 16,
+    color:Color.greyish,
+    fontWeight:"800"
   },
   rating: {
     paddingRight: 100,
@@ -44,7 +57,7 @@ const styles = StyleSheet.create({
   itemButtons: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
+    // flex: 1,
     paddingLeft: 20,
   },
   bin: {

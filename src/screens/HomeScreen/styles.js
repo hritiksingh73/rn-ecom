@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  tinyIcon: {
+  headerIcon: {
     width: 50,
     height: 50,
     borderRadius: 25,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   imgStyle: {
-    width: '60%',
+    width: '70%',
     height: 160,
     marginLeft: '15%',
     resizeMode: 'contain',
@@ -34,13 +34,27 @@ const styles = StyleSheet.create({
     borderRightWidth: 0.0,
   },
   itemTitle: {
-    fontWeight: '400',
+    fontWeight: '600',
     paddingLeft: 20,
-    color: '#1d1e20',
+    color: Color.black,
+    fontSize: 16,
+    
+  },
+  priceBracket: {
+    flexDirection: 'row',
   },
   price: {
     color: Color.green,
     paddingLeft: 20,
+    paddingRight:5,
+    fontSize: 16,
+    fontWeight:"800"
+  },
+  oldPrice: {
+    textDecorationLine:'line-through',
+    fontSize: 16,
+    color:Color.greyish,
+    fontWeight:"800"
   },
   ratingcontainerchild: {
     flexDirection: 'row',
@@ -61,7 +75,7 @@ const styles = StyleSheet.create({
     width: 350,
     resizeMode: 'center',
   },
-  selectionCard: {
+  carousal: {
     height: 190,
     paddingRight: 10,
     marginVertical: 20,
@@ -69,12 +83,11 @@ const styles = StyleSheet.create({
   },
   imageTitle: {
     color: 'white',
-
     top: '30%',
     position: 'absolute',
     fontSize: 30,
     left: '30%',
-    fontWeight: '800',
+    fontWeight: '800'
   },
   imagedescription: {
     position: 'absolute',
@@ -109,13 +122,13 @@ const styles = StyleSheet.create({
   wishlist: {
     left: 90,
   },
-  poppularproducts: {
+  popularProducts: {
     fontSize: 18,
     paddingLeft: 20,
     fontWeight: '700',
     color: Color.black,
   },
-  popularproductcontainer: {
+  popularProductContainer: {
     flexDirection: 'row',
     marginVertical: 15,
   },

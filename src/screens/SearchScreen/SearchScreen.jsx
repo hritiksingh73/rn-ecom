@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
-import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
-import {Rating} from 'react-native-ratings';
 import {useNavigation} from '@react-navigation/native';
-import RecentSearchItems from '../../constant/RecentSearchItems/RecentSearchItems';
 import {ScrollView} from 'react-native-virtualized-view';
+
+import styles from './styles';
+import RecentSearchItems from '../../constant/RecentSearchItems/RecentSearchItems';
+import Icon from 'react-native-vector-icons/AntDesign';
 import {addItemToCart} from '../../redux/action/Action';
 
 const SearchScreen = () => {
@@ -26,7 +26,7 @@ const SearchScreen = () => {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.imageContainer}>
-          <Image style={styles.imageCard} source={{uri: item.image}} />
+          <Image style={styles.imageCard} source={{uri: item.imageUrl}} />
           <Text style={styles.imageTitle} numberOfLines={2}>
             {item.title}
           </Text>

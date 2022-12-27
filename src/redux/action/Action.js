@@ -20,7 +20,7 @@ export const increaseItemQuantity = item => ({
   payload: item,
 });
 
-export const decreaseItemCountInCartAction = item => ({
+export const decreaseItemQuantity = item => ({
   type: ActionType.DECREASE_ITEM_QUANTITY,
   payload: item
 })

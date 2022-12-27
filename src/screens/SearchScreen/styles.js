@@ -54,12 +54,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '90%',
     backgroundColor: Color.liteGrey,
-    marginVertical: '10%',
+    marginTop: '10%',
     paddingHorizontal: 20,
     marginHorizontal: 20,
   },
   searchIcon: {
     paddingTop: 13,
+    color:Color.black
   },
   txtFields: {
     fontSize: 18,
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     paddingLeft: 20,
-    paddingVertical: 20,
+    paddingTop: 20,
     color: Color.black,
   },
 });
