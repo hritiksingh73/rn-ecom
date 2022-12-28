@@ -37,7 +37,6 @@ const AccountScreen = ({navigation}) => {
           onPress={signOut}
         />
       </View>
-      
     </SafeAreaView>
   );
 };

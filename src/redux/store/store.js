@@ -5,6 +5,7 @@ const store = configureStore({
   reducer: {
     counter: counterReducer,
   },
+  middleware: getDefaultMiddleware => getDefaultMiddleware(),
 });
 
 export default store;

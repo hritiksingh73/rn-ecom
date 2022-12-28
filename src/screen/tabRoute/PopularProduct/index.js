@@ -8,17 +8,18 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import firestore from '@react-native-firebase/firestore';
 
 import styles from './styles';
-import homedata from '../../../staticData/homedata';
 import {addtoCart} from '../../../redux/action/action';
 
 const PopularProduct = ({navigation}) => {
   const dispatch = useDispatch();
+  const productDetail = useSelector(state => state.counter.productDetail);
+
   const deliverData = item => {
     dispatch(addtoCart(item));
     //console.log(item.id);
@@ -35,12 +36,13 @@ const PopularProduct = ({navigation}) => {
       });
     navigation.navigate('Cart');
   };
+
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.innerContainer}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <Ionicons
                 name={'chevron-back'}
                 size={30}
@@ -63,21 +65,24 @@ const PopularProduct = ({navigation}) => {
         </View>
         <View>
           <FlatList
-            data={homedata}
+            data={productDetail}
             numColumns={'2'}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('searchItems')}>
+                  onPress={() => navigation.navigate('detailItems', item.id)}>
                   <View style={styles.itemContainer}>
                     <View style={styles.innerSection}>
                       <View style={styles.block1}>
-                        <Image style={styles.bgimage} source={item.image} />
+                        <Image
+                          style={styles.bgimage}
+                          source={{uri: item.imageUrl}}
+                        />
                       </View>
                       <View style={styles.block1}>
-                        <Text style={styles.productName}>{item.name}</Text>
+                        <Text style={styles.productName}>{item.title}</Text>
                         <Text style={styles.productPrice}>
-                          Rs. {item.Price}
+                          Rs. {item.price}
                         </Text>
 
                         <TouchableOpacity

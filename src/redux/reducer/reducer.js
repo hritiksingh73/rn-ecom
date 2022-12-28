@@ -13,38 +13,35 @@ const initialState = {
     pass: '',
   },
   cart: [],
+  productDetail: [],
 };
 
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.REGDATA:
-      //console.log('hello', action.payload);
       return {
         ...state,
         registrationData: action.payload,
       };
+    case ActionTypes.PRODUCT_DATA:
+      return {...state, productDetail: action.payload};
+
     case ActionTypes.USERDATA:
-      //console.log(action.payload);
       return {
         ...state,
         userLoginData: action.payload,
       };
     case ActionTypes.ADDCART:
-      //console.log(action.payload);
       return {
         ...state,
         cart: [
           ...state.cart,
           {
-            id: action.payload.id,
-            name: action.payload.name,
-            Price: action.payload.Price,
-            oldPrice: action.payload.oldPrice,
-            image: action.payload.image,
-            quantity: action.payload.quantity,
+            ...action.payload,
+            quantity: 1,
+            //quantity: action.payload.quantity,
           },
         ],
-        // cart: {...state, cart: [action.payload, ...state.cart]},
       };
     case ActionTypes.INCREMENT_ITEM:
       let increase = [...state.cart];
@@ -62,21 +59,28 @@ const counterReducer = (state = initialState, action) => {
       };
     case ActionTypes.DECREMENT_ITEM:
       let decrease = [...state.cart];
-      // const decreaseItem = decrease.map(item => {
-      //   return item.id === action.payload && item.quantity > 0
-      //     ? {
-      //         ...item,
-      //         quantity: item.quantity - 1,
-      //       }
-      //     : item;
-      // });
-      const removeCartItem = decrease.filter(
-        item => item.id !== action.payload && item.quantity === 0,
-      );
+      const decreaseItem = decrease.map(item => {
+        return item.id === action.payload && item.quantity > 0
+          ? {
+              ...item,
+              quantity: item.quantity - 1,
+            }
+          : item;
+      });
+
       return {
         ...state,
-        cart: removeCartItem,
+        cart: decreaseItem,
       };
+
+    case ActionTypes.REMOVE_ITEM:
+      const remove = [...state.cart];
+      const removeItem = remove.filter(item => item.id !== action.payload);
+      return {
+        ...state,
+        cart: removeItem,
+      };
+
     default:
       return state;
   }

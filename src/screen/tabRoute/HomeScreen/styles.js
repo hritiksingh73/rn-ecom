@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     borderColor: 'grey',
-    borderWidth: 0.1,
+    borderWidth: 0.5,
   },
   touchableArea: {
     marginHorizontal: 30,

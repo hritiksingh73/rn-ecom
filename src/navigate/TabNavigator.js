@@ -6,6 +6,7 @@ import HomeScreen from '../screen/tabRoute/HomeScreen';
 import CartScreen from '../screen/tabRoute/CartScreen';
 import SearchScreen from '../screen/tabRoute/SearchScreen';
 import AccountScreen from '../screen/tabRoute/AccountScreen';
+import HomeStack from './HomesStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +15,7 @@ const TabNavigator = () => {
     <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="home"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           tabBarIcon: ({size, color}) => (
             <IconAntDesign name={'home'} color={color} size={size} />

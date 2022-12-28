@@ -21,3 +21,8 @@ export const DecCartItem = itemId => ({
   type: ActionTypes.DECREMENT_ITEM,
   payload: itemId,
 });
+
+export const RemoveItem = itemId => ({
+  type: ActionTypes.REMOVE_ITEM,
+  payload: itemId,
+});

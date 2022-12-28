@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Text,
   View,
@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Carousel from 'react-native-reanimated-carousel';
 import firestore from '@react-native-firebase/firestore';
 
@@ -19,25 +19,30 @@ import homedata from '../../../staticData/homedata';
 import {addtoCart} from '../../../redux/action/action';
 import {styles} from './styles';
 import images from '../../../config/image';
+import {fetchProductDetail} from '../../../redux/api';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const width = Dimensions.get('window').width;
+  const productDetail = useSelector(state => state.counter.productDetail);
+
+  useEffect(() => {
+    dispatch(fetchProductDetail());
+  }, []);
 
   const deliverData = item => {
-    dispatch(addtoCart(item));
     //console.log(item.id);
     firestore()
       .collection('Cart')
       .add({
-        name: item.name,
+        name: item.title,
         id: item.id,
-        price: item.Price,
+        price: item.price,
         oldPrice: item.oldPrice,
       })
       .then(() => {
-        console.log('User added!');
+        //console.log('User added!');
       });
+    dispatch(addtoCart(item));
     navigation.navigate('Cart');
   };
 
@@ -81,7 +86,10 @@ const HomeScreen = ({navigation}) => {
             />
           </View>
           <View>
-            <Text style={styles.PopTxt}>Poppular Products</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('popularProduct')}>
+              <Text style={styles.PopTxt}>Poppular Products</Text>
+            </TouchableOpacity>
           </View>
 
           <View>
@@ -90,29 +98,26 @@ const HomeScreen = ({navigation}) => {
               horizontal={true}
               renderItem={({item}) => {
                 return (
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('popularProduct')}>
-                    <View style={styles.itemContainer}>
-                      <View style={styles.innerSection}>
-                        <View style={styles.block1}>
-                          <Image style={styles.bgimage} source={item.image} />
-                        </View>
+                  <View style={styles.itemContainer}>
+                    <View style={styles.innerSection}>
+                      <View style={styles.block1}>
+                        <Image style={styles.bgimage} source={item.image} />
+                      </View>
 
-                        <View style={styles.block1}>
-                          <Text style={styles.productName}>{item.name}</Text>
-                          <Text style={styles.productPrice}>
-                            Rs. {item.Price}
-                          </Text>
+                      <View style={styles.block1}>
+                        <Text style={styles.productName}>{item.name}</Text>
+                        <Text style={styles.productPrice}>
+                          Rs. {item.Price}
+                        </Text>
 
-                          <TouchableOpacity
-                            style={styles.touchableArea}
-                            onPress={() => deliverData(item)}>
-                            <Text style={styles.AtoCBtn}>Add to Cart</Text>
-                          </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity
+                          style={styles.touchableArea}
+                          onPress={() => deliverData(item)}>
+                          <Text style={styles.AtoCBtn}>Add to Cart</Text>
+                        </TouchableOpacity>
                       </View>
                     </View>
-                  </TouchableOpacity>
+                  </View>
                 );
               }}
             />
@@ -124,19 +129,22 @@ const HomeScreen = ({navigation}) => {
 
           <View style={styles.trendingNearContain}>
             <FlatList
-              data={homedata}
+              data={productDetail}
               numColumns={'2'}
               renderItem={({item}) => {
                 return (
                   <View style={styles.itemContainer}>
                     <View style={styles.innerSection}>
                       <View style={styles.block1}>
-                        <Image style={styles.bgimage} source={item.image} />
+                        <Image
+                          style={styles.bgimage}
+                          source={{uri: item.imageUrl}}
+                        />
                       </View>
                       <View style={styles.block1}>
-                        <Text style={styles.productName}>{item.name}</Text>
+                        <Text style={styles.productName}>{item.title}</Text>
                         <Text style={styles.productPrice}>
-                          Rs. {item.price} {item.oldPrice}
+                          ${item.price} each {'         '}${item.oldPrice}
                         </Text>
 
                         <TouchableOpacity

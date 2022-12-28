@@ -1,71 +1,94 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
+  View,
   Text,
   TextInput,
-  View,
   FlatList,
-  TouchableOpacity,
   Image,
-  ScrollView,
-  Button,
+  TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
-import IconAntDesign from 'react-native-vector-icons/AntDesign';
-import {styles} from './styles';
-import DropDown from '../../../components/DropDown';
-import remoteConfig from '@react-native-firebase/remote-config';
-import shopKeeperData from '../../../staticData/shopKeeperData';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const SearchScreen = () => {
-  const [isSelected, setisSelected] = useState('');
-  const renderData = ({item, index}) => {
-    return (
-      <TouchableOpacity>
-        <View style={styles.item}>
-          <View style={styles.space}>
-            <Image source={item.image} style={styles.imageStyle} />
-          </View>
-          <View style={styles.subName}>
-            <Text>{item.name}</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  };
+import styles from './styles';
+import homedata from '../../../staticData/homedata';
 
-  const fetchValue = () => {
-    remoteConfig()
-      .setDefaults({
-        City: 'None',
-      })
-      .then(() => remoteConfig().fetchAndActivate())
-      .then(fetchedRemotely => {
-        const changeValue = remoteConfig().getValue('City');
-        setisSelected(isSelected(changeValue));
-        //console.log(changeValue);
-      });
-  };
+const SearchScreen = ({navigation}) => {
   return (
-    <ScrollView>
-      <View style={styles.conatiner}>
-        <View>
-          <DropDown />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.innerContainer}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('popularProduct')}>
+            <Ionicons name="chevron-back" size={35} color="black" />
+          </TouchableOpacity>
+          <Text style={styles.headerText}>Search</Text>
         </View>
+        <View style={styles.header}>
+          <TextInput
+            placeholder="Search Item"
+            style={styles.searchBar}
+            placeholderTextColor="grey"
+          />
+          <Ionicons name="search" size={25} style={styles.searchIcon} />
+        </View>
+        <Text style={styles.recentSearchText}>Recent Searches</Text>
+        <View style={styles.recentSearch}>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+        </View>
+        <View style={styles.recentSearch}>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+        </View>
+        <View style={styles.recentSearch}>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+        </View>
+        <View style={styles.recentSearch}>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+          <Text style={styles.recentSearchData}>Rocoto</Text>
+        </View>
+        <Text style={styles.recentSearchText}>Recommended</Text>
+        <View style={styles.recommend}>
+          <FlatList
+            data={homedata}
+            horizontal={true}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('popularProduct')}>
+                  <View style={styles.itemContainer}>
+                    <View style={styles.innerSection}>
+                      <View style={styles.block1}>
+                        <Image style={styles.bgimage} source={item.image} />
+                      </View>
 
-        <TextInput
-          style={styles.design}
-          placeholder="Find store"
-          placeholderTextColor={'black'}
-        />
-        <IconAntDesign name={'search1'} size={25} style={styles.icon} />
+                      <View style={styles.block1}>
+                        <Text style={styles.productName}>{item.name}</Text>
+                        <Text style={styles.productPrice}>
+                          Rs. {item.Price}
+                        </Text>
+
+                        <TouchableOpacity
+                          style={styles.touchableArea}
+                          onPress={() => deliverData(item)}>
+                          <Text style={styles.AtoCBtn}>Add to Cart</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
       </View>
-      <FlatList
-        data={shopKeeperData}
-        renderItem={renderData}
-        numColumns={2}
-        //ItemSeparatorComponent={itemseparator}
-      />
-      <Button onPress={fetchValue} title="Learn More" color="#841584" />
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 export default SearchScreen;
