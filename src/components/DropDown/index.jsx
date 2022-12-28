@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
-import {StyleSheet} from 'react-native';
 import remoteConfig from '@react-native-firebase/remote-config';
 
-import Location from '../data/location';
+import Location from '../../data/location';
+import {styles} from './styles';
 
 export default function DropDown() {
   const [open, setOpen] = useState(false);
@@ -44,10 +44,3 @@ export default function DropDown() {
     />
   );
 }
-const styles = StyleSheet.create({
-  dropdownStyle: {
-    borderColor: 'white',
-    paddingRight: '55%',
-    marginLeft: '30%',
-  },
-});

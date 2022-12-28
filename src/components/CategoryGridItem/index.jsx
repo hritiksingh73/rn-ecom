@@ -1,5 +1,6 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {TouchableOpacity, Image} from 'react-native';
+import {styles} from './styles';
 
 const CategoryGridItem = props => {
   const {imgSource, onPress} = props;
@@ -10,13 +11,4 @@ const CategoryGridItem = props => {
     </TouchableOpacity>
   );
 };
-const styles = StyleSheet.create({
-  imgStyle: {
-    width: 150,
-    height: 150,
-    resizeMode: 'stretch',
-    margin: 10,
-  },
-});
-
 export default CategoryGridItem;

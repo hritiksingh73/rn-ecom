@@ -55,6 +55,9 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     marginHorizontal: 20,
-    marginBottom: 20,
+  },
+  relatedProductContainer: {
+    height: 330,
+    paddingTop: 20,
   },
 });

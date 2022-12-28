@@ -1,20 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, SafeAreaView, TextInput} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {styles} from './styles';
-import SEARCHITEMS from '../../data/searchItems';
 import RelatedProducts from '../../components/RelatedProducts';
-
-const renderSearchItems = ({item}) => {
-  return (
-    <View style={styles.searchItems}>
-      <Text>{item.title}</Text>
-    </View>
-  );
-};
+import ChipComponent from '../../components/ChipComponent';
 
 const SearchScreen = () => {
   const {goBack} = useNavigation();
@@ -37,12 +28,8 @@ const SearchScreen = () => {
       </View>
 
       <Text style={styles.recentSearch}>Recent Searches</Text>
-      <FlatList
-        data={SEARCHITEMS}
-        renderItem={renderSearchItems}
-        numColumns={3}
-        contentContainerStyle={{height: '95%'}}
-      />
+
+      <ChipComponent />
       <Text style={styles.recommendedTxt}>Recommended</Text>
       <View style={styles.recommendedProductContainer}>
         <RelatedProducts />

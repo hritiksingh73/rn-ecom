@@ -1,6 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {styles} from './styles';
@@ -33,23 +40,6 @@ const ProductDetails = item => {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </Text>
-        <View style={styles.divider} />
-        <Text style={styles.productsTxt}>Related Items</Text>
-        {/* <RelatedProducts /> */}
-
-        <View style={styles.btnContainer}>
-          <TouchableOpacity
-            style={[styles.btnStyle, {backgroundColor: 'black'}]}
-            onPress={() => dispatch(addToWishlist(item))}>
-            <Text style={styles.btnTxt}>Add to Wishlist</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.btnStyle, {backgroundColor: color.primary}]}
-            onPress={() => dispatch(addCartProduct(item))}>
-            <Text style={styles.btnTxt}>Add to Cart</Text>
-          </TouchableOpacity>
-        </View>
       </>
     );
   };
@@ -72,15 +62,39 @@ const ProductDetails = item => {
   }, []);
 
   return (
-    <View style={styles.screen}>
-      <AntDesign
-        name="left"
-        size={30}
-        onPress={() => goBack()}
-        style={{margin: 15}}
-      />
-      <ListItem data={products} renderItem={renderItemDetail} />
-    </View>
+    <SafeAreaView style={styles.screen}>
+      <ScrollView>
+        <AntDesign
+          name="left"
+          size={30}
+          onPress={() => goBack()}
+          style={{margin: 15}}
+        />
+        <View style={{height: 360}}>
+          <ListItem data={products} renderItem={renderItemDetail} />
+        </View>
+        <View style={styles.divider} />
+        <Text style={styles.productsTxt}>Related Items</Text>
+
+        <View style={styles.relatedProductContainer}>
+          <RelatedProducts />
+        </View>
+
+        <View style={styles.btnContainer}>
+          <TouchableOpacity
+            style={[styles.btnStyle, {backgroundColor: 'black'}]}
+            onPress={() => dispatch(addToWishlist(item))}>
+            <Text style={styles.btnTxt}>Add to Wishlist</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.btnStyle, {backgroundColor: color.primary}]}
+            onPress={() => dispatch(addCartProduct(item))}>
+            <Text style={styles.btnTxt}>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 export default ProductDetails;

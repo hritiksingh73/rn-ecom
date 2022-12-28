@@ -7,13 +7,14 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 
-import ProductItem from './ProductItem';
+import ProductItem from '../../components/ProductItem';
 import {styles} from './styles';
 import {addCartProduct} from '../../redux/actions/userAction';
 import {getProducts} from '../../redux/thunk/productsThunk';
 import ListItem from '../../components/ListItem';
+import {globalStyle} from '../../constant/globalStyle';
 
-const PopularProductsScreen = () => {
+const PopularProductsScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
 
@@ -40,21 +41,25 @@ const PopularProductsScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+    <SafeAreaView style={globalStyle.container}>
+      <View style={globalStyle.header}>
         <AntDesign name="left" size={30} onPress={() => goBack()} />
-        <Text style={styles.headerText}>Popular Products</Text>
-        <MaterialIcon name="bell-badge-outline" size={30} />
+        <Text style={globalStyle.headerText}>Popular Products</Text>
+        <MaterialIcon
+          name="bell-badge-outline"
+          size={30}
+          onPress={() => navigation.navigate('Notifications')}
+        />
       </View>
 
       <View style={[styles.itemDivider, styles.bottomLine]} />
       <View style={styles.sortedItem}>
-        <View style={styles.itemDirection}>
+        <View style={globalStyle.itemDirection}>
           <Fontisto name="list-1" size={16} />
           <Text> Sort</Text>
         </View>
 
-        <View style={styles.itemDirection}>
+        <View style={globalStyle.itemDirection}>
           <AntDesign name="filter" size={20} />
           <Text> Filter</Text>
         </View>

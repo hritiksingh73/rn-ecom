@@ -2,19 +2,19 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useDispatch} from 'react-redux';
-
-import {styles} from './styles';
-import CategoryGridItem from '../../components/CategoryGridItem';
-import {addToWishlist} from '../../redux/actions/userAction';
 import {useNavigation} from '@react-navigation/native';
 
-const ProductItem = ({item,onAddToCart}) => {
+import CategoryGridItem from '../../components/CategoryGridItem';
+import {addToWishlist} from '../../redux/actions/userAction';
+import {globalStyle} from '../../constant/globalStyle';
+
+const ProductItem = ({item, onAddToCart}) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   return (
-    <View style={styles.productScreen}>
-      <View style={styles.productDetailContainer}>
+    <View style={globalStyle.productScreen}>
+      <View style={globalStyle.productDetailContainer}>
         <CategoryGridItem
           imgSource={{uri: item.imageUrl}}
           onPress={() =>
@@ -24,7 +24,7 @@ const ProductItem = ({item,onAddToCart}) => {
           }
         />
 
-        <View style={styles.itemDirection}>
+        <View style={globalStyle.itemDirection}>
           <Text>{item.title}</Text>
           <TouchableOpacity onPress={() => dispatch(addToWishlist(item))}>
             <Entypo
@@ -35,10 +35,10 @@ const ProductItem = ({item,onAddToCart}) => {
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.priceTxt}>${item.price} each</Text>
+        <Text style={globalStyle.priceTxt}>${item.price} each</Text>
 
         <TouchableOpacity
-          style={styles.btnContainer}
+          style={globalStyle.btnContainer}
           onPress={() => onAddToCart(item)}>
           <Text>Add to Cart</Text>
         </TouchableOpacity>

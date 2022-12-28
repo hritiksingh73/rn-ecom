@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {color} from '../../constant/color';
 
 export const styles = StyleSheet.create({
   container: {
@@ -26,25 +27,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: '93%',
     height: '7%',
-    backgroundColor: 'lightgrey',
+    backgroundColor: color.secondry,
     marginHorizontal: 15,
     paddingHorizontal: 10,
     marginVertical: 20,
   },
-  searchItems: {
-    marginHorizontal: 15,
-    alignItems: 'center',
-    borderColor: 'lightgrey',
-    marginVertical: 10,
-    borderRadius: 40,
-    padding: 10,
-    backgroundColor: 'lightgrey',
-    width: '26%',
-    height: '75%',
-  },
   recommendedTxt: {
     fontWeight: 'bold',
-    bottom: 5,
+    marginVertical: 5,
     fontSize: 20,
     marginLeft: '4%',
   },

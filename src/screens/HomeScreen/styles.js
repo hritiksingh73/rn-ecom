@@ -1,4 +1,5 @@
 import {StyleSheet, Platform} from 'react-native';
+import { color } from '../../constant/color';
 
 export const styles = StyleSheet.create({
   screen: {
@@ -24,9 +25,10 @@ export const styles = StyleSheet.create({
   searchSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
+    width: '95%',
     height: '7%',
-    backgroundColor: 'lightgrey',
+    backgroundColor: color.secondry,
+    marginHorizontal:10
   },
   input: {
     padding: 8,

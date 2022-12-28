@@ -54,5 +54,22 @@ const styles = StyleSheet.create({
     borderColor: 'lightgrey',
     margin: 8,
   },
+  cartImgContainer: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    height: '100%',
+  },
+  cartImgStyle: {
+    width: '70%',
+    height: '70%',
+  },
+  emptyCartTxt: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  emptyBag: {
+    fontSize: 16,
+    margin: 8,
+  },
 });
 export default styles;

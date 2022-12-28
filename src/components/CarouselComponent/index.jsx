@@ -10,11 +10,10 @@ const CarouselComponent = ({data, renderItem}) => {
       <Carousel
         loop
         width={width}
-        height={420}
+        height={300}
         autoPlay={true}
         data={data}
         scrollAnimationDuration={1000}
-        // onSnapToItem={index => console.log('current index:', index)}
         renderItem={renderItem}
       />
     </View>

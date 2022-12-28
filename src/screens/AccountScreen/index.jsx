@@ -5,7 +5,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 
-import AccountElement from '../../components/AccountElements';
+import AccountElements from '../../components/AccountElements';
 import {styles} from './styles';
 
 const AccountScreen = () => {
@@ -34,20 +34,20 @@ const AccountScreen = () => {
         <MaterialIcon name="bell-badge-outline" size={30} />
       </View>
 
-      <AccountElement name="profile" text="My Profile" />
-      <AccountElement name="contacts" text="Manage Addresses" />
+      <AccountElements name="profile" text="My Profile" />
+      <AccountElements name="contacts" text="Manage Addresses" />
 
       <TouchableOpacity style={styles.accountContainer}>
         <Entypo name="flow-tree" size={20} style={styles.iconStyle} />
         <Text style={styles.txtStyle}>Order History</Text>
       </TouchableOpacity>
 
-      <AccountElement
+      <AccountElements
         name="hearto"
         text="My Wishlist"
         onPress={() => navigation.navigate('Wishlist')}
       />
-      <AccountElement name="logout" text="Logout" onPress={signOut} />
+      <AccountElements name="logout" text="Logout" onPress={signOut} />
     </SafeAreaView>
   );
 };

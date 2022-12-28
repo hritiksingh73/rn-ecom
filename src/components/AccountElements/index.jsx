@@ -1,9 +1,9 @@
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {styles} from '../screens/AccountScreen/styles';
+import {styles} from '../../screens/AccountScreen/styles';
 
-const AccountElement = props => {
+const AccountElements = props => {
   const {name, text, onPress} = props;
 
   return (
@@ -15,4 +15,4 @@ const AccountElement = props => {
     </TouchableOpacity>
   );
 };
-export default AccountElement;
+export default AccountElements;

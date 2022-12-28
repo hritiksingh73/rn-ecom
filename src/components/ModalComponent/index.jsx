@@ -1,5 +1,6 @@
 import React from 'react';
-import {Modal, View, Button, StyleSheet, Text} from 'react-native';
+import {Modal, View, Button, Text} from 'react-native';
+import {styles} from './styles';
 
 const ModalComponent = props => {
   const {visible, cancelBtn, yesBtn} = props;
@@ -20,27 +21,4 @@ const ModalComponent = props => {
     </Modal>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  modal: {
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'lightgrey',
-    height: '20%',
-  },
-  message: {
-    textAlign: 'center',
-    marginBottom: 25,
-    fontSize: 16,
-  },
-  btnstyle: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-  },
-});
 export default ModalComponent;
