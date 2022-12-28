@@ -16,7 +16,6 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {addToCart} from '../../../redux/action/Action.js';
 import styles from './styles.js';
-import {getInitialData} from '../../../redux/thunk/productThunk.js';
 
 import color from '../../../constant/color.js';
 import GroceryProduct from '../../../data/GroceryProduct.js';
@@ -30,16 +29,12 @@ const PopularProductScreen = ({navigation}) => {
     dispatch(addToCart(item));
   };
 
-  useEffect(() => {
-    dispatch(getInitialData());
-  }, []);
-
   const popularProductData = ({item}) => {
     return (
-      <View style={styles.data}>
+      <View style={styles.imageContainer}>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Product Details', (productItem = item.id))
+            navigation.navigate('Product Details', (product = item.id))
           }>
           <Image
             source={{uri: item.imageUrl}}
@@ -55,7 +50,7 @@ const PopularProductScreen = ({navigation}) => {
             addList(item);
             // console.log(item.id);
           }}>
-          <Text style={styles.cart}>Add to Cart</Text>
+          <Text style={styles.cartStyle}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     );
@@ -63,14 +58,14 @@ const PopularProductScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.product}>
+      <View style={styles.headingStyle}>
         <AntDesign name="left" size={30} onPress={() => goBack()} />
-        <Text style={styles.text}>Poppular Products</Text>
+        <Text style={styles.headingText}>Popular Products</Text>
         <Icon name="bell-badge-outline" size={30} />
       </View>
-      <View style={styles.main}>
-        <View style={styles.sort}>
-          <View style={styles.item}>
+      <View style={styles.mainHeader}>
+        <View style={styles.sortStyle}>
+          <View style={styles.headerStyle}>
             <TouchableOpacity
               style={styles.topHeader}
               onPress={() => navigation.navigate('Sort')}>
@@ -78,8 +73,8 @@ const PopularProductScreen = ({navigation}) => {
               <Text style={styles.sortItem}>Sort</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.filter}>
-            <AntDesign name="filter" size={20} style={styles.size} />
+          <View style={styles.filterStyle}>
+            <AntDesign name="filter" size={20} style={styles.filterIcon} />
             <Text style={styles.filterItem}>Filter</Text>
           </View>
         </View>

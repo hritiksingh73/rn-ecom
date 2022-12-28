@@ -59,19 +59,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
   },
-  data: {
+  mainImageStyle: {
     width: 200,
     height: 300,
     borderWidth: 1,
     borderColor: color.lightgrey,
     marginBottom: 120,
+    alignItems: 'center',
+    marginLeft: 100,
   },
   titleText: {
     fontSize: 18,
     margin: 10,
     marginLeft: 10,
   },
-  image: {
+  imageStyle: {
     resizeMode: 'cover',
     width: 180,
     height: '50%',

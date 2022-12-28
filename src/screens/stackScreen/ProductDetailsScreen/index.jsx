@@ -44,8 +44,8 @@ const ProductDetailsScreen = ({navigation, route}) => {
 
   const itemDetail = ({item}) => {
     return (
-      <View style={styles.data}>
-        <Image source={{uri: item.imageUrl}} style={styles.image} />
+      <View style={styles.mainImageStyle}>
+        <Image source={{uri: item.imageUrl}} style={styles.imageStyle} />
         <Text style={styles.titleText} numberOfLines={1}>
           {item.title}
         </Text>

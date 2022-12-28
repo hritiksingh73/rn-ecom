@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: color.white,
   },
-  product: {
+  headingStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 15,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
+  headingText: {
     fontSize: 20,
   },
   title: {
@@ -40,34 +40,34 @@ const styles = StyleSheet.create({
     marginLeft: '15%',
     resizeMode: 'contain',
   },
-  cart: {
+  cartStyle: {
     margin: 10,
     fontSize: 15,
     borderWidth: 1,
     borderColor: color.grey,
     padding: 10,
   },
-  data: {
+  imageContainer: {
     width: '50%',
     backgroundColor: color.white,
     borderColor: color.grey,
     borderWidth: 1,
     height: 310,
   },
-  main: {
+  mainHeader: {
     backgroundColor: color.white,
     borderWidth: 1,
     borderColor: color.lightgrey,
     margin: 8,
   },
-  item: {
+  headerStyle: {
     flexDirection: 'row',
   },
-  sort: {
+  sortStyle: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  filter: {
+  filterStyle: {
     flexDirection: 'row',
   },
   sortItem: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     margin: 20,
     fontSize: 15,
   },
-  size: {
+  filterIcon: {
     margin: 15,
   },
 });
