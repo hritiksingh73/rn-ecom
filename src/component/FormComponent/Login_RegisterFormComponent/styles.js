@@ -1,4 +1,4 @@
-import {Color} from '../../constant/Color';
+import {Color} from '../../../constant/Color';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     borderRightColor: Color.white,
     borderLeftColor: Color.white,
     borderTopColor: Color.white,
+    backgroundColor: Color.white,
     paddingTop: 5,
     borderWidth: 1,
     borderBottomColor: Color.darkGrey,
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
   userInputHeader: {
     paddingLeft: 55,
     paddingTop: '3%',
+    backgroundColor: Color.white,
   },
 });
 

@@ -5,8 +5,10 @@ import auth from '@react-native-firebase/auth';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MyAccountComponent from '../../component/MyAccountComponent/MyAccountComponent';
+import { useNavigation } from '@react-navigation/native';
 
-const Account = () => {
+const AccountScreen = () => {
+  const navigation = useNavigation();
   const signOut = () => {
     auth()
       .signOut()
@@ -22,7 +24,7 @@ const Account = () => {
       </View>
 
       <MyAccountComponent name="profile" Text="My Profile" />
-      <MyAccountComponent name="contacts" Text="Manage Addresses" />
+      <MyAccountComponent name="contacts" Text="Manage Addresses" onPress={()=>navigation.navigate("ManageAddressScreen")} />
       <MyAccountComponent name="gift" Text="Order History" />
       <MyAccountComponent name="hearto" Text="My Wishlist" />
       <MyAccountComponent name="logout" Text="Logout" onPress={signOut} />
@@ -30,4 +32,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default AccountScreen;

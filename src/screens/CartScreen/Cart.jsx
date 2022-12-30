@@ -23,7 +23,6 @@ import {
 } from '../../redux/action/Action';
 import CartBillingData from '../../component/CartBillingData/CartBillingData';
 
-
 const Cart = () => {
   const item = useSelector(state => state.userInfo.cart);
   const dispatch = useDispatch();
@@ -74,7 +73,7 @@ const Cart = () => {
                 style={styles.decreaseButton}
                 onPress={() => {
                   dispatch(decreaseItemQuantity(item.id)),
-                    clearCartItem(item.quantity);
+                    clearCartItem(item.quantity)
                 }}>
                 {item.quantity <= 1 ? (
                   <AntDesign name="delete" size={20} color="red" />
@@ -137,7 +136,7 @@ const Cart = () => {
         <CartBillingData text="Total" Count={'$' + CalculateTotalItemPrices} />
         <View style={styles.bottom}>
           <View>
-            <Text style={styles.footerbottom}>Total</Text>
+            <Text style={styles.footerBar}>Total</Text>
             <Text style={styles.subTotal}>${CalculateSubTotal}</Text>
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>

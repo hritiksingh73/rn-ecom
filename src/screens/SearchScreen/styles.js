@@ -9,21 +9,22 @@ const styles = StyleSheet.create({
     color: Color.black,
   },
   mainContainer: {
-    paddingBottom: 8,
-    paddingLeft: 20,
+    paddingBottom: 2,
+    // paddingLeft: 15,
+     backgroundColor:Color.white
   },
   imageCard: {
     resizeMode: 'contain',
-    width: 150,
-    height: 220,
+    width: '100%',
+    height: '55%',
   },
   imageContainer: {
     width: 185,
-    height: 350,
+    height: 300,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: Color.darkGrey,
-    paddingLeft: 15,
+    borderColor: Color.liteGrey,
+    // paddingLeft: 15,
   },
   imageTitle: {
     fontSize: 15,
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   addtocart: {
-    borderColor: Color.darkGrey,
+    borderColor: Color.liteGrey,
     borderWidth: 1,
     paddingHorizontal: 30,
     paddingVertical: 10,
@@ -52,15 +53,16 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     flexDirection: 'row',
-    width: '90%',
+    width: '100%',
     backgroundColor: Color.liteGrey,
     marginTop: '10%',
     paddingHorizontal: 20,
     marginHorizontal: 20,
+    right:40
   },
   searchIcon: {
     paddingTop: 13,
-    color:Color.black
+    color: Color.black,
   },
   txtFields: {
     fontSize: 18,
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
 
   header: {
     flexDirection: 'row',
-    paddingLeft: 20,
+    // paddingLeft: 20,
   },
 
   flatlistData: {
@@ -86,10 +88,15 @@ const styles = StyleSheet.create({
   recent: {
     fontSize: 18,
     fontWeight: 'bold',
-    paddingLeft: 20,
-    paddingTop: 20,
+    // paddingLeft: 20,
+    paddingVertical: 20,
     color: Color.black,
   },
+  container:{
+    paddingLeft: 20,
+    backgroundColor:Color.white
+  }
+  
 });
 
 export default styles;

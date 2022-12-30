@@ -18,7 +18,8 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import {addItemToCart} from '../../redux/action/Action';
 
 const SearchScreen = () => {
-  const item = useSelector(state => state.userInfo.cart);
+  const {productData} = useSelector(state => state.userInfo);
+  console.log(productData);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -44,8 +45,8 @@ const SearchScreen = () => {
   };
 
   return (
-    <ScrollView nestedScrollEnabled={true}>
-      <SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView nestedScrollEnabled={true}>
         <View style={styles.header}>
           <Icon
             name="left"
@@ -60,9 +61,11 @@ const SearchScreen = () => {
           <Icon name="search1" size={20} style={styles.searchIcon} />
           <TextInput placeholder="Search Items" style={styles.txtFields} />
         </View>
+
         <View>
           <Text style={styles.recent}>Recent Searches</Text>
         </View>
+
         <RecentSearchItems
           textLeft="Rocoto"
           textCenter="Lomo"
@@ -87,12 +90,12 @@ const SearchScreen = () => {
 
         <FlatList
           horizontal={true}
-          data={item}
+          data={productData}
           renderItem={shoppingCards}
           showsHorizontalScrollIndicator={false}
         />
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

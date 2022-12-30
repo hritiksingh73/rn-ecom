@@ -22,5 +22,18 @@ export const increaseItemQuantity = item => ({
 
 export const decreaseItemQuantity = item => ({
   type: ActionType.DECREASE_ITEM_QUANTITY,
-  payload: item
-})
+  payload: item,
+});
+export const addAddress = ({firstName,lastName,mobileNumber,area,address,street,appartment,block}) => ({
+  type: ActionType.ADD_ADDRESS,
+  payload: {firstName,lastName,mobileNumber,area,address,street,appartment,block},
+});
+export const updateAddress = (user, index) => ({
+  type: ActionType.UPDATE_ADDRESS,
+  payload: user,
+  index: index,
+});
+export const deleteAddress = address => ({
+  type: ActionType.DELETE_ADDRESS,
+  payload: address
+});

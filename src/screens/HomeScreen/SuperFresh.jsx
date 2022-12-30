@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import React from 'react';
+import React, {useState} from 'react';
 import {ScrollView} from 'react-native-virtualized-view';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
@@ -24,14 +24,26 @@ import styles from './styles';
 import {Banner} from '../../dummyData/Cards';
 import {Color} from '../../constant/Color';
 import Carousel from 'react-native-reanimated-carousel';
+import {Snackbar} from 'react-native-paper';
 
 const SuperFreshScreen = () => {
   const dispatch = useDispatch();
-  const {isFetching, productData} = useSelector(state => state.userInfo);
+  const {isFetching, productData} = useSelector(
+    state => state.userInfo,
+  );
   const navigation = useNavigation();
   const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
   const width = Dimensions.get('window').width;
+  const [visible, setVisible] = useState(false);
+
+  const onToggleSnackBar = () => {
+    setVisible(!visible);
+  };
+
+  const onDismissSnackBar = () => {
+    setVisible(false);
+  };
 
   const cartItem = item => {
     firestore()
@@ -43,6 +55,29 @@ const SuperFreshScreen = () => {
       .then(() => {
         console.log('item added to firestore!!');
       });
+  };
+
+  const popularProductData = ({item}) => {
+    return (
+      <View style={styles.relatedItemContainer}>
+      <View style={styles.relatedItemImagecard}>
+        <Image source={{uri: item.imageUrl}} style={styles.imgStyle} />
+        <Text style={styles.relatedItemImageTitle}>{item.title}</Text>
+
+        <View style={styles.relatedItemPriceBracket}>
+          <Text style={styles.relatedItemprice}>${item.price} each</Text>
+          <Text style={styles.relatedItemOldPrice}>${item.oldPrice}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => {
+            dispatch(addItemToCart(item));
+          }}>
+          <Text style={styles.addtocart}>Add to Cart</Text>
+        </TouchableOpacity>
+      </View>
+      </View>
+    );
   };
 
   const ListData = ({item}) => {
@@ -57,7 +92,7 @@ const SuperFreshScreen = () => {
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => {
-            dispatch(addItemToCart(item)), cartItem(item);
+            dispatch(addItemToCart(item)), cartItem(item), onToggleSnackBar;
           }}>
           <Text style={styles.addtocart}>Add to Cart</Text>
         </TouchableOpacity>
@@ -82,7 +117,12 @@ const SuperFreshScreen = () => {
         <View style={styles.headerBar}>
           <Tree name="ios-menu-outline" size={25} color={Color.black} />
           <Text style={styles.headertitle}>Super Fresh</Text>
-          <Bell name="bell-badge-outline" size={25} color={Color.black} />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('NotificationScreen');
+            }}>
+            <Bell name="bell-badge-outline" size={25} color={Color.black} />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.ratingcontainerchild}>
@@ -113,14 +153,43 @@ const SuperFreshScreen = () => {
           scrollAnimationDuration={1000}
           renderItem={item => bannerImages(item)}
         />
+
+        <View style={{zIndex:1}}>
+          <Snackbar
+           wrapperStyle={{top:330}}
+          visible={onToggleSnackBar}
+          duration={1000}
+          // action={{
+          //   label: 'close',
+          //   onPress: () => {
+          //     onDismiss={onDismissSnackBar}
+          //   },
+          // }}
+          // style={{width:Dimensions.get('window').width}}
+          onDismiss={onDismissSnackBar}
+          collapsable={true}    
+          >
+          added in cart
+        </Snackbar>
+        </View>
         <View style={styles.popularProductContainer}>
-          <Text style={styles.popularProducts}>Popular Product </Text>
+          <Text style={styles.popularProducts}>Popular Product</Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('PopularProduct')}>
             <Icon name="right" size={25} style={styles.viewMore} />
           </TouchableOpacity>
         </View>
+        <FlatList
+          data={productData}
+          keyExtractor={item => item.id}
+          renderItem={item => popularProductData(item)}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        />
 
+        <View style={styles.popularProductContainer}>
+          <Text style={styles.popularProducts}>Trending near you </Text>
+        </View>
         <FlatList
           data={productData}
           renderItem={item => ListData(item)}

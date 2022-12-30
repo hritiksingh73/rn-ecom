@@ -2,10 +2,16 @@ import {Color} from '../../constant/Color';
 import {StyleSheet} from 'react-native';
 
 styles = StyleSheet.create({
+  container: {
+    backgroundColor: Color.white,
+    flex: 1,
+    borderWidth: 1,
+  },
   groceryHeader: {
     alignSelf: 'center',
     alignItems: 'center',
-    marginTop: 60,
+    marginTop: '10%',
+    backgroundColor: Color.white,
   },
   userInputHeader: {
     paddingLeft: 55,
@@ -18,21 +24,18 @@ styles = StyleSheet.create({
     borderBottomWidth: 1,
     width: 330,
     borderBottomColor: Color.green,
-    borderRightColor: Color.white,
-    borderLeftColor: Color.white,
-    borderTopColor: Color.white,
   },
   forgetPassword: {
     fontSize: 20,
     color: Color.green,
     alignSelf: 'center',
     alignItems: 'center',
-    paddingTop: 10,
+    paddingTop: '3%',
   },
   loginButtonContainer: {
     alignSelf: 'center',
     alignItems: 'center',
-    paddingTop: 20,
+    paddingTop: '2%',
   },
   loginButton: {
     fontSize: 20,
@@ -48,7 +51,7 @@ styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    paddingTop: '20%',
+    paddingTop: '5%',
   },
   errormsg: {
     color: Color.red,
@@ -57,13 +60,13 @@ styles = StyleSheet.create({
   or: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 30,
+    paddingTop: '5%',
   },
   line: {
     flex: 1,
     height: 1,
     backgroundColor: 'black',
-    marginHorizontal: 25,
+    marginHorizontal: '5%',
   },
   text: {
     width: 50,

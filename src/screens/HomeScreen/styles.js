@@ -5,6 +5,11 @@ const styles = StyleSheet.create({
   headerBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingBottom:20
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
   },
   headerIcon: {
     width: 50,
@@ -29,16 +34,13 @@ const styles = StyleSheet.create({
     borderColor: Color.darkGrey,
     borderWidth: 1,
     height: 310,
-    marginLeft: 10,
-    marginRight: -10,
     borderRightWidth: 0.0,
   },
   itemTitle: {
     fontWeight: '600',
     paddingLeft: 20,
     color: Color.black,
-    fontSize: 16,
-    
+    fontSize: 16
   },
   priceBracket: {
     flexDirection: 'row',
@@ -135,6 +137,47 @@ const styles = StyleSheet.create({
   rating: {
     paddingRight: 100,
   },
+  relatedItemImagecard: {
+    width: 200,
+    backgroundColor: Color.white,
+    borderRadius: 5,
+    borderColor: Color.liteGrey,
+    borderWidth: 1,
+    height: 320,
+    paddingBottom: 150
+  },
+  relatedItemImageTitle: {
+    fontWeight: '600',
+    color: Color.black,
+    fontSize: 20,
+    paddingLeft: 20,
+  },
+  relatedItemImageTitle: {
+    fontWeight: '600',
+    color: Color.black,
+    fontSize: 20,
+    paddingLeft: 20,
+  },
+  relatedItemPriceBracket: {
+    flexDirection: 'row',
+    paddingLeft: 20,
+  },
+  relatedItemprice: {
+    color: Color.green,
+    paddingRight: 5,
+    fontWeight: '800',
+    fontSize: 16,
+  },
+  relatedItemOldPrice: {
+    textDecorationLine: 'line-through',
+    fontSize: 16,
+    paddingLeft: 10,
+    color: Color.greyish,
+    fontWeight: '800',
+  },
+  relatedItemContainer:{
+    left:25
+  }
 });
 
 export default styles;

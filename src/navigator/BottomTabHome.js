@@ -3,17 +3,22 @@ import {useSelector} from 'react-redux';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Cart from '../screens/CartScreen/Cart';
-import Account from '../screens/AccountScreen/Account';
+
 import Icon from 'react-native-vector-icons/AntDesign';
 import HomeNavigationStack from './HomeNavigationStack';
 import {Color} from '../constant/Color';
 import SearchNavigationStack from './SearchNavigationStack';
+import AccountNavigationStack from './AccountNavigationStack';
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
   const item = useSelector(state => state.userInfo.cart);
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarInactiveTintColor: Color.black,
+        tabBarActiveTintColor: Color.green,
+      }}>
       <Tab.Screen
         name="Home"
         component={HomeNavigationStack}
@@ -44,7 +49,7 @@ const AppNavigator = () => {
       />
       <Tab.Screen
         name="Account"
-        component={Account}
+        component={AccountNavigationStack}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="user" {...props} />,

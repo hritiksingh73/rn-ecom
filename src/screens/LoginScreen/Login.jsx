@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 
 import styles from '../LoginScreen/styles';
-import FormContainer from '../../component/FormComponent/FormInput';
+import FormContainer from '../../component/FormComponent/Login_RegisterFormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import ImagePath from '../../config/Image';
 import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
@@ -70,7 +70,7 @@ const LoginPage = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Image source={ImagePath.grocerryMain} style={styles.groceryHeader} />
       <FormContainer
         Text="Email"

@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import styles from './styles';
 import {addUser} from '../../redux/action/Action';
-import FormContainer from '../../component/FormComponent/FormInput';
+import FormContainer from '../../component/FormComponent/Login_RegisterFormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 

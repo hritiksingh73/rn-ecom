@@ -15,6 +15,7 @@ import strings from '../../constant/String/strings';
 import styles from './styles';
 import {addItemToCart} from '../../redux/action/Action';
 import {ScrollView} from 'react-native-virtualized-view';
+import axios from 'axios';
 
 const ProductDetailsScreen = ({route}) => {
   const {productData} = useSelector(state => state.userInfo);
@@ -26,12 +27,12 @@ const ProductDetailsScreen = ({route}) => {
 
   const getSelectedItem = async () => {
     try {
-      const response = await fetch(
+      const response = await axios.get(
         `https://grocery-backend-in.vercel.app/products/${receivedproductItem}`,
       );
-      const myData = await response.json();
-      console.log(myData);
-      setItemData(myData);
+      //const myData = await response.json();
+      //console.log(response.data);
+      setItemData(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -57,26 +58,26 @@ const ProductDetailsScreen = ({route}) => {
   };
   const ListData = ({item}) => {
     return (
-      <View style={styles.relatedItemContainer}>
-        <View style={styles.relatedItemImagecard}>
-          <Image source={{uri: item.imageUrl}} style={styles.imgStyle} />
-          <Text style={styles.relatedItemImageTitle} numberOfLines={1}>
-            {item.title}
-          </Text>
+      // <View style={styles.relatedItemContainer}>
+      <View style={styles.relatedItemImagecard}>
+        <Image source={{uri: item.imageUrl}} style={styles.imgStyle} />
+        <Text style={styles.relatedItemImageTitle} numberOfLines={1}>
+          {item.title}
+        </Text>
 
-          <View style={styles.relatedItemPriceBracket}>
-            <Text style={styles.relatedItemprice}>${item.price} each</Text>
-            <Text style={styles.relatedItemOldPrice}>${item.oldPrice}</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.addButton}
-            onPress={() => {
-              dispatch(addItemToCart(item));
-            }}>
-            <Text style={styles.addtocart}>Add to Cart</Text>
-          </TouchableOpacity>
+        <View style={styles.relatedItemPriceBracket}>
+          <Text style={styles.relatedItemprice}>${item.price} each</Text>
+          <Text style={styles.relatedItemOldPrice}>${item.oldPrice}</Text>
         </View>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => {
+            dispatch(addItemToCart(item));
+          }}>
+          <Text style={styles.addtocart}>Add to Cart</Text>
+        </TouchableOpacity>
       </View>
+      // </View>
     );
   };
 

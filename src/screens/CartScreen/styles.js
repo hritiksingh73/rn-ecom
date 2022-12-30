@@ -163,8 +163,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#161e1b',
     padding: 10,
     flexDirection: 'row',
+    position:'relative'
   },
-  footerbottom: {
+  footerBar: {
     color: 'green',
   },
   subTotal: {

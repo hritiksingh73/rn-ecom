@@ -4,6 +4,7 @@ import PopularProducts from '../screens/PopularProducts/PopularProducts';
 import WishListScreen from '../screens/Wishlist/Wishlist';
 import ProductDetailsScreen from '../screens/ProductDetailsScreen/ProductDetailsScreen';
 import SuperFreshScreen from '../screens/HomeScreen/SuperFresh';
+import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
 
 const stack = createNativeStackNavigator();
 const HomeNavigationStack = () => {
@@ -37,6 +38,14 @@ const HomeNavigationStack = () => {
           headerShown: false,
         }}
       />
+      <stack.Screen
+        name="NotificationScreen"
+        component={NotificationScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      
     </stack.Navigator>
   );
 };
