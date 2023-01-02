@@ -6,11 +6,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  search: {
+  searchTextStyle: {
     alignItems: 'center',
     marginLeft: 150,
     fontSize: 20,
     fontWeight: '500',
+  },
+  mainContainer: {
+    flexDirection: 'row',
+    marginLeft: 10,
   },
   textInputStyle: {
     padding: 15,
@@ -20,7 +24,7 @@ const styles = StyleSheet.create({
     margin: 10,
     marginLeft: 10,
   },
-  recent: {
+  headingText: {
     fontSize: 18,
     fontWeight: 'bold',
     margin: 10,
@@ -32,44 +36,44 @@ const styles = StyleSheet.create({
     backgroundColor: '#EBEDEF',
     marginTop: 20,
     marginLeft: 20,
-    width: 350,
+    width: '90%',
     height: 50,
   },
-  iconStyle: {
+  searchIconStyle: {
     padding: 8,
   },
-  text: {
-    borderWidth: 1,
+  textStyle: {
     borderRadius: 25,
-    margin: 5,
+    margin: 8,
     padding: 12,
     height: 42,
-    fontSize: 14,
-    width: 100,
+    fontSize: 15,
+    width: '26%',
     marginLeft: 20,
     backgroundColor: '#EBEDEF',
   },
-  data: {
-    width: 200,
-    height: 300,
+  imageBoxStyle: {
+    width: 220,
+    height: 280,
     borderWidth: 1,
     borderColor: color.lightgrey,
-    marginBottom: 120,
   },
   image: {
-    resizeMode: 'cover',
-    width: 180,
-    height: '50%',
+    resizeMode: 'contain',
+    width: '82%',
+    height: '64%',
+    marginTop: 5,
   },
   titleText: {
     fontSize: 18,
-    margin: 10,
+    bottom: 40,
     marginLeft: 10,
   },
-  price: {
+  priceText: {
     fontSize: 18,
     color: color.primary,
     marginLeft: 10,
+    bottom: 30,
   },
   buttonText: {
     borderWidth: 1,
@@ -80,9 +84,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 15,
-  },
-  main: {
-    flexDirection: 'row',
+    bottom: 30,
   },
 });
 

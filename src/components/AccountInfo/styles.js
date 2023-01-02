@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'lightgrey',
     alignItems: 'center',
     flexDirection: 'row',
-    padding: 10,
+    padding: 20,
   },
   iconStyle: {
     margin: 12,

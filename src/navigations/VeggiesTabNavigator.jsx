@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/AntDesign';
+import {useSelector} from 'react-redux';
 
 import CartScreen from '../screens/tabScreen/CartScreen/index';
 import SearchScreen from '../screens/tabScreen/SearchScreen/index';
@@ -11,6 +12,7 @@ import color from '../constant/color.js';
 const Tab = createBottomTabNavigator();
 
 const VeggiesTabNavigator = () => {
+  const cartItem = useSelector(state => state.cartData.cartProducts);
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -34,7 +36,7 @@ const VeggiesTabNavigator = () => {
         component={CartScreen}
         options={{
           headerShown: false,
-          tabBarBadge: 2,
+          tabBarBadge: cartItem.length,
           tabBarBadgeStyle: {backgroundColor: 'green'},
           tabBarIcon: props => <Icon name="shoppingcart" {...props} />,
         }}

@@ -19,13 +19,14 @@ const styles = StyleSheet.create({
     color: color.grey,
   },
   image: {
-    resizeMode: 'cover',
-    width: 180,
-    height: '50%',
+    resizeMode: 'contain',
+    width: '82%',
+    height: '64%',
+    marginTop: 5,
   },
   mainHeadingStyle: {
     flexDirection: 'row',
-    bottom: 20,
+    top: 10,
   },
   arrowIconStyle: {
     paddingLeft: '45%',
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 15,
+    bottom: 30,
   },
   fresh: {
     color: color.white,
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 18,
-    margin: 10,
+    bottom: 40,
     marginLeft: 10,
   },
   freshImage: {
@@ -93,42 +95,32 @@ const styles = StyleSheet.create({
     width: 390,
     flexDirection: 'row',
     marginLeft: 8,
-    top: 20,
   },
   imageBoxStyle: {
-    width: 200,
-    height: 300,
+    width: 220,
+    height: 280,
     borderWidth: 1,
     borderColor: color.lightgrey,
+    marginTop: 25,
   },
   button: {
     paddingHorizontal: 5,
     alignItems: 'center',
   },
-  cart: {
-    fontSize: 15,
-    borderWidth: 1,
-    borderColor: color.grey,
-    padding: 10,
-  },
   headingStyle: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 20,
-    paddingLeft: 20,
-  },
-  imageStyle: {
-    resizeMode: 'center',
-    width: '82%',
-    height: '54%',
+    paddingLeft: 10,
   },
   imageBrderStyle: {
     height: 200,
     width: 390,
   },
-  price: {
+  priceText: {
     fontSize: 18,
     color: color.primary,
     marginLeft: 10,
+    bottom: 30,
   },
   productData: {
     width: '50%',
@@ -147,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   trendingTextStyle: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 20,
     padding: 10,
   },

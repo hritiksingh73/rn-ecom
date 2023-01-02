@@ -6,23 +6,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: color.white,
   },
-  product: {
+  headingContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 15,
-    marginTop: 15,
+    marginTop: 10,
+    padding:10
   },
-  button: {
+  buttonText: {
     paddingHorizontal: 5,
     alignItems: 'center',
+    flexDirection: 'row',
+  },
+  deleteStyle: {
+    color: color.lightgrey,
   },
   topHeader: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
+  headingStyle: {
     fontSize: 20,
+    marginRight: 160,
   },
   title: {
     fontSize: 18,
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
     borderColor: color.grey,
     padding: 10,
   },
-  data: {
+  imageContainer: {
     width: '50%',
     backgroundColor: color.white,
     borderColor: color.grey,

@@ -8,6 +8,7 @@ const initialState = {
     uid: '',
     userID: '',
   },
+  address: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -26,6 +27,22 @@ const userReducer = (state = initialState, action) => {
         ...state,
         userID: payload,
       };
+
+    case ActionType.ADD_USER:
+      //console.log(action.payload);
+      return {...state, address: [...state.address, action.payload]};
+
+    case ActionType.EDIT_USER:
+      let userData = [...state.address];
+      userData.splice(action.index, 1, action.payload);
+      return {...state, address: userData};
+
+    case ActionType.DELETE_USER:
+      return {
+        ...state,
+        address: state.address.filter(item => item !== payload),
+      };
+
     default:
       return state;
   }

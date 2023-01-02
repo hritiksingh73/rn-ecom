@@ -16,6 +16,8 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView} from 'react-native-virtualized-view';
 import firestore from '@react-native-firebase/firestore';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 
 import {removeToCart} from '../../../redux/action/Action.js';
 import GroceryProduct from '../../../data/GroceryProduct.js';
@@ -29,6 +31,7 @@ const Cart = ({navigation}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cartData.cartProducts);
+  const {goBack} = useNavigation();
 
   const decreaseCartItem = item => {
     if (item.quantity >= 1) {
@@ -78,13 +81,14 @@ const Cart = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <ScrollView nestedScrollEnabled={true}>
         <View style={styles.mainMargin}>
-          <View>
-            <Text style={styles.cart}>Cart</Text>
+          <View style={styles.leftIconStyle}>
+            <AntDesign name="left" size={20} onPress={() => goBack()} />
+            <Text style={styles.cartTextStyle}>Cart</Text>
           </View>
           <View>
             <View style={styles.vegetableImage}>
               <Image source={image.image3} style={styles.freshImage} />
-              <Text style={styles.superImage}>Super Fresh</Text>
+              <Text style={styles.superImageStyle}>Super Fresh</Text>
             </View>
             <View>
               <FlatList

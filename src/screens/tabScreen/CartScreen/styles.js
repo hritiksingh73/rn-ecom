@@ -6,13 +6,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: color.white,
   },
-  cart: {
+  cartTextStyle: {
     fontSize: 20,
     textAlign: 'center',
     fontWeight: 'bold',
+    marginLeft: 180,
   },
   mainMargin: {
     marginHorizontal: 12,
+  },
+  leftIconStyle: {
+    flexDirection: 'row',
   },
   title: {
     fontSize: 15,
@@ -22,7 +26,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: color.lightgrey,
   },
-  superImage: {
+  superImageStyle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginHorizontal: 7,

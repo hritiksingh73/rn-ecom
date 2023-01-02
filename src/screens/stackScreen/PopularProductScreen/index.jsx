@@ -7,61 +7,37 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
+  Button,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
+import {Snackbar} from 'react-native-paper';
 
 import {addToCart} from '../../../redux/action/Action.js';
 import styles from './styles.js';
 
 import color from '../../../constant/color.js';
 import GroceryProduct from '../../../data/GroceryProduct.js';
+import ImageData from '../../../components/ImageData';
 
 const PopularProductScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
   const dataItem = useSelector(state => state.cartData.productData);
 
-  const addList = item => {
-    dispatch(addToCart(item));
-  };
-
-  const popularProductData = ({item}) => {
-    return (
-      <View style={styles.imageContainer}>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Product Details', (product = item.id))
-          }>
-          <Image
-            source={{uri: item.imageUrl}}
-            style={styles.imageStyle}
-            resizeMode="center"
-          />
-        </TouchableOpacity>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.price}>${item.price} each</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            addList(item);
-            // console.log(item.id);
-          }}>
-          <Text style={styles.cartStyle}>Add to Cart</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headingStyle}>
         <AntDesign name="left" size={30} onPress={() => goBack()} />
         <Text style={styles.headingText}>Popular Products</Text>
-        <Icon name="bell-badge-outline" size={30} />
+        <Icon
+          name="bell-badge-outline"
+          size={30}
+          onPress={() => navigation.navigate('Notification')}
+        />
       </View>
       <View style={styles.mainHeader}>
         <View style={styles.sortStyle}>
@@ -79,12 +55,7 @@ const PopularProductScreen = ({navigation}) => {
           </View>
         </View>
       </View>
-      <FlatList
-        data={dataItem}
-        numColumns={2}
-        keyExtractor={item => item.id}
-        renderItem={popularProductData}
-      />
+      <ImageData />
     </SafeAreaView>
   );
 };

@@ -29,3 +29,18 @@ export const userCreate = id => ({
   type: ActionType.USER_ID,
   payload: id,
 });
+
+export const addAddress = user => ({
+  type: ActionType.ADD_USER,
+  payload: user,
+});
+
+export const userEdit = user => ({
+  type: ActionType.EDIT_USER,
+  payload: user,
+});
+
+export const userDelete = user => ({
+  type: ActionType.DELETE_USER,
+  payload: user,
+});

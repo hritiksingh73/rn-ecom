@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   },
   mainHeader: {
     backgroundColor: color.white,
+    flex:1
   },
   rating: {
     fontSize: 20,

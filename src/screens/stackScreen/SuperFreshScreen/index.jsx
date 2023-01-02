@@ -10,6 +10,7 @@ import {
   ScrollView,
   FlatList,
   TouchableOpacity,
+  Dimensions,
   ActivityIndicator,
   ImageBackground,
 } from 'react-native';
@@ -24,8 +25,11 @@ import SuperFreshItem from '../../../data/SuperFreshItem.js';
 import styles from './styles.js';
 import color from '../../../constant/color.js';
 import image from '../../../config/Image.js';
-//import GroceryCarousel from '../../../data/GroceryCarousel';
+
 import {getInitialData} from '../../../redux/thunk/productThunk.js';
+import Carousel from 'react-native-reanimated-carousel';
+import CarouselData from '../../../components/CarouselData';
+import ImageData from '../../../components/ImageData';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -33,6 +37,7 @@ const SuperFreshScreen = ({navigation}) => {
   const dataItem = useSelector(state => state.cartData.productData);
   const cartList = useSelector(state => state.cartData.cartProducts);
   const userID = useSelector(state => state.userData.userID);
+  const width = Dimensions.get('window').width;
   const FirestoreItem = item => {
     firestore()
       .collection('Cart')
@@ -49,10 +54,9 @@ const SuperFreshScreen = ({navigation}) => {
     dispatch(getInitialData());
   }, []);
 
-  const VeggiesItem = ({item}) => {
+  const carouselData = ({item}) => {
     return (
       <View style={styles.mainImageStyle}>
-        {/* <ImageBackground style={styles.flatlist} source={item.image} /> */}
         <Image source={item.image} style={styles.imageBrderStyle} />
         <Text style={styles.fresh}>Super Fresh</Text>
         <Text style={styles.title}>{item.title}</Text>
@@ -60,14 +64,20 @@ const SuperFreshScreen = ({navigation}) => {
     );
   };
 
-  const PopularProducts = ({item}) => {
+  const popularProducts = ({item}) => {
     return (
       <View style={styles.imageBoxStyle}>
-        <Image source={{uri: item.imageUrl}} style={styles.image} />
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('Product Details', (product = item.id))
+          }>
+          <Image source={{uri: item.imageUrl}} style={styles.image} />
+        </TouchableOpacity>
+
         <Text style={styles.titleText} numberOfLines={1}>
           {item.title}
         </Text>
-        <Text style={styles.price}>${item.price}</Text>
+        <Text style={styles.priceText}>${item.price}</Text>
         <TouchableOpacity
           style={styles.buttonText}
           onPress={() => {
@@ -80,35 +90,19 @@ const SuperFreshScreen = ({navigation}) => {
     );
   };
 
-  const PopularProductData = ({item}) => {
-    return (
-      <View style={styles.productData}>
-        <Image
-          source={{uri: item.imageUrl}}
-          style={styles.imageStyle}
-          resizeMode="center"
-        />
-        <Text style={styles.titleText}>{item.title}</Text>
-        <Text style={styles.price}>$ {item.price}</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            addList(item);
-            // console.log(item.id);
-          }}>
-          <Text style={styles.cart}>Add to Cart</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.icon}>
           <Icon name="bars" size={20} />
           <Text style={styles.text}>Super Fresh</Text>
-          <Icon name="bells" size={20} />
+          <Icon
+            name="bells"
+            size={20}
+            onPress={() => {
+              navigation.navigate('Notification');
+            }}
+          />
         </View>
         <TouchableOpacity
           onPress={() => {
@@ -132,14 +126,8 @@ const SuperFreshScreen = ({navigation}) => {
             </View>
           </View>
         </TouchableOpacity>
-        <FlatList
-          //data={GroceryCarousel}
-          data={SuperFreshItem}
-          renderItem={item => VeggiesItem(item)}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-        />
+        <CarouselData item={SuperFreshItem} renderItem={carouselData} />
+
         <View style={styles.mainHeadingStyle}>
           <Text style={styles.headingStyle}>Popular Products</Text>
           <TouchableOpacity
@@ -149,8 +137,7 @@ const SuperFreshScreen = ({navigation}) => {
         </View>
         <FlatList
           data={dataItem}
-          //data={GroceryProduct}
-          renderItem={PopularProducts}
+          renderItem={popularProducts}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => item.id}
@@ -158,12 +145,7 @@ const SuperFreshScreen = ({navigation}) => {
         <View style={styles.trendingStyle}>
           <Text style={styles.trendingTextStyle}>Trending near you</Text>
         </View>
-        <FlatList
-          data={dataItem}
-          //data={GroceryProduct}
-          numColumns={2}
-          renderItem={PopularProductData}
-        />
+        <ImageData />
       </ScrollView>
     </SafeAreaView>
   );

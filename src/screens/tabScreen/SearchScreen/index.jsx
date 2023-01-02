@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
+  Alert,
   Text,
   StyleSheet,
   Button,
@@ -11,21 +12,41 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/AntDesign';
+import {Chip} from 'react-native-paper';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {addToCart} from '../../../redux/action/Action.js';
+import {getInitialData} from '../../../redux/thunk/productThunk.js';
 
 import GroceryProduct from '../../../data/GroceryProduct.js';
 import styles from './styles.js';
+import ChipComponent from '../../../components/ChipComponent'
 
 const SearchScreen = ({navigation}) => {
-  const PopularProducts = ({item}) => {
+  const dataItem = useSelector(state => state.cartData.productData);
+  const dispatch = useDispatch();
+  const {goBack} = useNavigation();
+
+  useEffect(() => {
+    dispatch(getInitialData());
+  }, []);
+
+  const popularProducts = ({item}) => {
     return (
-      <View style={styles.data}>
-        <Image source={item.image} style={styles.image} />
+      <View style={styles.imageBoxStyle}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('Product Details', (product = item.id))
+          }>
+          <Image source={{uri: item.imageUrl}} style={styles.image} />
+        </TouchableOpacity>
+
         <Text style={styles.titleText} numberOfLines={1}>
           {item.title}
         </Text>
-        <Text style={styles.price}>{item.price}</Text>
+        <Text style={styles.priceText}>${item.price}</Text>
         <TouchableOpacity
           style={styles.buttonText}
           onPress={() => {
@@ -36,42 +57,26 @@ const SearchScreen = ({navigation}) => {
       </View>
     );
   };
+  
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <AntDesign name="left" size={30} onPress={() => goBack()} />
-        <Text style={styles.search}>Search</Text>
+        <View style={styles.mainContainer}>
+          <AntDesign name="left" size={20} onPress={() => goBack()} />
+          <Text style={styles.searchTextStyle}>Search</Text>
+        </View>
         <View style={styles.inputStyle}>
-          <Icon name="search1" size={20} style={styles.iconStyle} />
+          <Icon name="search1" size={20} style={styles.searchIconStyle} />
           <TextInput placeholder="Search items" style={styles.textInputStyle} />
         </View>
         <View>
-          <Text style={styles.recent}>Recent Searches</Text>
+          <Text style={styles.headingText}>Recent Searches</Text>
         </View>
-        <View style={styles.main}>
-          <Text style={styles.text}>Rocoto</Text>
-          <Text style={styles.text}>Lomo</Text>
-          <Text style={styles.text}>Saltado</Text>
-        </View>
-        <View style={styles.main}>
-          <Text style={styles.text}>Papas</Text>
-          <Text style={styles.text}>Huancaina</Text>
-          <Text style={styles.text}>Relleno</Text>
-        </View>
-        <View style={styles.main}>
-          <Text style={styles.text}>Contrary</Text>
-          <Text style={styles.text}>There</Text>
-          <Text style={styles.text}>Passage</Text>
-        </View>
-        <View style={styles.main}>
-          <Text style={styles.text}>Source</Text>
-          <Text style={styles.text}>Cicero</Text>
-          <Text style={styles.text}>Treatise</Text>
-        </View>
-        <Text style={styles.recent}>Recommended</Text>
+        <ChipComponent/>
+        <Text style={styles.headingText}>Recommended</Text>
         <FlatList
-          data={GroceryProduct}
-          renderItem={PopularProducts}
+          data={dataItem}
+          renderItem={popularProducts}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => item.id}

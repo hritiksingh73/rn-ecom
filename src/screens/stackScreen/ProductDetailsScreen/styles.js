@@ -6,49 +6,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: color.white,
   },
-  imageSize: {
-    width: '90%',
-    height: '85%',
-  },
-  imageBlock: {
-    alignItems: 'center',
-    width: '100%',
-    height: 280,
-    marginLeft: 10,
-  },
-  imageBox: {
-    width: '80%',
-    height: '28%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 80,
-    //margin:10
-  },
-  imageBoxSize: {
-    width: '20%',
-    height: '50%',
-    borderWidth: 1,
-    borderColor: color.lightgrey,
-    margin: 5,
-  },
-  textStyle: {
-    fontSize: 20,
-    marginRight: 320,
-    color: 'black',
-  },
-  priceStyle: {
-    fontSize: 16,
-    marginRight: 300,
-    color: 'green',
-    margin: 2,
-  },
   dataText: {
     margin: 10,
     fontSize: 16,
+    bottom: 25,
   },
   headingText: {
     margin: 30,
-    marginLeft: 10,
+    marginLeft: 2,
   },
   relatedStyle: {
     marginLeft: 20,
@@ -60,13 +25,11 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   mainImageStyle: {
-    width: 200,
-    height: 300,
-    borderWidth: 1,
-    borderColor: color.lightgrey,
-    marginBottom: 120,
-    alignItems: 'center',
-    marginLeft: 100,
+    width: '96%',
+    backgroundColor: color.white,
+    borderColor: color.darkgrey,
+    height: 320,
+    paddingRight: '1%',
   },
   titleText: {
     fontSize: 18,
@@ -75,8 +38,9 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     resizeMode: 'cover',
-    width: 180,
-    height: '50%',
+    width: 280,
+    height: '52%',
+    marginLeft: 60,
   },
   buttonText: {
     borderWidth: 1,
@@ -88,10 +52,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 15,
   },
-  price: {
+  priceStyle: {
     fontSize: 18,
     color: color.primary,
     marginLeft: 10,
+  },
+  detailStyle: {
+    flexDirection: 'row',
+    marginTop: '5%',
+    marginLeft: 70,
+    justifyContent: 'space-between',
+  },
+  detailText: {
+    color: color.primary,
+    fontWeight: '600',
+    fontSize: 15,
+  },
+  oftenTextStyle: {
+    fontWeight: '600',
+    fontSize: 15,
+    marginRight: 70,
+  },
+  textStyle: {
+    marginLeft: 34,
+    paddingVertical: 5,
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  mainHeading: {
+    right: '5%',
+    marginTop: '2%',
+    fontSize: 15,
   },
   buttonStyle: {
     flexDirection: 'row',
@@ -112,6 +103,10 @@ const styles = StyleSheet.create({
   },
   leftIconStyle: {
     paddingTop: 50,
+  },
+  descriptionStyle: {
+    fontSize: 16,
+    marginLeft: 15,
   },
 });
 
