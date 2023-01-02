@@ -1,25 +1,24 @@
-import React from 'react'
-import { View, StyleSheet, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import MainNavigator from './src/navigation';
+import { DefaultNavigationTheme } from './src/theme/navigation';
+import { Provider as StoreProvider } from 'react-redux';
+import { persistor, store } from './src/redux/store';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const App = () => {
   return (
-    <View style={styles.container} >
-      <Text style={styles.heading} >Hello World</Text>
-      <Icon name="search1" size={30} color="#900" />
-    </View>
+    <StoreProvider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <PaperProvider>
+          <NavigationContainer theme={DefaultNavigationTheme}>
+            <MainNavigator />
+          </NavigationContainer>
+        </PaperProvider>
+      </PersistGate>
+    </StoreProvider>
   );
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white"
-  },
-  heading: {
+};
 
-  }
-})
-
-export default App
+export default App;
