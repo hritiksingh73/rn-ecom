@@ -13,14 +13,15 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import Edit from 'react-native-vector-icons/Feather';
 
 import styles from './styles';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import { deleteAddress } from '../../redux/action/Action';
+import {deleteAddress} from '../../redux/action/Action';
 
 const ManageAddressScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const addressData = useSelector(state => state.userAddress.userAddressList);
-  console.log(addressData);
+  //console.log(addressData);
 
   const cartData = ({item}) => {
     return (
@@ -31,10 +32,10 @@ const ManageAddressScreen = () => {
             <Text>{item.firstName}</Text>
           </View>
           <View style={styles.iconContainer}>
-            <TouchableOpacity >
+            <TouchableOpacity>
               <Edit name="edit" size={24} style={styles.Icons} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>dispatch(deleteAddress(item))}>
+            <TouchableOpacity onPress={() => dispatch(deleteAddress(item))}>
               <Icon name="delete" size={24} />
             </TouchableOpacity>
           </View>

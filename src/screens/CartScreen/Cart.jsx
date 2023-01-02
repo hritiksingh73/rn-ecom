@@ -43,14 +43,14 @@ const Cart = () => {
   });
 
   const CalculateTotalItemPrices = ItemPrice.reduce((total, value) => {
-    return Math.round(total + value);
+    return Math.min(total + value);
   }, 0);
 
   const CalculateDeliveryCharges = (CalculateTotalItemPrices * 3) / 100;
 
   const CalculateTax = (CalculateTotalItemPrices * 12) / 100;
 
-  const CalculateSubTotal = Math.round(
+  const CalculateSubTotal = Math.min(
     CalculateTotalItemPrices + CalculateDeliveryCharges + CalculateTax,
   );
   const modalClose = () => {
@@ -73,7 +73,7 @@ const Cart = () => {
                 style={styles.decreaseButton}
                 onPress={() => {
                   dispatch(decreaseItemQuantity(item.id)),
-                    clearCartItem(item.quantity)
+                    clearCartItem(item.quantity);
                 }}>
                 {item.quantity <= 1 ? (
                   <AntDesign name="delete" size={20} color="red" />

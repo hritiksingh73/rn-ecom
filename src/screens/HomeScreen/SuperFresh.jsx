@@ -28,9 +28,7 @@ import {Snackbar} from 'react-native-paper';
 
 const SuperFreshScreen = () => {
   const dispatch = useDispatch();
-  const {isFetching, productData} = useSelector(
-    state => state.userInfo,
-  );
+  const {isFetching, productData} = useSelector(state => state.userInfo);
   const navigation = useNavigation();
   const selecteditems = useSelector(state => state.userInfo.cart);
   const userData = useSelector(state => state.userInfo.loginpage);
@@ -60,22 +58,22 @@ const SuperFreshScreen = () => {
   const popularProductData = ({item}) => {
     return (
       <View style={styles.relatedItemContainer}>
-      <View style={styles.relatedItemImagecard}>
-        <Image source={{uri: item.imageUrl}} style={styles.imgStyle} />
-        <Text style={styles.relatedItemImageTitle}>{item.title}</Text>
+        <View style={styles.relatedItemImagecard}>
+          <Image source={{uri: item.imageUrl}} style={styles.imgStyle} />
+          <Text style={styles.relatedItemImageTitle}>{item.title}</Text>
 
-        <View style={styles.relatedItemPriceBracket}>
-          <Text style={styles.relatedItemprice}>${item.price} each</Text>
-          <Text style={styles.relatedItemOldPrice}>${item.oldPrice}</Text>
+          <View style={styles.relatedItemPriceBracket}>
+            <Text style={styles.relatedItemprice}>${item.price} each</Text>
+            <Text style={styles.relatedItemOldPrice}>${item.oldPrice}</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => {
+              dispatch(addItemToCart(item));
+            }}>
+            <Text style={styles.addtocart}>Add to Cart</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => {
-            dispatch(addItemToCart(item));
-          }}>
-          <Text style={styles.addtocart}>Add to Cart</Text>
-        </TouchableOpacity>
-      </View>
       </View>
     );
   };
@@ -154,23 +152,26 @@ const SuperFreshScreen = () => {
           renderItem={item => bannerImages(item)}
         />
 
-        <View style={{zIndex:1}}>
+        <View style={{zIndex: 1}}>
           <Snackbar
-           wrapperStyle={{top:330}}
-          visible={onToggleSnackBar}
-          duration={1000}
-          // action={{
-          //   label: 'close',
-          //   onPress: () => {
-          //     onDismiss={onDismissSnackBar}
-          //   },
-          // }}
-          // style={{width:Dimensions.get('window').width}}
-          onDismiss={onDismissSnackBar}
-          collapsable={true}    
-          >
-          added in cart
-        </Snackbar>
+            wrapperStyle={{top: 330}}
+            visible={onToggleSnackBar}
+            anchorOrigin={{
+              horizontal: "left",
+              vertical: "bottom",
+            }}
+            duration={1000}
+            // action={{
+            //   label: 'close',
+            //   onPress: () => {
+            //     onDismiss={onDismissSnackBar}
+            //   },
+            // }}
+            // style={{width:Dimensions.get('window').width}}
+            onDismiss={onDismissSnackBar}
+            collapsable={true}>
+            added in cart
+          </Snackbar>
         </View>
         <View style={styles.popularProductContainer}>
           <Text style={styles.popularProducts}>Popular Product</Text>
