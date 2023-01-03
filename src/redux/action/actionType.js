@@ -6,4 +6,7 @@ export const ActionTypes = {
   DECREMENT_ITEM: 'DECREMENT_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM',
   PRODUCT_DATA: 'PRODUCT_DATA',
+  Add_Address: ' Add_Address',
+  REMOVE_ADDRESS: 'REMOVE_ADDRESS',
+  EDIT_ADDRESS: 'EDIT_ADDRESS',
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, SafeAreaView} from 'react-native';
+import {Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import IconAntDesign from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
@@ -19,13 +19,19 @@ const AccountScreen = ({navigation}) => {
         <View style={styles.subHeader}>
           <IconAntDesign name={'ios-menu-outline'} size={35} />
           <Text style={styles.textHeader}>My Account</Text>
-          <IconAntDesign name={'notifications-outline'} size={35} />
+          <TouchableOpacity onPress={() => navigation.navigate('notification')}>
+            <IconAntDesign name={'notifications-outline'} size={35} />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.subContainer}>
         <Touchable name="person-outline" text="My Profile" />
 
-        <Touchable name="md-reader-outline" text="Manage Addresses" />
+        <Touchable
+          name="md-reader-outline"
+          text="Manage Addresses"
+          onPress={() => navigation.navigate('manageAddress')}
+        />
 
         <Touchable name="ios-menu-outline" text="Order History" />
 

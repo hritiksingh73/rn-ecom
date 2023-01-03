@@ -12,6 +12,8 @@ const initialState = {
     mail: '',
     pass: '',
   },
+  addressDetail: [],
+
   cart: [],
   productDetail: [],
 };
@@ -30,6 +32,12 @@ const counterReducer = (state = initialState, action) => {
       return {
         ...state,
         userLoginData: action.payload,
+      };
+    case ActionTypes.Add_Address:
+      console.log('reducer', action.payload);
+      return {
+        ...state,
+        addressDetail: [...state.addressDetail, action.payload],
       };
     case ActionTypes.ADDCART:
       return {
@@ -79,6 +87,27 @@ const counterReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: removeItem,
+      };
+
+    case ActionTypes.REMOVE_ADDRESS:
+      return {
+        ...state,
+        addressDetail: state.addressDetail.filter(
+          item => item !== action.payload,
+        ),
+      };
+
+    case ActionTypes.EDIT_ADDRESS:
+      const update = state.addressDetail.findIndex(
+        item => item.id === action.payload.id,
+      );
+
+      let editAddress = [...state.addressDetail];
+      editAddress.splice(update, 1, action.payload);
+
+      return {
+        ...state,
+        addressDetail: editAddress,
       };
 
     default:

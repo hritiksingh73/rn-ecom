@@ -2,11 +2,10 @@ import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 
-import HomeScreen from '../screen/tabRoute/HomeScreen';
 import CartScreen from '../screen/tabRoute/CartScreen';
 import SearchScreen from '../screen/tabRoute/SearchScreen';
-import AccountScreen from '../screen/tabRoute/AccountScreen';
 import HomeStack from './HomesStack';
+import AccountStack from './AccountStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +41,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Account"
-        component={AccountScreen}
+        component={AccountStack}
         options={{
           tabBarIcon: ({size, color}) => (
             <IconAntDesign name={'profile'} color={color} size={size} />

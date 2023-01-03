@@ -26,3 +26,19 @@ export const RemoveItem = itemId => ({
   type: ActionTypes.REMOVE_ITEM,
   payload: itemId,
 });
+
+export const updateAddress = itemId => ({
+  type: ActionTypes.Add_Address,
+  payload: itemId,
+});
+
+export const removeAddress = itemId => ({
+  type: ActionTypes.REMOVE_ADDRESS,
+  payload: itemId,
+});
+
+export const editAddress = (data, id) => ({
+  type: ActionTypes.EDIT_ADDRESS,
+  payload: data,
+  id,
+});
