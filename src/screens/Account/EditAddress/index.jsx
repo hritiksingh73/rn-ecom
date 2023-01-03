@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import { AccountScreens } from '../../../config/constants/screens';
-import { ADD_ADDRESS, EDIT_ADDRESS } from '../../../redux/constants';
+import { EDIT_ADDRESS } from '../../../redux/constants';
 
 const EditAddress = () => {
   const address = useSelector(state => state.user.addresses);
@@ -23,7 +23,6 @@ const EditAddress = () => {
   const navigation = useNavigation();
 
   const submitEditHandler = data => {
-    console.log(data);
     dispatch({
       type: EDIT_ADDRESS,
       payload: { data: data, id: addressId },

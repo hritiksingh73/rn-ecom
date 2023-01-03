@@ -58,7 +58,6 @@ export default (state = initialState, action) => {
       let updatedArray = state.addresses.filter(
         item => item.id !== action.payload.id,
       );
-      console.log('Data after filter', updatedArray);
 
       return {
         ...state,
@@ -75,8 +74,8 @@ export default (state = initialState, action) => {
       const updatedAddress = { ...action.payload.data };
 
       // update the address obj in array using splice
-      let currentAddressArray = state.addresses;
-      currentAddressArray.splice(idxOfAddressTobeUpdated, 0, updatedAddress);
+      let currentAddressArray = [...state.addresses];
+      currentAddressArray.splice(idxOfAddressTobeUpdated, 1, updatedAddress);
 
       return {
         ...state,

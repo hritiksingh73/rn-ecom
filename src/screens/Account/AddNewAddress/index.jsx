@@ -11,7 +11,6 @@ import { AccountScreens } from '../../../config/constants/screens';
 const AddAdress = () => {
   const { control, handleSubmit } = useForm({
     mode: 'onBlur',
-    defaultValues: {},
   });
   const dispatch = useDispatch();
   const navigation = useNavigation();
