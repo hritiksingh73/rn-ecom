@@ -11,7 +11,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 
-
 const NotificationScreen = () => {
   const navigation = useNavigation();
 

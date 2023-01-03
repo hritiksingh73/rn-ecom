@@ -28,10 +28,9 @@ const userReducer = (state = InitialState, action) => {
       };
 
     case ActionType.REMOVE_ITEM:
-      //console.log(...state.cart.filter( (item) => action.payload !== item))
       return {
         ...state,
-        cart:state.cart.filter(item => item.quantity === action.payload),
+        cart: state.cart.filter(item => item.quantity === action.payload),
       };
 
     case ActionType.INCREASE_ITEM_QUANTITY:

@@ -63,11 +63,9 @@ const PopularProducts = () => {
   return (
     <SafeAreaView>
       <View style={styles.headerBar}>
-        <TouchableOpacity onPress={() => navigation.navigate('SuperFreshScreen')}>
-          <Icon
-            name="chevron-left"
-            size={30}
-          />
+        <TouchableOpacity
+          onPress={() => navigation.navigate('SuperFreshScreen')}>
+          <Icon name="chevron-left" size={30} />
         </TouchableOpacity>
         <Text style={styles.popularProducts}>Popular Products</Text>
         <Bell name="bell-badge-outline" size={30} />

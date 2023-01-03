@@ -8,14 +8,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import {useSelector} from 'react-redux';
-import {debounce} from 'lodash';
+import {useNavigation} from '@react-navigation/native';
+
 import Icon from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import DropDown from '../../component/DropDown';
-import {Rating} from 'react-native-ratings';
-import {useNavigation} from '@react-navigation/native';
 
 const DisplayVariety = () => {
   const {productData} = useSelector(state => state.userInfo);
@@ -52,10 +51,7 @@ const DisplayVariety = () => {
       <DropDown />
       <View style={styles.searchBar}>
         <Icon name="search1" size={20} style={styles.searchIcon} />
-        <TextInput
-          placeholder="Find Store"
-          style={styles.txtFields}
-        />
+        <TextInput placeholder="Find Store" style={styles.txtFields} />
       </View>
       <FlatList
         keyExtractor={item => item.id}

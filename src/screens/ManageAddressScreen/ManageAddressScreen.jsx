@@ -6,7 +6,7 @@ import {
   FlatList,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -20,8 +20,7 @@ import {deleteAddress} from '../../redux/action/Action';
 const ManageAddressScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const addressData = useSelector(state => state.userAddress.userAddressList);
-  //console.log(addressData);
+  const address = useSelector(state => state.userAddress.userAddressList);
 
   const cartData = ({item}) => {
     return (
@@ -32,7 +31,13 @@ const ManageAddressScreen = () => {
             <Text>{item.firstName}</Text>
           </View>
           <View style={styles.iconContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(
+                  'EditAddressScreen',
+                  (productItem = item.id),
+                )
+              }>
               <Edit name="edit" size={24} style={styles.Icons} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => dispatch(deleteAddress(item))}>
@@ -59,7 +64,7 @@ const ManageAddressScreen = () => {
         </View>
 
         <FlatList
-          data={addressData}
+          data={address}
           renderItem={cartData}
           numColumns={1}
           keyExtractor={item => item.id}

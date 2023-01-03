@@ -10,12 +10,13 @@ import {
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
+import {ScrollView} from 'react-native-virtualized-view';
+import axios from 'axios';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import strings from '../../constant/String/strings';
 import styles from './styles';
 import {addItemToCart} from '../../redux/action/Action';
-import {ScrollView} from 'react-native-virtualized-view';
-import axios from 'axios';
 
 const ProductDetailsScreen = ({route}) => {
   const {productData} = useSelector(state => state.userInfo);

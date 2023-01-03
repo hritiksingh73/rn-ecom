@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ManageAddressScreen from '../screens/ManageAddressScreen/ManageAddressScreen';
 import AddAddressScreen from '../screens/AddAddressScreen/AddAddressScreen'
 import AccountScreen from '../screens/AccountScreen/AccountScreen';
+import EditAddressScreen from '../screens/EditAddressScreen/EditAddressScreen';
 
 
 const stack = createNativeStackNavigator();
@@ -27,6 +28,13 @@ const AccountNavigationStack = () => {
       <stack.Screen
         name="AddAddressScreen"
         component={AddAddressScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <stack.Screen
+        name="EditAddressScreen"
+        component={EditAddressScreen}
         options={{
           headerShown: false,
         }}

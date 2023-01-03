@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: Color.liteGrey,
     borderWidth: 1,
-    height:  '100%',
+    height: '100%',
     borderRightWidth: 0.0,
   },
   imgStyle: {
@@ -41,15 +41,15 @@ const styles = StyleSheet.create({
   price: {
     color: Color.green,
     paddingLeft: 20,
-    paddingRight:5,
+    paddingRight: 5,
     fontSize: 16,
-    fontWeight:"800"
+    fontWeight: '800',
   },
   oldPrice: {
-    textDecorationLine:'line-through',
+    textDecorationLine: 'line-through',
     fontSize: 16,
-    color:Color.greyish,
-    fontWeight:"800"
+    color: Color.greyish,
+    fontWeight: '800',
   },
   rating: {
     paddingRight: 100,

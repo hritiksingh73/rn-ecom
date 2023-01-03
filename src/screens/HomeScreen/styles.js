@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   headerBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingBottom:20
+    paddingBottom: 20,
   },
   container: {
     flex: 1,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     paddingLeft: 20,
     color: Color.black,
-    fontSize: 16
+    fontSize: 16,
   },
   priceBracket: {
     flexDirection: 'row',
@@ -48,15 +48,15 @@ const styles = StyleSheet.create({
   price: {
     color: Color.green,
     paddingLeft: 20,
-    paddingRight:5,
+    paddingRight: 5,
     fontSize: 16,
-    fontWeight:"800"
+    fontWeight: '800',
   },
   oldPrice: {
-    textDecorationLine:'line-through',
+    textDecorationLine: 'line-through',
     fontSize: 16,
-    color:Color.greyish,
-    fontWeight:"800"
+    color: Color.greyish,
+    fontWeight: '800',
   },
   ratingcontainerchild: {
     flexDirection: 'row',
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 30,
     left: '30%',
-    fontWeight: '800'
+    fontWeight: '800',
   },
   imagedescription: {
     position: 'absolute',
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     borderColor: Color.liteGrey,
     borderWidth: 1,
     height: 320,
-    paddingBottom: 150
+    paddingBottom: 150,
   },
   relatedItemImageTitle: {
     fontWeight: '600',
@@ -175,9 +175,9 @@ const styles = StyleSheet.create({
     color: Color.greyish,
     fontWeight: '800',
   },
-  relatedItemContainer:{
-    left:25
-  }
+  relatedItemContainer: {
+    left: 25,
+  },
 });
 
 export default styles;
