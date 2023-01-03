@@ -14,12 +14,10 @@ export const globalStyle = StyleSheet.create({
     color: color.primary,
   },
   productDetailContainer: {
-    width: 200,
     margin: 10,
   },
   itemDirection: {
     flexDirection: 'row',
-    marginBottom: 15,
   },
   header: {
     flexDirection: 'row',
@@ -36,8 +34,12 @@ export const globalStyle = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 15,
   },
-  productScreen: {
+  itemDivider: {
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: color.secondry,
+    margin: 8,
+  },
+  productList: {
+    marginHorizontal: '4%',
   },
 });

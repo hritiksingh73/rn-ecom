@@ -1,4 +1,11 @@
-import {USER_DATA, USER_ID} from '../constants/userTypes';
+import {
+  USER_DATA,
+  USER_ID,
+  SET_ADDRESS,
+  DELETE_ADDRESS,
+  EDIT_ADDRESS,
+} from '../constants/userTypes';
+import {guidGenerator} from '../../utils/helperFunctions';
 
 const initialState = {
   userDetails: {
@@ -7,6 +14,7 @@ const initialState = {
     mobileNumber: '',
     userID: '',
   },
+  address: [],
 };
 
 const userDataReducer = (state = initialState, action) => {
@@ -17,10 +25,33 @@ const userDataReducer = (state = initialState, action) => {
 
     case USER_ID:
       console.log('Reducer userid --> ', action.payload);
-      return {
-        ...state,
-        userID: action.payload,
+      return {...state, userID: action.payload};
+
+    case SET_ADDRESS:
+      // console.log('Address --> ', action.payload);
+      let addressWithId = {
+        ...action.payload,
+        id: guidGenerator(),
       };
+      return {...state, address: [...state.address, addressWithId]};
+
+    case DELETE_ADDRESS:
+      let deleteData = state.address.filter(
+        item => item.id !== action.payload.id,
+      );
+      return {...state, address: deleteData};
+
+    case EDIT_ADDRESS:
+      console.log('data--->', action.payload);
+      const indexOfAddressTobeUpdated = state.address.findIndex(
+        item => item.id === action.payload.id,
+      );
+      const updatedAddress = {...action.payload};
+
+      let editAddress = [...state.address];
+      editAddress.splice(indexOfAddressTobeUpdated, 1, updatedAddress);
+      console.log('edit address-------->', editAddress);
+      return {...state, address: editAddress};
 
     default:
       return state;

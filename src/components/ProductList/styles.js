@@ -5,16 +5,14 @@ export const styles = StyleSheet.create({
   productContainer: {
     borderWidth: 1,
     borderColor: 'lightgrey',
-    marginBottom: 50,
-    height: 267,
-  },
-  imgStyle: {
-    width: 210,
-    height: '50%',
-    margin: 5,
+    width: 216,
   },
   priceTxt: {
     color: color.primary,
+  },
+  iconContainer: {
+    alignItems: 'flex-end',
+    flex: 1,
   },
   txtContainer: {marginHorizontal: 20},
   btnContainer: {

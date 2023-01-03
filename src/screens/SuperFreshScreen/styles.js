@@ -20,6 +20,11 @@ export const styles = StyleSheet.create({
     marginLeft: '4%',
     bottom: 20,
   },
+  iconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginRight: 15,
+  },
   txtContainer: {marginHorizontal: 20},
   itemDivider: {
     borderWidth: 1,

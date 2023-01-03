@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -8,19 +8,18 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {styles} from './styles';
 import ListItem from '../../components/ListItem';
-import RelatedProducts from '../../components/RelatedProducts';
+import ProductList from '../../components/ProductList';
 import {color} from '../../constant/color';
 import {addCartProduct} from '../../redux/actions/userAction';
 import {addToWishlist} from '../../redux/actions/userAction';
 import {useDispatch} from 'react-redux';
+import {globalStyle} from '../../constant/globalStyle';
 
 const ProductDetails = item => {
   const route = useRoute();
-  const {goBack} = useNavigation();
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
   const itemId = route.params.productId;
@@ -64,12 +63,6 @@ const ProductDetails = item => {
   return (
     <SafeAreaView style={styles.screen}>
       <ScrollView>
-        <AntDesign
-          name="left"
-          size={30}
-          onPress={() => goBack()}
-          style={{margin: 15}}
-        />
         <View style={{height: 360}}>
           <ListItem data={products} renderItem={renderItemDetail} />
         </View>
@@ -77,7 +70,11 @@ const ProductDetails = item => {
         <Text style={styles.productsTxt}>Related Items</Text>
 
         <View style={styles.relatedProductContainer}>
-          <RelatedProducts />
+          <ProductList
+            horizontal={true}
+            numColumns={0}
+            style={globalStyle.productList}
+          />
         </View>
 
         <View style={styles.btnContainer}>

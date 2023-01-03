@@ -6,7 +6,7 @@ const ButtonComponent = props => {
   const {disabled, onPress} = props;
 
   return (
-    <View style={styles.loginButtonContainer}>
+    <View style={[styles.loginButtonContainer]}>
       <TouchableOpacity
         style={styles.loginButton}
         disabled={disabled}

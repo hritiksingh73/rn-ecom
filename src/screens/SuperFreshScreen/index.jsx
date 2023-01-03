@@ -6,11 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import {GROCERIES} from '../../data/groceryICarousel';
 import {styles} from './styles';
 import CarouselComponent from '../../components/CarouselComponent';
-import RelatedProducts from '../../components/RelatedProducts';
-import ProductItem from '../../components/ProductItem';
-import {useDispatch, useSelector} from 'react-redux';
-import ListItem from '../../components/ListItem';
-import {addCartProduct} from '../../redux/actions/userAction';
+import ProductList from '../../components/ProductList';
 import {globalStyle} from '../../constant/globalStyle';
 
 const renderSuperFreshItem = ({item}) => {
@@ -22,11 +18,9 @@ const renderSuperFreshItem = ({item}) => {
 };
 const SuperFreshScreen = () => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.productsReducer.products);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={globalStyle.container}>
       <ScrollView>
         <View style={globalStyle.header}>
           <MaterialIcon name="menu" size={30} />
@@ -40,28 +34,25 @@ const SuperFreshScreen = () => {
 
         <CarouselComponent data={GROCERIES} renderItem={renderSuperFreshItem} />
 
-        <Text style={styles.productsTxt}>
-          Popular Products
+        <View style={styles.iconContainer}>
+          <Text style={styles.productsTxt}>Popular Products</Text>
           <MaterialIcon
             name="arrow-right"
             size={25}
+            style={{bottom: 20}}
             onPress={() => navigation.navigate('Popular Products')}
           />
-        </Text>
-        <RelatedProducts style={{flex: 1}} />
-        <Text style={styles.productsTxt}>Trending near you</Text>
-        <ListItem
-          data={products}
-          renderItem={({item}) => {
-            return (
-              <ProductItem
-                item={item}
-                onAddToCart={() => dispatch(addCartProduct(item))}
-              />
-            );
-          }}
-          numColumns={2}
+        </View>
+
+        <ProductList
+          horizontal={true}
+          numColumns={0}
+          style={globalStyle.productList}
         />
+        <Text style={[styles.productsTxt, {marginTop: 40}]}>
+          Trending near you
+        </Text>
+        <ProductList horizontal={false} numColumns={2} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -7,6 +7,9 @@ import {
   ADD_TO_WISHLIST,
   REMOVE_FROM_WISHLIST,
   USER_ID,
+  SET_ADDRESS,
+  DELETE_ADDRESS,
+  EDIT_ADDRESS,
 } from '../constants/userTypes';
 
 export const userInfoDetails = userDetails => ({
@@ -40,4 +43,16 @@ export const removeFromWishlist = index => ({
 export const userId = info => ({
   type: USER_ID,
   payload: info,
+});
+export const getUserAddress = item => ({
+  type: SET_ADDRESS,
+  payload: item,
+});
+export const deleteUserAddress = id => ({
+  type: DELETE_ADDRESS,
+  payload: id,
+});
+export const editUserAddress = data => ({
+  type: EDIT_ADDRESS,
+  payload: data,
 });

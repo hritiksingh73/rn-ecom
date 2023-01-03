@@ -7,12 +7,11 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 
-import ProductItem from '../../components/ProductItem';
 import {styles} from './styles';
 import {addCartProduct} from '../../redux/actions/userAction';
 import {getProducts} from '../../redux/thunk/productsThunk';
-import ListItem from '../../components/ListItem';
 import {globalStyle} from '../../constant/globalStyle';
+import ProductList from '../../components/ProductList';
 
 const PopularProductsScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -54,7 +53,7 @@ const PopularProductsScreen = ({navigation}) => {
 
       <View style={[styles.itemDivider, styles.bottomLine]} />
       <View style={styles.sortedItem}>
-        <View style={globalStyle.itemDirection}>
+        <View style={[globalStyle.itemDirection, {marginBottom: 15}]}>
           <Fontisto name="list-1" size={16} />
           <Text> Sort</Text>
         </View>
@@ -64,13 +63,10 @@ const PopularProductsScreen = ({navigation}) => {
           <Text> Filter</Text>
         </View>
       </View>
-
-      <ListItem
-        data={products}
-        renderItem={({item}) => {
-          return <ProductItem item={item} onAddToCart={onAddToCart} />;
-        }}
+      <ProductList
+        horizontal={false}
         numColumns={2}
+        onAddToCart={onAddToCart}
       />
     </SafeAreaView>
   );

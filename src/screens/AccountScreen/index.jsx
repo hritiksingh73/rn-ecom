@@ -35,7 +35,11 @@ const AccountScreen = () => {
       </View>
 
       <AccountElements name="profile" text="My Profile" />
-      <AccountElements name="contacts" text="Manage Addresses" />
+      <AccountElements
+        name="contacts"
+        text="Manage Addresses"
+        onPress={() => navigation.navigate('Manage Address')}
+      />
 
       <TouchableOpacity style={styles.accountContainer}>
         <Entypo name="flow-tree" size={20} style={styles.iconStyle} />

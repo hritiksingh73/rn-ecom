@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, SafeAreaView, Text} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import ListItem from '../../components/ListItem';
 import {globalStyle} from '../../constant/globalStyle';
@@ -19,10 +18,6 @@ const renderNotifications = ({item}) => {
 const NotificationScreen = () => {
   return (
     <SafeAreaView style={globalStyle.container}>
-      <View style={styles.header}>
-        <AntDesign name="left" size={30} onPress={() => goBack()} />
-        <Text style={styles.headerText}>Notification</Text>
-      </View>
       <ListItem
         data={NOTIFICATION}
         renderItem={renderNotifications}

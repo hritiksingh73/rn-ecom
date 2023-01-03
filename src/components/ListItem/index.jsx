@@ -6,7 +6,7 @@ const ListItem = props => {
     <FlatList
       {...props}
       showsHorizontalScrollIndicator={false}
-      keyExtractor={item => '#' + item.id}
+      // keyExtractor={item => '#' + item.id}
       contentContainerStyle={{
         backgroundColor: 'white',
       }}

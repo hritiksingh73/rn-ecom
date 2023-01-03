@@ -66,7 +66,7 @@ const LoginScreen = () => {
           <Text style={[styles.textStyle]}>Welcome back!</Text>
         </View>
 
-        <TextField
+        <TextField 
           name="mail"
           placeholder="Email"
           value={email}
