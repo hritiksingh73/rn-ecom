@@ -28,9 +28,17 @@ const AccountScreen = ({navigation}) => {
         <Icon name="bell-badge-outline" size={25} />
       </View>
       <AccountInfo name="profile" text="My Profile" />
-      <AccountInfo name="contacts" text="Manage Addresses" onPress={() => navigation.navigate('Manage Address')}/>
+      <AccountInfo
+        name="contacts"
+        text="Manage Addresses"
+        onPress={() => navigation.navigate('Manage Address')}
+      />
       <AccountInfo name="gift" text="OrderHistory" />
-      <AccountInfo name="hearto" text="My Wishlist" onPress={() => navigation.navigate('WishList')} />
+      <AccountInfo
+        name="hearto"
+        text="My Wishlist"
+        onPress={() => navigation.navigate('WishList')}
+      />
       <AccountInfo name="logout" text="Logout" onPress={signOut} />
     </SafeAreaView>
   );

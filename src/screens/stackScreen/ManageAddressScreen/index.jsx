@@ -14,17 +14,15 @@ import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
 import strings from '../../../constant/strings.js';
 import {useDispatch, useSelector} from 'react-redux';
-import {removeToCart} from '../../../redux/action/Action.js';
-import {userDelete, userEdit} from '../../../redux/action/Action.js';
+import {deleteUser, editUser} from '../../../redux/action/Action.js';
 
 const ManageAddressScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const add = useSelector(state => state.userData.address);
+  const addAddress = useSelector(state => state.userData.userAddress);
   //console.log("Add Data------->>>>>",add);
   const {goBack} = useNavigation();
-  const addressEdit = item => {
-    dispatch(userEdit(item)), navigation.navigate('Add Address');
-  };
+
+  
 
   const dataReceive = ({item}) => {
     return (
@@ -37,10 +35,10 @@ const ManageAddressScreen = ({navigation}) => {
           {item.house}, {item.block}
         </Text>
         <View style={styles.iconStyle}>
-          {/* <TouchableOpacity onPress={() => dispatch(userEdit(item))}> */}
+          <TouchableOpacity onPress={() => navigation.navigate('Edit Address' , (product = item.id))}> 
           <Feather name="edit" size={20} style={styles.editStyle} />
-          {/* </TouchableOpacity> */}
-          <TouchableOpacity onPress={() => dispatch(userDelete(item))}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => dispatch(deleteUser(item))}>
             <AntDesign name="delete" size={20} style={styles.deleteStyle} />
           </TouchableOpacity>
         </View>
@@ -57,7 +55,7 @@ const ManageAddressScreen = ({navigation}) => {
         </View>
 
         <FlatList
-          data={add}
+          data={addAddress}
           keyExtractor={item => item.id}
           renderItem={dataReceive}
         />

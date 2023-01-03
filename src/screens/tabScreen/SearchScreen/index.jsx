@@ -22,7 +22,7 @@ import {getInitialData} from '../../../redux/thunk/productThunk.js';
 
 import GroceryProduct from '../../../data/GroceryProduct.js';
 import styles from './styles.js';
-import ChipComponent from '../../../components/ChipComponent'
+import ChipComponent from '../../../components/ChipComponent';
 
 const SearchScreen = ({navigation}) => {
   const dataItem = useSelector(state => state.cartData.productData);
@@ -57,7 +57,7 @@ const SearchScreen = ({navigation}) => {
       </View>
     );
   };
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -72,7 +72,7 @@ const SearchScreen = ({navigation}) => {
         <View>
           <Text style={styles.headingText}>Recent Searches</Text>
         </View>
-        <ChipComponent/>
+        <ChipComponent />
         <Text style={styles.headingText}>Recommended</Text>
         <FlatList
           data={dataItem}

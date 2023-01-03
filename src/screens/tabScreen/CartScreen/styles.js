@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     color: color.white,
   },
   billing: {
-    marginLeft: 20,
+    marginLeft: 8,
   },
   billingText: {
     fontSize: 20,

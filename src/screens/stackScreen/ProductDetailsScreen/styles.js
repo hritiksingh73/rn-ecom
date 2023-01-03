@@ -88,11 +88,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 100,
     width: '100%',
-    bottom: 120,
+    
   },
   bottomBtn: {
     flex: 1,
-    top: 20,
+    //top: 20,
     alignItems: 'center',
   },
   btnText: {

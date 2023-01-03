@@ -22,6 +22,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
   const {goBack} = useNavigation();
   const [dataItem, setDataItem] = useState();
   const {productData} = useSelector(state => state.cartData);
+  const item = useSelector(state => state.cartData.productData);
 
   const getProduct = route.params;
   const dispatch = useDispatch();
@@ -59,6 +60,30 @@ const ProductDetailsScreen = ({navigation, route}) => {
       </View>
     );
   };
+  const popularProducts = ({item}) => {
+    return (
+      <View style={styles.imageBoxStyle}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('Product Details', (product = item.id))
+          }>
+          <Image source={{uri: item.imageUrl}} style={styles.image} />
+        </TouchableOpacity>
+
+        <Text style={styles.titleText} numberOfLines={1}>
+          {item.title}
+        </Text>
+        <Text style={styles.priceText}>${item.price}</Text>
+        <TouchableOpacity
+          style={styles.buttonText}
+          onPress={() => {
+            dispatch(addToCart(item));
+          }}>
+          <Text>Add to Cart</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -91,19 +116,25 @@ const ProductDetailsScreen = ({navigation, route}) => {
         </View>
         <View style={styles.relatedStyle}>
           <Text style={styles.headingStyle}>Related Items</Text>
-        </View>
-
-        <View style={styles.buttonStyle}>
-          <TouchableOpacity
-            style={[styles.bottomBtn, {backgroundColor: 'black'}]}>
-            <Text style={styles.btnText}>Add to Wishlist</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.bottomBtn, {backgroundColor: 'green'}]}>
-            <Text style={styles.btnText}>Add to Cart</Text>
-          </TouchableOpacity>
+          <FlatList
+            data={item}
+            renderItem={popularProducts}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={item => item.id}
+          />
         </View>
       </ScrollView>
+      <View style={styles.buttonStyle}>
+        <TouchableOpacity
+          style={[styles.bottomBtn, {backgroundColor: 'black'}]}>
+          <Text style={styles.btnText}>Add to Wishlist</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.bottomBtn, {backgroundColor: 'green'}]}>
+          <Text style={styles.btnText}>Add to Cart</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

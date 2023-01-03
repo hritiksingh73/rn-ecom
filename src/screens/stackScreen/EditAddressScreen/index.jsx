@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -13,54 +13,46 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import AccountInfo from '../../../components/AccountInfo';
-import {useNavigation} from '@react-navigation/native';
-import {addAddress} from '../../../redux/action/Action.js';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {editAddress} from '../../../redux/action/Action.js';
 import {useForm, Controller} from 'react-hook-form';
-import AddressInput from '../../../components/AddressInput/index';
+import AddressInput from '../../../components/AddressInput';
 import guidGenerator from '../../../utils/guidGenerator';
 
-const AddAddressScreen = () => {
+const EditAddressScreen = ({route}) => {
+  const address = useSelector(state => state.userData.userAddress);
+  console.log(address);
+  //const addressId = useRoute().params.id;
+  const addressId = route.params;
+  //   console.log(addressId)
+  const currentAddress = address.filter(item => item.id === addressId);
+
+  const defaultFieldValue = {...currentAddress[0]};
   const dispatch = useDispatch();
-  const navigation = useNavigation();
   const {goBack} = useNavigation();
-  const {
-    control,
-    handleSubmit,
-    // formState: {errors},
-  } = useForm({
+  const {control, handleSubmit} = useForm({
     mode: 'onBlur',
-    defaultValues: {
-      // firstname: '',
-      // lastname: '',
-      // mobileno: '',
-      // area: '',
-      // address: '',
-      // street: '',
-      // house: '',
-      // block: '',
-      id: guidGenerator(),
-    },
+    defaultValues: defaultFieldValue,
   });
 
+  const navigation = useNavigation();
+
   const submitHandler = data => {
-    console.log('---------->>>>>>>>>', data);
-    dispatch(addAddress(data));
-    navigation.goBack('');
+    //console.log('---------->>>>>>>>>', data);
+    dispatch(editAddress(data));
+
+    navigation.navigate('Manage Address');
+    // navigation.goBack('');
   };
 
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.container}>
         <AntDesign name="left" size={25} onPress={() => goBack()} />
-        <Text style={styles.headingText}>Add Address</Text>
+        <Text style={styles.headingText}>Edit Address</Text>
       </View>
 
       <View style={styles.inputStyle}>
-        {/* <AddressInput
-              control={control}
-              name="firstname"
-              placeholder="First Name"
-            /> */}
         <Controller
           control={control}
           rules={{
@@ -80,7 +72,6 @@ const AddAddressScreen = () => {
           )}
           name="firstname"
         />
-
         <Controller
           control={control}
           rules={{
@@ -232,7 +223,7 @@ const AddAddressScreen = () => {
         </View>
         <View style={styles.buttonText}>
           <Button
-            title="Add"
+            title="Save Edit"
             color="white"
             onPress={handleSubmit(submitHandler)}
           />
@@ -242,4 +233,4 @@ const AddAddressScreen = () => {
   );
 };
 
-export default AddAddressScreen;
+export default EditAddressScreen;

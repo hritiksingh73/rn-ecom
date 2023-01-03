@@ -168,32 +168,29 @@ const Cart = ({navigation}) => {
             </View>
           </View>
         </View>
-        <View style={styles.checkoutText}>
-          <View>
-            <Text style={styles.totalText}>Total</Text>
-            <Text style={styles.subTotalText}>₹ {CalculateSubTotal()}</Text>
-            <Text style={styles.saveText}>You save $ 5 on this</Text>
-          </View>
-          <View style={styles.checkoutButton}>
-            <LoginButton name="Checkout" onPress={openModal} />
-          </View>
-          <Modal
-            animationType="fade"
-            visible={isModalVisible}
-            transparent={true}>
-            <View style={styles.modalContainer}>
-              <View style={styles.modalStyle}>
-                <Text style={styles.modalMessage}>
-                  Your Order has been placed Successfully
-                </Text>
-                <TouchableOpacity onPress={closeModal} style={styles.modalBtn}>
-                  <Text style={styles.modalBtnStyle}>OK</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Modal>
-        </View>
       </ScrollView>
+      <View style={styles.checkoutText}>
+        <View>
+          <Text style={styles.totalText}>Total</Text>
+          <Text style={styles.subTotalText}>₹ {CalculateSubTotal()}</Text>
+          <Text style={styles.saveText}>You save $ 5 on this</Text>
+        </View>
+        <View style={styles.checkoutButton}>
+          <LoginButton name="Checkout" onPress={openModal} />
+        </View>
+        <Modal animationType="fade" visible={isModalVisible} transparent={true}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalStyle}>
+              <Text style={styles.modalMessage}>
+                Your Order has been placed Successfully
+              </Text>
+              <TouchableOpacity onPress={closeModal} style={styles.modalBtn}>
+                <Text style={styles.modalBtnStyle}>OK</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+      </View>
     </SafeAreaView>
   );
 };

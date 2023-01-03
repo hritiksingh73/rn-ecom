@@ -14,7 +14,10 @@ const Tab = createBottomTabNavigator();
 const VeggiesTabNavigator = () => {
   const cartItem = useSelector(state => state.cartData.cartProducts);
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{
+      tabBarInactiveTintColor: color.black,
+      tabBarActiveTintColor: color.primary,
+    }}>
       <Tab.Screen
         name="Home"
         component={VeggiesStackNavigator}

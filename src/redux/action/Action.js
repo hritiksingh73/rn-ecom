@@ -35,12 +35,12 @@ export const addAddress = user => ({
   payload: user,
 });
 
-export const userEdit = user => ({
+export const editAddress = user => ({
   type: ActionType.EDIT_USER,
   payload: user,
 });
 
-export const userDelete = user => ({
+export const deleteUser = user => ({
   type: ActionType.DELETE_USER,
   payload: user,
 });
