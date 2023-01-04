@@ -55,140 +55,54 @@ const AddAddressScreen = () => {
           </View>
           <View style={styles.container}>
             <View style={styles.textInputheaderContainer}>
-              <Controller
-                control={control}
-                rules={{
-                  required: {
-                    value: true,
-                    message: 'Required',
-                  },
-                }}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <AddAddressFormComponent
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                    value={value}
-                    placeholder="First Name"
-                  />
-                )}
-                name="firstName"
-              />
-
-              <Controller
-                control={control}
-                rules={{
-                  required: true,
-                }}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <AddAddressFormComponent
-                    onBlur={onBlur}
-                    onChangeText={item => onChange(item)}
-                    value={value}
-                    placeholder="Last Name"
-                  />
-                )}
-                name="lastName"
-              />
+              <View style={styles.halfInputContainer}>
+                <AddAddressFormComponent
+                  name="firstname"
+                  control={control}
+                  placeholder="First Name"
+                />
+              </View>
+              <View style={styles.halfInputContainer}>
+                <AddAddressFormComponent
+                  name="lastName"
+                  control={control}
+                  placeholder="Last Name"
+                />
+              </View>
             </View>
 
-            <Controller
-              control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Mobile Number"
-                />
-              )}
+            <AddAddressFormComponent
               name="mobileNumber"
-            />
-            {errors.mobileNumber && <Text>This is required.Field</Text>}
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Area"
-                />
-              )}
+              placeholder="Mobile Number"
+            />
+            <AddAddressFormComponent
               name="area"
-            />
-            {errors.area && <Text>This is required.Field</Text>}
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Address Type"
-                />
-              )}
+              placeholder="Area"
+            />
+            <AddAddressFormComponent
               name="address"
-            />
-            {errors.address && <Text>This is required.Field</Text>}
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Street"
-                />
-              )}
+              placeholder="Address Type"
+            />
+            <AddAddressFormComponent
               name="street"
-            />
-            {errors.street && <Text>This is required.Field</Text>}
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Appartments/House/Office No"
-                />
-              )}
+              placeholder="Street"
+            />
+            <AddAddressFormComponent
               name="appartment"
-            />
-            {errors.appartment && <Text>This is required.Field</Text>}
-            <Controller
               control={control}
-              rules={{
-                required: {
-                  message: 'Required',
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Block(Optional)"
-                />
-              )}
-              name="block"
+              placeholder="Appartments/House/Office No"
             />
-            {errors.block && <Text>This is required.Field</Text>}
+            <AddAddressFormComponent
+              name="block"
+              control={control}
+              placeholder="Block(Optional)"
+            />
+
+            {/* {errors.area && <Text>This is required.Field</Text>} */}
           </View>
           <View style={styles.footerButton}>
             <TouchableOpacity onPress={() => navigation.goBack('')}>

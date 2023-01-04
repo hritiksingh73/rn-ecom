@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: '28%',
     fontSize: 20,
-    color: Color.black    
+    color: Color.black,
   },
   header: {
     flexDirection: 'row',
@@ -15,8 +15,10 @@ const styles = StyleSheet.create({
   },
   textInputheaderContainer: {
     flexDirection: 'row',
-    width: '65%',
-    justifyContent: 'space-between',
+  },
+  halfInputContainer: {
+    width: '45%',
+    margin: 5,
   },
   container: {
     paddingTop: '4%',

@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
     width: '65%',
     justifyContent: 'space-between',
   },
+  halfInputContainer: {
+    width: '45%',
+    margin: 5,
+  },
   container: {
     paddingTop: '4%',
     paddingLeft: '5%',

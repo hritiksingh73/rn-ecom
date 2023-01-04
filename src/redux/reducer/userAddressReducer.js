@@ -22,7 +22,7 @@ export const userAddressReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        userAddressList: currentAddressArray,
+        userAddressList: currentAddress,
       };
 
     case ActionType.DELETE_ADDRESS:

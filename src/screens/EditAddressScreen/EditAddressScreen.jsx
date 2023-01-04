@@ -18,11 +18,8 @@ const EditAddressScreen = ({route}) => {
   const address = useSelector(state => state.userAddress.userAddressList);
 
   const receivedproductId = route.params;
-
   const currentAddress = address.filter(item => item.id === receivedproductId);
-
   const defaultFieldValue = {...currentAddress[0]};
-
   const {control, handleSubmit} = useForm({
     mode: 'onBlur',
     defaultValues: defaultFieldValue,
@@ -30,7 +27,6 @@ const EditAddressScreen = ({route}) => {
 
   const submitHandler = data => {
     dispatch(updateAddress(data));
-
     navigation.goBack('');
   };
 
@@ -46,136 +42,51 @@ const EditAddressScreen = ({route}) => {
           </View>
           <View style={styles.container}>
             <View style={styles.textInputheaderContainer}>
-              <Controller
-                control={control}
-                rules={{
-                  required: {
-                    value: true,
-                    message: 'Required',
-                  },
-                }}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <AddAddressFormComponent
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                    value={value}
-                    placeholder="First Name"
-                  />
-                )}
-                name="firstName"
-              />
-              <Controller
-                control={control}
-                rules={{
-                  required: true,
-                }}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <AddAddressFormComponent
-                    onBlur={onBlur}
-                    onChangeText={item => onChange(item)}
-                    value={value}
-                    placeholder="Last Name"
-                  />
-                )}
-                name="lastName"
-              />
+              <View style={styles.halfInputContainer}>
+                <AddAddressFormComponent
+                  name="firstname"
+                  control={control}
+                  placeholder="First Name"
+                />
+              </View>
+              <View style={styles.halfInputContainer}>
+                <AddAddressFormComponent
+                  name="lastName"
+                  control={control}
+                  placeholder="Last Name"
+                />
+              </View>
             </View>
 
-            <Controller
-              control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Mobile Number"
-                />
-              )}
+            <AddAddressFormComponent
               name="mobileNumber"
-            />
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Area"
-                />
-              )}
+              placeholder="Mobile Number"
+            />
+            <AddAddressFormComponent
               name="area"
-            />
-
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Address Type"
-                />
-              )}
+              placeholder="Area"
+            />
+            <AddAddressFormComponent
               name="address"
-            />
-
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Street"
-                />
-              )}
+              placeholder="Address Type"
+            />
+            <AddAddressFormComponent
               name="street"
-            />
-
-            <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Appartments/House/Office No"
-                />
-              )}
+              placeholder="Street"
+            />
+            <AddAddressFormComponent
               name="appartment"
-            />
-
-            <Controller
               control={control}
-              rules={{
-                required: {
-                  message: 'Required',
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <AddAddressFormComponent
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Block(Optional)"
-                />
-              )}
+              placeholder="Appartments/House/Office No"
+            />
+            <AddAddressFormComponent
               name="block"
+              control={control}
+              placeholder="Block(Optional)"
             />
           </View>
           <View style={styles.footerButton}>
@@ -183,19 +94,7 @@ const EditAddressScreen = ({route}) => {
               <Text style={styles.cancel}>Cancel</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              // disabled={
-              //   firstName == '' ||
-              //   lastName == '' ||
-              //   mobileNumber == '' ||
-              //   area == '' ||
-              //   address == '' ||
-              //   street == '' ||
-              //   appartment == ''
-              //     ? true
-              //     : false
-              // }
-              onPress={handleSubmit(submitHandler)}>
+            <TouchableOpacity onPress={handleSubmit(submitHandler)}>
               <Text style={styles.add}>Save Edit</Text>
             </TouchableOpacity>
           </View>
