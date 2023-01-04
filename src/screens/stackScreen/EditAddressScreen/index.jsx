@@ -53,166 +53,36 @@ const EditAddressScreen = ({route}) => {
       </View>
 
       <View style={styles.inputStyle}>
-        <Controller
-          control={control}
-          rules={{
-            required: {
-              value: true,
-              message: 'Required',
-            },
-          }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <AddressInput
-              placeholder="First Name"
-              placeholderTextColor="black"
-              value={value}
-              onBlur={onBlur}
-              onChangeText={value => onChange(value)}
-            />
-          )}
+        <AddressInput
           name="firstname"
-        />
-        <Controller
           control={control}
-          rules={{
-            required: {
-              value: true,
-              message: 'Required',
-            },
-          }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <AddressInput
-              placeholder="Last Name"
-              placeholderTextColor="black"
-              value={value}
-              onBlur={onBlur}
-              onChangeText={onChange}
-            />
-          )}
+          placeholder="First Name"
+        />
+        <AddressInput
           name="lastname"
+          control={control}
+          placeholder="Last Name"
         />
       </View>
-
-      <Controller
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'Required',
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <AddressInput
-            placeholder="Mobile No"
-            placeholderTextColor="black"
-            value={value}
-            onBlur={onBlur}
-            onChangeText={onChange}
-          />
-        )}
-        name="mobileno"
-      />
-
-      <Controller
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'Required',
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <AddressInput
-            placeholder="Area"
-            placeholderTextColor="black"
-            value={value}
-            onBlur={onBlur}
-            onChangeText={onChange}
-          />
-        )}
-        name="area"
-      />
-
-      <Controller
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'Required',
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <AddressInput
-            placeholder="Address"
-            placeholderTextColor="black"
-            value={value}
-            onBlur={onBlur}
-            onChangeText={onChange}
-          />
-        )}
+      <AddressInput name="mobileno" control={control} placeholder="Mobile No" />
+      <AddressInput name="area" control={control} placeholder="Area" />
+      <AddressInput
         name="address"
+        control={control}
+        placeholder="Address Type"
       />
 
-      <Controller
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'Required',
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <AddressInput
-            placeholder="Street"
-            placeholderTextColor="black"
-            value={value}
-            onBlur={onBlur}
-            onChangeText={onChange}
-          />
-        )}
-        name="street"
-      />
-
-      <Controller
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'Required',
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <AddressInput
-            placeholder="House"
-            placeholderTextColor="black"
-            value={value}
-            onBlur={onBlur}
-            onChangeText={onChange}
-          />
-        )}
+      <AddressInput name="street" control={control} placeholder="Street" />
+      <AddressInput
         name="house"
-      />
-
-      <Controller
         control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'Required',
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <AddressInput
-            placeholder="Block"
-            placeholderTextColor="black"
-            value={value}
-            onBlur={onBlur}
-            onChangeText={onChange}
-          />
-        )}
-        name="block"
+        placeholder="Apartments / House / Office No"
       />
-
+      <AddressInput
+        name="block"
+        control={control}
+        placeholder="Block / Optional"
+      />
       <View style={styles.btnStyle}>
         <View>
           <Button

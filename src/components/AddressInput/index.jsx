@@ -1,50 +1,38 @@
 import React from 'react';
-import {View, TextInput, Button} from 'react-native';
+import {TextInput, HelperText} from 'react-native-paper';
+import {Controller} from 'react-hook-form';
 
-import styles from './styles.js';
+import styles from './styles';
 
-const AddressInput = ({...props}) => {
+const AddressInput = ({name, control, placeholder, style}) => {
   return (
-    <View style={styles.textInputStyle}>
-      <TextInput {...props} style={styles.placeholderStyle} />
-    </View>
+    <Controller
+      name={name}
+      control={control}
+      rules={{
+        required: {
+          value: true,
+          message: 'Required!',
+        },
+      }}
+      render={({
+        field: {onChange, value, onBlur, onChangeText},
+        fieldState: {error},
+      }) => (
+        <>
+          <TextInput
+            placeholder={placeholder}
+            value={value}
+            onChangeText={value => onChange(value)}
+            onBlur={onBlur}
+            placeholderTextColor="black"
+            style={styles.placeholderStyle}
+            error={!!error?.message}
+          />
+          {error && <HelperText type="error">{error.message}</HelperText>}
+        </>
+      )}
+    />
   );
 };
-
 export default AddressInput;
-
-// import React from 'react';
-// import {Controller} from 'react-hook-form';
-// import {StyleSheet} from 'react-native';
-// import {TextInput} from 'react-native-paper';
-// import styles from './styles.js'
-
-// const AddressInput = ({name, control, placeholder}) => {
-//   return (
-//     <Controller
-//       render={({field: {onChange, onBlur, value}}) => (
-//         <>
-//           <TextInput
-//             value={value}
-//             onChangeText={onChange}
-//             onBlur={onBlur}
-//             placeholder={placeholder}
-//             style={styles.placeholderStyle}
-//             placeholderTextColor="black"
-//             textColor="gray"
-//           />
-//         </>
-//       )}
-//       control={control}
-//       name={name}
-//       rules={{
-//         required: {
-//           value: true,
-//           message: 'Required',
-//         },
-//       }}
-//     />
-//   );
-// };
-
-// export default AddressInput;

@@ -1,5 +1,5 @@
 import {ActionType} from '../action/ActionType';
-import {guidGenerator} from '../../utils/guidGenerator.jsx'
+import {guidGenerator} from '../../utils/guidGenerator.jsx';
 
 const initialState = {
   userRecord: {
@@ -9,7 +9,7 @@ const initialState = {
     uid: '',
     userID: '',
   },
-   userAddress: [],
+  userAddress: [],
   // userAddress: [
   //   {
   //     id: 0,
@@ -44,29 +44,21 @@ const userReducer = (state = initialState, action) => {
 
     case ActionType.ADD_USER:
       //console.log(action.payload);
-      
+
       return {...state, userAddress: [...state.userAddress, action.payload]};
 
     case ActionType.EDIT_USER:
-      console.log(action.payload);
-      const idxOfAddressTobeUpdated = state.userAddress.findIndex(
+      //console.log(action.payload);
+      const addressUpdated = state.userAddress.findIndex(
         item => item.id === action.payload.id,
       );
-
-      //const updatedAddress = { ...action.payload.data };
-
-      // update the address obj in array using splice
-      let currentAddressArray = [...state.userAddress];
-       currentAddressArray.splice(idxOfAddressTobeUpdated, 1 , action.payload);
+      let currentAddress = [...state.userAddress];
+      currentAddress.splice(addressUpdated, 1, action.payload);
 
       return {
         ...state,
-        userAddress: currentAddressArray,
+        userAddress: currentAddress,
       };
-
-      // let userData = [...state.userAddress];
-      // userData.splice(action.index, 1, action.payload);
-      // return {...state, userAddress: userData};
 
     case ActionType.DELETE_USER:
       return {

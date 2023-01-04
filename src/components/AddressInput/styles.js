@@ -5,16 +5,11 @@ const styles = StyleSheet.create({
   textInputStyle: {
     padding: 5,
   },
-  placeholderStyle: {
-    borderWidth: 1,
-    margin: 15,
-    height: 50,
-    width: '90%',
-    borderBottomColor: 'grey',
-    borderTopColor: 'white',
-    borderRightColor: 'white',
-    borderLeftColor: 'white',
-    fontSize: 16,
+ placeholderStyle: {
+    backgroundColor: 'white',
+    marginLeft: 20,
+    marginVertical: 18,
   },
 });
+
 export default styles;
