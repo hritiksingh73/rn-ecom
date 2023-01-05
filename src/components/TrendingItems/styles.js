@@ -16,10 +16,16 @@ const styles = StyleSheet.create({
   imgContainer: {
     width: '100%',
     height: '50%',
+    // borderWidth: 1,
+    alignItem: 'center',
+    justifyContent: 'center',
+    // textAlign: 'center'
+    // padding: 10,
   },
   itemImage: {
-    width: '100%',
-    height: '100%',
+    width: '80%',
+    height: '90%',
+    marginLeft: '10%',
   },
   txtContainer: {
     width: '100%',

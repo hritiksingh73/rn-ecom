@@ -4,11 +4,14 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AddFruitsToCart} from '../../redux/action/action';
 import styles from './styles';
 import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 
 const ItemList = props => {
   const {data} = props;
   var isItemAvailable = false;
   var resp = [];
+
+  const navigation = useNavigation(); 
 
   const dispatch = useDispatch();
   const [addToCartData, setAddToCartData] = useState([]);
@@ -68,30 +71,29 @@ const ItemList = props => {
       renderItem={({item}) => {
         return (
           <View style={styles.itemOuterContainer}>
-            <View style={styles.imgContainer}>
-              <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => {navigation.navigate('ItemDetails', {Item: item.id})}}>
+              <View style={styles.imgContainer}>
                 <Image
                   style={styles.itemImage}
                   resizeMode="contain"
-                  source={item.url}
+                  source={{uri: item.imageUrl}}
                 />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.itemTitle}>{item.title}</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.itemTitle}>{item.title}</Text>
 
-              <Text style={styles.mrpBlock}>
-                <Text style={styles.itemMrp}>₹{item.price} </Text>
-                <Text style={styles.itemMaxMrp}> ₹{item.maxPrice} </Text>
-                <Text style={styles.itemQnty}>/{item.quantity}</Text>
-              </Text>
+                <Text style={styles.mrpBlock}>
+                  <Text style={styles.itemMrp}>₹{item.price} each   </Text>
+                  <Text style={styles.itemMaxMrp}>₹{item.oldPrice} </Text>
+                </Text>
 
-              <TouchableOpacity
-                style={styles.addToCartContainer}
-                onPress={() => SetDataToCartScreen(item)}>
-                <Text style={styles.addToCartBtn}>Add to Cart</Text>
-              </TouchableOpacity>
-            </View>
+                <TouchableOpacity
+                  style={styles.addToCartContainer}
+                  onPress={() => SetDataToCartScreen(item)}>
+                  <Text style={styles.addToCartBtn}>Add to Cart</Text>
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
           </View>
         );
       }}

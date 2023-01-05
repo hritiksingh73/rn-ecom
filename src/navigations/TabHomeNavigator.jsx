@@ -1,16 +1,14 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import HomeScreen from '../screens/tabNavigatorScreen/HomeScreen';
+import HomeScreen from '../screens/tabScreens/HomeScreen';
 
-import FruitsGalleryScreen from '../screens/nativeStackScreens/FruitsGalleryScreen';
-import VegetablesGalleryScreen from '../screens/nativeStackScreens/VegetablesGalleryScreen';
-import PulsesGalleryScreen from '../screens/nativeStackScreens/PulsesGalleryScreen';
+import FruitsGalleryScreen from '../screens/stackScreens/Home/FruitsGalleryScreen';
+import VegetablesGalleryScreen from '../screens/stackScreens/Home/VegetablesGalleryScreen';
+import PulsesGalleryScreen from '../screens/stackScreens/Home/PulsesGalleryScreen';
 
-import ItemDetails from '../screens/nativeStackScreens/ItemDetails';
-import ItemSearch from '../screens/nativeStackScreens/ItemSearch';
-
-import Sort from '../screens/nativeStackScreens/Sort';
+import Sort from '../screens/stackScreens/Home/Sort';
+import ItemDetails from '../screens/stackScreens/Home/ItemDetails';
 
 const TabHomeNavigator = () => {
   const Filter = createNativeStackNavigator();
@@ -83,11 +81,6 @@ const TabHomeNavigator = () => {
       <Filter.Screen
         name="ItemDetails"
         component={ItemDetails}
-        options={{headerShown: false}}
-      />
-      <Filter.Screen
-        name="ItemSearch"
-        component={ItemSearch}
         options={{headerShown: false}}
       />
     </Filter.Navigator>

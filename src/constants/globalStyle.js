@@ -7,6 +7,11 @@ const globaStyle = StyleSheet.create({
         height: '100%',
       backgroundColor: colors.white,
     },
+    heading: {
+      fontSize: 18,
+      fontWeight: '500',
+      
+    }
   });
 
 export default globaStyle;
