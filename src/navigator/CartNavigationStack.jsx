@@ -1,27 +1,34 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import ManageAddressScreen from '../screens/AccountScreen/ManageAddressScreen/ManageAddressScreen';
+import CartScreen from '../screens/CartScreen/CartScreen/Cart';
 
-import EditAddressScreen from '../screens/AccountScreen/EditAddressScreen/EditAddressScreen';
-import AccountScreen from '../screens/AccountScreen/AccountScreen/AccountScreen';
+import CheckOutScreen from '../screens/CartScreen/CheckOutScreen/CheckOutScreen';
+import DeliverySlotScreen from '../screens/CartScreen/DeliverySlotScreen/DeliverySlotScreen';
 import AddAddressScreen from '../screens/AccountScreen/AddAddressScreen/AddAddressScreen';
 
 const stack = createNativeStackNavigator();
-const AccountNavigationStack = () => {
+
+const CartNavigationStack = () => {
   return (
     <stack.Navigator>
       <stack.Screen
-        name="Accountscreen"
-        component={AccountScreen}
+        name="CartScreen"
+        component={CartScreen}
         options={{
           headerShown: false,
         }}
       />
-
       <stack.Screen
-        name="ManageAddressScreen"
-        component={ManageAddressScreen}
+        name="CheckOutScreen"
+        component={CheckOutScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <stack.Screen
+        name="DeliverySlotScreen"
+        component={DeliverySlotScreen}
         options={{
           headerShown: false,
         }}
@@ -33,15 +40,8 @@ const AccountNavigationStack = () => {
           headerShown: false,
         }}
       />
-      <stack.Screen
-        name="EditAddressScreen"
-        component={EditAddressScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
     </stack.Navigator>
   );
 };
 
-export default AccountNavigationStack;
+export default CartNavigationStack;

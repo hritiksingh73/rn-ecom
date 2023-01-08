@@ -4,7 +4,7 @@ import styles from './styles';
 import auth from '@react-native-firebase/auth';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MyAccountComponent from '../../component/MyAccountComponent/MyAccountComponent';
+import MyAccountComponent from '../../../component/MyAccountComponent/MyAccountComponent';
 import {useNavigation} from '@react-navigation/native';
 
 const AccountScreen = () => {
@@ -16,11 +16,15 @@ const AccountScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.mainContainer}>
       <View style={styles.headerBar}>
-        <Ionicons name="ios-menu-outline" size={30} style={styles.favourite} />
+        <Ionicons name="ios-menu-outline" size={24} style={styles.favourite} />
         <Text style={styles.header}>My Account</Text>
-        <MaterialCommunityIcons name="bell-badge-outline" size={30} />
+        <MaterialCommunityIcons
+          name="bell-badge-outline"
+          size={24}
+          style={styles.favourite}
+        />
       </View>
 
       <MyAccountComponent name="profile" Text="My Profile" />
@@ -30,7 +34,11 @@ const AccountScreen = () => {
         onPress={() => navigation.navigate('ManageAddressScreen')}
       />
       <MyAccountComponent name="gift" Text="Order History" />
-      <MyAccountComponent name="hearto" Text="My Wishlist" />
+      <MyAccountComponent
+        name="hearto"
+        Text="My Wishlist"
+        onPress={() => navigation.navigate('WishListScreen')}
+      />
       <MyAccountComponent name="logout" Text="Logout" onPress={signOut} />
     </SafeAreaView>
   );

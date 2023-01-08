@@ -1,8 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Color} from '../../constant/Color';
+import {Color} from '../../../constant/Color';
 
 const styles = StyleSheet.create({
+  maincontainer: {
+    backgroundColor: Color.white,
+  },
   AddAddressHeader: {
     alignItems: 'center',
     marginLeft: '28%',
@@ -12,11 +15,10 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     paddingTop: '4%',
+    marginHorizontal:20
   },
   textInputheaderContainer: {
     flexDirection: 'row',
-    width: '65%',
-    justifyContent: 'space-between',
   },
   halfInputContainer: {
     width: '45%',

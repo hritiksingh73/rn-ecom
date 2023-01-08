@@ -20,10 +20,10 @@ import {
   increaseItemQuantity,
   decreaseItemQuantity,
   removeItemFromCart,
-} from '../../redux/action/Action';
-import CartBillingData from '../../component/CartBillingData/CartBillingData';
+} from '../../../redux/action/Action';
+import CartBillingData from '../../../component/CartBillingData/CartBillingData';
 
-const Cart = () => {
+const CartScreen = () => {
   const item = useSelector(state => state.userInfo.cart);
   const dispatch = useDispatch();
   const [isModalVisible, setisModalVisible] = useState(false);
@@ -54,7 +54,7 @@ const Cart = () => {
     CalculateTotalItemPrices + CalculateDeliveryCharges + CalculateTax,
   );
   const modalClose = () => {
-    setisModalVisible(false), navigation.navigate('SuperFreshScreen');
+    setisModalVisible(false), navigation.navigate('CheckOutScreen');
   };
   const modalOpen = () => {
     setisModalVisible(true);
@@ -96,10 +96,19 @@ const Cart = () => {
   };
 
   return (
-    <ScrollView nestedScrollEnabled={true}>
-      <SafeAreaView style={styles.parent}>
+    <SafeAreaView style={styles.parent}>
+      <ScrollView nestedScrollEnabled={true}>
         <View style={styles.mainHeader}>
-          <AntDesign name="left" size={24} color="black" style={styles.icon} />
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SuperFreshScreen')}>
+            <AntDesign
+              name="left"
+              size={24}
+              color="black"
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+
           <Text style={styles.title}>Cart</Text>
         </View>
         <FlatList
@@ -163,9 +172,9 @@ const Cart = () => {
             </View>
           </Modal>
         </View>
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
-export default Cart;
+export default CartScreen;

@@ -1,9 +1,9 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import PopularProducts from '../screens/PopularProducts/PopularProducts';
+import PopularProducts from '../screens/HomeScreen/PopularProducts/PopularProducts';
 import WishListScreen from '../screens/Wishlist/Wishlist';
 import ProductDetailsScreen from '../screens/ProductDetailsScreen/ProductDetailsScreen';
-import SuperFreshScreen from '../screens/HomeScreen/SuperFresh';
+import SuperFreshScreen from '../screens/HomeScreen/HomeScreen/SuperFresh';
 import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
 
 const stack = createNativeStackNavigator();

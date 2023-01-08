@@ -2,6 +2,7 @@ import {ActionType} from '../action/ActionType';
 
 const initialState = {
   userAddressList: [],
+  selectDeliveryAddress:[],
 };
 
 export const userAddressReducer = (state = initialState, action) => {
@@ -31,6 +32,12 @@ export const userAddressReducer = (state = initialState, action) => {
         userAddressList: state.userAddressList.filter(
           item => item !== action.payload,
         ),
+      };
+      case ActionType.SELECT_DELIVERY_ADDRESS:
+       console.log(action.payload)
+      return {
+        ...state,
+        selectDeliveryAddress: [...state.selectDeliveryAddress, action.payload],
       };
 
     default:

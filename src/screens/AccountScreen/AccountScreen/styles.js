@@ -1,6 +1,11 @@
 import {StyleSheet} from 'react-native';
+import {Color} from '../../../constant/Color';
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: Color.white,
+    flex: 1,
+  },
   menuList: {
     flexDirection: 'row',
     marginTop: '10%',
@@ -8,15 +13,20 @@ const styles = StyleSheet.create({
   headerBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    marginTop: '5%',
   },
   favourite: {
-    paddingRight: 30,
+    // paddingRight: 30,
+    color: Color.black,
   },
   mycarticonsize: {
     fontSize: 18,
   },
   header: {
-    fontSize: 25,
+    fontSize: 18,
+    color: Color.black,
+    fontWeight: '600',
   },
 });
 

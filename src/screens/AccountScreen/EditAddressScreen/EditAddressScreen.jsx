@@ -5,8 +5,8 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView} from 'react-native-virtualized-view';
 
-import AddAddressFormComponent from '../../component/FormComponent/AddAddressFormComponent/AddAddressFormComponent';
-import {updateAddress} from '../../redux/action/Action';
+import AddAddressFormComponent from '../../../component/FormComponent/AddAddressFormComponent/AddAddressFormComponent';
+import {updateAddress} from '../../../redux/action/Action';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import styles from './styles';

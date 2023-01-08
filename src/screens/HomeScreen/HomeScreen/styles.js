@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {Color} from '../../constant/Color';
+import {Color} from '../../../constant/Color';
 
 const styles = StyleSheet.create({
   headerBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 20,
+    marginHorizontal: 20,
   },
   container: {
     flex: 1,
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   wishlist: {
-    left: 90,
+    left: 80,
   },
   popularProducts: {
     fontSize: 18,

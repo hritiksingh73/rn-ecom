@@ -1,6 +1,6 @@
 import {
   KeyboardAvoidingView,
-  SafeAreaView,
+
   Text,
   TouchableOpacity,
   View,
@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import styles from './styles';
 import {addUser} from '../../redux/action/Action';
-import FormContainer from '../../component/FormComponent/Login_RegisterFormComponent/FormInput';
+import FormContainer from '../../../component/FormComponent/Login_RegisterFormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
@@ -20,7 +20,7 @@ import {
   emailValidator,
   phoneNumberValidator,
   passwordValidator,
-} from '../../utils/Validation';
+} from '../../../utils/Validation';
 
 const RegisterScreen = () => {
   const [name, setName] = useState('');
@@ -36,7 +36,7 @@ const RegisterScreen = () => {
     errorcellNumber: '',
     errorpassword: '',
   });
-  const registerUserDetails = async () => {
+  const registerUserDetailHandler = async () => {
     try {
       const userRes = await auth().createUserWithEmailAndPassword(
         registeremail,
@@ -97,8 +97,8 @@ const RegisterScreen = () => {
   };
 
   return (
-    <KeyboardAvoidingView>
-      <SafeAreaView style={styles.contaienr}>
+    <SafeAreaView style={styles.contaienr}>
+      <KeyboardAvoidingView>
         <FormContainer
           Icon="user"
           placeholder="Full Name"
@@ -139,7 +139,7 @@ const RegisterScreen = () => {
         <Text style={styles.errormsg}>{validation.errorpassword}</Text>
         <TouchableOpacity
           style={styles.registerButtonContainer}
-          onPress={() => registerUserDetails()}>
+          onPress={() => registerUserDetailHandler()}>
           <Text style={styles.registerButton}>Register</Text>
         </TouchableOpacity>
         <View style={styles.bottomHeadline}>
@@ -148,8 +148,8 @@ const RegisterScreen = () => {
             <Text style={styles.loginButton}>Login Here</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 export default RegisterScreen;

@@ -18,11 +18,11 @@ import Tree from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Rating} from 'react-native-ratings';
-import {addItemToCart} from '../../redux/action/Action';
+import {addItemToCart} from '../../../redux/action/Action';
 import firestore from '@react-native-firebase/firestore';
 import styles from './styles';
-import {Banner} from '../../dummyData/Cards';
-import {Color} from '../../constant/Color';
+import {Banner} from '../../../dummyData/Cards';
+import {Color} from '../../../constant/Color';
 import Carousel from 'react-native-reanimated-carousel';
 import {Snackbar} from 'react-native-paper';
 
@@ -125,7 +125,7 @@ const SuperFreshScreen = () => {
 
         <View style={styles.ratingcontainerchild}>
           <Image
-            source={require('../../asset/grocerry.jpeg')}
+            source={require('../../../asset/grocerry.jpeg')}
             style={styles.headerIcon}
           />
           <View style={styles.ratingcontainer}>
@@ -137,7 +137,7 @@ const SuperFreshScreen = () => {
             <Icon
               name="hearto"
               size={25}
-              color={Color.black}
+              color={Color.greyish}
               style={styles.wishlist}
             />
           </TouchableOpacity>
@@ -151,28 +151,6 @@ const SuperFreshScreen = () => {
           scrollAnimationDuration={1000}
           renderItem={item => bannerImages(item)}
         />
-
-        <View style={{zIndex: 1}}>
-          <Snackbar
-            wrapperStyle={{top: 330}}
-            visible={onToggleSnackBar}
-            anchorOrigin={{
-              horizontal: "left",
-              vertical: "bottom",
-            }}
-            duration={1000}
-            // action={{
-            //   label: 'close',
-            //   onPress: () => {
-            //     onDismiss={onDismissSnackBar}
-            //   },
-            // }}
-            // style={{width:Dimensions.get('window').width}}
-            onDismiss={onDismissSnackBar}
-            collapsable={true}>
-            added in cart
-          </Snackbar>
-        </View>
         <View style={styles.popularProductContainer}>
           <Text style={styles.popularProducts}>Popular Product</Text>
           <TouchableOpacity

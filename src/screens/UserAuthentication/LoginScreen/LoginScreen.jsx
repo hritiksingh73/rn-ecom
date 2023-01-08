@@ -4,15 +4,15 @@ import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 
-import styles from '../LoginScreen/styles';
-import FormContainer from '../../component/FormComponent/Login_RegisterFormComponent/FormInput';
+import styles from './styles';
+import FormContainer from '../../../component/FormComponent/Login_RegisterFormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
-import ImagePath from '../../config/Image';
-import SocialMedia from '../../component/ButtonComponent/SocialMediaButton';
+import ImagePath from '../../../config/Image';
+import SocialMedia from '../../../component/ButtonComponent/SocialMediaButton';
 import firestore from '@react-native-firebase/firestore';
-import {emailValidator, passwordValidator} from '../../utils/Validation';
+import {emailValidator, passwordValidator} from '../../../utils/Validation';
 
-const LoginPage = () => {
+const LoginScreen = () => {
   const [registeremail, setRegisterEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validation, setValidation] = useState({
@@ -140,4 +140,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginScreen;

@@ -13,11 +13,11 @@ import {useNavigation} from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
-import {getInitialData} from '../../redux/thunk/ProductThunk';
+import {getInitialData} from '../../../redux/thunk/ProductThunk';
 import styles from './styles';
 import Sort from 'react-native-vector-icons/Octicons';
 import Filter from 'react-native-vector-icons/Ionicons';
-import {addItemToCart} from '../../redux/action/Action';
+import {addItemToCart} from '../../../redux/action/Action';
 
 const PopularProducts = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,12 @@ const PopularProducts = () => {
           <Icon name="chevron-left" size={30} />
         </TouchableOpacity>
         <Text style={styles.popularProducts}>Popular Products</Text>
-        <Bell name="bell-badge-outline" size={30} />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('NotificationScreen');
+          }}>
+          <Bell name="bell-badge-outline" size={30} />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.choices}>

@@ -5,10 +5,10 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {ScrollView} from 'react-native-virtualized-view';
 
-import AddAddressFormComponent from '../../component/FormComponent/AddAddressFormComponent/AddAddressFormComponent';
-import {addAddress} from '../../redux/action/Action';
+import AddAddressFormComponent from '../../../component/FormComponent/AddAddressFormComponent/AddAddressFormComponent';
+import {addAddress} from '../../../redux/action/Action';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {uidGenerator} from '../../utils/uidGenerator';
+import {uidGenerator} from '../../../utils/uidGenerator';
 
 import styles from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -45,7 +45,7 @@ const AddAddressScreen = () => {
 
   return (
     <ScrollView nestedScrollEnabled={true}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.maincontainer}>
         <KeyboardAvoidingView>
           <View style={styles.header}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -57,7 +57,7 @@ const AddAddressScreen = () => {
             <View style={styles.textInputheaderContainer}>
               <View style={styles.halfInputContainer}>
                 <AddAddressFormComponent
-                  name="firstname"
+                  name="firstName"
                   control={control}
                   placeholder="First Name"
                 />
@@ -101,8 +101,6 @@ const AddAddressScreen = () => {
               control={control}
               placeholder="Block(Optional)"
             />
-
-            {/* {errors.area && <Text>This is required.Field</Text>} */}
           </View>
           <View style={styles.footerButton}>
             <TouchableOpacity onPress={() => navigation.goBack('')}>

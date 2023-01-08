@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Color} from '../../constant/Color';
+import {Color} from '../../../constant/Color';
 
 const styles = StyleSheet.create({
   AddAddressHeader: {
@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
   },
   textInputheaderContainer: {
     flexDirection: 'row',
+    width: '65%',
+    justifyContent: 'space-between',
   },
   halfInputContainer: {
     width: '45%',

@@ -57,3 +57,8 @@ export const deleteAddress = address => ({
   type: ActionType.DELETE_ADDRESS,
   payload: address,
 });
+export const selectDeliveryaddress = address => ({
+  type: ActionType.SELECT_DELIVERY_ADDRESS,
+  payload: address
+  
+});
