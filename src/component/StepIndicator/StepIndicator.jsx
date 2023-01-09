@@ -13,9 +13,7 @@ export const StepIndicatorProgressBar = () => {
   const [currentPosition, setCurrentPosition] = useState(0);
   const labels = ['Select Address', 'Select Delivery Slot', 'Payment'];
   const icons = ['map', 'truck', 'credit-card'];
-  // const pagehandler = position => {
-  //   setCurrentPosition(position);
-  // };
+
   const customStyles = {
     currentStepStrokeWidth: 6,
     separatorUnFinishedColor: Color.greyish,
@@ -30,38 +28,25 @@ export const StepIndicatorProgressBar = () => {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <StepIndicator
-          customStyles={customStyles}
-          stepCount={3}
-          direction="horizontal"
-          currentPosition={currentPosition}
-          labels={labels}
-          //onPress={() => pagehandler()}
-          renderStepIndicator={({position, stepStatus}) => (
-            <Feather name={icons[position]} size={16} color="#fff" />
-          )}
-        />
+    <SafeAreaView style={styles.container}>
+      <StepIndicator
+        customStyles={customStyles}
+        stepCount={3}
+        direction="horizontal"
+        currentPosition={currentPosition}
+        labels={labels}
+        renderStepIndicator={({position, stepStatus}) => (
+          <Feather name={icons[position]} size={16} color="#fff" />
+        )}
+      />
 
-        {/* if(currentPosition == 0){
-            <CheckOutScreen />
-          }else if(currentPosition == 1 ){
-            <DeliverySlotScreen />
-          }  */}
-
-        {/* if (currentPosition == 0) {<CheckOutScreen />} else if
-          (currentPosition == 1) {<DeliverySlotScreen />} */}
-        
-          {currentPosition == 0 ? (
-            <CheckOutScreen />
-          ) : currentPosition == 1 ? (
-            <DeliverySlotScreen />
-          ) :  (
-            <PaymentScreen />
-          )}
-        
-      </View>
+      {currentPosition == 0 ? (
+        <CheckOutScreen />
+      ) : currentPosition == 1 ? (
+        <DeliverySlotScreen />
+      ) : (
+        <PaymentScreen />
+      )}
     </SafeAreaView>
   );
 };
