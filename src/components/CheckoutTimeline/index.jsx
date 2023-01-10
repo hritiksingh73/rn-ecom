@@ -1,22 +1,24 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import colors from '../../constants/colors';
 
-const CheckoutTimeline = ({name}) => {
+const CheckoutTimeline = ({name, onPress}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
         <View style={styles.iconTxtPair}>
-          <View style={[styles.circleStyle, {backgroundColor: colors.green}]}>
-            <Feather
-              name={'map-pin'}
-              size={20}
-              style={styles.iconStyle}
-              color={colors.white}
-            />
-          </View>
+          <TouchableOpacity onPress={()=>{onPress('Address')}}>
+            <View style={[styles.circleStyle, {backgroundColor: colors.green}]}>
+              <Feather
+                name={'map-pin'}
+                size={20}
+                style={styles.iconStyle}
+                color={colors.white}
+              />
+            </View>
+          </TouchableOpacity>
           <Text style={[styles.txtStyling, {color: colors.black}]}>
             Select Address
           </Text>

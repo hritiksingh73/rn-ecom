@@ -11,7 +11,7 @@ import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import DropDown from '../../../components/DropDown';
 import remoteConfig from '@react-native-firebase/remote-config';
-import data from '../../../data/searchSrnData';
+import {data} from '../../../data/searchScreen';
 import {Rating} from 'react-native-ratings';
 
 const SearchScreen = () => {

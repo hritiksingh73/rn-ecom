@@ -35,7 +35,6 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case ActionTypes.MANAGE_ADDRESSES:
-      // console.log('reducer', userAddresses)
       return {
         ...state,
         userAddresses: [...state.userAddresses, payload],

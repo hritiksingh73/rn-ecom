@@ -18,7 +18,7 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './style';
 import firestore from '@react-native-firebase/firestore';
-import LoginBtn from '../../../components/loginBtn';
+import PrimaryButton from '../../../components/PrimaryButton';
 import BillingDetail from '../../../components/BillingDetailField';
 import images from '../../../config/images';
 
@@ -181,7 +181,7 @@ const CartScreen = ({navigation}) => {
             <Text style={styles.totMsg}>You save ₹ 0 on this</Text>
           </View>
           <View style={styles.topMrgn}>
-            <LoginBtn name={'Checkout'} onPress={()=>navigation.navigate('Checkout')}/>
+            <PrimaryButton name={'Checkout'} onPress={()=>navigation.navigate('Checkout')}/>
           </View>
         </View>
       </ScrollView>

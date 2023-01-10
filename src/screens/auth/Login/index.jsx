@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import LoginTextField from '../../../components/TextInputField';
-import LoginBtn from '../../../components/loginBtn';
+import PrimaryButton from '../../../components/PrimaryButton';
 import auth from '@react-native-firebase/auth';
 import {ValidateEmail, ValidatePassword} from '../../../utils';
 import images from '../../../config/images';
@@ -97,7 +97,7 @@ const Login = ({navigation}) => {
           <Text style={styles.forgotTxt}>Forgot Password?</Text>
         </TouchableOpacity>
 
-        <LoginBtn name={'Login'} onPress={isValidate} />
+        <PrimaryButton name={'Login'} onPress={isValidate} />
 
         <View style={styles.flxDirectn}>
           <Text style={styles.orTxtRow}> __________________ </Text>

@@ -1,5 +1,4 @@
 import {ActionTypes} from '../constants/constants';
-import axios from 'axios';
 
 export const UserId = val => ({
   type: ActionTypes.USER_ID,
@@ -45,6 +44,34 @@ export const UpdateAddress = (ID, data) => ({
   type: ActionTypes.UPDATE_ADDRESS,
   payload: {ID, data},
 });
+
+
+// CART -> CHECKOUT_SCREEN
+export const SelectedAddress = val => ({
+  type: ActionTypes.SELECTED_ADDRESS,
+  payload: val,
+});
+
+export const DeliveryDate = val => ({
+  type: ActionTypes.DELIVERY_DATE,
+  payload: val,
+});
+
+export const DeliveryTime = val => ({
+  type: ActionTypes.DELIVERY_TIME,
+  payload: val,
+});
+
+export const PaymentMethod = val => ({
+  type: ActionTypes.PAYMENT_METHOD,
+  payload: val,
+});
+
+export const CheckoutDetails = val => ({
+  type: ActionTypes.CHECKOUT_DETAILS,
+  payload: val,
+});
+
 
 export const FatchingData = data => {
   return dispatch => {

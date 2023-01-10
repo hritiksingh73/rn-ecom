@@ -1,6 +1,7 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import userReducer from '../reducer/userReducer';
 import cartReducer from '../reducer/cartReducer';
+import orderDetails from '../reducer/orderDetails';
 
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -25,6 +26,7 @@ const store = configureStore({
   reducer: {
     user: userReducer,
     cartReducer: cartReducer,
+    orderDetails: orderDetails,
   },
   middleware: getDefaultMiddleware({
     thunk,

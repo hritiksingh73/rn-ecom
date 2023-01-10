@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, SafeAreaView, ScrollView} from 'react-native';
 import styles from './styles';
 import LoginTextField from '../../../components/TextInputField';
-import LoginBtn from '../../../components/loginBtn';
+import PrimaryButton from '../../../components/PrimaryButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {registerDetails, UserId} from '../../../redux/action/action';
 import auth from '@react-native-firebase/auth';
@@ -164,7 +164,7 @@ const Register = ({navigation}) => {
             }}
           />
 
-          <LoginBtn name={'Register'} onPress={LoginHandler} />
+          <PrimaryButton name={'Register'} onPress={LoginHandler} />
 
           <Text style={styles.footer}>
             <Text>Already have an account?</Text>

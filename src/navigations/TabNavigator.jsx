@@ -1,9 +1,9 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
 import SearchScreen from '../screens/tabScreens/SearchScreen';
-import TabHomeNavigator from './TabHomeNavigator';
-import TabCartNavigator from './TabCartNavigator';
-import TabAccountNavigator from './TabAccountNavigator';
+import HomeNavigator from './HomeNavigator';
+import CartNavigator from './CartNavigator';
+import AccountNavigator from './AccountNavigator';
 
 const TabNavigator = () => {
   const tabStack = createBottomTabNavigator();
@@ -11,7 +11,7 @@ const TabNavigator = () => {
     <tabStack.Navigator>
       <tabStack.Screen
         name="Home"
-        component={TabHomeNavigator}
+        component={HomeNavigator}
         options={{
           headerShown: false,
           tabBarIcon: props => <Feather name={'home'} size={25} {...props} />,
@@ -27,7 +27,7 @@ const TabNavigator = () => {
       />
       <tabStack.Screen
         name="Cartt"
-        component={TabCartNavigator}
+        component={CartNavigator}
         options={{
           headerShown: false,
           tabBarIcon: props => (
@@ -37,7 +37,7 @@ const TabNavigator = () => {
       />
       <tabStack.Screen
         name="MyAccount"
-        component={TabAccountNavigator}
+        component={AccountNavigator}
         options={{
           headerShown: false,
           tabBarIcon: props => <Feather name={'user'} size={25} {...props} />,

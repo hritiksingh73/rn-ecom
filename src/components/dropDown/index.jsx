@@ -3,7 +3,7 @@ import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import DropDownPicker from 'react-native-dropdown-picker';
-import dropDownData from '../../data/dropDownData';
+import {places} from '../../data/dropDown';
 
 const DropDown = props => {
   const {data, SelectedCity} = props;
