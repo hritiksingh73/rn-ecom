@@ -28,7 +28,6 @@ const userDataReducer = (state = initialState, action) => {
       return {...state, userID: action.payload};
 
     case SET_ADDRESS:
-      // console.log('Address --> ', action.payload);
       let addressWithId = {
         ...action.payload,
         id: guidGenerator(),
@@ -42,7 +41,6 @@ const userDataReducer = (state = initialState, action) => {
       return {...state, address: deleteData};
 
     case EDIT_ADDRESS:
-      console.log('data--->', action.payload);
       const indexOfAddressTobeUpdated = state.address.findIndex(
         item => item.id === action.payload.id,
       );

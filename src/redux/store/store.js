@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import userDataReducer from '../reducers/userReducer';
 import cartProductReducer from '../reducers/cartProductReducer';
 import productsReducer from '../reducers/productsReducer';
+import ordersReducer from '../reducers/ordersReducer';
 
 const persistConfig = {
   key: 'root',
@@ -21,6 +22,7 @@ const Store = configureStore({
     userDataReducer: persistReducer(persistConfig, userDataReducer),
     cartProductReducer: persistReducer(persistConfig, cartProductReducer),
     productsReducer: persistReducer(persistConfig, productsReducer),
+    ordersReducer: persistReducer(persistConfig, ordersReducer),
   },
   middleware: getDefaultMiddleware({
     thunk,

@@ -10,6 +10,9 @@ import {
   SET_ADDRESS,
   DELETE_ADDRESS,
   EDIT_ADDRESS,
+  SET_DELIVERY_SLOT,
+  SET_SELECTED_ADDRESS,
+  SET_PAYMENT,
 } from '../constants/userTypes';
 
 export const userInfoDetails = userDetails => ({
@@ -55,4 +58,17 @@ export const deleteUserAddress = id => ({
 export const editUserAddress = data => ({
   type: EDIT_ADDRESS,
   payload: data,
+});
+export const getSelectedAddress = data => ({
+  type: SET_SELECTED_ADDRESS,
+  payload: data,
+});
+export const selectedDeliverySlot = data => ({
+  type: SET_DELIVERY_SLOT,
+  payload: data,
+});
+
+export const getPayment = id => ({
+  type: SET_PAYMENT,
+  payload: id,
 });

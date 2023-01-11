@@ -11,5 +11,6 @@ const image = {
   grocery: require('../assets/grocery.png'),
   orImage: require('../assets/or.png'),
   cart: require('../assets/cart.webp'),
+  thankYou: require('../assets/thankYou.jpeg'),
 };
 export default image;

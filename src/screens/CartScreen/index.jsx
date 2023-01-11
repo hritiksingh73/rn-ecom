@@ -6,9 +6,9 @@ import styles from './styles';
 import CartItems from './CartItems';
 import ListItem from '../../components/ListItem';
 import image from '../../config/image';
-import {Button} from 'react-native-paper';
-import {color} from '../../constant/color';
 import BillDetails from '../../components/BillDetails';
+import CustomButton from '../../components/Button';
+import {globalStyle} from '../../constant/globalStyle';
 
 export default function CartScreen({navigation}, item) {
   const cartData = useSelector(state => state.cartProductReducer.cartProducts);
@@ -29,16 +29,14 @@ export default function CartScreen({navigation}, item) {
           <Text style={styles.emptyBag}>
             There is nothing in your bag. Let's add some items.
           </Text>
-          <Button
+          <CustomButton
             icon="cart"
-            mode="contained-tonal"
-            buttonColor="lightgreen"
-            onPress={() => navigation.navigate('Popular Products')}>
-            Go Shopping
-          </Button>
+            btnTitle="Go Shopping"
+            onPress={() => navigation.navigate('Popular Products')}
+          />
         </View>
       ) : (
-        <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+        <ScrollView style={globalStyle.container}>
           <ListItem
             data={cartData}
             renderItem={({item}) => (
@@ -74,12 +72,13 @@ export default function CartScreen({navigation}, item) {
           <Text style={styles.totalPrice}>$ 0.25</Text>
           <Text style={{color: 'white'}}>you save $ 5 on this</Text>
         </View>
-        <Button
-          mode="contained"
-          style={styles.checkoutBtn}
-          buttonColor={color.primary}>
-          Checkout
-        </Button>
+
+        <View style={styles.checkoutBtn}>
+          <CustomButton
+            btnTitle="Checkout"
+            onPress={() => navigation.navigate('Checkout')}
+          />
+        </View>
       </View>
     </>
   );

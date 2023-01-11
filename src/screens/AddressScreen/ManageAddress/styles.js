@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  addressDetailContainer: {
+  addressScreen: {
     borderWidth: 1,
     borderColor: 'lightgrey',
     marginHorizontal: '4%',
@@ -12,10 +12,6 @@ export const styles = StyleSheet.create({
   nameContainer: {
     marginBottom: 10,
     flexDirection: 'row',
-  },
-  nameStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   iconContainer: {
     flexDirection: 'row',
@@ -28,5 +24,8 @@ export const styles = StyleSheet.create({
   },
   btnContainer: {
     alignItems: 'center',
+  },
+  addressDetailContainer: {
+    margin: 15,
   },
 });

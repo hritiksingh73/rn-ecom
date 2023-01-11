@@ -42,4 +42,22 @@ export const globalStyle = StyleSheet.create({
   productList: {
     marginHorizontal: '4%',
   },
+  addressDetailContainer: {
+    borderWidth: 1,
+    borderColor: 'lightgrey',
+    marginHorizontal: '4%',
+    marginVertical: '2%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  nameStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  itemFontSize: {
+    fontSize: 16,
+  },
+  backgroundColor: {
+    backgroundColor: color.primary,
+  },
 });

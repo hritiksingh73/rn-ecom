@@ -2,27 +2,24 @@ import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
-import {Button} from 'react-native-paper';
 
 import ListItem from '../../../components/ListItem';
 import {globalStyle} from '../../../constant/globalStyle';
 import {styles} from './styles';
 import {deleteUserAddress} from '../../../redux/actions/userAction';
-import {useNavigation} from '@react-navigation/native';
-import {color} from '../../../constant/color';
+import CustomButton from '../../../components/Button';
 
 const ManageAddress = ({navigation}) => {
   const dispatch = useDispatch();
-  const {goBack} = useNavigation();
   const address = useSelector(state => state.userDataReducer.address);
   // console.log('get address---->', address);
 
   const renderAddressDetail = ({item}) => {
     return (
-      <View style={styles.addressDetailContainer}>
-        <View style={{margin: 15}}>
+      <View style={styles.addressScreen}>
+        <View style={styles.addressDetailContainer}>
           <View style={styles.nameContainer}>
-            <Text style={styles.nameStyle}>
+            <Text style={globalStyle.nameStyle}>
               {item.firstName} {item.lastName}
             </Text>
 
@@ -46,7 +43,7 @@ const ManageAddress = ({navigation}) => {
             </View>
           </View>
 
-          <Text style={{fontSize: 16}}>
+          <Text style={globalStyle.itemFontSize}>
             {item.area},{item.addressType},{item.street},{item.house},
             {item.block}
           </Text>
@@ -60,14 +57,10 @@ const ManageAddress = ({navigation}) => {
       <ListItem data={address} renderItem={renderAddressDetail} />
 
       <View style={styles.btnContainer}>
-        <Button
-          mode="contained-tonal"
-          buttonColor={color.primary}
-          style={{width: '40%'}}
-          labelStyle={{color: 'white'}}
-          onPress={() => navigation.navigate('Add Address')}>
-          Add New Address
-        </Button>
+        <CustomButton
+          onPress={() => navigation.navigate('Add Address')}
+          btnTitle=" Add New Address"
+        />
       </View>
     </SafeAreaView>
   );

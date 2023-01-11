@@ -107,7 +107,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   checkoutBtn: {
-    marginLeft: '40%',
+    alignItems: 'flex-end',
+    flex: 1,
+    marginRight: 10,
   },
 });
 export default styles;

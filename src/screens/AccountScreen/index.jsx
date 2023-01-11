@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import AccountElements from '../../components/AccountElements';
 import {styles} from './styles';
+import {globalStyle} from '../../constant/globalStyle';
 
 const AccountScreen = () => {
   const navigation = useNavigation();
@@ -27,7 +28,7 @@ const AccountScreen = () => {
     ]);
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={globalStyle.container}>
       <View style={styles.header}>
         <MaterialIcon name="menu" size={30} />
         <Text style={styles.headerText}>My Account</Text>
@@ -41,7 +42,9 @@ const AccountScreen = () => {
         onPress={() => navigation.navigate('Manage Address')}
       />
 
-      <TouchableOpacity style={styles.accountContainer}>
+      <TouchableOpacity
+        style={styles.accountContainer}
+        onPress={() => navigation.navigate('Order History')}>
         <Entypo name="flow-tree" size={20} style={styles.iconStyle} />
         <Text style={styles.txtStyle}>Order History</Text>
       </TouchableOpacity>
