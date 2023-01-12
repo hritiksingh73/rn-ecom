@@ -10,7 +10,8 @@ import AddAddress from '../screens/AddressScreen/AddAddress';
 import EditAddress from '../screens/AddressScreen/EditAddress';
 import CheckoutScreen from '../screens/CheckoutScreen';
 import ThankYou from '../screens/CheckoutScreen/ThankYou';
-import OrderHistoryScreen from '../screens/OrderHistoryScreen';
+import OrderHistory from '../screens/OrdersScreen/OrderHistory';
+import OrderDetails from '../screens/OrdersScreen/OrderDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,8 @@ const GroceryStackNavigator = () => {
       <Stack.Screen name="Edit Address" component={EditAddress} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
       <Stack.Screen name="Thank you" component={ThankYou} />
-      <Stack.Screen name="Order History" component={OrderHistoryScreen} />
+      <Stack.Screen name="Order History" component={OrderHistory} />
+      <Stack.Screen name="Order Detail" component={OrderDetails} />
     </Stack.Navigator>
   );
 };

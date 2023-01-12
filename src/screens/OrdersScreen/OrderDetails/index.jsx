@@ -1,9 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 
-const OrderHistoryScreen = () => {
+const OrderDetails = () => {
     return(
         <View></View>
     )
 }
-export default OrderHistoryScreen;              
+export default OrderDetails;

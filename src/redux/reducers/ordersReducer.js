@@ -6,36 +6,41 @@ import {
 } from '../constants/userTypes';
 
 const initialState = {
-  orders: [
-    {
-      orderId: '',
-      selectedAddress: {},
-      deliverySlot: {},
-      payment: '',
-    },
-  ],
+  latestOrder: {
+    selectedAddress: '',
+    deliverySlot: {},
+    payment: '',
+  },
+  orders: [],
 };
 
 const ordersReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SELECTED_ADDRESS:
-      return {...state, orders: {selectedAddress: action.payload}};
+      return {
+        ...state,
+        latestOrder: {...state.latestOrder, selectedAddress: action.payload},
+      };
 
     case SET_DELIVERY_SLOT:
       return {
         ...state,
-        orders: {deliverySlot: action.payload},
+        latestOrder: {...state.latestOrder, deliverySlot: action.payload},
       };
 
     case SET_PAYMENT:
       console.log('data--->', action.payload);
-      const orderId = {
-        ...action.payload,
-        id: guidGenerator(),
+      const latestOrder = {
+        ...state.latestOrder,
+        payment: action.payload,
+        orderId: guidGenerator(),
+        status: 'placed',
       };
-      return {...state, orders: {payment: orderId}};
-    // return {...state, orders: [...state.orders, orderWithID]};
-
+      return {
+        ...state,
+        orders: [...state.orders, latestOrder],
+        // latestOrder: latestOrder,
+      };
     default:
       return state;
   }

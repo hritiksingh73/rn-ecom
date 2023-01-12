@@ -17,7 +17,13 @@ export default function GroceryTabNavigator() {
         name="Home"
         component={GroceryStackNavigator}
         options={{
-          tabBarIcon: () => <Icon name="home" size={30} />,
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="home"
+              size={30}
+              color={focused ? color.primary : 'black'}
+            />
+          ),
           headerShown: false,
         }}
       />
@@ -25,20 +31,40 @@ export default function GroceryTabNavigator() {
         name="Search"
         component={SearchScreen}
         options={{
-          tabBarIcon: () => <Icon name="search1" size={30} />,
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="search1"
+              size={30}
+              color={focused ? color.primary : 'black'}
+            />
+          ),
           headerShown: false,
         }}
       />
       <Tab.Screen
         name="Cart"
         component={CartScreen}
-        options={{tabBarIcon: () => <Icon name="shoppingcart" size={30} />}}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="shoppingcart"
+              size={30}
+              color={focused ? color.primary : 'black'}
+            />
+          ),
+        }}
       />
       <Tab.Screen
         name="Account"
         component={AccountNavigator}
         options={{
-          tabBarIcon: () => <Icon name="user" size={30} />,
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="user"
+              size={30}
+              color={focused ? color.primary : 'black'}
+            />
+          ),
           headerShown: false,
         }}
       />

@@ -11,7 +11,7 @@ import {styles} from './styles';
 import {getSelectedAddress} from '../../../redux/actions/userAction';
 import {useState} from 'react';
 
-const SelectAddress = () => {
+const SelectAddress = ({onScreenChange}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -19,12 +19,12 @@ const SelectAddress = () => {
   const orders = useSelector(state => state.ordersReducer.selectedAddress);
   console.log('selected address------>', orders);
 
-  const renderSelectedAddress = ({item}) => {
-    const onSelectedAddress = () => {
-      dispatch(getSelectedAddress(item));
-      setSelectedAddress(item.id);
-    };
+  const saveBtnHandler = () => {
+    dispatch(getSelectedAddress(selectedAddress));
+    onScreenChange(1);
+  };
 
+  const renderSelectedAddress = ({item}) => {
     return (
       <View
         style={[
@@ -47,7 +47,7 @@ const SelectAddress = () => {
           <CustomButton
             btnTitle="Deliver here"
             style={styles.btnWidth}
-            onPress={onSelectedAddress}
+            onPress={() => setSelectedAddress(item.id)}
           />
         </View>
       </View>
@@ -77,7 +77,11 @@ const SelectAddress = () => {
       </View>
 
       <View style={styles.btnContainer}>
-        <CustomButton btnTitle="Save & Next" />
+        <CustomButton
+          btnTitle="Save & Next"
+          onPress={saveBtnHandler}
+          disabled={!selectedAddress ? true : false}
+        />
       </View>
     </>
   );

@@ -3,9 +3,7 @@ import {FlatList, Dimensions, Text, Pressable} from 'react-native';
 
 import {styles} from './styles';
 import {globalStyle} from '../../constant/globalStyle';
-import {selectedDeliverySlot} from '../../redux/actions/userAction';
 import {useDispatch, useSelector} from 'react-redux';
-import moment from 'moment';
 
 const {width} = Dimensions.get('window');
 const ITEM_WIDTH = width * 0.12;
@@ -54,11 +52,6 @@ const HorizontalCalendar = ({selectedDate, setSelectedDate}) => {
 
   const onDatePress = date => {
     setSelectedDate(date);
-    dispatch(
-      selectedDeliverySlot(
-        moment(date).format('DD MMMM YYYY hh:mm a').toString(),
-      ),
-    );
   };
 
   const renderItem = ({item}) => {

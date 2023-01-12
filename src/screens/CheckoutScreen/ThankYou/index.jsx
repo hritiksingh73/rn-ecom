@@ -7,9 +7,12 @@ import CustomButton from '../../../components/Button';
 import {styles} from './styles';
 import OrderDetails from '../../../components/OrderDetails';
 import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 const ThankYou = () => {
-  const {deliverySlot, payment} = useSelector(state => state.ordersReducer);
+  const navigation = useNavigation();
+  const orderDetail = useSelector(state => state.ordersReducer.latestOrder);
+  console.log(orderDetail);
 
   return (
     <ScrollView style={globalStyle.container}>
@@ -19,8 +22,11 @@ const ThankYou = () => {
         <Text style={styles.orderPlacedTxt}>Your Order has been placed.</Text>
       </View>
 
-      <OrderDetails orderDetail="Order ID" details={payment} />
-      <OrderDetails orderDetail="Order Placed on" details={deliverySlot} />
+      <OrderDetails orderDetail="Order ID" details={orderDetail.orderId} />
+      <OrderDetails
+        orderDetail="Order Placed on"
+        details={orderDetail.deliverySlot}
+      />
       <OrderDetails orderDetail="Store name" details="Super Fresh" />
       <OrderDetails orderDetail="Subtotal" />
       <OrderDetails orderDetail="Tax" />
@@ -28,7 +34,10 @@ const ThankYou = () => {
       <OrderDetails orderDetail="Total Amount" />
 
       <View style={styles.btnContainer}>
-        <CustomButton btnTitle="Continue Shopping" />
+        <CustomButton
+          btnTitle="Continue Shopping"
+          onPress={() => navigation.navigate('Popular Products')}
+        />
         <CustomButton btnTitle="OK" />
       </View>
     </ScrollView>

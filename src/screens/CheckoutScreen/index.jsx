@@ -10,7 +10,6 @@ import DeliverySlot from './DeliverySlot';
 import Payment from './Payment';
 import {globalStyle} from '../../constant/globalStyle';
 import {styles} from './styles';
-import CustomButton from '../../components/Button';
 
 const CheckoutScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(0);
@@ -18,26 +17,22 @@ const CheckoutScreen = () => {
   const icons = ['map-marker-outline', 'truck', 'wallet'];
 
   const customStyles = {
-    // stepIndicatorSize: 25,
-    // currentStepIndicatorSize: 30,
-    // separatorStrokeWidth: 2,
+    stepIndicatorSize: 40,
+    separatorStrokeWidth: 2,
     currentStepStrokeWidth: 10,
     stepStrokeCurrentColor: color.primary,
     stepStrokeWidth: 3,
-    // stepStrokeFinishedColor: '#fe7013',
-    stepStrokeUnFinishedColor: '#aaaaaa',
+    stepStrokeUnFinishedColor: 'lightgrey',
     separatorFinishedColor: color.primary,
     separatorUnFinishedColor: 'lightgrey',
-    // stepIndicatorFinishedColor: '#fe7013',
-    stepIndicatorUnFinishedColor: 'grey',
-    // stepIndicatorCurrentColor: color.primary,
-    // stepIndicatorLabelFontSize: 13,
-    // currentStepIndicatorLabelFontSize: 13,
+    stepIndicatorFinishedColor: color.primary,
+    stepIndicatorUnFinishedColor: 'lightgrey',
+    stepIndicatorCurrentColor: color.primary,
     stepIndicatorLabelCurrentColor: '#fe7013',
     stepIndicatorLabelFinishedColor: 'black',
     stepIndicatorLabelUnFinishedColor: '#999999',
     labelColor: '#999999',
-    // labelSize: 13,
+    labelSize: 13,
     currentStepLabelColor: 'black',
   };
 
@@ -54,7 +49,6 @@ const CheckoutScreen = () => {
               name={icons[position]}
               size={20}
               color="white"
-              style={globalStyle.backgroundColor}
             />
           )}
           labels={labels}
@@ -62,9 +56,13 @@ const CheckoutScreen = () => {
       </View>
       <Divider />
       {currentPosition == 0 ? (
-        <SelectAddress />
+        <SelectAddress
+          onScreenChange={position => setCurrentPosition(position)}
+        />
       ) : currentPosition == 1 ? (
-        <DeliverySlot />
+        <DeliverySlot
+          onScreenChange={position => setCurrentPosition(position)}
+        />
       ) : (
         <Payment />
       )}

@@ -20,4 +20,7 @@ export const styles = StyleSheet.create({
   customBtnContainer: {
     bottom: 10,
   },
+  btnStyle: {
+    alignItems: 'center',
+  },
 });
