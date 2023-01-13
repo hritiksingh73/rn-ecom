@@ -1,19 +1,22 @@
 import {useState} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import {Color} from '../../constant/Color';
 import Feather from 'react-native-vector-icons/Feather';
 import CheckOutScreen from '../../screens/CartScreen/CheckOutScreen/CheckOutScreen';
 import DeliverySlotScreen from '../../screens/CartScreen/DeliverySlotScreen/DeliverySlotScreen';
-import SuperFreshScreen from '../../screens/HomeScreen/HomeScreen/SuperFresh';
 import styles from './Styles';
 import PaymentScreen from '../../screens/CartScreen/PaymentScreen/PaymentScreen';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useNavigation} from '@react-navigation/native';
 
-export const StepIndicatorProgressBar = () => {
-  const [currentPosition, setCurrentPosition] = useState(0);
+export const StepIndicatorProgressBar = ({route}) => {
+  const [currentPosition, setCurrentPosition] = useState(2);
   const labels = ['Select Address', 'Select Delivery Slot', 'Payment'];
   const icons = ['map', 'truck', 'credit-card'];
-
+  const navigation = useNavigation();
+  //const cartProgress = route.params;
+  //console.log(cartProgress)
   const customStyles = {
     currentStepStrokeWidth: 6,
     separatorUnFinishedColor: Color.greyish,
@@ -29,6 +32,13 @@ export const StepIndicatorProgressBar = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ScrollView>
+      <View style={styles.headerBar}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="chevron-left" size={30} />
+        </TouchableOpacity>
+        <Text style={styles.header}>Checkout</Text>
+      </View>
       <StepIndicator
         customStyles={customStyles}
         stepCount={3}
@@ -39,14 +49,16 @@ export const StepIndicatorProgressBar = () => {
           <Feather name={icons[position]} size={16} color="#fff" />
         )}
       />
-
-      {currentPosition == 0 ? (
-        <CheckOutScreen />
-      ) : currentPosition == 1 ? (
-        <DeliverySlotScreen />
-      ) : (
-        <PaymentScreen />
-      )}
+      <>
+        {currentPosition === 0 ? (
+          <CheckOutScreen />
+        ) : currentPosition === 1 ? (
+          <DeliverySlotScreen />
+        ) : (
+          <PaymentScreen />
+        )}
+      </>
+      </ScrollView>
     </SafeAreaView>
   );
 };

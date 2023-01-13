@@ -24,7 +24,6 @@ import styles from './styles';
 import {Banner} from '../../../dummyData/Cards';
 import {Color} from '../../../constant/Color';
 import Carousel from 'react-native-reanimated-carousel';
-import {Snackbar} from 'react-native-paper';
 
 const SuperFreshScreen = () => {
   const dispatch = useDispatch();

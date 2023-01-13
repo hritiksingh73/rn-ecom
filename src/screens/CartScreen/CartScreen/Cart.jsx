@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -20,22 +20,28 @@ import {
   increaseItemQuantity,
   decreaseItemQuantity,
   removeItemFromCart,
+  productBillingDetails,
 } from '../../../redux/action/Action';
 import CartBillingData from '../../../component/CartBillingData/CartBillingData';
 
 const CartScreen = () => {
   const item = useSelector(state => state.userInfo.cart);
   const dispatch = useDispatch();
-  const [isModalVisible, setisModalVisible] = useState(false);
   const navigation = useNavigation();
 
   const clearCartItem = item => {
-    console.log('Cart Item Remove on Count ----->', item);
+    // console.log('Cart Item Remove on Count ----->', item);
     if (item <= 1) {
       dispatch(removeItemFromCart(item));
     } else {
     }
   };
+
+  const checkOutHandler=()=>{
+    // dispatch(productBillingDetails(CalculateDeliveryCharges,CalculateTax,CalculateSubTotal))
+    navigation.navigate("StepIndicatorProgressBar")
+  }
+
 
   const ItemPrice = item.map(value => {
     const total = value.price * value.quantity;
@@ -46,19 +52,13 @@ const CartScreen = () => {
     return Math.min(total + value);
   }, 0);
 
-  const CalculateDeliveryCharges = (CalculateTotalItemPrices * 3) / 100;
+  const CalculateDeliveryCharges =  (CalculateTotalItemPrices * 3) / 100;
 
   const CalculateTax = (CalculateTotalItemPrices * 12) / 100;
 
   const CalculateSubTotal = Math.min(
     CalculateTotalItemPrices + CalculateDeliveryCharges + CalculateTax,
   );
-  const modalClose = () => {
-    setisModalVisible(false), navigation.navigate('CheckOutScreen');
-  };
-  const modalOpen = () => {
-    setisModalVisible(true);
-  };
 
   const cartData = ({item}) => {
     return (
@@ -150,27 +150,10 @@ const CartScreen = () => {
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>
           <View style={styles.checkOut}>
-            <TouchableOpacity onPress={modalOpen}>
+            <TouchableOpacity onPress={()=>checkOutHandler()}>
               <Text style={styles.checkoutButton}>Checkout</Text>
             </TouchableOpacity>
           </View>
-          <Modal
-            animationType="fade"
-            visible={isModalVisible}
-            transparent={true}>
-            <View style={styles.modalcontainer}>
-              <View style={styles.modal}>
-                <Text style={styles.modalCartMessage}>
-                  Your Order has been placed Successfully
-                </Text>
-                <TouchableOpacity
-                  onPress={modalClose}
-                  style={styles.modalOkButtonContainer}>
-                  <Text style={styles.modalOkButton}>OK</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Modal>
         </View>
       </ScrollView>
     </SafeAreaView>

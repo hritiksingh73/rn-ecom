@@ -8,6 +8,8 @@ const InitialState = {
   isFetching: false,
   productData: [],
   cart: [],
+
+  userAddressList: [],
 };
 
 const userReducer = (state = InitialState, action) => {
@@ -39,6 +41,7 @@ const userReducer = (state = InitialState, action) => {
           ? {...item, quantity: item.quantity + 1}
           : item;
       });
+
       return {
         ...state,
         cart: increaseItem,
@@ -53,6 +56,34 @@ const userReducer = (state = InitialState, action) => {
       return {
         ...state,
         cart: decreaseItem,
+      };
+    /////////////////Address Section///////////////////////
+    case ActionType.UPDATE_ADDRESS:
+      const idxOfAddressTobeUpdated = state.userAddressList.findIndex(
+        item => item.id === action.payload.id,
+      );
+
+      let currentAddress = [...state.userAddressList];
+      currentAddress.splice(idxOfAddressTobeUpdated, 1, action.payload);
+
+      return {
+        ...state,
+        userAddressList: currentAddress,
+      };
+
+    case ActionType.DELETE_ADDRESS:
+      return {
+        ...state,
+        userAddressList: state.userAddressList.filter(
+          item => item !== action.payload,
+        ),
+      };
+
+    case ActionType.ADD_ADDRESS:
+      //console.log(action.payload)
+      return {
+        ...state,
+        userAddressList: [...state.userAddressList, action.payload],
       };
 
     default:

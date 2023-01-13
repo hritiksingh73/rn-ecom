@@ -58,7 +58,23 @@ export const deleteAddress = address => ({
   payload: address,
 });
 export const selectDeliveryaddress = address => ({
-  type: ActionType.SELECT_DELIVERY_ADDRESS,
-  payload: address
-  
+  type: ActionType.SELECTED_DELIVERY_ADDRESS,
+  payload: address,
+});
+
+export const selectDeliveryDate = date => ({
+  type: ActionType.SELECTED_DELIVERY_DATE,
+  payload: date,
+});
+export const selectDeliveryTime = time => ({
+  type: ActionType.SELECTED_DELIVERY_TIME,
+  payload: time,
+});
+export const orderId = (id,paymentmethod)=> ({
+  type: ActionType.ORDER_ID,
+  payload: {id,paymentmethod}
+});
+export const productBillingDetails = (subTotal,tax,deliveryCharges)=> ({
+  type: ActionType.ORDER_ID,
+  payload: {subTotal,tax,deliveryCharges}
 });

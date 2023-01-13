@@ -1,11 +1,17 @@
-import {KeyboardAvoidingView, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
 import styles from './styles';
-import {addUser} from '../../redux/action/Action';
+import {addUser} from '../../../redux/action/Action';
 import FormContainer from '../../../component/FormComponent/Login_RegisterFormComponent/FormInput';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';

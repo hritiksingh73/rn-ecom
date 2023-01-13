@@ -31,15 +31,12 @@ const AddAddressScreen = () => {
       street: '',
       appartment: '',
       block: '',
+      id: uidGenerator(),
     },
   });
 
   const submitHandler = data => {
-    const addressData = {
-      id: uidGenerator(),
-    };
-
-    dispatch(addAddress(data, ...addressData.id));
+    dispatch(addAddress(data));
     navigation.goBack('');
   };
 

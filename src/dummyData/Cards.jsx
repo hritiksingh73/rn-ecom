@@ -141,41 +141,41 @@ export const DeliveryTimeSlot = [
   {
     id: '1',
     time: '8 AM- 9 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
   {
     id: '2',
     time: '9 AM- 10 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
   {
     id: '3',
     time: '10 AM- 11 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
   {
     id: '4',
     time: '11 AM- 12 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
   {
     id: '5',
     time: '11 AM- 12 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
   {
     id: '6',
     time: '11 AM- 12 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
   {
     id: '7',
     time: '11 AM- 12 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
   {
     id: '8',
     time: '11 AM- 12 AM',
-    deliveryChanrge: '$ 4.00',
+    deliveryCharges: '$ 4.00',
   },
 ];

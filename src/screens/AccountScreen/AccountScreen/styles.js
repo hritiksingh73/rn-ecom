@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     marginTop: '5%',
   },
   favourite: {
-    // paddingRight: 30,
     color: Color.black,
   },
   mycarticonsize: {

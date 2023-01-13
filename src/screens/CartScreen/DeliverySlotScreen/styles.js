@@ -3,27 +3,17 @@ import React from 'react';
 import {Color} from '../../../constant/Color';
 
 const styles = StyleSheet.create({
-  headerBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: '5%',
-  },
-  header: {
-    fontSize: 20,
-    color: Color.black,
-    fontWeight: '500',
-    textAlign: 'center',
-    flex: 1,
-  },
   containerBody: {
     paddingLeft: '3%',
+    paddingVertical: 35,
   },
   headerTitle: {
     fontSize: 20,
     color: Color.black,
-    paddingVertical:15
+    // paddingVertical:15
   },
-  day:{
+  
+  day: {
     color: Color.black,
     fontWeight: '700',
     fontSize: 18,
@@ -60,12 +50,32 @@ const styles = StyleSheet.create({
   timeSlotButtonText: {
     textAlign: 'center',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop:5,
+    paddingTop: 5,
     width: 100,
     height: 35,
-    backgroundColor:Color.green
+    backgroundColor: Color.green,
+    color:Color.white
   },
+  nextButtonTextContainer:{
+    textAlign: 'center',
+    alignItems: 'center',
+    width: 100,
+    height: 35,
+    backgroundColor: Color.green,
+    color:Color.white,
+    marginVertical:20,
+    left:"40%"
+  },
+  nextButtonText:{
+    textAlign: 'center',
+    alignItems: 'center',
+    paddingTop: 5,
+    width: 100,
+    height: 35,
+    backgroundColor: Color.green,
+    color:Color.white,
+  }
+  
 });
 
 export default styles;

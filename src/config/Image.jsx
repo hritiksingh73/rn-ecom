@@ -13,6 +13,9 @@ const ImagePath = {
   //Product Detail Screen
   iPhone: require('../asset/iPhone.png'),
 
+  //Thankyou Screen
+  orderPlaced: require("../asset/order-placed.png"),
+
   //Splash Screen
   splash: require('../asset/SplashScreen.png'),
 };

@@ -4,8 +4,13 @@ import {Color} from '../../../constant/Color';
 
 const styles = StyleSheet.create({
   mainContainer: {
+    backgroundColor: Color.white
+  },
+  containerBody: {
+    paddingLeft: '3%',
+    paddingVertical: 35,
     backgroundColor: Color.white,
-    flex:1
+    
   },
   headerBar: {
     flexDirection: 'row',

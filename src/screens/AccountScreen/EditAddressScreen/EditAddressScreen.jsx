@@ -6,16 +6,17 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView} from 'react-native-virtualized-view';
 
 import AddAddressFormComponent from '../../../component/FormComponent/AddAddressFormComponent/AddAddressFormComponent';
-import {updateAddress} from '../../../redux/action/Action';
+
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import styles from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import { updateAddress } from '../../../redux/action/Action';
 
 const EditAddressScreen = ({route}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const address = useSelector(state => state.userAddress.userAddressList);
+  const address = useSelector(state => state.userInfo.userAddressList);
 
   const receivedproductId = route.params;
   const currentAddress = address.filter(item => item.id === receivedproductId);
@@ -44,7 +45,7 @@ const EditAddressScreen = ({route}) => {
             <View style={styles.textInputheaderContainer}>
               <View style={styles.halfInputContainer}>
                 <AddAddressFormComponent
-                  name="firstname"
+                  name="firstName"
                   control={control}
                   placeholder="First Name"
                 />

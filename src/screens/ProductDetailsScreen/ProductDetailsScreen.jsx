@@ -31,8 +31,6 @@ const ProductDetailsScreen = ({route}) => {
       const response = await axios.get(
         `https://grocery-backend-in.vercel.app/products/${receivedproductItem}`,
       );
-      //const myData = await response.json();
-      //console.log(response.data);
       setItemData(response.data);
     } catch (error) {
       console.log(error);

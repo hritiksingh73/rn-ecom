@@ -12,24 +12,30 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
-import StepIndicator from 'react-native-step-indicator';
-import {
-  StepIndicatorProgressBar,
-} from '../../../component/StepIndicator/StepIndicator';
+// import StepIndicator from 'react-native-step-indicator';
+// import {
+//   StepIndicatorProgressBar,
+// } from '../../../component/StepIndicator/StepIndicator';
 import {Color} from '../../../constant/Color';
 import {selectDeliveryaddress} from '../../../redux/action/Action';
+import {uidGenerator} from '../../../utils/uidGenerator';
 
 const CheckOutScreen = () => {
   const navigation = useNavigation();
-  const address = useSelector(state => state.userAddress.userAddressList);
+  const address = useSelector(state => state.userInfo.userAddressList);
+  // console.log(address.id)
   const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();
 
+
+
   const selectAddressHandler = item => {
-    setSelected(!selected), dispatch(selectDeliveryaddress(item));
+    
+    dispatch(selectDeliveryaddress(item));
   };
+
   const customerData = ({item}) => {
-    // console.log(item)
+    //  console.log(item)
     return (
       <View
         style={[
@@ -58,16 +64,10 @@ const CheckOutScreen = () => {
       </View>
     );
   };
+
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <View>
-        <View style={styles.headerBar}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon name="chevron-left" size={30} />
-          </TouchableOpacity>
-          <Text style={styles.header}>Checkout</Text>
-        </View>
-        <StepIndicatorProgressBar />
+      <View style={styles.containerBody}>
         <FlatList
           data={address}
           renderItem={customerData}
@@ -83,7 +83,8 @@ const CheckOutScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.saveAndNextButtonContainer}
-          onPress={() => navigation.navigate('DeliverySlotScreen')}>
+          // onPress={() => navigation.navigate('DeliverySlotScreen')}
+        >
           <Text style={styles.saveAndNextButton}>Save & Next</Text>
         </TouchableOpacity>
       </View>

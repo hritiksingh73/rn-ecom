@@ -20,7 +20,7 @@ import {deleteAddress} from '../../../redux/action/Action';
 const ManageAddressScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const address = useSelector(state => state.userAddress.userAddressList);
+  const address = useSelector(state => state.userInfo.userAddressList);
   console.log(address);
   const addressData = ({item}) => {
     return (
