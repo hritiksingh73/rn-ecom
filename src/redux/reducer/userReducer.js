@@ -6,6 +6,8 @@ const initialState = {
   userAddresses: [],
   manageAddressesItemsId: 0,
   productData: [],
+
+  userWishlist: [],
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -64,6 +66,17 @@ export const userReducer = (state = initialState, action) => {
 
     case ActionTypes.DATA_CALLING:
       return {...state, productData: payload};
+
+    case ActionTypes.ADD_TO_WISHLIST:
+      return {...state, userWishlist: [...state.userWishlist, payload]};
+
+    case ActionTypes.REMOVE_TO_WISHLIST:
+      const wishlistItem = [...state.userWishlist];
+      const res = wishlistItem.filter(item => item.id !== payload);
+      return {
+        ...state,
+        userWishlist: res,
+      };
 
     default:
       return state;

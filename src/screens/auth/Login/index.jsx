@@ -97,7 +97,9 @@ const Login = ({navigation}) => {
           <Text style={styles.forgotTxt}>Forgot Password?</Text>
         </TouchableOpacity>
 
-        <PrimaryButton name={'Login'} onPress={isValidate} />
+        <View style={styles.btnContainer}>
+          <PrimaryButton name={'Login'} onPress={isValidate} />
+        </View>
 
         <View style={styles.flxDirectn}>
           <Text style={styles.orTxtRow}> __________________ </Text>

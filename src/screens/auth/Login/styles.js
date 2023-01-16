@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
   rgstrTxt: {
     color: colors.green,
   },
+  btnContainer: {
+    marginVertical: 40,
+  },
 });
 
 export default styles;

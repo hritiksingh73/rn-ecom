@@ -23,17 +23,22 @@ const styles = StyleSheet.create({
       marginLeft: '3%',
     },
     btnStyl: {
+      flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      flexDirection: 'row',
       margin: 1,
     },
-    // btnMarginL: {
-    //   marginRight: 5,
-    // },
-    // btnMarginR: {
-    //   marginLeft: 5,
-    // }
+    btnMargin: {
+      margin: 5,
+    },
+    customBtnContainerStyle: {
+      backgroundColor: colors.white,
+      borderWidth: 1,
+      borderColor: colors.green,
+    },
+    customBtnTextStyle: {
+      color: colors.green,
+    }
   });
   
   export default styles;

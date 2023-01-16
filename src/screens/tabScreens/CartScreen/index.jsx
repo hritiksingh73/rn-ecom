@@ -14,6 +14,8 @@ import {
   IncrementCartItem,
   DecrementCartItem,
   RemoveCartItem,
+  OrderedProducts,
+  OrderedProductsPrice,
 } from '../../../redux/action/action';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './style';
@@ -26,6 +28,8 @@ const CartScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const data = useSelector(state => state.cartReducer.fruitCart);
   const cartData = useSelector(state => state.cartReducer.fruitCart);
+
+  console.log('cart screen:' , cartData)
 
   const UserItemPrice = () => {
     const ItemPrice = data.map(value => {
@@ -40,7 +44,7 @@ const CartScreen = ({navigation}) => {
 
   const DeliveryCharge = () => {
     if (UserItemPrice() > 0) {
-      return 100;
+      return 2;
     } else {
       return 0;
     }
@@ -51,14 +55,14 @@ const CartScreen = ({navigation}) => {
   };
   const ItemTax = () => {
     let tot = UserItemPrice();
-    return (tot * 18) / 100;
+    return Number(((tot * 18) / 100).toFixed(2));
   };
   const TotalBilling = () => {
     return UserItemPrice() + DeliveryCharge() + ItemTax();
   };
-  const FinalPrice = () => {
-    return Math.floor(TotalBilling());
-  };
+  // const FinalPrice = () => {
+  //   return Math.floor(TotalBilling());
+  // };
 
   const IncreaseItemHandler = item => {
     dispatch(IncrementCartItem(item.id));
@@ -99,13 +103,13 @@ const CartScreen = ({navigation}) => {
                           <Image
                             style={styles.itemImg}
                             resizeMode="contain"
-                            source={item.url}
+                            source={{uri: item.imageUrl}}
                           />
                         </View>
 
                         <View style={styles.itemTitleArea}>
                           <Text style={styles.itemTitle}>{item.title}</Text>
-                          <Text style={styles.itemMrp}>₹{item.price}</Text>
+                          <Text style={styles.itemMrp}>${item.price}</Text>
                         </View>
 
                         <View style={styles.countingCntnr}>
@@ -177,11 +181,20 @@ const CartScreen = ({navigation}) => {
         <View style={styles.checkoutTxtBorder}>
           <View>
             <Text style={styles.totClr}>Total</Text>
-            <Text style={styles.checkoutTotalTxt}>₹ {FinalPrice()}</Text>
+            <Text style={styles.checkoutTotalTxt}>₹ {TotalBilling()}</Text>
             <Text style={styles.totMsg}>You save ₹ 0 on this</Text>
           </View>
           <View style={styles.topMrgn}>
-            <PrimaryButton name={'Checkout'} onPress={()=>navigation.navigate('Checkout')}/>
+            <PrimaryButton name={'Checkout'} onPress={()=>{
+              const billingDetails = {
+                subTotal: UserItemPrice(),
+                tax: ItemTax(),
+                deliveryCharges: DeliveryCharge(),
+                totalAmoutn: TotalBilling()
+              }
+              dispatch(OrderedProducts(cartData))
+              dispatch(OrderedProductsPrice(billingDetails))
+              navigation.navigate('Checkout')}}/>
           </View>
         </View>
       </ScrollView>

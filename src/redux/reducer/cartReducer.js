@@ -10,8 +10,8 @@ export const cartReducer = (state = initialState, action) => {
 
   switch (type) {
     case ActionTypes.ADD_FRUITS_TO_CART:
-      const {id, title, rating, price, maxPrice, quantity, url, numberOfItem} =
-        payload;
+      const {id, imageUrl, oldPrice, price, title} = payload;
+      // console.log('cart reducer payload :', payload);
       return {
         ...state,
         fruitCart: [
@@ -19,12 +19,10 @@ export const cartReducer = (state = initialState, action) => {
           {
             id: id,
             title: title,
-            rating: rating,
             price: price,
-            maxPrice: maxPrice,
-            quantity: quantity,
-            url: url,
-            numberOfItem: numberOfItem,
+            oldPrice: oldPrice,
+            imageUrl: imageUrl,
+            numberOfItem: 1,
           },
         ],
       };

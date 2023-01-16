@@ -1,11 +1,14 @@
 import React from 'react';
-import {Text, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import ItemList from '../../../components/ItemList';
+import {useSelector} from 'react-redux';
 import styles from './styles';
 
 const MyWishlist = () => {
+  const userWishlist = useSelector(state => state.user.userWishlist);
   return (
     <SafeAreaView style={styles.container}>
-      <Text>MyWishlist</Text>
+      <ItemList data={userWishlist} />
     </SafeAreaView>
   );
 };

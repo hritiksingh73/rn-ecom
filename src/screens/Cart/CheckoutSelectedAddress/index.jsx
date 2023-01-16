@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,20 +7,19 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {SelectedAddress} from '../../../redux/action/action';
+import {
+  SelectedAddress,
+  ComponentChangeByIndex,
+} from '../../../redux/action/action';
 import {StyleSheet} from 'react-native';
 import PrimaryButton from '../../../components/PrimaryButton';
 import colors from '../../../constants/colors';
 
 const Addresses = ({navigation}) => {
   const {width} = useWindowDimensions();
-
   const dispatch = useDispatch();
   const userAddresses = useSelector(state => state.user.userAddresses);
-
-  const addressHandler = item => {
-    dispatch(SelectedAddress(item));
-  };
+  const [isAddressSelected, setIsAddressSelected] = useState(0);
 
   return (
     <View>
@@ -28,9 +27,16 @@ const Addresses = ({navigation}) => {
         data={userAddresses}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => {
+        renderItem={({item, index}) => {
           return (
-            <View style={[styles.addressContainer, {width: width - 60}]}>
+            <View
+              style={[
+                styles.addressContainer,
+                index + 1 === isAddressSelected
+                  ? styles.selectedAddressContainer
+                  : styles.addressContainer,
+                {width: width - 60},
+              ]}>
               <Text style={styles.title}>
                 {item.firstName} {item.lastName}
               </Text>
@@ -40,8 +46,11 @@ const Addresses = ({navigation}) => {
               </Text>
               <PrimaryButton
                 name={'Deliver here'}
-                btnAlign="flex-start"
-                onPress={() => addressHandler(item)}
+                onPress={() => {
+                  setIsAddressSelected(index + 1);
+                  dispatch(SelectedAddress(item));
+                }}
+                customBtnAlignment={styles.customBtnAlignment}
               />
             </View>
           );
@@ -49,9 +58,20 @@ const Addresses = ({navigation}) => {
       />
 
       <View style={styles.btnAlign}>
-        <TouchableOpacity style={styles.loginTxtArea}>
+        <TouchableOpacity
+          style={styles.loginTxtArea}
+          onPress={() => navigation.navigate('Home')}>
           <Text style={styles.loginBtn}>Add New Address</Text>
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <PrimaryButton
+          name={'Save & Next'}
+          onPress={() => {
+            dispatch(ComponentChangeByIndex(1));
+          }}
+        />
       </View>
     </View>
   );
@@ -65,6 +85,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.gray_70,
     borderRadius: 3,
+  },
+  selectedAddressContainer: {
+    borderWidth: 2,
+    borderRadius: 3,
+    borderColor: colors.green,
   },
   title: {
     fontSize: 18,
@@ -93,6 +118,15 @@ const styles = StyleSheet.create({
   },
   btnAlign: {
     alignItems: 'center',
+  },
+  bgColorChange: {
+    color: colors.red,
+  },
+  customBtnAlignment: {
+    alignItems: 'flex-start',
+  },
+  buttonContainer: {
+    margin: 20,
   },
 });
 

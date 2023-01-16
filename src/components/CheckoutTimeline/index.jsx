@@ -4,12 +4,12 @@ import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import colors from '../../constants/colors';
 
-const CheckoutTimeline = ({name, onPress}) => {
+const CheckoutTimeline = ({screenIndex, onPress}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
         <View style={styles.iconTxtPair}>
-          <TouchableOpacity onPress={()=>{onPress('Address')}}>
+          <TouchableOpacity onPress={() => onPress(0)}>
             <View style={[styles.circleStyle, {backgroundColor: colors.green}]}>
               <Feather
                 name={'map-pin'}
@@ -25,33 +25,35 @@ const CheckoutTimeline = ({name, onPress}) => {
         </View>
 
         <View style={styles.iconTxtPair}>
-          <View
-            style={[
-              styles.circleStyle,
-              {
-                backgroundColor:
-                  name === 'Delivery' || name === 'Payment'
-                    ? colors.green
-                    : colors.gray_85,
-              },
-            ]}>
-            <Feather
-              name={'truck'}
-              size={20}
-              style={styles.iconStyle}
-              color={
-                name === 'Delivery' || name === 'Payment'
-                  ? colors.white
-                  : colors.gray_25
-              }
-            />
-          </View>
+          <TouchableOpacity onPress={() => onPress(1)}>
+            <View
+              style={[
+                styles.circleStyle,
+                {
+                  backgroundColor:
+                    screenIndex === 1 || screenIndex === 2
+                      ? colors.green
+                      : colors.gray_85,
+                },
+              ]}>
+              <Feather
+                name={'truck'}
+                size={20}
+                style={styles.iconStyle}
+                color={
+                  screenIndex === 1 || screenIndex === 2
+                    ? colors.white
+                    : colors.gray_25
+                }
+              />
+            </View>
+          </TouchableOpacity>
           <Text
             style={[
               styles.txtStyling,
               {
                 color:
-                  name === 'Delivery' || name === 'Payment'
+                  screenIndex === 1 || screenIndex === 2
                     ? colors.black
                     : colors.gray,
               },
@@ -61,25 +63,27 @@ const CheckoutTimeline = ({name, onPress}) => {
         </View>
 
         <View style={styles.iconTxtPair}>
-          <View
-            style={[
-              styles.circleStyle,
-              {
-                backgroundColor:
-                  name === 'Payment' ? colors.green : colors.gray_85,
-              },
-            ]}>
-            <Feather
-              name={'credit-card'}
-              size={20}
-              style={styles.iconStyle}
-              color={name === 'Payment' ? colors.white : colors.gray_25}
-            />
-          </View>
+          <TouchableOpacity onPress={() => onPress(2)}>
+            <View
+              style={[
+                styles.circleStyle,
+                {
+                  backgroundColor:
+                    screenIndex === 2 ? colors.green : colors.gray_85,
+                },
+              ]}>
+              <Feather
+                name={'credit-card'}
+                size={20}
+                style={styles.iconStyle}
+                color={screenIndex === 2 ? colors.white : colors.gray_25}
+              />
+            </View>
+          </TouchableOpacity>
           <Text
             style={[
               styles.txtStyling,
-              {color: name === 'Payment' ? colors.black : colors.gray},
+              {color: screenIndex === 2 ? colors.black : colors.gray},
             ]}>
             Payment
           </Text>
@@ -91,7 +95,7 @@ const CheckoutTimeline = ({name, onPress}) => {
               styles.timelineProgressLeft,
               {
                 backgroundColor:
-                  name === 'Delivery' || name === 'Payment'
+                  screenIndex === 1 || screenIndex === 2
                     ? colors.green
                     : colors.gray_85,
               },
@@ -101,7 +105,7 @@ const CheckoutTimeline = ({name, onPress}) => {
               styles.timelineProgressLeft,
               {
                 backgroundColor:
-                  name === 'Payment' ? colors.green : colors.gray_85,
+                  screenIndex === 2 ? colors.green : colors.gray_85,
               },
             ]}></View>
         </View>

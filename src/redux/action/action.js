@@ -46,6 +46,12 @@ export const UpdateAddress = (ID, data) => ({
 });
 
 
+export const ComponentChangeByIndex = val => ({
+  type: ActionTypes.COMPONENT_CHANGE_BY_INDEX,
+  payload: val,
+});
+
+
 // CART -> CHECKOUT_SCREEN
 export const SelectedAddress = val => ({
   type: ActionTypes.SELECTED_ADDRESS,
@@ -69,6 +75,27 @@ export const PaymentMethod = val => ({
 
 export const CheckoutDetails = val => ({
   type: ActionTypes.CHECKOUT_DETAILS,
+  payload: val,
+});
+
+export const OrderedProducts = val => ({
+  type: ActionTypes.ORDERED_PRODUCTS,
+  payload: val,
+});
+
+export const OrderedProductsPrice = val => ({
+  type: ActionTypes.ORDERED_PRODUCTS_PRICE_DETAILS,
+  payload: val,
+});
+
+// add to Wishlist
+export const AddToWishlist = val => ({
+  type: ActionTypes.ADD_TO_WISHLIST,
+  payload: val,
+});
+
+export const RemoveToWishlist = val => ({
+  type: ActionTypes.REMOVE_TO_WISHLIST,
   payload: val,
 });
 

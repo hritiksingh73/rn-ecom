@@ -109,8 +109,12 @@ const AddAddresses = ({navigation, route}) => {
           />
 
           <View style={styles.btnStyl}>
-            <PrimaryButton name="Cancel" onPress={cancelEditing} />
-            <PrimaryButton name="Add" onPress={handleSubmit(AddDetails)} />
+            <View style={styles.btnMargin}>
+              <PrimaryButton name="Cancel" onPress={cancelEditing} customBtnContainerStyle={styles.customBtnContainerStyle} customBtnTextStyle={styles.customBtnTextStyle}/>
+            </View>
+            <View style={styles.btnMargin}>
+              <PrimaryButton name="Add" onPress={handleSubmit(AddDetails)} />
+            </View>
           </View>
         </View>
       </ScrollView>

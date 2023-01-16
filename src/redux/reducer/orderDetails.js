@@ -1,10 +1,13 @@
 import {ActionTypes} from '../constants/constants';
 
 const initialState = {
+  screenIndex: 0,
   selectedAddress: {},
   deliveryDate: {},
   deliveryTime: '',
   paymentMethod: '',
+  products: [],
+  billingDetails: {},
 
   orderDetails: [],
 };
@@ -14,38 +17,59 @@ export const orderDetails = (state = initialState, action) => {
 
   switch (type) {
     case ActionTypes.SELECTED_ADDRESS:
-      console.log('reducer -> selectedAddress -> ', payload);
+      // console.log('reducer -> selectedAddress -> ', payload);
       return {
         ...state,
         selectedAddress: payload,
       };
 
     case ActionTypes.DELIVERY_DATE:
-      console.log('reducer -> deliveryDate -> ', payload);
+      // console.log('reducer -> deliveryDate -> ', payload);
       return {
         ...state,
         deliveryDate: payload,
       };
 
     case ActionTypes.DELIVERY_TIME:
-      console.log('reducer -> deliveryTime -> ', payload);
+      // console.log('reducer -> deliveryTime -> ', payload);
       return {
         ...state,
         deliveryTime: payload,
       };
 
     case ActionTypes.PAYMENT_METHOD:
-      console.log('reducer -> paymentMethod -> ', payload);
+      // console.log('reducer -> paymentMethod -> ', payload);
       return {
         ...state,
         paymentMethod: payload,
       };
 
+    case ActionTypes.ORDERED_PRODUCTS:
+      // console.log('reducer -> products -> ', payload);
+      return {
+        ...state,
+        products: payload,
+      };
+
+    case ActionTypes.ORDERED_PRODUCTS_PRICE_DETAILS:
+      // console.log('reducer -> billingDetails -> ', payload);
+      return {
+        ...state,
+        billingDetails: payload,
+      };
+
     case ActionTypes.CHECKOUT_DETAILS:
-      console.log('reducer -> orderDetails -> ', payload);
+      // console.log('reducer -> orderDetails -> ', payload);
       return {
         ...state,
         orderDetails: [...state.orderDetails, payload],
+      };
+
+    case ActionTypes.COMPONENT_CHANGE_BY_INDEX:
+      console.log('reducer -> screenIndex -> ', payload);
+      return {
+        ...state,
+        screenIndex: payload,
       };
 
     default:
@@ -54,7 +78,6 @@ export const orderDetails = (state = initialState, action) => {
 };
 
 export default orderDetails;
-
 
 // orderDetails = [
 //   {

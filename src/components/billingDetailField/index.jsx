@@ -7,7 +7,7 @@ const BillingDetail = props => {
   return (
     <View style={styles.billingTxtBorder}>
       <Text style={styles.billDetailTxt}>{name}</Text>
-      <Text style={styles.pricingStyl}>₹{myFunction()}</Text>
+      <Text style={styles.pricingStyl}>${myFunction()}</Text>
     </View>
   );
 };

@@ -10,8 +10,7 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import globaStyle from '../../../../constants/globalStyle';
-import TrendingItems from '../../../../components/TrendingItems';
-import Vegetables from '../../../../data/localVegetablesapi/VegetablesApi';
+import ItemList from '../../../components/ItemList';
 
 const ItemSearch = ({navigation}) => {
   return (
@@ -49,7 +48,7 @@ const ItemSearch = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.navigate('Fruits')}>
             <Text style={styles.productHeading}>Recommended</Text>
           </TouchableOpacity>
-          <TrendingItems data={Vegetables} />
+        <ItemList data={productData} showHorizontal={true} />
         </View>
       </ScrollView>
     </SafeAreaView>

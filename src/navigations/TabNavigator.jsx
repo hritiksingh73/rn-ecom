@@ -26,7 +26,7 @@ const TabNavigator = () => {
         }}
       />
       <tabStack.Screen
-        name="Cartt"
+        name="Cart"
         component={CartNavigator}
         options={{
           headerShown: false,
@@ -36,7 +36,7 @@ const TabNavigator = () => {
         }}
       />
       <tabStack.Screen
-        name="MyAccount"
+        name="Account"
         component={AccountNavigator}
         options={{
           headerShown: false,

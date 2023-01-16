@@ -7,18 +7,21 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import ItemList from '../../../components/ItemList';
+import {useDispatch, useSelector} from 'react-redux';
+import { AddToWishlist } from '../../../redux/action/action';
 import Feather from 'react-native-vector-icons/Feather';
-import TrendingItems from '../../../components/TrendingItems';
-import globaStyle from '../../../constants/globalStyle';
-import styles from './styles';
 import strings from '../../../constants/strings';
+import globaStyle from '../../../constants/globalStyle';
 import colors from '../../../constants/colors';
+import styles from './styles';
 
 const ItemDetails = ({navigation, route}) => {
   const ItemID = route.params.Item;
+  const dispatch = useDispatch();
   const [itemDetail, setItemDetail] = useState([]);
   const productData = useSelector(state => state.user.productData);
+  const userWishlist = useSelector(state => state.user.userWishlist);
 
   const selectedItem = async () => {
     try {
@@ -34,6 +37,19 @@ const ItemDetails = ({navigation, route}) => {
   useEffect(() => {
     selectedItem();
   }, []);
+
+  const setToWishlist = itemDetail => {
+    for (let i = 0; i < userWishlist.length; i++) {
+      if (userWishlist[i].id === itemDetail.id) {
+        var isItemAvailable = true;
+      }
+    }
+    if (!isItemAvailable) {
+      dispatch(AddToWishlist(itemDetail));
+    } else {
+      alert('Already added to WishList');
+    }
+  };
 
   return (
     <SafeAreaView style={globaStyle.outerContainer}>
@@ -95,11 +111,13 @@ const ItemDetails = ({navigation, route}) => {
         <TouchableOpacity onPress={() => navigation.navigate('Fruits')}>
           <Text style={styles.productHeading}>Related Items</Text>
         </TouchableOpacity>
-        <TrendingItems data={productData} />
+        <ItemList data={productData} showHorizontal={true} />
 
         <View style={styles.bottomBtnBar}>
           <TouchableOpacity
-            style={[styles.bottomBtn, {backgroundColor: colors.black_10}]}>
+            style={[styles.bottomBtn, {backgroundColor: colors.black_10}]}
+            onPress={()=>setToWishlist(itemDetail)}
+            >
             <Text style={styles.btnTxtColor}>Add to Wishlist</Text>
           </TouchableOpacity>
           <TouchableOpacity

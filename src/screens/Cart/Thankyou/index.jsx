@@ -13,7 +13,7 @@ import images from '../../../config/images';
 import colors from '../../../constants/colors';
 import PrimaryButton from '../../../components/PrimaryButton';
 
-const Thankyou = () => {
+const Thankyou = ({navigation}) => {
   const orderDetails = useSelector(state => state.orderDetails.orderDetails);
 
   const orderDetailsByIndex = orderDetails[orderDetails.length - 1];
@@ -21,8 +21,14 @@ const Thankyou = () => {
   const time = `${orderDetailsByIndex.deliverySlot.month} ${orderDetailsByIndex.deliverySlot.date} ${orderDetailsByIndex.deliverySlot.day}`;
   const deliveryType = orderDetailsByIndex.paymentMethod;
   const address = `${orderDetailsByIndex.selectedAddress.apartment}, ${orderDetailsByIndex.selectedAddress.block}-block ${orderDetailsByIndex.selectedAddress.street} ${orderDetailsByIndex.selectedAddress.area} ${orderDetailsByIndex.selectedAddress.addressType}`;
+  const subTotal = orderDetailsByIndex.billingDetails.subTotal;
+  const tax = orderDetailsByIndex.billingDetails.tax;
+  const deliveryCharges = orderDetailsByIndex.billingDetails.deliveryCharges;
+  const totalAmoutn = orderDetailsByIndex.billingDetails.totalAmoutn;
 
-  console.log('All OrderDetails::::::: ', orderDetails);
+  const products = orderDetailsByIndex.products;
+
+  console.log('All OrderDetails::::::: ', orderDetails[0].products);
 
   const OrderDeatils = ({title, value}) => {
     return (
@@ -49,17 +55,29 @@ const Thankyou = () => {
         <OrderDeatils title="Order Placed on" value={time} />
         <OrderDeatils title="Delivery type" value={deliveryType} />
         <OrderDeatils title="Address" value={address} />
-        {/* <OrderDeatils title='Order ID' value={time}/>
-        <OrderDeatils title='Order Placed on' value={time}/>
-        <OrderDeatils title='Store name' value='12345678'/>
-        <OrderDeatils title='Subtotal' value='12345678'/>
-        <OrderDeatils title='Tax' value='12345678'/>
-        <OrderDeatils title='Delivery Charges' value='12345678'/>
-        <OrderDeatils title='Total Amount' value='12345678'/> */}
+        <OrderDeatils title="Subtotal" value={subTotal} />
+        <OrderDeatils title="Tax" value={tax} />
+        <OrderDeatils title="Delivery Charges" value={deliveryCharges} />
+        <OrderDeatils title="Total Amount" value={totalAmoutn} />
+        {/* <OrderDeatils title='Products' value={products}/> */}
+        {/* <OrderDeatils title='Order Placed on' value={time}/>
+        <OrderDeatils title='Store name' value='12345678'/> */}
 
-        <View style={{margin: 10}}>
-          <PrimaryButton name="Continue Shopping" />
-          <PrimaryButton name="OK" />
+        <View style={styles.buttonContainer}>
+          <View style={styles.btnMargin}>
+            <PrimaryButton
+              name="Continue Shopping"
+              onPress={() => navigation.navigate('Home')}
+              customBtnTextStyle={styles.customBtnTextStyle}
+              customBtnContainerStyle={styles.customBtnContainerStyle}
+            />
+          </View>
+          <View style={styles.btnMargin}>
+            <PrimaryButton
+              name="OK"
+              onPress={() => navigation.navigate('Home')}
+            />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -88,6 +106,24 @@ const styles = StyleSheet.create({
   },
   flexSeperator: {
     flex: 1,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    marginVertical: 40,
+    marginHorizontal: 10,
+    justifyContent: 'center',
+  },
+  btnMargin: {
+    margin: 5,
+  },
+  customBtnContainerStyle: {
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  customBtnTextStyle: {
+    color: colors.green,
+    paddingHorizontal: 14,
   },
 });
 

@@ -164,7 +164,9 @@ const Register = ({navigation}) => {
             }}
           />
 
+        <View style={styles.btnContainer}>
           <PrimaryButton name={'Register'} onPress={LoginHandler} />
+        </View>
 
           <Text style={styles.footer}>
             <Text>Already have an account?</Text>

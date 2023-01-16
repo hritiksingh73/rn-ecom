@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import PrimaryButton from '../../../components/PrimaryButton';
 import CheckoutTimeline from '../../../components/CheckoutTimeline';
@@ -6,67 +6,44 @@ import CheckoutSelectedAddress from '../CheckoutSelectedAddress';
 import CheckoutSelectDeliverySlot from '../CheckoutSelectDeliverySlot';
 import CheckoutPayment from '../CheckoutPayment';
 import {useDispatch, useSelector} from 'react-redux';
-import {CheckoutDetails} from '../../../redux/action/action';
+import {ComponentChangeByIndex} from '../../../redux/action/action';
 
 const CheckoutScreen = ({navigation}) => {
-  const [screenName, setScreenName] = useState('Address');  
-
   const dispatch = useDispatch();
-  const checkoutDetails = useSelector(
-    state => state.orderDetails.checkoutDetails,
-  );
+  const screenIndex = useSelector(state => state.orderDetails.screenIndex);
 
-  const SelectIcon = () => {
-    alert('Hello')
-  } 
+  const SelectIcon = val => {
+    dispatch(ComponentChangeByIndex(val));
+  };
 
-  const generateOrderID = () => {
-    // var orderID = 'orderId' + new Date().getTime();
-    // const details = {
-    //   orderID: orderID,
-    //   checkoutID: checkoutDetails.checkoutID,
-    //   time: checkoutDetails.item,
-    //   deliveryType: checkoutDetails.deliveryType,
-    // };
-    // dispatch(CheckoutDetails(details))
-  } 
-
-
-  
   return (
     <SafeAreaView>
       <ScrollView>
-        <CheckoutTimeline name={screenName} onPress={SelectIcon}/>
+        <CheckoutTimeline screenIndex={screenIndex} onPress={SelectIcon} />
 
-        {screenName === 'Address' ? (
+        {screenIndex === 0 ? (
           <CheckoutSelectedAddress />
-        ) : screenName === 'Delivery' ? (
+        ) : screenIndex === 1 ? (
           <CheckoutSelectDeliverySlot />
         ) : (
           <CheckoutPayment />
         )}
 
-        <View style={styles.buttonContainer}>
-          <PrimaryButton
-            name={
-              screenName === 'Address' || screenName === 'Delivery'
-                ? 'Save & Next'
-                : 'Place Order'
-            }
-            onPress={() => {
-              screenName === 'Address'
-                ? setScreenName('Delivery')
-                : screenName === 'Delivery'
-                ? setScreenName('Payment')
-                : setScreenName('Payment');
-                if(screenName === 'Payment'){
-                  generateOrderID();
+        {screenIndex === 2 ? (
+          <View style={styles.buttonContainer}>
+            <PrimaryButton
+              name={'Save & Next'}
+              onPress={() => {
+                if (screenIndex === 2) {
                   navigation.navigate('Thankyou');
-
+                  dispatch(ComponentChangeByIndex(0));
                 }
-            }}
-          />
-        </View>
+              }}
+            />
+          </View>
+        ) : (
+          <View></View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

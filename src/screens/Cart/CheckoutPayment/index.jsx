@@ -9,11 +9,15 @@ import {
 } from 'react-native';
 import PrimaryButton from '../../../components/PrimaryButton';
 import {useDispatch, useSelector} from 'react-redux';
-import {PaymentMethod, CheckoutDetails} from '../../../redux/action/action';
+import {
+  PaymentMethod,
+  CheckoutDetails,
+  ComponentChangeByIndex,
+} from '../../../redux/action/action';
 import {RadioButton} from 'react-native-paper';
 import colors from '../../../constants/colors';
 
-const Payment = () => {
+const Payment = ({navigation}) => {
   const {width} = useWindowDimensions();
   const dispatch = useDispatch();
   const selectedAddress = useSelector(
@@ -22,16 +26,17 @@ const Payment = () => {
   const deliveryDate = useSelector(state => state.orderDetails.deliveryDate);
   const deliveryTime = useSelector(state => state.orderDetails.deliveryTime);
   const paymentMethod = useSelector(state => state.orderDetails.paymentMethod);
+  const products = useSelector(state => state.orderDetails.products);
+  const billingDetails = useSelector(
+    state => state.orderDetails.billingDetails,
+  );
 
-  const [checked, setChecked] = useState('first');
-
-  const deliveryTypeHandler = val => {
-    dispatch(PaymentMethod(val));
-  };
+  // const [checked, setChecked] = useState('first');
+  const [isItemSelected, setIsItemSelected] = useState(0);
 
   const SubmitDetails = () => {
-    var orderID = 'orderID' + new Date().getTime();
-
+    var orderID = 'OID' + new Date().getTime();
+    // console.log('setdata: ', products)
     const orderDetails = {
       orderID: orderID,
       selectedAddress: selectedAddress,
@@ -42,6 +47,8 @@ const Payment = () => {
         month: deliveryDate.month,
       },
       paymentMethod: paymentMethod,
+      billingDetails: billingDetails,
+      products: products,
     };
     dispatch(CheckoutDetails(orderDetails));
   };
@@ -49,6 +56,7 @@ const Payment = () => {
   return (
     <SafeAreaView>
       <Text style={styles.heading}>Choose Payment Option</Text>
+
       {/* <RadioButton
         value="first"
         color={colors.green}
@@ -62,33 +70,71 @@ const Payment = () => {
         onPress={() => setChecked('second')}
       /> */}
 
-      <View style={styles.container}>
-        <View style={styles.radioBtnContainer}></View>
-        <View style={[styles.titleContainer, {width: width - 120}]}>
-          <TouchableOpacity onPress={() => deliveryTypeHandler('Via Cart')}>
+      <TouchableOpacity
+        onPress={() => {
+          setIsItemSelected(1);
+          dispatch(PaymentMethod('Via Cart'));
+        }}>
+        <View
+          style={[
+            styles.container,
+            isItemSelected === 1
+              ? styles.selectedBorderColor
+              : styles.container,
+          ]}>
+          <View style={styles.radioBtnContainer}></View>
+          <View style={[styles.titleContainer, {width: width - 120}]}>
             <Text style={styles.title}>Via Cart</Text>
-          </TouchableOpacity>
+          </View>
         </View>
-      </View>
-      <View style={styles.container}>
-        <View style={styles.radioBtnContainer}></View>
-        <View style={[styles.titleContainer, {width: width - 120}]}>
-          <TouchableOpacity
-            onPress={() => deliveryTypeHandler('Via UPI Option')}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setIsItemSelected(2);
+          dispatch(PaymentMethod('Via UPI Option'));
+        }}>
+        <View
+          style={[
+            styles.container,
+            isItemSelected === 2
+              ? styles.selectedBorderColor
+              : styles.container,
+          ]}>
+          <View style={styles.radioBtnContainer}></View>
+          <View style={[styles.titleContainer, {width: width - 120}]}>
             <Text style={styles.title}>Via UPI Option</Text>
-          </TouchableOpacity>
+          </View>
         </View>
-      </View>
-      <View style={styles.container}>
-        <View style={styles.radioBtnContainer}></View>
-        <View style={[styles.titleContainer, {width: width - 120}]}>
-          <TouchableOpacity
-            onPress={() => deliveryTypeHandler('Cash On Delivery')}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setIsItemSelected(3);
+          dispatch(PaymentMethod('Cash On Delivery'));
+        }}>
+        <View
+          style={[
+            styles.container,
+            isItemSelected === 3
+              ? styles.selectedBorderColor
+              : styles.container,
+          ]}>
+          <View style={styles.radioBtnContainer}></View>
+          <View style={[styles.titleContainer, {width: width - 120}]}>
             <Text style={styles.title}>Cash On Delivery</Text>
-          </TouchableOpacity>
+          </View>
         </View>
+      </TouchableOpacity>
+
+      <View style={styles.buttonContainer}>
+        <PrimaryButton
+          name={'Place Order'}
+          onPress={() => {
+            SubmitDetails();
+            // dispatch(ComponentChangeByIndex(0))
+            // navigation.navigate('Thankyou')
+          }}
+        />
       </View>
-      <PrimaryButton name="testing" onPress={SubmitDetails} />
     </SafeAreaView>
   );
 };
@@ -108,6 +154,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 3,
   },
+  selectedBorderColor: {
+    borderWidth: 2,
+    borderRadius: 3,
+    borderColor: colors.green,
+  },
   radioBtnContainer: {
     width: 30,
     height: 30,
@@ -121,6 +172,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 15,
     fontWeight: '500',
+  },
+  buttonContainer: {
+    margin: 20,
   },
 });
 

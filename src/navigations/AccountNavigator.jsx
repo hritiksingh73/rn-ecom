@@ -6,6 +6,7 @@ import MyProfile from '../screens/Account/MyProfile';
 import EditProfile from '../screens/Account/EditProfile';
 import ManageAddresses from '../screens/Account/ManageAddresses';
 import OrderHistory from '../screens/Account/OrderHistory';
+import OrderHistoryDetails from '../screens/Account/OrderHistoryDetails';
 import MyWishlist from '../screens/Account/MyWishlist';
 import AddAddresses from '../screens/Account/AddAddresses';
 
@@ -74,6 +75,14 @@ const TabAccountNavigator = () => {
           headerBackTitleVisible: false,
         }}
       />
+      <MyAccount.Screen
+        name="OrderHistoryDetails"
+        component={OrderHistoryDetails}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+        }}
+      />
     </MyAccount.Navigator>
   );
 };
@@ -101,5 +110,29 @@ const ManageAddressNavigator = () => {
     </Address.Navigator>
   );
 };
+
+// const OrderHistoryStack = () => {
+//   const Orders = createNativeStackNavigator();
+//   return (
+//     <Orders.Navigator>
+//       <Orders.Screen
+//         name="Order History"
+//         component={OrderHistory}
+//         options={{
+//           headerShown: true,
+//           headerBackTitleVisible: false,
+//         }}
+//       />
+//       <Orders.Screen
+//         name="Order Detail"
+//         component={OrderHistoryDetails}
+//         options={{
+//           headerShown: true,
+//           headerBackTitleVisible: false,
+//         }}
+//       />
+//     </Orders.Navigator>
+//   );
+// };
 
 export default TabAccountNavigator;
