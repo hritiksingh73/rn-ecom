@@ -33,7 +33,11 @@ const AccountScreen = () => {
         Text="Manage Addresses"
         onPress={() => navigation.navigate('ManageAddressScreen')}
       />
-      <MyAccountComponent name="gift" Text="Order History" />
+      <MyAccountComponent
+        name="gift"
+        Text="Order History"
+        onPress={() => navigation.navigate('OrderHistoryScreen')}
+      />
       <MyAccountComponent
         name="hearto"
         Text="My Wishlist"

@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { Color } from '../../../constant/Color';
-
+import {Color} from '../../../constant/Color';
 
 const styles = StyleSheet.create({
   parent: {
@@ -21,6 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 28,
     paddingLeft: 150,
+    color: Color.black,
   },
   headerNavigation: {
     paddingLeft: 20,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#161e1b',
     padding: 10,
     flexDirection: 'row',
-    position:'relative'
+    position: 'relative',
   },
   footerBar: {
     color: 'green',

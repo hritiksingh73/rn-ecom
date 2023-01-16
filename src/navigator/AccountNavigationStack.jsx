@@ -6,6 +6,7 @@ import ManageAddressScreen from '../screens/AccountScreen/ManageAddressScreen/Ma
 import EditAddressScreen from '../screens/AccountScreen/EditAddressScreen/EditAddressScreen';
 import AccountScreen from '../screens/AccountScreen/AccountScreen/AccountScreen';
 import AddAddressScreen from '../screens/AccountScreen/AddAddressScreen/AddAddressScreen';
+import OrderHistoryScreen from '../screens/AccountScreen/OrderHistoryScreen/OrderHistoryScreen';
 
 const stack = createNativeStackNavigator();
 const AccountNavigationStack = () => {
@@ -36,6 +37,13 @@ const AccountNavigationStack = () => {
       <stack.Screen
         name="EditAddressScreen"
         component={EditAddressScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <stack.Screen
+        name="OrderHistoryScreen"
+        component={OrderHistoryScreen}
         options={{
           headerShown: false,
         }}

@@ -21,7 +21,7 @@ const ManageAddressScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const address = useSelector(state => state.userInfo.userAddressList);
-  console.log(address);
+  //console.log(address);
   const addressData = ({item}) => {
     return (
       <View style={styles.parentContainer}>

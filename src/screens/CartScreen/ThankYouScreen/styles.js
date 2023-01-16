@@ -37,13 +37,19 @@ const styles = StyleSheet.create({
     textAlign:'center'
   },
   orderid:{
-    marginTop: 20,
+    // marginTop: 20,
+    // flexDirection: 'row',
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: Color.darkGrey,
+    padding: 10,
+    margin: 10,
   },
   orderDetail: {
     margin: 15,
     fontSize: 16,
-    marginRight: '10%',
+    marginRight: '10%'
   },
   finalOrderText:{
     // fontSize:15,
@@ -52,6 +58,34 @@ const styles = StyleSheet.create({
     margin: 15,
     fontSize: 16,
     marginRight: '10%',
+  },
+  finalFetchOrderText:{
+    color:Color.black,
+    margin: 15,
+    fontSize: 16,
+    marginRight: '10%',
+    justifyContent:'space-between'
+  },
+  footerButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: '10%',
+  },
+  continueShoppingButton:{
+    width: 120,
+    height: 40,
+    paddingTop: 10,
+    marginRight:30,
+    textAlign: 'center',
+    color: Color.green,
+  },
+  okButton:{
+    width: 80,
+    height: 40,
+    paddingTop: 10,
+    textAlign: 'center',
+    backgroundColor: Color.green,
+    color: Color.white,
   }
 });
 export default styles;

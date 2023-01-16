@@ -70,11 +70,20 @@ export const selectDeliveryTime = time => ({
   type: ActionType.SELECTED_DELIVERY_TIME,
   payload: time,
 });
-export const orderId = (id,paymentmethod)=> ({
+export const orderId = (id, paymentmethod) => ({
   type: ActionType.ORDER_ID,
-  payload: {id,paymentmethod}
+  payload: {id, paymentmethod},
 });
-export const productBillingDetails = (subTotal,tax,deliveryCharges)=> ({
-  type: ActionType.ORDER_ID,
-  payload: {subTotal,tax,deliveryCharges}
+export const productBillingDetails = (
+  CalculateDeliveryCharges,
+  CalculateTax,
+  CalculateSubTotal,
+) => ({
+  type: ActionType.PRODUCT_BILLING_DETAILS,
+  payload: {CalculateDeliveryCharges, CalculateTax, CalculateSubTotal},
+});
+
+export const orderHistory = order => ({
+  type: ActionType.PRODUCT_ORDER_HISTORY,
+  payload: order,
 });

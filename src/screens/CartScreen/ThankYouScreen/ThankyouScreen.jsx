@@ -1,14 +1,23 @@
-import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import ImagePath from '../../../config/Image';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
+import { orderHistory } from '../../../redux/action/Action';
 const ThankyouScreen = () => {
   const navigation = useNavigation();
-  const cartDeliveryDate = useSelector(state => state.OrderInfo.orders);
-  console.log('cartDeliveryDate------->>>>>>>>', cartDeliveryDate);
+  dispatch = useDispatch();
+  const cartDeliveryData = useSelector(state => state.OrderInfo.orders);
+  //console.log('cartDeliveryData------->>>>>>>>', cartDeliveryData);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -24,30 +33,62 @@ const ThankyouScreen = () => {
       <Text style={styles.orderConformationSubHeading}>
         Your Order has been placed.
       </Text>
+      <ScrollView>
+        <View style={styles.orderid}>
+          <Text style={styles.finalOrderText}>Order Id</Text>
+          <Text style={styles.finalFetchOrderText}>
+            {cartDeliveryData.orderID.id}
+          </Text>
+        </View>
+        <View style={styles.orderid}>
+          <Text style={styles.finalOrderText}>Payment Type</Text>
+          <Text style={styles.finalFetchOrderText}>
+            {cartDeliveryData.orderID.paymentmethod}
+          </Text>
+        </View>
 
-      <View style={styles.orderid}>
-        <Text style={styles.finalOrderText}>Order Id</Text>
-        <Text style={styles.finalOrderText}>{cartDeliveryDate.orderID.id}</Text>
-      </View>
-      <View style={styles.orderid}>
-        <Text style={styles.finalOrderText}>Payment Type</Text>
-        <Text style={styles.finalOrderText}>
-          {cartDeliveryDate.orderID.paymentmethod}
-        </Text>
-      </View>
+        <View style={styles.orderid}>
+          <Text style={styles.finalOrderText}>Order Placed on</Text>
+          <Text style={styles.finalFetchOrderText}>
+            {cartDeliveryData.deliveryDateSlot.month}
+            {cartDeliveryData.deliveryDateSlot.date}
+          </Text>
+        </View>
 
-      <View style={styles.orderid}>
-        <Text style={styles.finalOrderText}>Order Placed on</Text>
-        <Text style={styles.finalOrderText}>
-          {cartDeliveryDate.deliveryDateSlot.month}{' '}
-          {cartDeliveryDate.deliveryDateSlot.date}
-        </Text>
-      </View>
+        <View style={styles.orderid}>
+          <Text style={styles.finalOrderText}>Store Name</Text>
+          <Text style={styles.finalFetchOrderText}>Super Fresh Hampden</Text>
+        </View>
 
-      <View style={styles.orderid}>
-        <Text style={styles.finalOrderText}>Store Name</Text>
-        <Text style={styles.finalOrderText}>Super Fresh Hampden</Text>
-      </View>
+        <View style={styles.orderid}>
+          <Text style={styles.finalOrderText}>SubTotal</Text>
+          <Text style={styles.finalFetchOrderText}>
+            {
+              cartDeliveryData.orderDetails.CalculateDeliveryCharges
+                .CalculateSubTotal
+            }
+          </Text>
+        </View>
+        <View style={styles.orderid}>
+          <Text style={styles.finalOrderText}>Tax</Text>
+          <Text style={styles.finalFetchOrderText}>
+            {
+              cartDeliveryData.orderDetails.CalculateDeliveryCharges
+                .CalculateTax
+            }
+          </Text>
+        </View>
+
+        <View style={styles.footerButton}>
+          <TouchableOpacity onPress={()=>navigation.navigate("SuperFreshScreen")}>
+            <Text style={styles.continueShoppingButton}>Continue Shopping</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={()=>dispatch(orderHistory(cartDeliveryData))}>
+            <Text style={styles.okButton}>ok</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

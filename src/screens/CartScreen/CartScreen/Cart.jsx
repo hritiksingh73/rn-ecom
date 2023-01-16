@@ -21,6 +21,7 @@ import {
   decreaseItemQuantity,
   removeItemFromCart,
   productBillingDetails,
+  
 } from '../../../redux/action/Action';
 import CartBillingData from '../../../component/CartBillingData/CartBillingData';
 
@@ -37,8 +38,8 @@ const CartScreen = () => {
     }
   };
 
-  const checkOutHandler=()=>{
-    // dispatch(productBillingDetails(CalculateDeliveryCharges,CalculateTax,CalculateSubTotal))
+  const checkOutHandler=(item)=>{
+    dispatch(productBillingDetails(item))
     navigation.navigate("StepIndicatorProgressBar")
   }
 
@@ -150,7 +151,7 @@ const CartScreen = () => {
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>
           <View style={styles.checkOut}>
-            <TouchableOpacity onPress={()=>checkOutHandler()}>
+            <TouchableOpacity onPress={()=>checkOutHandler({CalculateDeliveryCharges,CalculateTax,CalculateSubTotal})}>
               <Text style={styles.checkoutButton}>Checkout</Text>
             </TouchableOpacity>
           </View>
