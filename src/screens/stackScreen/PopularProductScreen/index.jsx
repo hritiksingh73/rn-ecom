@@ -21,7 +21,7 @@ import styles from './styles.js';
 
 import color from '../../../constant/color.js';
 import GroceryProduct from '../../../data/GroceryProduct.js';
-import ImageData from '../../../components/ImageData';
+import FruitsData from '../../../components/FruitsData';
 
 const PopularProductScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -55,7 +55,7 @@ const PopularProductScreen = ({navigation}) => {
           </View>
         </View>
       </View>
-      <ImageData />
+      <FruitsData />
     </SafeAreaView>
   );
 };

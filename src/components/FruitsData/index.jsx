@@ -10,18 +10,18 @@ import {
 import {addToCart} from '../../redux/action/Action.js';
 import {useDispatch, useSelector} from 'react-redux';
 import styles from './styles.js';
-import {getInitialData} from '../../redux/thunk/productThunk.js';
+//import {getInitialData} from '../../redux/thunk/productThunk.js';
 import {useNavigation} from '@react-navigation/native';
 
-const ImageData = ({navigation}) => {
+const FruitsData = ({navigation}) => {
   const dispatch = useDispatch();
   const dataItem = useSelector(state => state.cartData.productData);
   const {goBack} = useNavigation();
   const {navigate} = useNavigation();
 
-  useEffect(() => {
-    dispatch(getInitialData());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getInitialData());
+  // }, []);
 
   const productData = ({item}) => {
     return (
@@ -55,4 +55,4 @@ const ImageData = ({navigation}) => {
   );
 };
 
-export default ImageData;
+export default FruitsData;

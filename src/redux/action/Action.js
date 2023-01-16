@@ -1,4 +1,5 @@
 import {ActionType} from './ActionType';
+import axios from 'axios';
 
 export const userFullInfo = user => ({
   type: ActionType.USER_DETAILS,
@@ -30,17 +31,82 @@ export const userCreate = id => ({
   payload: id,
 });
 
+export const getInitialData = data => {
+  return dispatch => {
+    try {
+      const response = fetch(
+        'https://grocery-backend-in.vercel.app/products/popular',
+      )
+        .then(result => result.json())
+        .then(response =>
+          dispatch({type: ActionType.GET_PRODUCTS, payload: response}),
+        );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const addAddress = user => ({
-  type: ActionType.ADD_USER,
+  type: ActionType.ADD_ADDRESS,
   payload: user,
 });
 
 export const editAddress = user => ({
-  type: ActionType.EDIT_USER,
+  type: ActionType.UPDATE_ADDRESS,
   payload: user,
 });
 
-export const deleteUser = user => ({
-  type: ActionType.DELETE_USER,
+export const deleteAddress = user => ({
+  type: ActionType.DELETE_ADDRESS,
   payload: user,
+});
+
+export const selectAddress = address => ({
+  type: ActionType.SELECT_ADDRESS,
+  payload: address,
+});
+
+export const setSelectedAddress = data => ({
+  type: ActionType.SET_SELECTED_ADDRESS,
+  payload: data,
+});
+
+export const deliveryDate = date => ({
+  type: ActionType.DELIVERY_DATE,
+  payload: date,
+});
+
+export const deliveryTime = time => ({
+  type: ActionType.DELIVERY_TIME,
+  payload: time,
+});
+export const deliverySlot = time => ({
+  type: ActionType.DELIVERY_SLOT,
+  payload: time,
+});
+
+export const payment = payment => ({
+  type: ActionType.PAYMENT,
+  payload: payment,
+});
+
+export const orderId = (id, payment) => ({
+  type: ActionType.ORDER_ID,
+  payload: {id, payment},
+});
+
+export const orderHistory = details => ({
+  type: ActionType.ORDER_HISTORY,
+  payload: details,
+});
+
+export const orderProduct = product => ({
+  type: ActionType.ORDER_PRODUCT,
+  payload: product,
+});
+
+export const productBillingDetails = details => ({
+  type: ActionType.PRODUCT_BILLING_DETAILS,
+  payload: details,
 });

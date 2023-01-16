@@ -12,18 +12,15 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: '500',
   },
-
-  textStyle: {
+   textStyle: {
     fontSize: 15,
     marginLeft: 10,
     margin:4
   },
-
   itemDivider: {
     borderWidth: 1,
     borderColor: 'lightgrey',
   },
-
   itemContainer: {
     margin: '4%',
     //marginLeft: 10,
@@ -32,7 +29,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'grey',
     marginLeft: 10,
-   
   },
 });
 

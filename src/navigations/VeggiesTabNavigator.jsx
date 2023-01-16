@@ -2,22 +2,25 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useSelector} from 'react-redux';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
-import CartScreen from '../screens/tabScreen/CartScreen/index';
+import CartScreen from '../screens/tabScreen/CartScreen/CartScreen/index';
 import SearchScreen from '../screens/tabScreen/SearchScreen/index';
 import AccountScreen from '../screens/tabScreen/AccountScreen/index';
 import VeggiesStackNavigator from '../navigations/VeggiesStackNavigator';
 import color from '../constant/color.js';
+import StackCartNavigator from '../navigations/StackCartNavigator'
 
 const Tab = createBottomTabNavigator();
 
 const VeggiesTabNavigator = () => {
   const cartItem = useSelector(state => state.cartData.cartProducts);
   return (
-    <Tab.Navigator screenOptions={{
-      tabBarInactiveTintColor: color.black,
-      tabBarActiveTintColor: color.primary,
-    }}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarInactiveTintColor: color.black,
+        tabBarActiveTintColor: color.primary,
+      }}>
       <Tab.Screen
         name="Home"
         component={VeggiesStackNavigator}
@@ -36,7 +39,7 @@ const VeggiesTabNavigator = () => {
       />
       <Tab.Screen
         name="Cart"
-        component={CartScreen}
+        component={StackCartNavigator}
         options={{
           headerShown: false,
           tabBarBadge: cartItem.length,

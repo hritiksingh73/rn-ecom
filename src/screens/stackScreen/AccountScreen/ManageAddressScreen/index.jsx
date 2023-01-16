@@ -12,9 +12,8 @@ import styles from './styles.js';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
-import strings from '../../../constant/strings.js';
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteUser, editUser} from '../../../redux/action/Action.js';
+import {deleteAddress} from '../../../../redux/action/Action.js';
 
 const ManageAddressScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -22,11 +21,9 @@ const ManageAddressScreen = ({navigation}) => {
   //console.log("Add Data------->>>>>",add);
   const {goBack} = useNavigation();
 
-  
-
   const dataReceive = ({item}) => {
     return (
-      <View style={styles.dataStyle}>
+      <View style={styles.addressStyle}>
         <Text style={styles.textStyle}>
           {item.firstname} {item.lastname}
         </Text>
@@ -35,10 +32,13 @@ const ManageAddressScreen = ({navigation}) => {
           {item.house}, {item.block}
         </Text>
         <View style={styles.iconStyle}>
-          <TouchableOpacity onPress={() => navigation.navigate('Edit Address' , (product = item.id))}> 
-          <Feather name="edit" size={20} style={styles.editStyle} />
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Edit Address', (product = item.id))
+            }>
+            <Feather name="edit" size={20} style={styles.editStyle} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => dispatch(deleteUser(item))}>
+          <TouchableOpacity onPress={() => dispatch(deleteAddress(item))}>
             <AntDesign name="delete" size={20} style={styles.deleteStyle} />
           </TouchableOpacity>
         </View>
@@ -47,7 +47,7 @@ const ManageAddressScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.mainContainer}>
       <ScrollView>
         <View style={styles.container}>
           <AntDesign name="left" size={20} onPress={() => goBack()} />

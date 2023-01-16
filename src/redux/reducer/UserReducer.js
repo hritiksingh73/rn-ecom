@@ -10,19 +10,7 @@ const initialState = {
     userID: '',
   },
   userAddress: [],
-  // userAddress: [
-  //   {
-  //     id: 0,
-  //     firstname: 'Moosa',
-  //     lastname: 'Abdul Rehman',
-  //     house: '2nd Floor',
-  //     area: 'Building',
-  //     address: 'WayNo 3109',
-  //     block: 'Building No 475',
-  //     street: 'Muskat',
-  //     mobileno: '9012121212',
-  //   }
-  // ]
+  selectAddress: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -42,12 +30,12 @@ const userReducer = (state = initialState, action) => {
         userID: payload,
       };
 
-    case ActionType.ADD_USER:
+    case ActionType.ADD_ADDRESS:
       //console.log(action.payload);
 
       return {...state, userAddress: [...state.userAddress, action.payload]};
 
-    case ActionType.EDIT_USER:
+    case ActionType.UPDATE_ADDRESS:
       //console.log(action.payload);
       const addressUpdated = state.userAddress.findIndex(
         item => item.id === action.payload.id,
@@ -60,10 +48,17 @@ const userReducer = (state = initialState, action) => {
         userAddress: currentAddress,
       };
 
-    case ActionType.DELETE_USER:
+    case ActionType.DELETE_ADDRESS:
       return {
         ...state,
         userAddress: state.userAddress.filter(item => item !== payload),
+      };
+
+    case ActionType.SELECT_ADDRESS:
+      //console.log(action.payload)
+      return {
+        ...state,
+        selectAddress: [...state.selectAddress, action.payload],
       };
 
     default:

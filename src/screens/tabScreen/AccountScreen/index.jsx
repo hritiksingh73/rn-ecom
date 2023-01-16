@@ -23,7 +23,7 @@ const AccountScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainHeading}>
-        <Icon name="menu" size={25} />
+        <Icon name="menu" size={25} style={styles.menuStyle}/>
         <Text style={styles.text}>My Account</Text>
         <Icon name="bell-badge-outline" size={25} />
       </View>
@@ -33,7 +33,8 @@ const AccountScreen = ({navigation}) => {
         text="Manage Addresses"
         onPress={() => navigation.navigate('Manage Address')}
       />
-      <AccountInfo name="gift" text="OrderHistory" />
+      <AccountInfo name="gift" text="OrderHistory"
+      onPress={() => navigation.navigate('Order History')} />
       <AccountInfo
         name="hearto"
         text="My Wishlist"

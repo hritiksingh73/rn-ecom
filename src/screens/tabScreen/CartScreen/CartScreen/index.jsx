@@ -8,24 +8,30 @@ import {
   TextInput,
   Image,
   Modal,
+  ScrollView,
   FlatList,
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
-import {ScrollView} from 'react-native-virtualized-view';
+
 import firestore from '@react-native-firebase/firestore';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
-import {removeToCart} from '../../../redux/action/Action.js';
-import GroceryProduct from '../../../data/GroceryProduct.js';
-import {increaseToCart, decreaseToCart} from '../../../redux/action/Action.js';
+import {removeToCart} from '../../../../redux/action/Action.js';
+import GroceryProduct from '../../../../data/GroceryProduct.js';
+import {
+  increaseToCart,
+  decreaseToCart,
+  orderProduct,
+  productBillingDetails,
+} from '../../../../redux/action/Action.js';
 import styles from './styles.js';
-import image from '../../../config/Image.js';
-import BillInfo from '../../../components/BillInfo';
-import LoginButton from '../../../components/LoginButton';
+import image from '../../../../config/Image.js';
+import BillInfo from '../../../../components/BillInfo';
+import LoginButton from '../../../../components/LoginButton';
 
 const Cart = ({navigation}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -42,10 +48,11 @@ const Cart = ({navigation}) => {
   };
 
   const closeModal = () => {
-    setIsModalVisible(false), navigation.navigate('Super Fresh');
+    setIsModalVisible(false), navigation.navigate('Select Address');
   };
   const openModal = () => {
-    setIsModalVisible(true);
+    //setIsModalVisible(true)
+    navigation.navigate('Select Address');
   };
 
   const CalculateUserTotalPrice = () => {
@@ -79,7 +86,7 @@ const Cart = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView nestedScrollEnabled={true}>
+      <ScrollView>
         <View style={styles.mainMargin}>
           <View style={styles.leftIconStyle}>
             <AntDesign name="left" size={20} onPress={() => goBack()} />
@@ -176,20 +183,21 @@ const Cart = ({navigation}) => {
           <Text style={styles.saveText}>You save $ 5 on this</Text>
         </View>
         <View style={styles.checkoutButton}>
-          <LoginButton name="Checkout" onPress={openModal} />
+          <LoginButton
+            name="Checkout"
+            onPress={() => {
+              const billingDetails = {
+                subTotal: CalculateUserTotalPrice(),
+                tax: CalculateTax(),
+                deliveryCharges: CalculateDeliveryRate(),
+                totalAmount: CalculateSubTotal(),
+              };
+              dispatch(orderProduct(cart));
+              dispatch(productBillingDetails(billingDetails));
+              navigation.navigate('Select Address');
+            }}
+          />
         </View>
-        <Modal animationType="fade" visible={isModalVisible} transparent={true}>
-          <View style={styles.modalContainer}>
-            <View style={styles.modalStyle}>
-              <Text style={styles.modalMessage}>
-                Your Order has been placed Successfully
-              </Text>
-              <TouchableOpacity onPress={closeModal} style={styles.modalBtn}>
-                <Text style={styles.modalBtnStyle}>OK</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal>
       </View>
     </SafeAreaView>
   );

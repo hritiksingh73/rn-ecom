@@ -117,7 +117,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
         <View style={styles.relatedStyle}>
           <Text style={styles.headingStyle}>Related Items</Text>
           <FlatList
-            data={item}
+            data={productData}
             renderItem={popularProducts}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -131,7 +131,10 @@ const ProductDetailsScreen = ({navigation, route}) => {
           <Text style={styles.btnText}>Add to Wishlist</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.bottomBtn, {backgroundColor: 'green'}]}>
+          style={[styles.bottomBtn, {backgroundColor: 'green'}]}
+          onPress={() => {
+            dispatch(addToCart(item));
+          }}>
           <Text style={styles.btnText}>Add to Cart</Text>
         </TouchableOpacity>
       </View>

@@ -1,20 +1,20 @@
 import {StyleSheet} from 'react-native';
-import color from '../../constant/color';
 
 const styles = StyleSheet.create({
-  accountMain: {
+  container: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  orderStyle: {
     borderBottomWidth: 1,
     borderBottomColor: 'lightgrey',
     alignItems: 'center',
     flexDirection: 'row',
-    padding: 15,
+    padding: 18,
   },
-  iconStyle: {
-    margin: 8,
-  },
-  text: {
-    fontSize: 15,
+  orderTextStyle: {
+    flex: 1,
   },
 });
-
 export default styles;

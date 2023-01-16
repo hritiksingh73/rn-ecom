@@ -27,6 +27,8 @@ const image = {
   image5: require('../assets/image5.jpeg'),
   image6: require('../assets/image6.jpeg'),
   image7: require('../assets/image7.jpeg'),
+
+  hands: require('../assets/handshaking.jpeg')
 };
 
 export default image;

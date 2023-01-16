@@ -10,9 +10,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 30,
   },
+  menuStyle:{
+    marginLeft:10
+  },
   text: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '500',
     paddingBottom: 15,
   },
   accountContainer: {

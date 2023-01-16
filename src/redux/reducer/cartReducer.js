@@ -49,6 +49,8 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartProducts: decreaseItem,
       };
+    case ActionType.GET_PRODUCTS:
+      return {...state, productData: payload};
 
     case ActionType.SET_INIT_DATA:
       return {...state, productData: action.payload};

@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   TextInput,
   Button,
   SafeAreaView,
+  ScrollView,
   FlatList,
   TouchableOpacity,
 } from 'react-native';
@@ -12,44 +13,45 @@ import styles from './styles.js';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import AccountInfo from '../../../components/AccountInfo';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {editAddress} from '../../../redux/action/Action.js';
-import {useForm, Controller} from 'react-hook-form';
-import AddressInput from '../../../components/AddressInput';
-import guidGenerator from '../../../utils/guidGenerator';
+import {useForm} from 'react-hook-form';
+import {useNavigation} from '@react-navigation/native';
 
-const EditAddressScreen = ({route}) => {
-  const address = useSelector(state => state.userData.userAddress);
-  console.log(address);
-  //const addressId = useRoute().params.id;
-  const addressId = route.params;
-  //   console.log(addressId)
-  const currentAddress = address.filter(item => item.id === addressId);
+import {addAddress} from '../../../../redux/action/Action.js';
+import AddressInput from '../../../../components/AddressInput';
+import guidGenerator from '../../../../utils/guidGenerator';
 
-  const defaultFieldValue = {...currentAddress[0]};
+const AddAddressScreen = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const {goBack} = useNavigation();
   const {control, handleSubmit} = useForm({
     mode: 'onBlur',
-    defaultValues: defaultFieldValue,
+    defaultValues: {
+      //firstname: '',
+      // lastname: '',
+      // mobileno: '',
+      // area: '',
+      // address: '',
+      // street: '',
+      // house: '',
+      // block: '',
+      id: guidGenerator(),
+    },
   });
 
-  const navigation = useNavigation();
-
   const submitHandler = data => {
-    //console.log('---------->>>>>>>>>', data);
-    dispatch(editAddress(data));
-
-    navigation.navigate('Manage Address');
+    console.log('---------->>>>>>>>>', data);
+    dispatch(addAddress(data));
     // navigation.goBack('');
+    navigation.navigate('Manage Address');
   };
 
   return (
     <SafeAreaView style={styles.mainContainer}>
+      <ScrollView>
       <View style={styles.container}>
         <AntDesign name="left" size={25} onPress={() => goBack()} />
-        <Text style={styles.headingText}>Edit Address</Text>
+        <Text style={styles.headingText}>Add Address</Text>
       </View>
 
       <View style={styles.inputStyle}>
@@ -93,14 +95,15 @@ const EditAddressScreen = ({route}) => {
         </View>
         <View style={styles.buttonText}>
           <Button
-            title="Save Edit"
+            title="Add"
             color="white"
             onPress={handleSubmit(submitHandler)}
           />
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default EditAddressScreen;
+export default AddAddressScreen;

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import color from '../../../constant/color';
+import color from '../../../../constant/color';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   headingText: {
-    marginLeft: 160,
+    marginLeft: 120,
     fontSize: 20,
     margin: 10,
     fontWeight: '500',
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
   inputStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-
     width: '80%',
   },
   btnStyle: {

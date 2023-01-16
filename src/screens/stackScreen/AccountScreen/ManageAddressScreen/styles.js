@@ -1,25 +1,32 @@
 import {StyleSheet} from 'react-native';
-import color from '../../../constant/color';
+import color from '../../../../constant/color';
 
 const styles = StyleSheet.create({
+  mainContainer:{
+    flex:1,
+    backgroundColor:color.white
+  },
   container: {
     alignItems: 'center',
     flexDirection: 'row',
     marginLeft: 10,
   },
   headingText: {
-    marginLeft: 140,
+    marginLeft: 100,
     fontSize: 20,
     margin: 10,
     fontWeight: '500',
   },
   btnStyle: {
     backgroundColor: color.primary,
-    width: '50%',
+    width: '45%',
     marginLeft: 100,
     margin: 10,
+    height:45,
+    alignItems:'center',
+    padding:3
   },
-  dataStyle: {
+  addressStyle: {
     borderWidth: 1,
     borderColor: 'grey',
     marginLeft: 20,
@@ -41,14 +48,14 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     flexDirection: 'row',
-    marginLeft: 320,
+    marginLeft: 300,
     color: 'grey',
-
     bottom: 40,
   },
   editStyle: {
     color: 'grey',
-    marginRight: 20,
+    marginRight: 5,
+
   },
   deleteStyle: {
     color: 'grey',

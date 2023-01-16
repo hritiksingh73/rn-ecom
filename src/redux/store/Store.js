@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import userReducer from '../reducer/userReducer';
 import cartReducer from '../reducer/cartReducer';
+import orderReducer from '../reducer/orderReducer'
 
 const persistConfig = {
   key: 'root',
@@ -25,6 +26,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userData: persistReducer(persistConfig, userReducer),
   cartData: persistReducer(persistConfig, cartReducer),
+  orderData: persistReducer(persistConfig, orderReducer),
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -29,7 +29,7 @@ import image from '../../../config/Image.js';
 import {getInitialData} from '../../../redux/thunk/productThunk.js';
 import Carousel from 'react-native-reanimated-carousel';
 import CarouselData from '../../../components/CarouselData';
-import ImageData from '../../../components/ImageData';
+import FruitsData from '../../../components/FruitsData';
 
 const SuperFreshScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -126,7 +126,7 @@ const SuperFreshScreen = ({navigation}) => {
             </View>
           </View>
         </TouchableOpacity>
-        <CarouselData item={SuperFreshItem} renderItem={carouselData} />
+        {/* <CarouselData item={SuperFreshItem} renderItem={carouselData} /> */}
 
         <View style={styles.mainHeadingStyle}>
           <Text style={styles.headingStyle}>Popular Products</Text>
@@ -145,7 +145,7 @@ const SuperFreshScreen = ({navigation}) => {
         <View style={styles.trendingStyle}>
           <Text style={styles.trendingTextStyle}>Trending near you</Text>
         </View>
-        <ImageData />
+        <FruitsData />
       </ScrollView>
     </SafeAreaView>
   );
