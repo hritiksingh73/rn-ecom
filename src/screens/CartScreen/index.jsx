@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text, ScrollView} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import styles from './styles';
 import CartItems from './CartItems';
@@ -9,15 +9,29 @@ import image from '../../config/image';
 import BillDetails from '../../components/BillDetails';
 import CustomButton from '../../components/Button';
 import {globalStyle} from '../../constant/globalStyle';
+import {cartBillDetails} from '../../redux/actions/userAction';
 
-export default function CartScreen({navigation}, item) {
+export default function CartScreen({navigation}) {
+  const dispatch = useDispatch();
   const cartData = useSelector(state => state.cartProductReducer.cartProducts);
 
   const getTotalPrice = () => {
-    return cartData.reduce(
-      (total, item) => total + parseInt(item.price, 10) * item.qty,
-      0,
-    );
+    return cartData.reduce((total, item) => total + item.price * item.qty, 0);
+  };
+  const getDeliveryCharge = () => {
+    const price = getTotalPrice();
+    if (price > 2) {
+      return 0.5;
+    } else {
+      return 0;
+    }
+  };
+  const getItemTax = () => {
+    return (getTotalPrice() * 6) / 100;
+  };
+
+  const getSubTotal = () => {
+    return getTotalPrice() + getDeliveryCharge() + getItemTax();
   };
 
   return (
@@ -59,24 +73,33 @@ export default function CartScreen({navigation}, item) {
           <View style={styles.itemDivider}></View>
           <Text style={styles.billDetail}>Bill Details</Text>
 
-          <BillDetails detail="total" price="$0.27" />
-          <BillDetails detail="Delivery Charge" price="$0.27" />
-          <BillDetails detail="Coupon" price="$0.27" />
-          <BillDetails detail="Tax" price="$0.27" />
-          <BillDetails detail="Sub Total" price="$0.27" />
+          <BillDetails detail="Total" price={getTotalPrice()} />
+          <BillDetails detail="Delivery Charge" price={getDeliveryCharge()} />
+          <BillDetails detail="Coupon" price={0} />
+          <BillDetails detail="Tax" price={getItemTax()} />
+          <BillDetails detail="Sub Total" price={getSubTotal()} />
         </ScrollView>
       )}
       <View style={styles.bottomContainer}>
         <View style={{margin: 10}}>
           <Text style={styles.total}>Total</Text>
-          <Text style={styles.totalPrice}>$ 0.25</Text>
-          <Text style={{color: 'white'}}>you save $ 5 on this</Text>
+          <Text style={styles.totalPrice}>$ {getSubTotal()}</Text>
         </View>
 
         <View style={styles.checkoutBtn}>
           <CustomButton
             btnTitle="Checkout"
-            onPress={() => navigation.navigate('Checkout')}
+            onPress={() => {
+              dispatch(
+                cartBillDetails({
+                  total: getTotalPrice(),
+                  deliveryCharge: getDeliveryCharge(),
+                  tax: getItemTax(),
+                  subTotal: getSubTotal(),
+                }),
+              );
+              navigation.navigate('Checkout');
+            }}
           />
         </View>
       </View>

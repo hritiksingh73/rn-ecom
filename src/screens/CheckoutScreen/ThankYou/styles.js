@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
   orderPlacedTxt: {
     fontSize: 20,
     color: 'black',
+    marginBottom: '5%',
   },
   btnContainer: {
     flexDirection: 'row',

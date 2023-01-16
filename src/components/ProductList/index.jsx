@@ -30,14 +30,14 @@ const ProductList = props => {
         />
         <View style={styles.txtContainer}>
           <View style={globalStyle.itemDirection}>
-            <Text>{item.title}</Text>
+            <Text style={globalStyle.itemFontSize}>{item.title}</Text>
             <TouchableOpacity
               onPress={() => dispatch(addToWishlist(item))}
               style={styles.iconContainer}>
               <Entypo name="heart-outlined" size={20} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.priceTxt}>
+          <Text style={globalStyle.priceTxt}>
             ${item.price} each{'     '}
             <Text style={styles.oldPrice}>${item.oldPrice}</Text>
           </Text>
@@ -47,7 +47,7 @@ const ProductList = props => {
               onAddToCart;
               dispatch(addCartProduct(item));
             }}>
-            <Text>Add to Cart</Text>
+            <Text style={globalStyle.itemFontSize}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
       </View>

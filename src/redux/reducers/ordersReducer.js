@@ -3,6 +3,7 @@ import {
   SET_SELECTED_ADDRESS,
   SET_DELIVERY_SLOT,
   SET_PAYMENT,
+  SET_CART_BILL_DETAILS,
 } from '../constants/userTypes';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
     selectedAddress: '',
     deliverySlot: {},
     payment: '',
+    priceDetail: {},
   },
   orders: [],
 };
@@ -28,6 +30,16 @@ const ordersReducer = (state = initialState, action) => {
         latestOrder: {...state.latestOrder, deliverySlot: action.payload},
       };
 
+    case SET_CART_BILL_DETAILS:
+      console.log(action.payload);
+      return {
+        ...state,
+        latestOrder: {
+          ...state.latestOrder,
+          priceDetail: action.payload,
+        },
+      };
+
     case SET_PAYMENT:
       console.log('data--->', action.payload);
       const latestOrder = {
@@ -39,8 +51,8 @@ const ordersReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: [...state.orders, latestOrder],
-        // latestOrder: latestOrder,
       };
+
     default:
       return state;
   }

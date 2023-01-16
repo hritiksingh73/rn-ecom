@@ -28,17 +28,26 @@ const ThankYou = () => {
         details={orderDetail.deliverySlot}
       />
       <OrderDetails orderDetail="Store name" details="Super Fresh" />
-      <OrderDetails orderDetail="Subtotal" />
-      <OrderDetails orderDetail="Tax" />
-      <OrderDetails orderDetail="Delivery Charges" />
-      <OrderDetails orderDetail="Total Amount" />
+      <OrderDetails
+        orderDetail="Subtotal"
+        details={orderDetail.priceDetail.subTotal}
+      />
+      <OrderDetails orderDetail="Tax" details={orderDetail.priceDetail.tax} />
+      <OrderDetails
+        orderDetail="Delivery Charges"
+        details={orderDetail.priceDetail.deliveryCharge}
+      />
+      <OrderDetails
+        orderDetail="Total Amount"
+        details={orderDetail.priceDetail.total}
+      />
 
       <View style={styles.btnContainer}>
         <CustomButton
           btnTitle="Continue Shopping"
           onPress={() => navigation.navigate('Popular Products')}
         />
-        <CustomButton btnTitle="OK" />
+        <CustomButton btnTitle="OK" onPress={() => navigation.popToTop()} />
       </View>
     </ScrollView>
   );

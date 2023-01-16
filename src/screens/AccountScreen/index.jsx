@@ -30,9 +30,9 @@ const AccountScreen = () => {
   return (
     <SafeAreaView style={globalStyle.container}>
       <View style={styles.header}>
-        <MaterialIcon name="menu" size={30} />
+        <MaterialIcon name="menu" size={30} color="black" />
         <Text style={styles.headerText}>My Account</Text>
-        <MaterialIcon name="bell-badge-outline" size={30} />
+        <MaterialIcon name="bell-badge-outline" size={30} color="black" />
       </View>
 
       <AccountElements name="profile" text="My Profile" />
@@ -45,8 +45,13 @@ const AccountScreen = () => {
       <TouchableOpacity
         style={styles.accountContainer}
         onPress={() => navigation.navigate('Order History')}>
-        <Entypo name="flow-tree" size={20} style={styles.iconStyle} />
-        <Text style={styles.txtStyle}>Order History</Text>
+        <Entypo
+          name="flow-tree"
+          size={20}
+          style={styles.iconStyle}
+          color="black"
+        />
+        <Text style={globalStyle.itemFontSize}>Order History</Text>
       </TouchableOpacity>
 
       <AccountElements

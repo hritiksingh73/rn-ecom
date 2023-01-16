@@ -13,6 +13,7 @@ import {
   SET_DELIVERY_SLOT,
   SET_SELECTED_ADDRESS,
   SET_PAYMENT,
+  SET_CART_BILL_DETAILS,
 } from '../constants/userTypes';
 
 export const userInfoDetails = userDetails => ({
@@ -83,4 +84,9 @@ export const selectedDeliverySlot = data => ({
 export const getPayment = id => ({
   type: SET_PAYMENT,
   payload: id,
+});
+
+export const cartBillDetails = data => ({
+  type: SET_CART_BILL_DETAILS,
+  payload: data,
 });

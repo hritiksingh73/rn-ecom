@@ -47,7 +47,7 @@ const SelectAddress = ({onScreenChange}) => {
           <CustomButton
             btnTitle="Deliver here"
             style={styles.btnWidth}
-            onPress={() => setSelectedAddress(item.id)}
+            onPress={() => setSelectedAddress(item)}
           />
         </View>
       </View>

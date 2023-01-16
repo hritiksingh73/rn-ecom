@@ -2,12 +2,14 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
     flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
   },
   orderDetail: {
-    margin: 15,
+    margin: '3%',
     fontSize: 16,
-    marginRight: '10%',
+    flexBasis: '45%',
+    color: 'black',
   },
 });

@@ -22,7 +22,7 @@ const CartItems = ({item}) => {
       />
       <View>
         <Text style={styles.itemText}>{item.title}</Text>
-        <Text style={styles.priceTxt}>{item.price}</Text>
+        <Text style={styles.priceTxt}>${item.price}</Text>
       </View>
 
       <View style={styles.cartBtnContainer}>

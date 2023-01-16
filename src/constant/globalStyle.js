@@ -12,6 +12,7 @@ export const globalStyle = StyleSheet.create({
   },
   priceTxt: {
     color: color.primary,
+    fontWeight: 'bold',
   },
   productDetailContainer: {
     margin: 10,
@@ -24,6 +25,7 @@ export const globalStyle = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 15,
     marginTop: 15,
+    color: 'black',
   },
   btnContainer: {
     borderWidth: 1,
@@ -56,6 +58,7 @@ export const globalStyle = StyleSheet.create({
   },
   itemFontSize: {
     fontSize: 16,
+    fontWeight: 'bold',
   },
   backgroundColor: {
     backgroundColor: color.primary,

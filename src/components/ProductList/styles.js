@@ -1,14 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {color} from '../../constant/color';
 
 export const styles = StyleSheet.create({
   productContainer: {
     borderWidth: 1,
     borderColor: 'lightgrey',
     width: 216,
-  },
-  priceTxt: {
-    color: color.primary,
   },
   iconContainer: {
     alignItems: 'flex-end',

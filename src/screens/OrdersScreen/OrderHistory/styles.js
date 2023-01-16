@@ -28,4 +28,8 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: '3%',
   },
+  listTopItems: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
