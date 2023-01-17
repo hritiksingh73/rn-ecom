@@ -9,9 +9,6 @@ import {guidGenerator} from '../../utils/helperFunctions';
 
 const initialState = {
   userDetails: {
-    fullName: '',
-    email: '',
-    mobileNumber: '',
     userID: '',
   },
   address: [],
@@ -25,7 +22,7 @@ const userDataReducer = (state = initialState, action) => {
 
     case USER_ID:
       console.log('Reducer userid --> ', action.payload);
-      return {...state, userID: action.payload};
+      return {...state, userDetails: {...state, userID: action.payload}};
 
     case SET_ADDRESS:
       let addressWithId = {

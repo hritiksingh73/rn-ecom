@@ -96,6 +96,7 @@ export default function CartScreen({navigation}) {
                   deliveryCharge: getDeliveryCharge(),
                   tax: getItemTax(),
                   subTotal: getSubTotal(),
+                  products: cartData,
                 }),
               );
               navigation.navigate('Checkout');

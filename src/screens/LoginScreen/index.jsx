@@ -38,7 +38,7 @@ const LoginScreen = () => {
         uid: userRes.user.uid,
         email: email,
       };
-      const reduxRes = dispatch(userInfoDetails(userInfo));
+      dispatch(userInfoDetails(userInfo));
     } catch (error) {
       console.error(error.code);
     }
@@ -66,7 +66,7 @@ const LoginScreen = () => {
           <Text style={[styles.textStyle]}>Welcome back!</Text>
         </View>
 
-        <TextField 
+        <TextField
           name="mail"
           placeholder="Email"
           value={email}

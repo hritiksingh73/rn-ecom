@@ -9,12 +9,14 @@ import {globalStyle} from '../../../constant/globalStyle';
 import {styles} from './styles';
 
 const OrderDetails = () => {
-  const cartProducts = useSelector(
-    state => state.cartProductReducer.cartProducts,
+  const [{priceDetail, selectedAddress, payment}] = useSelector(
+    state => state.ordersReducer.orders,
   );
-  const {selectedAddress, priceDetail} = useSelector(
-    state => state.ordersReducer.latestOrder,
+  const orders = useSelector(
+    state => state.ordersReducer.orders[3].priceDetail.products,
   );
+  console.log('details-------->', orders);
+
   const id = useRoute().params.id;
 
   const renderListItem = ({item}) => (
@@ -38,7 +40,7 @@ const OrderDetails = () => {
       </View>
 
       <FlatList
-        data={cartProducts}
+        data={orders}
         horizontal
         renderItem={renderListItem}
         showsHorizontalScrollIndicator={false}
@@ -73,6 +75,7 @@ const OrderDetails = () => {
       <BillDetails detail="Sub Total" price={priceDetail.subTotal} />
 
       <Text style={[globalStyle.header, styles.heading]}>Payment Mode</Text>
+      <Text style={styles.paymentMethod}>{payment}</Text>
     </ScrollView>
   );
 };

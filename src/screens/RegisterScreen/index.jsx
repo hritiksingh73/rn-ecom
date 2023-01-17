@@ -46,6 +46,7 @@ const RegisterScreen = () => {
           .set({
             name: fullName,
             email: email,
+            mobile: mobileNumber,
           })
           .then(() => {
             console.log('User added!', userId);
@@ -67,7 +68,7 @@ const RegisterScreen = () => {
       email: email,
       mobileNumber: mobileNumber,
     };
-    const reduxRes = dispatch(userInfoDetails(userInfo));
+    dispatch(userInfoDetails(userInfo));
   };
 
   const nameValidator = () => {

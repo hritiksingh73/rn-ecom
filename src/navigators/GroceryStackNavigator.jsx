@@ -12,6 +12,8 @@ import CheckoutScreen from '../screens/CheckoutScreen';
 import ThankYou from '../screens/CheckoutScreen/ThankYou';
 import OrderHistory from '../screens/OrdersScreen/OrderHistory';
 import OrderDetails from '../screens/OrdersScreen/OrderDetails';
+import Profile from '../screens/ProfileScreen/Profile';
+import EditProfile from '../screens/ProfileScreen/EditProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +44,12 @@ const GroceryStackNavigator = () => {
       <Stack.Screen name="Thank you" component={ThankYou} />
       <Stack.Screen name="Order History" component={OrderHistory} />
       <Stack.Screen name="Order Detail" component={OrderDetails} />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen name="Edit Profile" component={EditProfile} />
     </Stack.Navigator>
   );
 };

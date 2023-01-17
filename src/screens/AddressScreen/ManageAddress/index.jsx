@@ -12,7 +12,6 @@ import CustomButton from '../../../components/Button';
 const ManageAddress = ({navigation}) => {
   const dispatch = useDispatch();
   const address = useSelector(state => state.userDataReducer.address);
-  // console.log('get address---->', address);
 
   const renderAddressDetail = ({item}) => {
     return (

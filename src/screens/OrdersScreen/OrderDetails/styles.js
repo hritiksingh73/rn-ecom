@@ -40,4 +40,10 @@ export const styles = StyleSheet.create({
   qty: {
     marginTop: 7,
   },
+  paymentMethod: {
+    marginLeft: '4%',
+    fontSize: 16,
+    color: 'black',
+    marginBottom: '4%',
+  },
 });

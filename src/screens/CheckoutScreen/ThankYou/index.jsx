@@ -11,8 +11,9 @@ import {useNavigation} from '@react-navigation/native';
 
 const ThankYou = () => {
   const navigation = useNavigation();
-  const orderDetail = useSelector(state => state.ordersReducer.latestOrder);
-  console.log(orderDetail);
+  const [{orderId, deliverySlot, priceDetail}] = useSelector(
+    state => state.ordersReducer.orders,
+  );
 
   return (
     <ScrollView style={globalStyle.container}>
@@ -22,25 +23,16 @@ const ThankYou = () => {
         <Text style={styles.orderPlacedTxt}>Your Order has been placed.</Text>
       </View>
 
-      <OrderDetails orderDetail="Order ID" details={orderDetail.orderId} />
-      <OrderDetails
-        orderDetail="Order Placed on"
-        details={orderDetail.deliverySlot}
-      />
+      <OrderDetails orderDetail="Order ID" details={orderId} />
+      {/* <OrderDetails orderDetail="Order Placed on" details={deliverySlot} /> */}
       <OrderDetails orderDetail="Store name" details="Super Fresh" />
-      <OrderDetails
-        orderDetail="Subtotal"
-        details={orderDetail.priceDetail.subTotal}
-      />
-      <OrderDetails orderDetail="Tax" details={orderDetail.priceDetail.tax} />
+      <OrderDetails orderDetail="Subtotal" details={priceDetail.subTotal} />
+      <OrderDetails orderDetail="Tax" details={priceDetail.tax} />
       <OrderDetails
         orderDetail="Delivery Charges"
-        details={orderDetail.priceDetail.deliveryCharge}
+        details={priceDetail.deliveryCharge}
       />
-      <OrderDetails
-        orderDetail="Total Amount"
-        details={orderDetail.priceDetail.total}
-      />
+      <OrderDetails orderDetail="Total Amount" details={priceDetail.total} />
 
       <View style={styles.btnContainer}>
         <CustomButton

@@ -35,7 +35,11 @@ const AccountScreen = () => {
         <MaterialIcon name="bell-badge-outline" size={30} color="black" />
       </View>
 
-      <AccountElements name="profile" text="My Profile" />
+      <AccountElements
+        name="profile"
+        text="My Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
       <AccountElements
         name="contacts"
         text="Manage Addresses"
