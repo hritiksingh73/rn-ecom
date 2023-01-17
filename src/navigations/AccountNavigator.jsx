@@ -10,7 +10,7 @@ import OrderHistoryDetails from '../screens/Account/OrderHistoryDetails';
 import MyWishlist from '../screens/Account/MyWishlist';
 import AddAddresses from '../screens/Account/AddAddresses';
 
-const TabAccountNavigator = () => {
+const TabAccountNavigator = ({navigation}) => {
   const MyAccount = createNativeStackNavigator();
   return (
     <MyAccount.Navigator>
@@ -21,7 +21,7 @@ const TabAccountNavigator = () => {
           headerShown: true,
           headerRight: () => {
             return (
-              <TouchableOpacity onPress={() => alert('bell ringing!')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                 <Feather name={'bell'} size={25} />
               </TouchableOpacity>
             );
@@ -36,7 +36,7 @@ const TabAccountNavigator = () => {
           headerBackTitleVisible: false,
           headerRight: () => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Edit Profile')}>
                 <Feather name={'edit'} size={25} />
               </TouchableOpacity>
             );

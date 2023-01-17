@@ -9,8 +9,9 @@ import PulsesGalleryScreen from '../screens/Home/PulsesGalleryScreen';
 
 import Sort from '../screens/Home/Sort';
 import ItemDetails from '../screens/Home/ItemDetails';
+import Notification from '../screens/Home/Notification';
 
-const TabHomeNavigator = () => {
+const TabHomeNavigator = ({navigation}) => {
   const Filter = createNativeStackNavigator();
   return (
     <Filter.Navigator>
@@ -21,7 +22,7 @@ const TabHomeNavigator = () => {
           headerShown: true,
           headerRight: () => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                 <Feather name={'bell'} size={25} />
               </TouchableOpacity>
             );
@@ -36,7 +37,7 @@ const TabHomeNavigator = () => {
           headerBackTitleVisible: false,
           headerRight: () => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                 <Feather name={'bell'} size={25} />
               </TouchableOpacity>
             );
@@ -82,6 +83,14 @@ const TabHomeNavigator = () => {
         name="ItemDetails"
         component={ItemDetails}
         options={{headerShown: false}}
+      />
+      <Filter.Screen
+        name="Notification"
+        component={Notification}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+        }}
       />
     </Filter.Navigator>
   );
