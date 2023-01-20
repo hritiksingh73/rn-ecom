@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   billingUnits: {
     fontWeight: '800',
     fontSize: 15,
+    color:Color.black
   },
   billingStyling: {
     flexDirection: 'row',
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Color.darkGrey,
     padding: 10,
-    margin: 10,
+    margin: 10
   },
 });
 

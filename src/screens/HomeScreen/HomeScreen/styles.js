@@ -153,12 +153,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 20,
   },
-  relatedItemImageTitle: {
-    fontWeight: '600',
-    color: Color.black,
-    fontSize: 20,
-    paddingLeft: 20,
-  },
   relatedItemPriceBracket: {
     flexDirection: 'row',
     paddingLeft: 20,

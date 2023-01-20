@@ -8,6 +8,7 @@ import DeliverySlotScreen from '../screens/CartScreen/DeliverySlotScreen/Deliver
 import AddAddressScreen from '../screens/AccountScreen/AddAddressScreen/AddAddressScreen';
 import { StepIndicatorProgressBar } from '../component/StepIndicator/StepIndicator';
 import ThankyouScreen from '../screens/CartScreen/ThankYouScreen/ThankyouScreen';
+import OrderDetailScreen from '../screens/AccountScreen/OrderHistoryScreen/OrderDetailsScreen/OrderDetailScreen';
 
 const stack = createNativeStackNavigator();
 

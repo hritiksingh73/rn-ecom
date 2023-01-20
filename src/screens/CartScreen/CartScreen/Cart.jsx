@@ -26,25 +26,26 @@ import {
 import CartBillingData from '../../../component/CartBillingData/CartBillingData';
 
 const CartScreen = () => {
-  const item = useSelector(state => state.userInfo.cart);
+  const cartItem = useSelector(state => state.userInfo.cart);
+  //console.log("Cart item ====>>>>",cartItem)
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const clearCartItem = item => {
-    // console.log('Cart Item Remove on Count ----->', item);
     if (item <= 1) {
       dispatch(removeItemFromCart(item));
     } else {
     }
   };
 
-  const checkOutHandler=(item)=>{
-    dispatch(productBillingDetails(item))
-    navigation.navigate("StepIndicatorProgressBar")
-  }
+  // const checkOutHandler=(item)=>{
+  //   //console.log("Checkout button ",item)
+  //   dispatch(productBillingDetails(item))
+  //   navigation.navigate("StepIndicatorProgressBar")
+  // }
 
 
-  const ItemPrice = item.map(value => {
+  const ItemPrice = cartItem.map(value => {
     const total = value.price * value.quantity;
     return total;
   });
@@ -62,6 +63,7 @@ const CartScreen = () => {
   );
 
   const cartData = ({item}) => {
+    //console.log(item)
     return (
       <View style={styles.mainContainer}>
         <Image source={{uri: item.imageUrl}} style={styles.flatlistImage} />
@@ -113,7 +115,7 @@ const CartScreen = () => {
           <Text style={styles.title}>Cart</Text>
         </View>
         <FlatList
-          data={item}
+          data={cartItem}
           renderItem={cartData}
           numColumns={1}
           keyExtractor={item => item.id}
@@ -151,7 +153,11 @@ const CartScreen = () => {
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>
           <View style={styles.checkOut}>
-            <TouchableOpacity onPress={()=>checkOutHandler({CalculateDeliveryCharges,CalculateTax,CalculateSubTotal})}>
+            {/* <TouchableOpacity onPress={()=>checkOutHandler({CalculateDeliveryCharges,CalculateTax,CalculateSubTotal})}> */}
+            
+            <TouchableOpacity onPress={()=> {dispatch(productBillingDetails(CalculateDeliveryCharges,CalculateTax,CalculateSubTotal,cartItem)),
+            navigation.navigate("StepIndicatorProgressBar")}}  
+              >
               <Text style={styles.checkoutButton}>Checkout</Text>
             </TouchableOpacity>
           </View>

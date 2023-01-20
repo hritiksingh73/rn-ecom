@@ -15,27 +15,29 @@ const OrderHistoryScreen = () => {
   const navigation = useNavigation();
   const orderhistoryData = useSelector(state => state.OrderInfo.orderHistory);
 
-  //console.log("Orderhistory ITem======>>>>>>>>>",orderhistoryData);
+  //console.log("Order History Screen======>>>>>>>>>",orderhistoryData.orderDetails);
 
   const orderHistory = ({item}) => {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.containerHeader}>
-          <Text style={styles.orderId}>Order ID: {item.orderID.id}</Text>
+          {/* <Text style={styles.orderId}>Order ID: {item.orderID.id}</Text> */}
           <Text style={styles.containerHeaderPrice}>
-            ${item.orderDetails.CalculateDeliveryCharges.CalculateSubTotal}
+            {/* ${item.orderDetails.CalculateDeliveryCharges.CalculateSubTotal} */}
           </Text>
         </View>
         <Text>
-          {item.deliveryDateSlot.month} {item.deliveryDateSlot.date}{' '}
+          {/* {item.deliveryDateSlot.month} {item.deliveryDateSlot.date}{' '} */}
         </Text>
         <Text>Status: Delivered </Text>
         <View style={styles.footerButton}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("OrderDetailScreen"
+          //(productOrderId = item.orderID.id)
+          )}>
             <Text style={styles.viewDetailButton}>View Details</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={styles.rateOrderButton}>Rate this Order</Text>
+            {/* <Text style={styles.rateOrderButton}>Rate this Order</Text> */}
           </TouchableOpacity>
         </View>
         <Divider />

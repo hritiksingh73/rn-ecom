@@ -12,12 +12,12 @@ import ImagePath from '../../../config/Image';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import { orderHistory } from '../../../redux/action/Action';
+import {orderHistory} from '../../../redux/action/Action';
 const ThankyouScreen = () => {
   const navigation = useNavigation();
   dispatch = useDispatch();
   const cartDeliveryData = useSelector(state => state.OrderInfo.orders);
-  //console.log('cartDeliveryData------->>>>>>>>', cartDeliveryData);
+  console.log('cartDeliveryData======>>>>>>>>', cartDeliveryData.orderDetails);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -63,28 +63,36 @@ const ThankyouScreen = () => {
         <View style={styles.orderid}>
           <Text style={styles.finalOrderText}>SubTotal</Text>
           <Text style={styles.finalFetchOrderText}>
-            {
-              cartDeliveryData.orderDetails.CalculateDeliveryCharges
-                .CalculateSubTotal
-            }
+            {cartDeliveryData.orderDetails.CalculateDeliveryCharges}
           </Text>
         </View>
         <View style={styles.orderid}>
           <Text style={styles.finalOrderText}>Tax</Text>
           <Text style={styles.finalFetchOrderText}>
-            {
-              cartDeliveryData.orderDetails.CalculateDeliveryCharges
-                .CalculateTax
-            }
+            {cartDeliveryData.orderDetails.CalculateTax}
           </Text>
         </View>
 
         <View style={styles.footerButton}>
-          <TouchableOpacity onPress={()=>navigation.navigate("SuperFreshScreen")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SuperFreshScreen')}>
             <Text style={styles.continueShoppingButton}>Continue Shopping</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>dispatch(orderHistory(cartDeliveryData))}>
+          <TouchableOpacity
+            onPress={() =>
+              dispatch(
+                orderHistory(
+                  // cartDeliveryData.orderDetails.CalculateTax,
+                  // cartDeliveryData.orderDetails.CalculateDeliveryCharges,
+                  // cartDeliveryData.deliveryDateSlot.month,
+                  // cartDeliveryData.deliveryDateSlot.date,
+                  // cartDeliveryData.orderID.paymentmethod,
+                  // cartDeliveryData.orderID.id
+                  cartDeliveryData.orderDetails
+                )
+              )
+            }>
             <Text style={styles.okButton}>ok</Text>
           </TouchableOpacity>
         </View>

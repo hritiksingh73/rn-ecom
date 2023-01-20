@@ -20,18 +20,15 @@ import {
   selectDeliveryTime,
 } from '../../../redux/action/Action';
 
-const DeliverySlotScreen = () => {
+const DeliverySlotScreen = ({onScreenChange}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const DeliverySlot = ({item}) => {
-    //console.log(item)
+    //console.log("Selected Date from Delivery Slot Screen =====>>>",item)
     return (
       <View style={styles.deliverySlotContainer}>
-        <TouchableOpacity 
-        onPress={() => dispatch(selectDeliveryDate(item))}
-        
-        >
+        <TouchableOpacity onPress={() => dispatch(selectDeliveryDate(item))}>
           <Text style={styles.day}>{item.day}</Text>
           <Text>
             {item.date} {item.month}
@@ -42,7 +39,7 @@ const DeliverySlotScreen = () => {
   };
 
   const TimeSlot = ({item}) => {
-    //console.log(item)
+    //console.log("Selected Time from Delivery Slot Screen =====>>>",item)
     return (
       <View style={styles.deliveryTimeSlotContainer}>
         <View style={styles.deliveryTimeSlot}>
@@ -50,8 +47,7 @@ const DeliverySlotScreen = () => {
           <Text style={styles.text}>{item.deliveryCharges}</Text>
           <TouchableOpacity
             style={styles.timeSlotButtonContainer}
-            onPress={() => dispatch(selectDeliveryTime(item))}
-            >
+            onPress={() => dispatch(selectDeliveryTime(item))}>
             <Text style={styles.timeSlotButtonText}>Choose</Text>
           </TouchableOpacity>
         </View>
@@ -77,7 +73,9 @@ const DeliverySlotScreen = () => {
           renderItem={TimeSlot}
           keyExtractor={item => item.id}
         />
-        <TouchableOpacity style={styles.nextButtonTextContainer}>
+        <TouchableOpacity
+          style={styles.nextButtonTextContainer}
+          onPress={() => onScreenChange(2)}>
           <Text style={styles.nextButtonText}>Save & Next</Text>
         </TouchableOpacity>
       </ScrollView>

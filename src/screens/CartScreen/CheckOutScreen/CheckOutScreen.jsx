@@ -12,30 +12,24 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
-// import StepIndicator from 'react-native-step-indicator';
-// import {
-//   StepIndicatorProgressBar,
-// } from '../../../component/StepIndicator/StepIndicator';
 import {Color} from '../../../constant/Color';
 import {selectDeliveryaddress} from '../../../redux/action/Action';
-import {uidGenerator} from '../../../utils/uidGenerator';
 
-const CheckOutScreen = () => {
+const CheckOutScreen = ({onScreenChange}) => {
   const navigation = useNavigation();
   const address = useSelector(state => state.userInfo.userAddressList);
   // console.log(address.id)
   const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();
 
-
-
   const selectAddressHandler = item => {
-    
     dispatch(selectDeliveryaddress(item));
+   
+    //console.log("Selected Address From CheckOut Screen",item)
   };
 
   const customerData = ({item}) => {
-    //  console.log(item)
+    //console.log(item)
     return (
       <View
         style={[
@@ -83,7 +77,7 @@ const CheckOutScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.saveAndNextButtonContainer}
-          // onPress={() => navigation.navigate('DeliverySlotScreen')}
+          onPress={() =>  onScreenChange(1)}
         >
           <Text style={styles.saveAndNextButton}>Save & Next</Text>
         </TouchableOpacity>

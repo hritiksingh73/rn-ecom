@@ -13,16 +13,14 @@ import Arrow from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
-import {removeItemFromCart, addItemToCart} from '../../redux/action/Action';
+import {removeItemFromWishList, addItemToCart} from '../../redux/action/Action';
 
 const WishListScreen = () => {
-  const item = useSelector(state => state.userInfo.cart);
+  const item = useSelector(state => state.userInfo.wishList[0]);
+  //console.log('WishList Screen====>>>>>', item);
   const navigation = useNavigation();
   dispatch = useDispatch();
 
-  const clearCartItem = item => {
-    dispatch(removeItemFromCart(item));
-  };
   const ListData = ({item}) => {
     return (
       <View style={styles.card}>
@@ -44,7 +42,7 @@ const WishListScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              dispatch(clearCartItem(item.id));
+              dispatch(removeItemFromWishList(item.id));
             }}>
             <Icon name="delete" size={24} style={styles.bin} />
           </TouchableOpacity>

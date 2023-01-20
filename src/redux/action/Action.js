@@ -78,12 +78,26 @@ export const productBillingDetails = (
   CalculateDeliveryCharges,
   CalculateTax,
   CalculateSubTotal,
+  cartItem,
 ) => ({
   type: ActionType.PRODUCT_BILLING_DETAILS,
-  payload: {CalculateDeliveryCharges, CalculateTax, CalculateSubTotal},
+  payload: {
+    CalculateDeliveryCharges,
+    CalculateTax,
+    CalculateSubTotal,
+    cartItem,
+  },
 });
 
 export const orderHistory = order => ({
   type: ActionType.PRODUCT_ORDER_HISTORY,
   payload: order,
+});
+export const addItemToWishList = item => ({
+  type: ActionType.WISHLIST_ITEM,
+  payload: item,
+});
+export const removeItemFromWishList = index => ({
+  type: ActionType.REMOVE_WISHLIST_ITEM,
+  payload: index,
 });

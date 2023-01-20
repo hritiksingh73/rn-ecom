@@ -8,6 +8,7 @@ const InitialState = {
   isFetching: false,
   productData: [],
   cart: [],
+  wishList: [],
 
   userAddressList: [],
 };
@@ -28,6 +29,19 @@ const userReducer = (state = InitialState, action) => {
         ...state,
         cart: [...state.cart, {...action.payload, quantity: 1}],
       };
+
+    case ActionType.WISHLIST_ITEM:
+      //console.log("Wishlist Data=====>>>",action.payload)
+      return {
+        ...state,
+        wishlist: [...state.wishList, action.payload],
+      };
+      
+
+    case ActionType.REMOVE_WISHLIST_ITEM:
+      let clearWishList = [...state.wishList];
+      clearWishList.splice(action.index, 1);
+      return {...state, wishList: clearWishList};
 
     case ActionType.REMOVE_ITEM:
       return {

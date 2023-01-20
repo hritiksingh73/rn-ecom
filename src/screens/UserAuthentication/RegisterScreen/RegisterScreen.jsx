@@ -52,6 +52,7 @@ const RegisterScreen = () => {
           name: name,
           id: userRes.user.uid,
           email: registeremail,
+          Phone:cellNumber
         })
         .then(() => {
           console.log('User Details has been saved to firestore !!!');

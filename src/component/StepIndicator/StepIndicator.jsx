@@ -18,11 +18,11 @@ import PaymentScreen from '../../screens/CartScreen/PaymentScreen/PaymentScreen'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const StepIndicatorProgressBar = ({route}) => {
-  const [currentPosition, setCurrentPosition] = useState(2);
+  const [currentPosition, setCurrentPosition] = useState(0);
   const labels = ['Select Address', 'Select Delivery Slot', 'Payment'];
   const icons = ['map', 'truck', 'credit-card'];
   const navigation = useNavigation();
-  
+
   const customStyles = {
     currentStepStrokeWidth: 6,
     separatorUnFinishedColor: Color.greyish,
@@ -51,15 +51,19 @@ export const StepIndicatorProgressBar = ({route}) => {
           direction="horizontal"
           currentPosition={currentPosition}
           labels={labels}
-          renderStepIndicator={({position, stepStatus}) => (
+          renderStepIndicator={({position}) => (
             <Feather name={icons[position]} size={16} color="#fff" />
           )}
         />
         <>
           {currentPosition === 0 ? (
-            <CheckOutScreen />
+            <CheckOutScreen
+              onScreenChange={position => setCurrentPosition(position)}
+            />
           ) : currentPosition === 1 ? (
-            <DeliverySlotScreen />
+            <DeliverySlotScreen
+              onScreenChange={position => setCurrentPosition(position)}
+            />
           ) : (
             <PaymentScreen />
           )}
