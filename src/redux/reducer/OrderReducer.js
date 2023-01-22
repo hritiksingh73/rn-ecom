@@ -1,12 +1,12 @@
 import {ActionType} from '../action/ActionType';
 const InitialState = {
-  orders:{
-      // selectedDeliveryAddress:{},
-      // orderDetails:{},
-      // deliveryDateSlot:{},
-      // deliveryTimeSlot:{},
-      // orderID:'',
-    },
+  orders: {
+    // selectedDeliveryAddress:{},
+    // orderDetails:{},
+    // deliveryDateSlot:{},
+    // deliveryTimeSlot:{},
+    // orderID:'',
+  },
   orderHistory: [],
 };
 
@@ -49,8 +49,8 @@ const userReducer = (state = InitialState, action) => {
       };
 
     case ActionType.PRODUCT_ORDER_HISTORY:
-     console.log("PRODUCT_ORDER_HISTORY from Reducer======>>>>>",action.payload);
-      return {...state, orderHistory: [state.orderHistory, action.payload]};
+      //console.log("PRODUCT_ORDER_HISTORY from Reducer======>>>>>",action.payload);
+      return {...state, orderHistory: [...state.orderHistory, action.payload]};
 
     default:
       return state;

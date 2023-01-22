@@ -2,10 +2,10 @@ import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {orderpaymentId} from '../../../utils/uidGenerator';
-import {orderId} from '../../../redux/action/Action';
+import {orderHistory, orderId} from '../../../redux/action/Action';
 import styles from './styles';
 import {RadioButton} from 'react-native-paper';
 
@@ -15,6 +15,12 @@ const PaymentScreen = () => {
   const dispatch = useDispatch();
   //console.log(uidGenerator())
   //console.log(orderpaymentId(),"Cash On delivery")
+  const cartDeliveryData = useSelector(state => state.OrderInfo.orders);
+  console.log(
+    'cartDeliveryData form  Payment Screen=====>>>>>',
+    cartDeliveryData,
+  );
+
   return (
     <SafeAreaView>
       <Text style={styles.headerTitle}>Payment Method</Text>
@@ -45,7 +51,10 @@ const PaymentScreen = () => {
 
       <TouchableOpacity
         style={styles.placeOrderButtonContainer}
-        onPress={() => navigation.navigate('ThankyouScreen')}>
+        onPress={() => {
+          dispatch(orderHistory(cartDeliveryData)),
+            navigation.navigate('ThankyouScreen');
+        }}>
         <Text style={styles.placeOrderButton}>Place Order</Text>
       </TouchableOpacity>
     </SafeAreaView>

@@ -9,13 +9,13 @@ import store, {persistor} from './src/redux/store/store';
 const App = () => {
   return (
     <Provider store={store}>
-       <PersistGate loading={null} persistor={persistor}>
+       {/* <PersistGate loading={null} persistor={persistor}> */}
         {/* <NavigationContainer> */}
         <PaperProvider>
           <HomeNavigator />
         </PaperProvider>
         {/* </NavigationContainer> */}
-      </PersistGate> 
+      {/* </PersistGate>  */}
     </Provider>
   );
 };

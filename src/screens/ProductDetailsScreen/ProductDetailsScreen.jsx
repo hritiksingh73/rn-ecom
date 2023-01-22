@@ -23,7 +23,7 @@ const ProductDetailsScreen = ({route}) => {
   //const item = useSelector(state => state.userInfo.wishList);
   const navigation = useNavigation();
   const [itemData, setItemData] = useState();
-
+console.log(itemData)
   const receivedproductItem = route.params;
   dispatch = useDispatch();
   //console.log(itemData)

@@ -21,7 +21,6 @@ import {
   decreaseItemQuantity,
   removeItemFromCart,
   productBillingDetails,
-  
 } from '../../../redux/action/Action';
 import CartBillingData from '../../../component/CartBillingData/CartBillingData';
 
@@ -38,13 +37,6 @@ const CartScreen = () => {
     }
   };
 
-  // const checkOutHandler=(item)=>{
-  //   //console.log("Checkout button ",item)
-  //   dispatch(productBillingDetails(item))
-  //   navigation.navigate("StepIndicatorProgressBar")
-  // }
-
-
   const ItemPrice = cartItem.map(value => {
     const total = value.price * value.quantity;
     return total;
@@ -54,7 +46,7 @@ const CartScreen = () => {
     return Math.min(total + value);
   }, 0);
 
-  const CalculateDeliveryCharges =  (CalculateTotalItemPrices * 3) / 100;
+  const CalculateDeliveryCharges = (CalculateTotalItemPrices * 3) / 100;
 
   const CalculateTax = (CalculateTotalItemPrices * 12) / 100;
 
@@ -153,11 +145,18 @@ const CartScreen = () => {
             <Text style={styles.saveMsg}>You Save $ 5 on this</Text>
           </View>
           <View style={styles.checkOut}>
-            {/* <TouchableOpacity onPress={()=>checkOutHandler({CalculateDeliveryCharges,CalculateTax,CalculateSubTotal})}> */}
-            
-            <TouchableOpacity onPress={()=> {dispatch(productBillingDetails(CalculateDeliveryCharges,CalculateTax,CalculateSubTotal,cartItem)),
-            navigation.navigate("StepIndicatorProgressBar")}}  
-              >
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(
+                  productBillingDetails(
+                    CalculateDeliveryCharges,
+                    CalculateTax,
+                    CalculateSubTotal,
+                    cartItem,
+                  ),
+                ),
+                  navigation.navigate('StepIndicatorProgressBar');
+              }}>
               <Text style={styles.checkoutButton}>Checkout</Text>
             </TouchableOpacity>
           </View>

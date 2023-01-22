@@ -23,6 +23,8 @@ import {
 const DeliverySlotScreen = ({onScreenChange}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  //   const orderData = useSelector(state => state.OrderInfo.orders);
+  //  console.log("orderData from slot selection Screen",orderData)
 
   const DeliverySlot = ({item}) => {
     //console.log("Selected Date from Delivery Slot Screen =====>>>",item)

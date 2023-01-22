@@ -1,13 +1,12 @@
-import { View, Text, SafeAreaView ,TouchableOpacity} from 'react-native'
-import React from 'react'
-import { Avatar } from 'react-native-paper';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {Avatar} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
-
+import {useNavigation} from '@react-navigation/native';
 
 const MyProfileScreen = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
   return (
     <SafeAreaView>
       <View style={styles.headerBar}>
@@ -19,9 +18,8 @@ const MyProfileScreen = () => {
       <View style={styles.avator}>
         <Avatar.Text size={100} label="Aditya" />
       </View>
-      
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default MyProfileScreen
+export default MyProfileScreen;

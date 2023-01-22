@@ -27,7 +27,11 @@ const AccountScreen = () => {
         />
       </View>
 
-      <MyAccountComponent name="profile" Text="My Profile" onPress={()=>navigation.navigate("MyProfileScreen")}/>
+      <MyAccountComponent
+        name="profile"
+        Text="My Profile"
+        onPress={() => navigation.navigate('MyProfileScreen')}
+      />
       <MyAccountComponent
         name="contacts"
         Text="Manage Addresses"

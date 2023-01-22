@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   parentContainer: {
     paddingLeft: 15,
     backgroundColor: Color.white,
-    flex:1
+    flex: 1,
   },
   title: {
     fontSize: 20,
@@ -33,27 +33,32 @@ const styles = StyleSheet.create({
     color: 'black',
     marginHorizontal: '2%',
     marginVertical: '4%',
-    
   },
   totalAmount: {
     fontSize: 16,
-    fontWeight:"800",
+    fontWeight: '800',
     color: 'black',
     marginHorizontal: '2%',
     marginVertical: '4%',
-    
   },
   relatedItemContainer: {
-    left: 25,
+    // left: 25,
+    paddingRight: 10,
   },
   relatedItemImagecard: {
-    width: 200,
+    width: 150,
     backgroundColor: Color.white,
     borderRadius: 5,
     borderColor: Color.liteGrey,
     borderWidth: 1,
-    height: 320,
-    paddingBottom: 150,
+    height: 250,
+    // paddingBottom: 150,
+  },
+  addtocart: {
+    borderColor: Color.darkGrey,
+    fontWeight: '500',
+    paddingVertical: 10,
+    marginLeft: 20,
   },
   imgStyle: {
     width: '70%',
@@ -67,20 +72,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 20,
   },
-  relatedItemPriceBracket: {
-    flexDirection: 'row',
-    paddingLeft: 20,
-  },
   relatedItemprice: {
     color: Color.green,
     paddingRight: 5,
     fontWeight: '800',
     fontSize: 16,
+    paddingLeft: 20,
   },
   shippingDetailHeader: {
     fontSize: 20,
     fontWeight: '400',
-    color: Color.black
+    color: Color.black,
+    paddingVertical: 20,
   },
   userName: {
     fontWeight: '500',
@@ -93,20 +96,20 @@ const styles = StyleSheet.create({
   },
   addressContainer: {
     borderWidth: 1,
-    marginHorizontal: '3%',
+    // marginHorizontal: '3%',
     marginVertical: '2%',
     padding: '4%',
     borderColor: Color.liteGrey,
   },
-  paymentMode:{
-    fontSize:20,
-    paddingTop:20,
-    fontWeight:"500",
-    color:Color.black
+  paymentMode: {
+    fontSize: 20,
+    paddingTop: 20,
+    fontWeight: '500',
+    color: Color.black,
   },
-  paymentMethod:{
-    fontSize:15
-  }
+  paymentMethod: {
+    fontSize: 15,
+  },
 });
 
 export default styles;

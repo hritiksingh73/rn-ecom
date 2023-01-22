@@ -18,13 +18,14 @@ import {selectDeliveryaddress} from '../../../redux/action/Action';
 const CheckOutScreen = ({onScreenChange}) => {
   const navigation = useNavigation();
   const address = useSelector(state => state.userInfo.userAddressList);
-  // console.log(address.id)
+  //const orderData = useSelector(state => state.OrderInfo.orders);
+  //console.log("orderData from address selection Screen",orderData.orderDetails)
   const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();
 
   const selectAddressHandler = item => {
     dispatch(selectDeliveryaddress(item));
-   
+
     //console.log("Selected Address From CheckOut Screen",item)
   };
 
@@ -77,8 +78,7 @@ const CheckOutScreen = ({onScreenChange}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.saveAndNextButtonContainer}
-          onPress={() =>  onScreenChange(1)}
-        >
+          onPress={() => onScreenChange(1)}>
           <Text style={styles.saveAndNextButton}>Save & Next</Text>
         </TouchableOpacity>
       </View>

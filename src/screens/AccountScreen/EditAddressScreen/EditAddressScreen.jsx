@@ -11,15 +11,16 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 import styles from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import { updateAddress } from '../../../redux/action/Action';
+import {updateAddress} from '../../../redux/action/Action';
 
 const EditAddressScreen = ({route}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const address = useSelector(state => state.userInfo.userAddressList);
-
+  console.log(address);
   const receivedproductId = route.params;
   const currentAddress = address.filter(item => item.id === receivedproductId);
+
   const defaultFieldValue = {...currentAddress[0]};
   const {control, handleSubmit} = useForm({
     mode: 'onBlur',

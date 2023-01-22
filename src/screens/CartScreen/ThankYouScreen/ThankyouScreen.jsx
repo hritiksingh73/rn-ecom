@@ -17,7 +17,7 @@ const ThankyouScreen = () => {
   const navigation = useNavigation();
   dispatch = useDispatch();
   const cartDeliveryData = useSelector(state => state.OrderInfo.orders);
-  console.log('cartDeliveryData======>>>>>>>>', cartDeliveryData.orderDetails);
+  //console.log('cartDeliveryData from Thank You Screen======>>>>>>>>', cartDeliveryData);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -33,6 +33,7 @@ const ThankyouScreen = () => {
       <Text style={styles.orderConformationSubHeading}>
         Your Order has been placed.
       </Text>
+
       <ScrollView>
         <View style={styles.orderid}>
           <Text style={styles.finalOrderText}>Order Id</Text>
@@ -80,19 +81,20 @@ const ThankyouScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() =>
-              dispatch(
-                orderHistory(
-                  // cartDeliveryData.orderDetails.CalculateTax,
-                  // cartDeliveryData.orderDetails.CalculateDeliveryCharges,
-                  // cartDeliveryData.deliveryDateSlot.month,
-                  // cartDeliveryData.deliveryDateSlot.date,
-                  // cartDeliveryData.orderID.paymentmethod,
-                  // cartDeliveryData.orderID.id
-                  cartDeliveryData.orderDetails
-                )
-              )
-            }>
+          // onPress={() =>
+          //   dispatch(
+          //     orderHistory(
+          //       // cartDeliveryData.orderDetails.CalculateTax,
+          //       // cartDeliveryData.orderDetails.CalculateDeliveryCharges,
+          //       // cartDeliveryData.deliveryDateSlot.month,
+          //       // cartDeliveryData.deliveryDateSlot.date,
+          //       // cartDeliveryData.orderID.paymentmethod,
+          //       // cartDeliveryData.orderID.id
+          //       //cartDeliveryData.orderDetails
+          //     )
+          //   )
+          // }
+          >
             <Text style={styles.okButton}>ok</Text>
           </TouchableOpacity>
         </View>

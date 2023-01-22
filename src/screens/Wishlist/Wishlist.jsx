@@ -16,8 +16,8 @@ import styles from './styles';
 import {removeItemFromWishList, addItemToCart} from '../../redux/action/Action';
 
 const WishListScreen = () => {
-  const item = useSelector(state => state.userInfo.wishList[0]);
-  //console.log('WishList Screen====>>>>>', item);
+  const item = useSelector(state => state.userInfo.wishList);
+  console.log('WishList Screen====>>>>>', item);
   const navigation = useNavigation();
   dispatch = useDispatch();
 
