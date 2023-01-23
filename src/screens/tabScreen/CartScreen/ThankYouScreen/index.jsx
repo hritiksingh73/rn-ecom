@@ -19,8 +19,8 @@ const ThankYouScreen = ({navigation}) => {
   const {goBack} = useNavigation();
 
   const dispatch = useDispatch();
-  const orderDetails = useSelector(state => state.orderData.orders);
-  console.log('orderDetails------->>>>>>>>', orderDetails);
+  const orderDetails = useSelector(state => state.orderData.latestOrders);
+  console.log('orderDetails------->>>>>>>>', orderDetails.billingDetails);
 
   return (
     <SafeAreaView>
@@ -59,15 +59,11 @@ const ThankYouScreen = ({navigation}) => {
             <Button
               title="Continue Shopping"
               color="green"
-              onPress={() => navigation.navigate('Home Screen')}
+              onPress={() => navigation.navigate('HomeScreen')}
             />
           </View>
           <View style={styles.buttonText}>
-            <Button
-              title="OK"
-              color="white"
-              onPress={() => dispatch(orderHistory(orderDetails))}
-            />
+            <Button title="OK" color="white" />
           </View>
         </View>
       </ScrollView>

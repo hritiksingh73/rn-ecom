@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  ScrollView,
   Button,
   TextInput,
   TouchableOpacity,
@@ -14,7 +13,7 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import remoteConfig from '@react-native-firebase/remote-config';
 import {Rating} from 'react-native-ratings';
-
+import {ScrollView} from 'react-native-virtualized-view';
 
 import DropDown from '../../../components/DropDown';
 import Veggies from '../../../data/Veggies';
@@ -47,7 +46,7 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.mainHeader}>
-      <ScrollView>
+      <ScrollView nestedScrollEnabled={true}>
         <DropDown />
         <View style={styles.input}>
           <Icon name="search1" size={20} style={styles.textInput} />

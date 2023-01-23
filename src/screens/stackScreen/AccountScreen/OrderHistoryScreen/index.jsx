@@ -18,8 +18,13 @@ import {useNavigation} from '@react-navigation/native';
 import PrimaryButton from '../../../../components/PrimaryButton';
 
 const OrderHistoryScreen = ({navigation}) => {
-  const orderHistory = useSelector(state => state.orderData.orderHistory);
-  //console.log('orderDetails---->', orderDetails)
+  const orderHistory = useSelector(state => state.orderData.orders);
+  console.log('orderHistory---->', orderHistory.billingDetails);
+
+  const dispatch = useDispatch();
+  const latestOrders = useSelector(state => state.orderData.latestOrders);
+  console.log('latestOrders---->', latestOrders.billingDetails);
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.container}>
@@ -32,23 +37,27 @@ const OrderHistoryScreen = ({navigation}) => {
           return (
             <View style={styles.mainOrderContainer}>
               <View style={styles.orderContainer}>
-                <Text>
+                <Text style={styles.orderIdStyle}>
                   Order ID:
                   {item.orderID.id}
                 </Text>
-                <Text>$25.00</Text>
+                <Text>{item.billingDetails.subTotal}</Text>
               </View>
-              <Text>
+              <Text style={styles.dateStyle}>
                 {item.deliveryDate.date} {item.deliveryDate.month}{' '}
                 {item.deliveryDate.day}
               </Text>
-              <Text>Status: Placed</Text>
+              <Text style={styles.statusStyle}>Status: Placed</Text>
               <View style={styles.btnContainer}>
                 <PrimaryButton
                   name="View Details"
-                  onPress={() => navigation.navigate('Order Detail')}
+                  onPress={() =>
+                    navigation.navigate('Order Detail', {
+                      id: item.orderID.id,
+                    })
+                  }
                 />
-                <PrimaryButton name="Rate this Order" />
+                <Text style={styles.rateStyle}>Rate this Order</Text>
               </View>
             </View>
           );

@@ -4,7 +4,9 @@ const initialState = {
   cartProducts: [],
   quantity: '',
   isFetching: false,
-  productData: [],
+
+  wishList: [],
+  products: [],
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -49,8 +51,17 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartProducts: decreaseItem,
       };
+
+    case ActionType.ADD_TO_WISHLIST:
+      return {...state, wishList: [...state.wishList, action.payload]};
+
+    case ActionType.REMOVE_TO_WISHLIST:
+      let removeProduct = [...state.wishList];
+      removeProduct.splice(action.index, 1);
+      return {...state, wishList: removeProduct};
+
     case ActionType.GET_PRODUCTS:
-      return {...state, productData: payload};
+      return {...state, products: payload};
 
     case ActionType.SET_INIT_DATA:
       return {...state, productData: action.payload};

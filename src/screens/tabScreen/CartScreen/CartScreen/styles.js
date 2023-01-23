@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     fontWeight: 'bold',
-    marginLeft: 180,
+    marginLeft: 150,
   },
   mainMargin: {
     marginHorizontal: 12,

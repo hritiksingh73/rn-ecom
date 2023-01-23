@@ -22,7 +22,8 @@ import color from '../../../../constant/color.js';
 const SelectAddressScreen = ({navigation}) => {
   const addAddress = useSelector(state => state.userData.userAddress);
   //console.log('add---->', addAddress.id)
-
+  const cart = useSelector(state => state.orderData.latestOrders)
+  //console.log('cartData--->', cart.billingDetails)
   const {goBack} = useNavigation();
   const dispatch = useDispatch();
   const [select, setSelect] = useState(false);

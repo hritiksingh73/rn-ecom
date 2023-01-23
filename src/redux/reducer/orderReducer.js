@@ -2,18 +2,15 @@ import {ActionType} from '../action/ActionType';
 import guidGenerator from '../../utils/guidGenerator.jsx';
 
 const initialState = {
-  orderHistory: [],
-  orders: [
-    {
-      orderID: '',
-      selectedAddress: {},
-      deliveryDate: {},
-      deliveryTime: {},
-      //payment: '',
-      products: [],
-      billingDetails: {},
-    },
-  ],
+  latestOrders: {
+    orderID: '',
+    selectedAddress: {},
+    deliveryDate: {},
+    deliveryTime: {},
+    payment: '',
+    billingDetails: {},
+  },
+  orders: [],
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -25,14 +22,14 @@ const orderReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        orders: {...state.orders, selectedAddress: action.payload},
+        latestOrders: {...state.latestOrders, selectedAddress: action.payload},
       };
 
     case ActionType.DELIVERY_DATE:
       console.log('deliveryDate-->', action.payload);
       return {
         ...state,
-        orders: {...state.orders, deliveryDate: action.payload},
+        latestOrders: {...state.latestOrders, deliveryDate: action.payload},
       };
 
     case ActionType.DELIVERY_TIME:
@@ -40,41 +37,34 @@ const orderReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        orders: {...state.orders, deliveryTime: action.payload},
+        latestOrders: {...state.latestOrders, deliveryTime: action.payload},
       };
 
     case ActionType.ORDER_ID:
       console.log('order_Id--->>>>>', action.payload);
       return {
         ...state,
-        orders: {...state.orders, orderID: action.payload},
+        latestOrders: {...state.latestOrders, orderID: action.payload},
       };
 
-    case ActionType.PAYMENT:
+    case ActionType.SET_PAYMENT:
       console.log('payment-->', action.payload);
-      return {
-        ...state,
-        orders: {...state.orders, payment: action.payload},
-      };
-
-    case ActionType.ORDER_HISTORY:
-      console.log('orderHistory -> ', payload);
-      return {...state, orderHistory: [...state.orderHistory, action.payload]};
-
-    case ActionType.ORDER_PRODUCT:
-      console.log('product-->', action.payload);
 
       return {
         ...state,
-        orders: {products: action.payload},
+        latestOrders: {...state.latestOrders, payment: action.payload},
       };
 
-    case ActionType.PRODUCT_BILLING_DETAILS:
+    case ActionType.CHECKOUT_DETAILS:
+      console.log('checkout -> ', action.payload);
+      return {...state, orders: [...state.orders, action.payload]};
+
+    case ActionType.CART_BILLING_DETAILS:
       console.log('product details-->', action.payload);
 
       return {
         ...state,
-        orders: {billingDetails: action.payload},
+        latestOrders: {...state.latestOrders, billingDetails: action.payload},
       };
 
     default:

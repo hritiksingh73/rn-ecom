@@ -57,6 +57,7 @@ const RegisterScreen = ({navigation}) => {
             .doc(user.uid)
             .set({
               name: fullname,
+              id: user.uid,
               email: email,
               mobile: mobileno,
             })
@@ -76,6 +77,7 @@ const RegisterScreen = ({navigation}) => {
       let userInfo = {
         fullname: fullname,
         email: email,
+        id: user.uid,
         mobileno: mobileno,
       };
 

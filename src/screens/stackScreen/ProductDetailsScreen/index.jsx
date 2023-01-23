@@ -4,24 +4,24 @@ import {
   Text,
   StyleSheet,
   Image,
-  ScrollView,
   TouchableOpacity,
   SafeAreaView,
   FlatList,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {ScrollView} from 'react-native-virtualized-view';
 import image from '../../../config/Image';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import strings from '../../../constant/strings';
 import GroceryProduct from '../../../data/GroceryProduct';
-import {addToCart} from '../../../redux/action/Action.js';
+import {addToCart, addToWishlist} from '../../../redux/action/Action.js';
 import {useDispatch, useSelector} from 'react-redux';
 
 const ProductDetailsScreen = ({navigation, route}) => {
   const {goBack} = useNavigation();
   const [dataItem, setDataItem] = useState();
-  const {productData} = useSelector(state => state.cartData);
+  const products = useSelector(state => state.cartData.products);
   const item = useSelector(state => state.cartData.productData);
 
   const getProduct = route.params;
@@ -63,12 +63,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
   const popularProducts = ({item}) => {
     return (
       <View style={styles.imageBoxStyle}>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Product Details', (product = item.id))
-          }>
-          <Image source={{uri: item.imageUrl}} style={styles.image} />
-        </TouchableOpacity>
+        <Image source={{uri: item.imageUrl}} style={styles.image} />
 
         <Text style={styles.titleText} numberOfLines={1}>
           {item.title}
@@ -87,7 +82,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView nestedScrollEnabled={true}>
         <AntDesign
           name="left"
           size={30}
@@ -117,7 +112,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
         <View style={styles.relatedStyle}>
           <Text style={styles.headingStyle}>Related Items</Text>
           <FlatList
-            data={productData}
+            data={products}
             renderItem={popularProducts}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -127,7 +122,8 @@ const ProductDetailsScreen = ({navigation, route}) => {
       </ScrollView>
       <View style={styles.buttonStyle}>
         <TouchableOpacity
-          style={[styles.bottomBtn, {backgroundColor: 'black'}]}>
+          style={[styles.bottomBtn, {backgroundColor: 'black'}]}
+          onPress={() => dispatch(addToWishlist(item))}>
           <Text style={styles.btnText}>Add to Wishlist</Text>
         </TouchableOpacity>
         <TouchableOpacity

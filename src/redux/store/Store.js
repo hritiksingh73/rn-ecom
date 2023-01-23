@@ -26,7 +26,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userData: persistReducer(persistConfig, userReducer),
   cartData: persistReducer(persistConfig, cartReducer),
-  orderData: persistReducer(persistConfig, orderReducer),
+  //orderData: persistReducer(persistConfig, orderReducer),
+  orderData: orderReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

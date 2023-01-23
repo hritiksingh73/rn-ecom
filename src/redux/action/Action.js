@@ -31,21 +31,15 @@ export const userCreate = id => ({
   payload: id,
 });
 
-export const getInitialData = data => {
-  return dispatch => {
-    try {
-      const response = fetch(
-        'https://grocery-backend-in.vercel.app/products/popular',
-      )
-        .then(result => result.json())
-        .then(response =>
-          dispatch({type: ActionType.GET_PRODUCTS, payload: response}),
-        );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+export const addToWishlist = product => ({
+  type: ActionType.ADD_TO_WISHLIST,
+  payload: product,
+});
+
+export const removeToWishlist = index => ({
+  type: ActionType.REMOVE_TO_WISHLIST,
+  payload: index,
+});
 
 export const addAddress = user => ({
   type: ActionType.ADD_ADDRESS,
@@ -81,32 +75,24 @@ export const deliveryTime = time => ({
   type: ActionType.DELIVERY_TIME,
   payload: time,
 });
-export const deliverySlot = time => ({
-  type: ActionType.DELIVERY_SLOT,
-  payload: time,
-});
 
-export const payment = payment => ({
-  type: ActionType.PAYMENT,
-  payload: payment,
+export const getPayment = id => ({
+  type: ActionType.SET_PAYMENT,
+  payload: id,
 });
 
 export const orderId = (id, payment) => ({
   type: ActionType.ORDER_ID,
-  payload: {id, payment},
+  payload: {id, payment}
 });
 
-export const orderHistory = details => ({
-  type: ActionType.ORDER_HISTORY,
+export const checkoutDetails = details => ({
+  type: ActionType.CHECKOUT_DETAILS,
   payload: details,
 });
 
-export const orderProduct = product => ({
-  type: ActionType.ORDER_PRODUCT,
-  payload: product,
-});
 
-export const productBillingDetails = details => ({
-  type: ActionType.PRODUCT_BILLING_DETAILS,
+export const cartBillingDetails = details => ({
+  type: ActionType.CART_BILLING_DETAILS,
   payload: details,
 });

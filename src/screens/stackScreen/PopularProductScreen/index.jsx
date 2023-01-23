@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
 import {Snackbar} from 'react-native-paper';
-
+import { ScrollView } from 'react-native-virtualized-view'
 import {addToCart} from '../../../redux/action/Action.js';
 import styles from './styles.js';
 
@@ -26,10 +26,11 @@ import FruitsData from '../../../components/FruitsData';
 const PopularProductScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
-  const dataItem = useSelector(state => state.cartData.productData);
+  const products = useSelector(state => state.cartData.products);
 
   return (
     <SafeAreaView style={styles.container}>
+      <ScrollView nestedScrollEnabled={true}>
       <View style={styles.headingStyle}>
         <AntDesign name="left" size={30} onPress={() => goBack()} />
         <Text style={styles.headingText}>Popular Products</Text>
@@ -56,6 +57,7 @@ const PopularProductScreen = ({navigation}) => {
         </View>
       </View>
       <FruitsData />
+      </ScrollView>
     </SafeAreaView>
   );
 };

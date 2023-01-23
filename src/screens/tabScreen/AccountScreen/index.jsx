@@ -27,13 +27,13 @@ const AccountScreen = ({navigation}) => {
         <Text style={styles.text}>My Account</Text>
         <Icon name="bell-badge-outline" size={25} />
       </View>
-      <AccountInfo name="profile" text="My Profile" />
+      <AccountInfo name="profile" text="My Profile" onPress={() => navigation.navigate('My Profile')}/>
       <AccountInfo
         name="contacts"
         text="Manage Addresses"
         onPress={() => navigation.navigate('Manage Address')}
       />
-      <AccountInfo name="gift" text="OrderHistory"
+      <AccountInfo name="gift" text="Order History"
       onPress={() => navigation.navigate('Order History')} />
       <AccountInfo
         name="hearto"

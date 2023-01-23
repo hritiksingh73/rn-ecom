@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 15,
     marginTop: 10,
-    padding:10
+    padding: 10,
   },
   buttonText: {
     paddingHorizontal: 5,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headingStyle: {
-    fontSize: 20,
-    marginRight: 160,
+    fontSize: 18,
+    marginRight: 140,
   },
   title: {
     fontSize: 18,

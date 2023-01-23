@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 import {RadioButton} from 'react-native-paper';
-import {orderId} from '../../redux/action/Action.js';
+import {orderId, getPayment} from '../../redux/action/Action.js';
 import {useDispatch} from 'react-redux';
 import {orderpaymentId} from '../../utils/guidGenerator';
 import styles from './styles';
@@ -18,6 +18,7 @@ const RadioBtn = () => {
             status={checked === 'first' ? 'checked' : 'unchecked'}
             onPress={() =>
               dispatch(orderId(orderpaymentId(), 'Cash On delivery'))
+              
             }
           />
           <Text style={styles.paymentStyle}>Cash On Delivery</Text>
@@ -29,7 +30,10 @@ const RadioBtn = () => {
           <RadioButton
             value="second"
             status={checked === 'second' ? 'checked' : 'unchecked'}
-            onPress={() => dispatch(orderId(orderpaymentId(), 'ATM'))}
+            onPress={() => 
+             dispatch(orderId(orderpaymentId(), 'ATM'))
+              
+            }
           />
           <Text style={styles.paymentStyle}>ATM</Text>
         </View>

@@ -3,7 +3,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 const PrimaryButton = props => {
-  const {name, onPress, custmBtnTextStyle} = props;
+  const {name, onPress} = props;
   return (
     <View style={styles.btnStyle}>
       <TouchableOpacity onPress={onPress}>

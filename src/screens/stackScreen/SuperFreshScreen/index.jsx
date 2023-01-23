@@ -7,7 +7,6 @@ import {
   SafeAreaView,
   TextInput,
   Image,
-  ScrollView,
   FlatList,
   TouchableOpacity,
   Dimensions,
@@ -25,8 +24,8 @@ import SuperFreshItem from '../../../data/SuperFreshItem.js';
 import styles from './styles.js';
 import color from '../../../constant/color.js';
 import image from '../../../config/Image.js';
-
-import {getInitialData} from '../../../redux/thunk/productThunk.js';
+import {ScrollView} from 'react-native-virtualized-view';
+import {getProducts} from '../../../redux/thunk/productThunk.js';
 import Carousel from 'react-native-reanimated-carousel';
 import CarouselData from '../../../components/CarouselData';
 import FruitsData from '../../../components/FruitsData';
@@ -37,7 +36,9 @@ const SuperFreshScreen = ({navigation}) => {
   const dataItem = useSelector(state => state.cartData.productData);
   const cartList = useSelector(state => state.cartData.cartProducts);
   const userID = useSelector(state => state.userData.userID);
+  const products = useSelector(state => state.cartData.products);
   const width = Dimensions.get('window').width;
+  
   const FirestoreItem = item => {
     firestore()
       .collection('Cart')
@@ -51,7 +52,7 @@ const SuperFreshScreen = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch(getInitialData());
+    dispatch(getProducts());
   }, []);
 
   const carouselData = ({item}) => {
@@ -92,7 +93,7 @@ const SuperFreshScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView nestedScrollEnabled={true}>
         <View style={styles.icon}>
           <Icon name="bars" size={20} />
           <Text style={styles.text}>Super Fresh</Text>

@@ -9,7 +9,8 @@ import SearchScreen from '../screens/tabScreen/SearchScreen/index';
 import AccountScreen from '../screens/tabScreen/AccountScreen/index';
 import VeggiesStackNavigator from '../navigations/VeggiesStackNavigator';
 import color from '../constant/color.js';
-import StackCartNavigator from '../navigations/StackCartNavigator'
+import StackCartNavigator from '../navigations/StackCartNavigator';
+import AccountNavigator from '../navigations/AccountNavigator'
 
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +50,7 @@ const VeggiesTabNavigator = () => {
       />
       <Tab.Screen
         name="Account"
-        component={AccountScreen}
+        component={AccountNavigator}
         options={{
           headerShown: false,
           tabBarIcon: props => <Icon name="user" {...props} />,

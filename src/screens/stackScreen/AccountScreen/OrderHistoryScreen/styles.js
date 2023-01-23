@@ -24,6 +24,22 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingTop: 25,
   },
+  orderIdStyle: {
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  dateStyle: {
+    color: 'grey',
+  },
+  statusStyle: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginTop: '4%',
+  },
+  rateStyle: {
+    color: color.primary,
+    marginTop: '3%',
+  },
   orderContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

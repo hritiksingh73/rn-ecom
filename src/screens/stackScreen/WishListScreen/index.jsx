@@ -14,22 +14,25 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
-import {Snackbar, Button} from 'react-native-paper';
-import {addToCart, removeToCart} from '../../../redux/action/Action.js';
+import {Button} from 'react-native-paper';
+import {addToCart, removeToWishlist} from '../../../redux/action/Action.js';
 import styles from './styles.js';
-
+import ModalComponent from '../../../components/ModalComponent/index';
 import color from '../../../constant/color.js';
 import GroceryProduct from '../../../data/GroceryProduct.js';
 
 const WishListScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
-  const dataItem = useSelector(state => state.cartData.productData);
-  const screenHeight = Dimensions.get('window').height;
+  const wishList = useSelector(state => state.cartData.wishList);
 
-  const removeList = item => {
-    dispatch(removeToCart(item));
-    alert('Are you sure you want to remove this item');
+  const [isModalVisible, setisModalVisible] = useState(false);
+
+  const btnHandler = item => {
+    dispatch(removeToWishlist(item.id));
+    setisModalVisible(false);
+    // dispatch(removeToCart(item));
+    // alert('Are you sure you want to remove this item');
   };
 
   const fruitData = ({item}) => {
@@ -56,7 +59,7 @@ const WishListScreen = ({navigation}) => {
             name="delete"
             size={20}
             style={styles.deleteStyle}
-            onPress={removeList}
+            onPress={() => setisModalVisible(true)}
           />
         </TouchableOpacity>
       </View>
@@ -66,15 +69,20 @@ const WishListScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headingContainer}>
-        <AntDesign name="left" size={30} onPress={() => goBack()} />
+        <AntDesign name="left" size={20} onPress={() => goBack()} />
         <Text style={styles.headingStyle}>WishList</Text>
       </View>
 
       <FlatList
-        data={dataItem}
+        data={wishList}
         numColumns={2}
         keyExtractor={item => item.id}
         renderItem={fruitData}
+      />
+      <ModalComponent
+        visible={isModalVisible}
+        btn={btnHandler}
+        removeBtn={() => setisModalVisible(false)}
       />
     </SafeAreaView>
   );

@@ -15,13 +15,22 @@ import InputField from '../../../../components/InputField';
 import {useNavigation} from '@react-navigation/native';
 import Indicator from '../../../../../src/components/Indicator/index';
 import RadioBtn from '../../../../components/RadioButton';
-import {payment, orderId} from '../../../../redux/action/Action.js';
+import {
+  getPayment,
+  orderId,
+  checkoutDetails,
+} from '../../../../redux/action/Action.js';
 import {orderpaymentId} from '../../../../utils/guidGenerator';
 
 const PaymentScreen = ({navigation}) => {
   const {goBack} = useNavigation();
+  const orderDetails = useSelector(state => state.orderData.latestOrders);
+  //console.log('orderDetails------->>>>>>>>', orderDetails.billingDetails);
 
+  const cart = useSelector(state => state.orderData.latestOrders)
+ // console.log('paymentData--->', cart.billingDetails)
   const dispatch = useDispatch();
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <ScrollView>
@@ -36,14 +45,16 @@ const PaymentScreen = ({navigation}) => {
         </View>
         <Indicator />
         <Text style={styles.heading}>Saved Card</Text>
-
+        
         <RadioBtn />
 
         <View style={styles.btnStyle}>
           <Button
             title="Place Order"
             color="white"
-            onPress={() => navigation.navigate('Thank You')}
+            onPress={() => {dispatch(checkoutDetails(orderDetails));
+              navigation.navigate('Thank You')}
+            }
           />
         </View>
       </ScrollView>

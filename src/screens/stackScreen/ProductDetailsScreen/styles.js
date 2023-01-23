@@ -24,6 +24,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
   },
+  imageBoxStyle: {
+    width: 200,
+    height: 300,
+    borderWidth: 1,
+    borderColor: color.lightgrey,
+    marginTop: 25,
+  },
   mainImageStyle: {
     width: '96%',
     backgroundColor: color.white,
@@ -31,9 +38,20 @@ const styles = StyleSheet.create({
     height: 320,
     paddingRight: '1%',
   },
+  image: {
+    resizeMode: 'contain',
+    width: '82%',
+    height: '54%',
+    marginTop: 5,
+  },
   titleText: {
     fontSize: 18,
     margin: 10,
+    marginLeft: 10,
+  },
+  priceText: {
+    fontSize: 18,
+    color: color.primary,
     marginLeft: 10,
   },
   imageStyle: {
@@ -88,7 +106,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 100,
     width: '100%',
-    
   },
   bottomBtn: {
     flex: 1,

@@ -8,14 +8,13 @@ import {
   TextInput,
   Image,
   Modal,
-  ScrollView,
   FlatList,
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
-
+import {ScrollView} from 'react-native-virtualized-view';
 import firestore from '@react-native-firebase/firestore';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
@@ -25,8 +24,7 @@ import GroceryProduct from '../../../../data/GroceryProduct.js';
 import {
   increaseToCart,
   decreaseToCart,
-  orderProduct,
-  productBillingDetails,
+  cartBillingDetails,
 } from '../../../../redux/action/Action.js';
 import styles from './styles.js';
 import image from '../../../../config/Image.js';
@@ -37,6 +35,7 @@ const Cart = ({navigation}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cartData.cartProducts);
+  //console.log('cart--->', cart);
   const {goBack} = useNavigation();
 
   const decreaseCartItem = item => {
@@ -55,7 +54,7 @@ const Cart = ({navigation}) => {
     navigation.navigate('Select Address');
   };
 
-  const CalculateUserTotalPrice = () => {
+  const calculateUserTotalPrice = () => {
     const ItemTotalPrice = cart.map(value => {
       let total = value.price * value.quantity;
       return total;
@@ -66,18 +65,18 @@ const Cart = ({navigation}) => {
     }, 0);
     return TotalItemPrices;
   };
-  const CalculateDeliveryRate = () => {
+  const calculateDeliveryRate = () => {
     return 10;
   };
-  const CalculateCoupon = () => {
+  const calculateCoupon = () => {
     return 10;
   };
-  const CalculateTax = () => {
-    let total = CalculateUserTotalPrice();
+  const calculateTax = () => {
+    let total = calculateUserTotalPrice();
     return (total * 12) / 100;
   };
-  const CalculateSubTotal = () => {
-    return CalculateUserTotalPrice() + CalculateDeliveryRate() + CalculateTax();
+  const calculateSubTotal = () => {
+    return calculateUserTotalPrice() + calculateDeliveryRate() + calculateTax();
   };
 
   const removeList = item => {
@@ -86,7 +85,7 @@ const Cart = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView nestedScrollEnabled={true}>
         <View style={styles.mainMargin}>
           <View style={styles.leftIconStyle}>
             <AntDesign name="left" size={20} onPress={() => goBack()} />
@@ -160,17 +159,17 @@ const Cart = ({navigation}) => {
             </View>
             <View style={styles.billing}>
               <Text style={styles.billingText}>Bill Details</Text>
-              <BillInfo title="Total" onPress={CalculateUserTotalPrice} />
+              <BillInfo title="Total" onPress={calculateUserTotalPrice} />
               <BillInfo
                 title="Delivery Charge"
                 onPress={CalculateDeliveryRate}
               />
-              <BillInfo title="Coupon" onPress={CalculateCoupon} />
-              <BillInfo title="Tax" onPress={CalculateTax} />
+              <BillInfo title="Coupon" onPress={calculateCoupon} />
+              <BillInfo title="Tax" onPress={calculateTax} />
 
               <View style={styles.billingStyling}>
                 <Text styles={styles.billingText}>Sub Total</Text>
-                <Text styles={styles.priceTotal}>${CalculateSubTotal()}</Text>
+                <Text styles={styles.priceTotal}>${calculateSubTotal()}</Text>
               </View>
             </View>
           </View>
@@ -179,7 +178,7 @@ const Cart = ({navigation}) => {
       <View style={styles.checkoutText}>
         <View>
           <Text style={styles.totalText}>Total</Text>
-          <Text style={styles.subTotalText}>₹ {CalculateSubTotal()}</Text>
+          <Text style={styles.subTotalText}>₹ {calculateSubTotal()}</Text>
           <Text style={styles.saveText}>You save $ 5 on this</Text>
         </View>
         <View style={styles.checkoutButton}>
@@ -187,13 +186,16 @@ const Cart = ({navigation}) => {
             name="Checkout"
             onPress={() => {
               const billingDetails = {
-                subTotal: CalculateUserTotalPrice(),
-                tax: CalculateTax(),
-                deliveryCharges: CalculateDeliveryRate(),
-                totalAmount: CalculateSubTotal(),
+                subTotal: calculateUserTotalPrice(),
+                tax: calculateTax(),
+                coupon: calculateCoupon(),
+                deliveryCharges: calculateDeliveryRate(),
+                totalAmount: calculateSubTotal(),
+                cart,
               };
-              dispatch(orderProduct(cart));
-              dispatch(productBillingDetails(billingDetails));
+              console.log('productData--->', cart);
+              //dispatch(orderProduct(cart));
+              dispatch(cartBillingDetails(billingDetails, cart));
               navigation.navigate('Select Address');
             }}
           />

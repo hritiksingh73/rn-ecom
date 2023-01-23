@@ -52,7 +52,8 @@ const Indicator = () => {
         customStyles={customStyles}
         stepCount={3}
         direction="horizontal"
-        onPress={onPageChange}
+        onPress={position => setCurrentPosition(position)}
+        //onPress={onPageChange}
         currentPosition={currentPosition}
         labels={labels}
         renderStepIndicator={({position, stepStatus}) => (
@@ -64,6 +65,7 @@ const Indicator = () => {
           />
         )}
       />
+      
 
       {/* {currentPosition == 0 ? (
           <SelectAddressScreen />
