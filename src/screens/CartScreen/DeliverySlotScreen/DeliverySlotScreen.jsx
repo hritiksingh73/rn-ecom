@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {ScrollView} from 'react-native-virtualized-view';
-import moment from 'moment';
 import {useDispatch, useSelector} from 'react-redux';
 
 import styles from './styles';
@@ -23,11 +22,7 @@ import {
 const DeliverySlotScreen = ({onScreenChange}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  //   const orderData = useSelector(state => state.OrderInfo.orders);
-  //  console.log("orderData from slot selection Screen",orderData)
-
   const DeliverySlot = ({item}) => {
-    //console.log("Selected Date from Delivery Slot Screen =====>>>",item)
     return (
       <View style={styles.deliverySlotContainer}>
         <TouchableOpacity onPress={() => dispatch(selectDeliveryDate(item))}>
@@ -41,7 +36,6 @@ const DeliverySlotScreen = ({onScreenChange}) => {
   };
 
   const TimeSlot = ({item}) => {
-    //console.log("Selected Time from Delivery Slot Screen =====>>>",item)
     return (
       <View style={styles.deliveryTimeSlotContainer}>
         <View style={styles.deliveryTimeSlot}>

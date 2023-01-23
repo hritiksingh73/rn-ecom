@@ -13,13 +13,8 @@ const PaymentScreen = () => {
   const [checked, setChecked] = useState('first');
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  //console.log(uidGenerator())
-  //console.log(orderpaymentId(),"Cash On delivery")
   const cartDeliveryData = useSelector(state => state.OrderInfo.orders);
-  console.log(
-    'cartDeliveryData form  Payment Screen=====>>>>>',
-    cartDeliveryData,
-  );
+ 
 
   return (
     <SafeAreaView>

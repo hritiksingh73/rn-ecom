@@ -1,8 +1,8 @@
 import {ActionType} from './ActionType';
 
-export const addUser = (email, uid, name) => ({
+export const addUser = (email, uid, name,cellNumber) => ({
   type: ActionType.LOGIN_USER,
-  payload: {email, uid, name},
+  payload: {email, uid, name,cellNumber},
 });
 
 export const addItemToCart = data => ({

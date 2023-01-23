@@ -4,6 +4,7 @@ const InitialState = {
     email: '',
     name: '',
     uid: '',
+    cellNumber:''
   },
   isFetching: false,
   productData: [],
@@ -16,6 +17,7 @@ const InitialState = {
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ActionType.LOGIN_USER:
+      
       return {...state, loginpage: {...action.payload}};
 
     case ActionType.SET_INIT_DATA:
@@ -36,7 +38,6 @@ const userReducer = (state = InitialState, action) => {
         ...state,
         wishlist: [...state.wishList, action.payload],
       };
-      
 
     case ActionType.REMOVE_WISHLIST_ITEM:
       let clearWishList = [...state.wishList];

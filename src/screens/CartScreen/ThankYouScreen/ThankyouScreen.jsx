@@ -17,7 +17,7 @@ const ThankyouScreen = () => {
   const navigation = useNavigation();
   dispatch = useDispatch();
   const cartDeliveryData = useSelector(state => state.OrderInfo.orders);
-  //console.log('cartDeliveryData from Thank You Screen======>>>>>>>>', cartDeliveryData);
+  
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -80,21 +80,7 @@ const ThankyouScreen = () => {
             <Text style={styles.continueShoppingButton}>Continue Shopping</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-          // onPress={() =>
-          //   dispatch(
-          //     orderHistory(
-          //       // cartDeliveryData.orderDetails.CalculateTax,
-          //       // cartDeliveryData.orderDetails.CalculateDeliveryCharges,
-          //       // cartDeliveryData.deliveryDateSlot.month,
-          //       // cartDeliveryData.deliveryDateSlot.date,
-          //       // cartDeliveryData.orderID.paymentmethod,
-          //       // cartDeliveryData.orderID.id
-          //       //cartDeliveryData.orderDetails
-          //     )
-          //   )
-          // }
-          >
+          <TouchableOpacity>
             <Text style={styles.okButton}>ok</Text>
           </TouchableOpacity>
         </View>

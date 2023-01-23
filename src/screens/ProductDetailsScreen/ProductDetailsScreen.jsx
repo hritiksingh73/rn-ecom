@@ -20,13 +20,13 @@ import {addItemToCart,addItemToWishList} from '../../redux/action/Action';
 
 const ProductDetailsScreen = ({route}) => {
   const {productData} = useSelector(state => state.userInfo);
-  //const item = useSelector(state => state.userInfo.wishList);
+  
   const navigation = useNavigation();
   const [itemData, setItemData] = useState();
 console.log(itemData)
   const receivedproductItem = route.params;
   dispatch = useDispatch();
-  //console.log(itemData)
+ 
   const getSelectedItem = async () => {
   
     try {

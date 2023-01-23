@@ -17,7 +17,6 @@ import {ScrollView} from 'react-native-virtualized-view';
 
 const OrderDetailScreen = ({route}) => {
   const receivedproductOrderId = route.params;
-  //console.log('receivedproductOrderId=======>>>>>>>>',receivedproductOrderId)
   const orderDetail = useSelector(state => state.OrderInfo.orderHistory);
   const navigation = useNavigation();
 
@@ -25,10 +24,8 @@ const OrderDetailScreen = ({route}) => {
     item => item.orderID.id === receivedproductOrderId,
   );
 
-  // console.log('currentOrderDetail=======>>>>>>>>', currentOrderDetail)
   const flatlistimageData = currentOrderDetail[0];
   const flatlistrefine = flatlistimageData.orderDetails.cartItem;
-  console.log('flatlistimageData=======>>>>>>>>', flatlistrefine);
 
   const orderDetailContainer = ({item}) => {
     return (

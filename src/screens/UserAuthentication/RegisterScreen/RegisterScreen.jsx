@@ -57,7 +57,7 @@ const RegisterScreen = () => {
         .then(() => {
           console.log('User Details has been saved to firestore !!!');
         });
-      dispatch(addUser(registeremail, userRes.user.uid, name));
+      dispatch(addUser(registeremail, userRes.user.uid, name,cellNumber));
     } catch (error) {
       console.error(error.code);
     }

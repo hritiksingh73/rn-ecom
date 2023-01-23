@@ -15,7 +15,6 @@ const OrderHistoryScreen = () => {
   const navigation = useNavigation();
   const orderhistoryData = useSelector(state => state.OrderInfo.orderHistory);
 
-  console.log('Order History Screen======>>>>>>>>>', orderhistoryData);
 
   const orderHistory = ({item}) => {
     return (

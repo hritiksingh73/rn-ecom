@@ -17,7 +17,6 @@ import {removeItemFromWishList, addItemToCart} from '../../redux/action/Action';
 
 const WishListScreen = () => {
   const item = useSelector(state => state.userInfo.wishList);
-  console.log('WishList Screen====>>>>>', item);
   const navigation = useNavigation();
   dispatch = useDispatch();
 

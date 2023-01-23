@@ -18,19 +18,14 @@ import {selectDeliveryaddress} from '../../../redux/action/Action';
 const CheckOutScreen = ({onScreenChange}) => {
   const navigation = useNavigation();
   const address = useSelector(state => state.userInfo.userAddressList);
-  //const orderData = useSelector(state => state.OrderInfo.orders);
-  //console.log("orderData from address selection Screen",orderData.orderDetails)
   const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();
 
   const selectAddressHandler = item => {
     dispatch(selectDeliveryaddress(item));
-
-    //console.log("Selected Address From CheckOut Screen",item)
   };
 
   const customerData = ({item}) => {
-    //console.log(item)
     return (
       <View
         style={[
