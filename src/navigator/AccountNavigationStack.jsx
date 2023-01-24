@@ -8,7 +8,9 @@ import AccountScreen from '../screens/AccountScreen/AccountScreen/AccountScreen'
 import AddAddressScreen from '../screens/AccountScreen/AddAddressScreen/AddAddressScreen';
 import OrderHistoryScreen from '../screens/AccountScreen/OrderHistoryScreen/OrderHistoryScreen/OrderHistoryScreen';
 import OrderDetailScreen from '../screens/AccountScreen/OrderHistoryScreen/OrderDetailsScreen/OrderDetailScreen';
-import MyProfileScreen from '../screens/AccountScreen/MyProfileScreen/MyProfileScreen';
+
+import EditMyProfileScreen from '../screens/AccountScreen/MyProfileScreen/EditMyProfileScreen/EditMyProfileScreen';
+import MyProfileScreen from '../screens/AccountScreen/MyProfileScreen/MyProfileScreen/MyProfileScreen';
 
 const stack = createNativeStackNavigator();
 const AccountNavigationStack = () => {
@@ -60,6 +62,13 @@ const AccountNavigationStack = () => {
       <stack.Screen
         name="MyProfileScreen"
         component={MyProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <stack.Screen
+        name="EditMyProfileScreen"
+        component={EditMyProfileScreen}
         options={{
           headerShown: false,
         }}

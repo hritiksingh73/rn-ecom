@@ -17,7 +17,6 @@ const ThankyouScreen = () => {
   const navigation = useNavigation();
   dispatch = useDispatch();
   const cartDeliveryData = useSelector(state => state.OrderInfo.orders);
-  
 
   return (
     <SafeAreaView style={styles.mainContainer}>

@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
 import Edit from 'react-native-vector-icons/Feather';
-import FormContainer from '../../../component/FormComponent/Login_RegisterFormComponent/FormInput';
+import FormContainer from '../../../../component/FormComponent/Login_RegisterFormComponent/FormInput';
 
 const MyProfileScreen = () => {
   const navigation = useNavigation();
@@ -36,7 +36,7 @@ const MyProfileScreen = () => {
           <Icon name="chevron-left" size={30} />
         </TouchableOpacity>
         <Text style={styles.header}>Profile</Text>
-        <Edit name="edit" size={24} style={styles.Icons} />
+        <Edit name="edit" size={24} style={styles.Icons} onPress={()=>{navigation.navigate("EditMyProfileScreen")}}/>
       </View>
       <View style={styles.avator}>
         <Avatar.Text size={150} label={userInfo.name} />

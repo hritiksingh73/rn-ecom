@@ -16,19 +16,18 @@ import axios from 'axios';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import strings from '../../constant/String/strings';
 import styles from './styles';
-import {addItemToCart,addItemToWishList} from '../../redux/action/Action';
+import {addItemToCart, addItemToWishList} from '../../redux/action/Action';
 
 const ProductDetailsScreen = ({route}) => {
   const {productData} = useSelector(state => state.userInfo);
-  
+
   const navigation = useNavigation();
   const [itemData, setItemData] = useState();
-console.log(itemData)
+  console.log(itemData);
   const receivedproductItem = route.params;
   dispatch = useDispatch();
- 
+
   const getSelectedItem = async () => {
-  
     try {
       const response = await axios.get(
         `https://grocery-backend-in.vercel.app/products/${receivedproductItem}`,
@@ -112,7 +111,9 @@ console.log(itemData)
           />
         </View>
         <View style={styles.buttonStyle}>
-          <TouchableOpacity style={styles.footerButtonLeft} onPress={() => dispatch(addItemToWishList(itemData))}>
+          <TouchableOpacity
+            style={styles.footerButtonLeft}
+            onPress={() => dispatch(addItemToWishList(itemData))}>
             <Text style={styles.btnText}>Add to Wishlist</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.footerButtonRight}>
