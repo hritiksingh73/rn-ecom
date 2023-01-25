@@ -6,17 +6,16 @@ import {
   View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import styles from './styles';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Avatar, TextInput} from 'react-native-paper';
-
-import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
+import styles from './styles';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Avatar, TextInput} from 'react-native-paper';
+import firestore from '@react-native-firebase/firestore';
+
 const EditMyProfileScreen = () => {
   const [userInfo, setUserInfo] = useState('');
-  console.log('Fetching data from firestore===>>>>>>',userInfo);
   const registrationData = useSelector(state => state.userInfo.loginpage);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
