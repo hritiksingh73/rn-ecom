@@ -36,7 +36,14 @@ const MyProfileScreen = () => {
           <Icon name="chevron-left" size={30} />
         </TouchableOpacity>
         <Text style={styles.header}>Profile</Text>
-        <Edit name="edit" size={24} style={styles.Icons} onPress={()=>{navigation.navigate("EditMyProfileScreen")}}/>
+        <Edit
+          name="edit"
+          size={24}
+          style={styles.Icons}
+          onPress={() => {
+            navigation.navigate('EditMyProfileScreen');
+          }}
+        />
       </View>
       <View style={styles.avator}>
         <Avatar.Text size={150} label={userInfo.name} />
@@ -51,7 +58,7 @@ const MyProfileScreen = () => {
         <FormContainer value={userInfo.Phone} style={styles.userData} />
       </View>
       <View style={styles.changePasswordButtonContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("EditMyProfileScreen")}>
           <Text style={styles.changePasswordButton}>change Password</Text>
         </TouchableOpacity>
       </View>

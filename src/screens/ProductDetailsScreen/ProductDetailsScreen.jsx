@@ -23,9 +23,9 @@ const ProductDetailsScreen = ({route}) => {
 
   const navigation = useNavigation();
   const [itemData, setItemData] = useState();
-  console.log(itemData);
+  // console.log(itemData);
   const receivedproductItem = route.params;
-  dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const getSelectedItem = async () => {
     try {

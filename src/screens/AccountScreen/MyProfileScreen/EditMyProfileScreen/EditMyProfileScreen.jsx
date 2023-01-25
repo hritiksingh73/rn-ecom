@@ -4,11 +4,12 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TextInput
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Avatar, TextInput} from 'react-native-paper';
+import {Avatar, } from 'react-native-paper';
 
 import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
@@ -16,6 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const EditMyProfileScreen = () => {
   const [userInfo, setUserInfo] = useState('');
+  console.log('Fetching data from firestore===>>>>>>',userInfo);
   const registrationData = useSelector(state => state.userInfo.loginpage);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -37,6 +39,19 @@ const EditMyProfileScreen = () => {
         console.log('User updated!');
       });
   };
+  useEffect(() => {
+    firestore()
+      .collection('Users')
+      .doc(registrationData.name) //uid!!!
+      .get()
+      .then(documentSnapshot => {
+        console.log('User exists: ', documentSnapshot.exists);
+        if (documentSnapshot.exists) {
+          const data = documentSnapshot.data();
+          setUserInfo(data);
+        }
+      });
+  }, []);
 
   return (
     <SafeAreaView>
@@ -56,11 +71,13 @@ const EditMyProfileScreen = () => {
           <TextInput
             onChangeText={text => setFirstName(text)}
             value={firstName}
-            placeholder="Email"
+            placeholder="firstName"
             autoCapitalize="words"
             mode="outlined"
             label="First Name"
             style={styles.firstName}
+            // defaultValue={userInfo.name}
+            defaultValue="Aditya"
           />
         </View>
 
@@ -68,11 +85,13 @@ const EditMyProfileScreen = () => {
           <TextInput
             onChangeText={text => setLastName(text)}
             value={lastName}
-            placeholder="Email"
+            placeholder="lastName"
             autoCapitalize="words"
             mode="outlined"
             label="Last Name"
             style={styles.lastName}
+            // defaultValue={userInfo.lastName}
+            defaultValue="Khaparkar"
           />
         </View>
       </View>
@@ -80,11 +99,13 @@ const EditMyProfileScreen = () => {
         <TextInput
           onChangeText={text => setRegisterEmail(text)}
           value={registeremail}
-          placeholder="Email"
+          placeholder="registeremail"
           autoCapitalize="words"
           mode="outlined"
           label="Email"
           style={styles.registeremail}
+          // defaultValue={userInfo.email}
+          defaultValue="adityakhaparkar@gmail.com"
         />
       </View>
       <View style={styles.phoneNumberContainer}>
@@ -92,11 +113,13 @@ const EditMyProfileScreen = () => {
           onChangeText={text => setPhoneNumber(text)}
           keyboardType="numeric"
           value={phoneNumber}
-          placeholder="Email"
+          placeholder="phoneNumber"
           autoCapitalize="words"
           mode="outlined"
           label="Phone Number"
           style={styles.phoneNumber}
+          // defaultValue={userInfo.Phone}
+          defaultValue="1234568790"
         />
       </View>
 

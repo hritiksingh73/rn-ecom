@@ -10,7 +10,7 @@ const InitialState = {
   orderHistory: [],
 };
 
-const userReducer = (state = InitialState, action) => {
+const OrderReducer = (state = InitialState, action) => {
   switch (action.type) {
     /////////////////Address Section/////////////////
 
@@ -57,4 +57,4 @@ const userReducer = (state = InitialState, action) => {
   }
 };
 
-export default userReducer;
+export default OrderReducer;

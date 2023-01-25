@@ -16,7 +16,8 @@ import styles from './styles';
 import {removeItemFromWishList, addItemToCart} from '../../redux/action/Action';
 
 const WishListScreen = () => {
-  const item = useSelector(state => state.userInfo.wishList);
+  const wishListItem = useSelector(state => state.userInfo.wishList);
+  console.log("Wishlist Data from Wishlist Screen=====>>>",wishListItem)
   const navigation = useNavigation();
   dispatch = useDispatch();
 
@@ -62,7 +63,7 @@ const WishListScreen = () => {
       </SafeAreaView>
 
       <FlatList
-        data={item}
+        data={wishListItem}
         renderItem={item => ListData(item)}
         keyExtractor={item => item.id}
         numColumns={2}

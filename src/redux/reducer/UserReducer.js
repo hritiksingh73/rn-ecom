@@ -33,10 +33,10 @@ const userReducer = (state = InitialState, action) => {
       };
 
     case ActionType.WISHLIST_ITEM:
-      //console.log("Wishlist Data=====>>>",action.payload)
+      console.log("Wishlist Data from reducer=====>>>",action.payload)
       return {
         ...state,
-        wishlist: [...state.wishList, action.payload],
+        wishlist: [...state.wishList, ...action.payload],
       };
 
     case ActionType.REMOVE_WISHLIST_ITEM:

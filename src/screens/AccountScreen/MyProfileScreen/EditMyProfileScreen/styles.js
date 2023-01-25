@@ -28,46 +28,44 @@ const styles = StyleSheet.create({
   },
   textInputheaderContainer: {
     flexDirection: 'row',
-    paddingTop:20
+    paddingTop: 20,
   },
   firstNameheaderContainer: {
     width: '50%',
-    left:20
+    left: 20,
   },
   halfInputContainer: {
-    width: '58%'
-    
+    width: '58%',
   },
-  firstName:{
+  firstName: {
     width: '80%',
   },
   lastName: {
     fontSize: 15,
     width: '80%',
-   
   },
   firstNameContainer: {
     width: '50%',
-    left:20
+    left: 20,
   },
-  registeremail:{
-    width:"90%"
+  registeremail: {
+    width: '90%',
   },
-  registeremailContainer:{
-    left:20,
-    paddingVertical:30
+  registeremailContainer: {
+    left: 20,
+    paddingVertical: 30,
   },
-  phoneNumberContainer:{
-    left:20,
+  phoneNumberContainer: {
+    left: 20,
   },
-  phoneNumber:{
-    width:"90%"
+  phoneNumber: {
+    width: '90%',
   },
   saveButtonContainer: {
     alignItems: 'center',
     paddingTop: 50,
   },
- saveButton: {
+  saveButton: {
     width: 140,
     height: 40,
     alignItems: 'center',
