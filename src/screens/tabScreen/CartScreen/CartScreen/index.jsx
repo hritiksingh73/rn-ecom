@@ -162,7 +162,7 @@ const Cart = ({navigation}) => {
               <BillInfo title="Total" onPress={calculateUserTotalPrice} />
               <BillInfo
                 title="Delivery Charge"
-                onPress={CalculateDeliveryRate}
+                onPress={calculateDeliveryRate}
               />
               <BillInfo title="Coupon" onPress={calculateCoupon} />
               <BillInfo title="Tax" onPress={calculateTax} />

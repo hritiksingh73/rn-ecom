@@ -2,9 +2,12 @@ import {StyleSheet} from 'react-native';
 import color from '../../../constant/color';
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: color.white,
+  },
   container: {
     alignItems: 'center',
-    backgroundColor: color.white,
   },
   groceryImage: {
     width: 200,

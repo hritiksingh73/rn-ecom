@@ -72,7 +72,7 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.mainContainer}>
       <View style={styles.container}>
         <Image source={image.grocery} style={styles.groceryImage} />
         <Text style={styles.welcome}>Welcome Back!</Text>

@@ -18,13 +18,14 @@ const userReducer = (state = initialState, action) => {
 
   switch (type) {
     case ActionType.USER_DETAILS:
-      // console.log('user details----->', action.payload);
+      console.log('user details----->', action.payload);
       return {
         ...state,
         userRecord: payload,
       };
 
     case ActionType.USER_ID:
+      console.log('user ID----->', action.payload);
       return {
         ...state,
         userID: payload,

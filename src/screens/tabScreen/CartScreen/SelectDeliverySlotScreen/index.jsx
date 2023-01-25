@@ -23,9 +23,9 @@ import {deliveryDate, deliveryTime} from '../../../../redux/action/Action.js';
 const SelectDeliverySlotScreen = ({navigation}) => {
   const {goBack} = useNavigation();
   const dispatch = useDispatch();
-  const cart = useSelector(state => state.orderData.latestOrders)
+  const cart = useSelector(state => state.orderData.latestOrders);
   //console.log('deliverData--->', cart.billingDetails)
-  
+
   const dateData = ({item}) => {
     //console.log({item})
     return (
@@ -48,13 +48,17 @@ const SelectDeliverySlotScreen = ({navigation}) => {
         <TouchableOpacity
           style={styles.deliveryTimeContainer}
           //onPress={() => dispatch(deliveryTime(item))}
-          >
+        >
           <Text style={styles.timeStyle}>{item.time}</Text>
           <Text style={styles.priceStyle}>{item.price}</Text>
         </TouchableOpacity>
 
         <View style={styles.btnText}>
-          <Button title="Choose" color="grey" onPress={() => dispatch(deliveryTime(item))}/>
+          <Button
+            title="Choose"
+            color="grey"
+            onPress={() => dispatch(deliveryTime(item))}
+          />
         </View>
       </View>
     );

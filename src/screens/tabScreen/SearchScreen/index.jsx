@@ -18,7 +18,6 @@ import {Chip} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {addToCart} from '../../../redux/action/Action.js';
-import {getInitialData} from '../../../redux/thunk/productThunk.js';
 
 import GroceryProduct from '../../../data/GroceryProduct.js';
 import styles from './styles.js';
@@ -28,10 +27,6 @@ const SearchScreen = ({navigation}) => {
   const dataItem = useSelector(state => state.cartData.productData);
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
-
-  useEffect(() => {
-    dispatch(getInitialData());
-  }, []);
 
   const popularProducts = ({item}) => {
     return (

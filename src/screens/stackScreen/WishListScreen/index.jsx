@@ -31,8 +31,6 @@ const WishListScreen = ({navigation}) => {
   const btnHandler = item => {
     dispatch(removeToWishlist(item.id));
     setisModalVisible(false);
-    // dispatch(removeToCart(item));
-    // alert('Are you sure you want to remove this item');
   };
 
   const fruitData = ({item}) => {

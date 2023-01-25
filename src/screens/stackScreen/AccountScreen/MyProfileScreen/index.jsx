@@ -21,28 +21,28 @@ import firestore from '@react-native-firebase/firestore';
 
 const MyProfileScreen = ({navigation}) => {
   const data = useSelector(state => state.userData.userRecord);
-  console.log('fire-->', data);
-  const userID = useSelector(state => state.userData.userID);
+  console.log('data from profile screen-->', data);
+  
 
-  const [userInfo, setUserInfo] = useState('');
-  console.log('userInfo--->', userInfo);
+  const [userDetails, setUserDetails] = useState('');
+  console.log('userDetails--->', userDetails);
 
   //const btnHandlerFirestore = () => {
   useEffect(() => {
     firestore()
       .collection('Users')
-      .doc(data.email)
-     // .doc('uDetE56Db1XcSlZJ7RCuJU8kGOn2')
+      .doc(data.uid)
       .get()
       .then(documentSnapshot => {
         console.log('User exists: ', documentSnapshot.exists);
         if (documentSnapshot.exists) {
           console.log('User data: ', documentSnapshot.data());
           let data = documentSnapshot.data();
-          setUserInfo(data);
+          setUserDetails(data);
         }
       });
   }, []);
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.container}>
@@ -63,11 +63,11 @@ const MyProfileScreen = ({navigation}) => {
       <View style={styles.mainTextStyle}></View>
       <View style={styles.userInfoStyle}>
         <Text style={styles.titleTextStyle}>Email</Text>
-        <Text style={styles.textInputStyle}>{userInfo.email}</Text>
+        <Text style={styles.textInputStyle}>{userDetails.email}</Text>
       </View>
       <View style={styles.userInfoStyle}>
         <Text style={styles.titleTextStyle}>Phone Number</Text>
-        <Text style={styles.textInputStyle}>{userInfo.mobile}</Text>
+        <Text style={styles.textInputStyle}>{userDetails.mobile}</Text>
       </View>
 
       <View style={styles.btnStyle}>

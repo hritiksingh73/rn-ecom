@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -18,8 +18,47 @@ import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
 import {Avatar} from 'react-native-paper';
 import PrimaryButton from '../../../../components/PrimaryButton/index';
+import firestore from '@react-native-firebase/firestore';
 
 const EditProfileScreen = ({navigation}) => {
+  const data = useSelector(state => state.userData.userRecord);
+  console.log('data from edit profile screen-->', data);
+
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobileno, setMobileNo] = useState('')
+
+  // useEffect(() => {
+
+  // const editBtnHandler = () => {
+  //   firestore()
+  //   .collection('Users')
+  //   .doc(data.uid)
+  //   .update({
+
+  //     'data.fullname': 'dubey'
+  //   })
+  //   .then(() => {
+  //     console.log('User updated!');
+  //   });
+  // },
+  //   []);
+  const updateBtnHandler = () => {
+    firestore()
+      .collection('Users')
+      .doc(data.uid)
+      .update({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        mobile: mobileno
+      })
+      .then(() => {
+        console.log('User updated!', firstname);
+      });
+  };
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.container}>
@@ -41,7 +80,10 @@ const EditProfileScreen = ({navigation}) => {
           <TextInput
             style={styles.textInputStyle}
             placeholder="Nishi"
-            placeholderTextColor="black"
+            placeholderTextColor="grey"
+            onChangeText={text => setFirstName(text)}
+            value={firstname}
+            label="First Name"
           />
         </View>
 
@@ -50,7 +92,10 @@ const EditProfileScreen = ({navigation}) => {
           <TextInput
             style={styles.textInputStyle}
             placeholder="Dubey"
-            placeholderTextColor="black"
+            placeholderTextColor="grey"
+            onChangeText={text => setLastName(text)}
+            value={lastname}
+            label="Last Name"
           />
         </View>
       </View>
@@ -60,7 +105,10 @@ const EditProfileScreen = ({navigation}) => {
         <TextInput
           style={styles.textInputStyle}
           placeholder="n@gmail.com"
-          placeholderTextColor="black"
+          placeholderTextColor="grey"
+          onChangeText={text => setEmail(text)}
+            value={email}
+            label="Email"
         />
       </View>
 
@@ -69,12 +117,15 @@ const EditProfileScreen = ({navigation}) => {
         <TextInput
           style={styles.textInputStyle}
           placeholder="+1 9987634445"
-          placeholderTextColor="black"
+          placeholderTextColor="grey"
+          onChangeText={text => setMobileNo(text)}
+            value={mobileno}
+            label="Mobile No"
         />
       </View>
 
       <View style={styles.btnContainer}>
-        <PrimaryButton name='Save' />
+        <PrimaryButton name="Save" onPress={updateBtnHandler} />
       </View>
     </SafeAreaView>
   );

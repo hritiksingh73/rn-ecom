@@ -15,7 +15,7 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 //import {registerUser} from '../../redux/action/Action.js';
-import {userFullInfo, userCreate} from '../../../redux/action/Action';
+import {userFullInfo, userId} from '../../../redux/action/Action.js';
 import InputField from '../../../components/InputField';
 import styles from './styles';
 import {
@@ -39,7 +39,8 @@ const RegisterScreen = ({navigation}) => {
   const cartList = useSelector(state => state.cartData.cartProducts);
 
   const userID = useSelector(state => state.userData.userID);
-  const updateRegister = async () => {
+
+  const updateRegister = () => {
     if (email === '' && password === '') {
       alert('Empty email and password');
     } else {
@@ -49,8 +50,10 @@ const RegisterScreen = ({navigation}) => {
           user.updateProfile({
             displayName: fullname,
           });
-          dispatch(userCreate(user.uid));
-          // console.log('User account created & signed in!');
+          // dispatch(userId(user.uid));
+          dispatch(userFullInfo(fullname, email, mobileno, user.uid));
+          // console.log('user before dispatch--->', user.uid);
+          console.log('User account created & signed in!');
 
           firestore()
             .collection('Users')
@@ -58,6 +61,7 @@ const RegisterScreen = ({navigation}) => {
             .set({
               name: fullname,
               id: user.uid,
+              //userUid: user.uid,
               email: email,
               mobile: mobileno,
             })
@@ -74,15 +78,17 @@ const RegisterScreen = ({navigation}) => {
           }
           // console.error(error);
         });
-      let userInfo = {
-        fullname: fullname,
-        email: email,
-        id: user.uid,
-        mobileno: mobileno,
-      };
+      //   let userInfo = {
+      //     fullname: fullname,
+      //     email: email,
+      //     //id: user.uid,
+      //     mobileno: mobileno,
+      //   };
 
-      dispatch(userFullInfo(userInfo));
-      // console.log(userInfo);
+      //   dispatch(userFullInfo(userInfo));
+      //   // console.log(userInfo);
+      // }
+      // dispatch(userFullInfo(fullname, email, mobileno, user.uid));
     }
   };
 

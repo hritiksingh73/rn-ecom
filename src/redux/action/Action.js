@@ -1,9 +1,9 @@
 import {ActionType} from './ActionType';
 import axios from 'axios';
 
-export const userFullInfo = user => ({
+export const userFullInfo = (fullname, email, mobileno, uid) => ({
   type: ActionType.USER_DETAILS,
-  payload: user,
+  payload: {fullname, email, mobileno, uid},
 });
 
 export const addToCart = user => ({
@@ -26,10 +26,10 @@ export const decreaseToCart = item => ({
   payload: item,
 });
 
-export const userCreate = id => ({
-  type: ActionType.USER_ID,
-  payload: id,
-});
+// export const userId = id => ({
+//   type: ActionType.USER_ID,
+//   payload: id,
+// });
 
 export const addToWishlist = product => ({
   type: ActionType.ADD_TO_WISHLIST,
