@@ -4,12 +4,11 @@ import {
   Text,
   TouchableOpacity,
   View,
-  TextInput
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Avatar, } from 'react-native-paper';
+import {Avatar, TextInput} from 'react-native-paper';
 
 import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
@@ -76,8 +75,7 @@ const EditMyProfileScreen = () => {
             mode="outlined"
             label="First Name"
             style={styles.firstName}
-            // defaultValue={userInfo.name}
-            defaultValue="Aditya"
+            defaultValue={userInfo.name}
           />
         </View>
 
@@ -90,8 +88,7 @@ const EditMyProfileScreen = () => {
             mode="outlined"
             label="Last Name"
             style={styles.lastName}
-            // defaultValue={userInfo.lastName}
-            defaultValue="Khaparkar"
+            defaultValue={userInfo.lastName}
           />
         </View>
       </View>
@@ -104,8 +101,7 @@ const EditMyProfileScreen = () => {
           mode="outlined"
           label="Email"
           style={styles.registeremail}
-          // defaultValue={userInfo.email}
-          defaultValue="adityakhaparkar@gmail.com"
+          defaultValue={userInfo.email}
         />
       </View>
       <View style={styles.phoneNumberContainer}>
@@ -118,8 +114,7 @@ const EditMyProfileScreen = () => {
           mode="outlined"
           label="Phone Number"
           style={styles.phoneNumber}
-          // defaultValue={userInfo.Phone}
-          defaultValue="1234568790"
+          defaultValue={userInfo.Phone}
         />
       </View>
 
