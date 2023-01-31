@@ -4,7 +4,7 @@ import {Controller} from 'react-hook-form';
 
 import {styles} from './styles';
 
-const Input = ({name, control, placeholder, style, label}) => {
+const Input = ({name, control, placeholder, style, label, defaultValue}) => {
   return (
     <Controller
       name={name}
@@ -21,6 +21,7 @@ const Input = ({name, control, placeholder, style, label}) => {
       }) => (
         <>
           <TextInput
+            defaultValue={defaultValue}
             label={label}
             placeholder={placeholder}
             value={value}

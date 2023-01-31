@@ -2,11 +2,11 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import GroceryStackNavigator from './GroceryStackNavigator';
+import HomeStackNavigator from './GroceryStackNavigator';
 import SearchScreen from '../screens/SearchScreen';
-import CartScreen from '../screens/CartScreen';
 import {color} from '../constant/color';
 import AccountNavigator from './AccountNavigator';
+import CartStackNavigator from './CartTabNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +15,7 @@ export default function GroceryTabNavigator() {
     <Tab.Navigator screenOptions={{tabBarActiveTintColor: color.primary}}>
       <Tab.Screen
         name="Home"
-        component={GroceryStackNavigator}
+        component={HomeStackNavigator}
         options={{
           tabBarIcon: ({focused}) => (
             <Icon
@@ -43,8 +43,9 @@ export default function GroceryTabNavigator() {
       />
       <Tab.Screen
         name="Cart"
-        component={CartScreen}
+        component={CartStackNavigator}
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <Icon
               name="shoppingcart"

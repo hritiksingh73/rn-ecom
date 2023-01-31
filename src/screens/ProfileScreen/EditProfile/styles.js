@@ -5,13 +5,11 @@ export const styles = StyleSheet.create({
   nameContainer: {
     flexDirection: 'row',
   },
-  firstName: {
-    width: '36%',
-    marginHorizontal: 30,
-  },
-  lastName: {
-    width: '38%',
-    marginHorizontal: 10,
+  input: {
+    backgroundColor: '#fff',
+    marginHorizontal: '5%',
+    padding: '4%',
+    width: '90%',
   },
   btnContainer: {
     alignItems: 'center',

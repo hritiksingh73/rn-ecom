@@ -9,15 +9,10 @@ import {globalStyle} from '../../../constant/globalStyle';
 import {styles} from './styles';
 
 const OrderDetails = () => {
-  const [{priceDetail, selectedAddress, payment}] = useSelector(
-    state => state.ordersReducer.orders,
-  );
-  const orders = useSelector(
-    state => state.ordersReducer.orders[3].priceDetail.products,
-  );
-  console.log('details-------->', orders);
-
   const id = useRoute().params.id;
+  const orderDetail = useSelector(state => state.ordersReducer.orders);
+  const orders = orderDetail.filter(item => id === item.orderId);
+  const getCartProducts = orders[0].priceDetail.products;
 
   const renderListItem = ({item}) => (
     <View style={styles.renderItemContainer}>
@@ -36,11 +31,11 @@ const OrderDetails = () => {
     <ScrollView style={globalStyle.container}>
       <View style={styles.topDetailContainer}>
         <Text style={styles.topDetail}>Order ID: {id}</Text>
-        <Text style={styles.topDetail}>${priceDetail.subTotal}</Text>
+        <Text style={styles.topDetail}>${orders[0].priceDetail.subTotal}</Text>
       </View>
 
       <FlatList
-        data={orders}
+        data={getCartProducts}
         horizontal
         renderItem={renderListItem}
         showsHorizontalScrollIndicator={false}
@@ -52,30 +47,30 @@ const OrderDetails = () => {
 
       <View style={styles.addressContainer}>
         <Text style={globalStyle.nameStyle}>
-          {selectedAddress.firstName}
-          {selectedAddress.lastName}
+          {orders[0].selectedAddress.firstName}
+          {orders[0].selectedAddress.lastName}
         </Text>
         <Text style={globalStyle.itemFontSize}>
-          {selectedAddress.addressType}
-          {selectedAddress.street}
-          {selectedAddress.area}
-          {selectedAddress.house}
-          {selectedAddress.block}
+          {orders[0].selectedAddress.addressType}
+          {orders[0].selectedAddress.street}
+          {orders[0].selectedAddress.area}
+          {orders[0].selectedAddress.house}
+          {orders[0].selectedAddress.block}
         </Text>
       </View>
       <Divider />
       <Text style={[globalStyle.header, styles.heading]}>Price Detail</Text>
-      <BillDetails detail="Total" price={priceDetail.total} />
+      <BillDetails detail="Total" price={orders[0].priceDetail.total} />
       <BillDetails
         detail="Delivery Charge"
-        price={priceDetail.deliveryCharge}
+        price={orders[0].priceDetail.deliveryCharge}
       />
       <BillDetails detail="Coupon" price="Not Available" />
-      <BillDetails detail="Tax" price={priceDetail.tax} />
-      <BillDetails detail="Sub Total" price={priceDetail.subTotal} />
+      <BillDetails detail="Tax" price={orders[0].priceDetail.tax} />
+      <BillDetails detail="Sub Total" price={orders[0].priceDetail.subTotal} />
 
       <Text style={[globalStyle.header, styles.heading]}>Payment Mode</Text>
-      <Text style={styles.paymentMethod}>{payment}</Text>
+      <Text style={styles.paymentMethod}>{orders[0].payment}</Text>
     </ScrollView>
   );
 };

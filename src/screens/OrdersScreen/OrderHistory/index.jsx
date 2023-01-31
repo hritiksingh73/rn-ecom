@@ -18,10 +18,12 @@ const OrderHistory = () => {
         <View style={styles.renderItemContainer}>
           <View style={styles.listTopItems}>
             <Text style={styles.orderId}>Order ID: {item.orderId}</Text>
-            <Text style={globalStyle.itemFontSize}>${item.subTotal}</Text>
+            <Text style={globalStyle.itemFontSize}>
+              ${item.priceDetail.subTotal}
+            </Text>
           </View>
 
-          {/* <Text style={styles.date}>{item.deliverySlot}</Text> */}
+          <Text style={styles.date}>{item.deliverySlot}</Text>
           <Text style={styles.orderStatus}>Status: {item.status}</Text>
 
           <View style={styles.btnContainer}>

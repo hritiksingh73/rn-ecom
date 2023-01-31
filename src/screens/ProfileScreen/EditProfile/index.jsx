@@ -1,18 +1,37 @@
-import React from 'react';
-import {useForm} from 'react-hook-form';
+import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import CustomButton from '../../../components/Button';
-import {Avatar} from 'react-native-paper';
+import {Avatar, TextInput} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import firestore from '@react-native-firebase/firestore';
 
-import Input from '../../../components/Input';
 import {globalStyle} from '../../../constant/globalStyle';
 import {styles} from './styles';
+import {useRoute} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
-const EditProfile = () => {
-  const {control, handleSubmit} = useForm({
-    mode: 'onBlur',
-  });
+const EditProfile = ({navigation}) => {
+  const {userDetails} = useSelector(state => state.userDataReducer);
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNum, setPhoneNum] = useState('');
+
+  const userInfo = useRoute().params.userInfo;
+
+  const editUserInfo = () => {
+    firestore()
+      .collection('Users')
+      .doc(userDetails.uid)
+      .update({
+        name: fullName,
+        email: email,
+        mobile: phoneNum,
+      })
+      .then(() => {
+        console.log('User updated!');
+      });
+    navigation.navigate('Profile');
+  };
 
   return (
     <View style={globalStyle.container}>
@@ -25,24 +44,28 @@ const EditProfile = () => {
       </View>
 
       <View style={styles.nameContainer}>
-        <Input
-          name="firstName"
-          control={control}
-          label="First Name"
-          style={styles.firstName}
-        />
-        <Input
-          name="lastName"
-          control={control}
-          label="Last Name"
-          style={styles.firstName}
+        <TextInput
+          label="Full Name"
+          defaultValue={userInfo?.name}
+          style={styles.input}
+          onChangeText={val => setFullName(val)}
         />
       </View>
-      <Input name="Email" control={control} label="Email" />
-      <Input name="Phone Number" control={control} label="Phone Number" />
+      <TextInput
+        label="Email"
+        defaultValue={userInfo?.email}
+        style={styles.input}
+        onChangeText={val => setEmail(val)}
+      />
+      <TextInput
+        label="Phone Number"
+        style={styles.input}
+        defaultValue={userInfo?.mobile}
+        onChangeText={val => setPhoneNum(val)}
+      />
 
       <View style={styles.btnContainer}>
-        <CustomButton btnTitle="Save" />
+        <CustomButton btnTitle="Save" onPress={editUserInfo} />
       </View>
     </View>
   );

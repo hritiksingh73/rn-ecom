@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
   orderId: {
     fontSize: 16,
     fontWeight: 'bold',
+    flexBasis: '70%',
   },
   date: {
     color: 'rgb(163,163,163)',

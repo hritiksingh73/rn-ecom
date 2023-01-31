@@ -15,7 +15,6 @@ const Profile = ({navigation}) => {
   const {goBack} = useNavigation();
   const {userDetails} = useSelector(state => state.userDataReducer);
   const [userInfo, setUserInfo] = useState();
-  console.log('data------>', userInfo);
 
   const getUserInfo = () => {
     firestore()
@@ -25,7 +24,7 @@ const Profile = ({navigation}) => {
       .then(documentSnapshot => {
         console.log('User exists: ', documentSnapshot.exists);
         if (documentSnapshot.exists) {
-          console.log('User data: ', documentSnapshot.data());
+          console.log('User data: ', documentSnapshot.data().userInfo);
           setUserInfo(documentSnapshot.data());
         }
       });
@@ -48,7 +47,11 @@ const Profile = ({navigation}) => {
           name="form"
           size={25}
           color="black"
-          onPress={() => navigation.navigate('Edit Profile')}
+          onPress={() =>
+            navigation.navigate('Edit Profile', {
+              userInfo: userInfo,
+            })
+          }
         />
       </View>
 
