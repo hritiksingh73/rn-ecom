@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
-import SearchScreen from '../screens/tabScreens/SearchScreen';
+import SearchScreen from '../screens/TabScreens/SearchScreen';
 import HomeNavigator from './HomeNavigator';
 import CartNavigator from './CartNavigator';
 import AccountNavigator from './AccountNavigator';

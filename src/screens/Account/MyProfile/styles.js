@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     marginBottom: 20,
   },
-  userName: {
+  userNameStyles: {
     fontSize: 22,
     fontWeight: '600',
     marginBottom: 40,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginBottom: 10,
   },
-  userEmail: {
+  userEmailStyle: {
     fontSize: 18,
     fontWeight: '500',
   },

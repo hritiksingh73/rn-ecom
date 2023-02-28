@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import HomeScreen from '../screens/tabScreens/HomeScreen';
+import HomeScreen from '../screens/TabScreens/HomeScreen';
 
 import FruitsGalleryScreen from '../screens/Home/FruitsGalleryScreen';
 import VegetablesGalleryScreen from '../screens/Home/VegetablesGalleryScreen';
@@ -10,6 +10,8 @@ import PulsesGalleryScreen from '../screens/Home/PulsesGalleryScreen';
 import Sort from '../screens/Home/Sort';
 import ItemDetails from '../screens/Home/ItemDetails';
 import Notification from '../screens/Home/Notification';
+
+import ItemSearch from '../screens/Search/ItemSearch';
 
 const TabHomeNavigator = ({navigation}) => {
   const Filter = createNativeStackNavigator();
@@ -22,7 +24,8 @@ const TabHomeNavigator = ({navigation}) => {
           headerShown: true,
           headerRight: () => {
             return (
-              <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Notification')}>
                 <Feather name={'bell'} size={25} />
               </TouchableOpacity>
             );
@@ -37,7 +40,8 @@ const TabHomeNavigator = ({navigation}) => {
           headerBackTitleVisible: false,
           headerRight: () => {
             return (
-              <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Notification')}>
                 <Feather name={'bell'} size={25} />
               </TouchableOpacity>
             );
@@ -91,6 +95,12 @@ const TabHomeNavigator = ({navigation}) => {
           headerShown: true,
           headerBackTitleVisible: false,
         }}
+      />
+
+      <Filter.Screen
+        name="ItemSearch"
+        component={ItemSearch}
+        options={{headerShown: false}}
       />
     </Filter.Navigator>
   );

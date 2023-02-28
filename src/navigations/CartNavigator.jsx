@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import CartScreen from '../screens/tabScreens/CartScreen';
+import CartScreen from '../screens/TabScreens/CartScreen';
 import CheckoutScreen from '../screens/Cart/CheckoutScreen';
 import CheckoutSelectedAddress from '../screens/Cart/CheckoutSelectedAddress';
 import CheckoutSelectDeliverySlot from '../screens/Cart/CheckoutSelectDeliverySlot';

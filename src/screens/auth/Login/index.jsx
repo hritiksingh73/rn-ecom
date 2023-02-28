@@ -12,9 +12,12 @@ import LoginTextField from '../../../components/TextInputField';
 import PrimaryButton from '../../../components/PrimaryButton';
 import auth from '@react-native-firebase/auth';
 import {ValidateEmail, ValidatePassword} from '../../../utils';
+import {userDetails, userId} from '../../../redux/action/action';
+import {useDispatch} from 'react-redux';
 import images from '../../../config/images';
 
 const Login = ({navigation}) => {
+  const dispatch = useDispatch();
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState('');
@@ -32,6 +35,16 @@ const Login = ({navigation}) => {
             userEmail,
             userPassword,
           );
+          dispatch(userId(Response.user.uid));
+          dispatch(
+            userDetails(
+              Response.user.displayName,
+              Response.user.email,
+              Response.user.phoneNumber,
+              Response.user.uid,
+            ),
+          );
+
           console.log('\n\n===========userDetails==========');
           console.log('userName :', Response.user.displayName);
           console.log('userEmail :', Response.user.email);

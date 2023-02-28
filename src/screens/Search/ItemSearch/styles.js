@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import colors from '../../../../constants/colors';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -60,7 +60,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 12,
     backgroundColor: colors.gray_70,
+  },
+
+  recentSearchContainer: {
+    // borderWidth: 1, 
+    flexDirection: 'column',
+  },
+  recentSearchContainerRow: {
+    borderWidth: 1, 
+    borderColor: 'red',
+    flexDirection: 'row',
+  },
+  searchedText: {
+    flex: 1, 
+    textAlign: 'center',
+    backgroundColor: colors.gray_70,
+    borderWidth: 1, 
+    borderRadius: 20,
+    padding: 12,
+    margin: 4,
   }
+   
 });
 
 export default styles;

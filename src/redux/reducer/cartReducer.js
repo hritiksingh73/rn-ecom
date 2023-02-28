@@ -65,6 +65,13 @@ export const cartReducer = (state = initialState, action) => {
         fruitCart: response,
       };
 
+    case ActionTypes.REMOVE_ALL_CART_ITEM:
+      const cart = [];
+      return {
+        ...state,
+        fruitCart: cart,
+      };
+
     default:
       return state;
   }

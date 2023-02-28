@@ -2,11 +2,10 @@ import {ActionTypes} from '../constants/constants';
 
 const initialState = {
   userID: '',
-  registerData: [],
-  userAddresses: [],
-  manageAddressesItemsId: 0,
-  productData: [],
+  userDetails: [],
 
+  userAddresses: [],
+  productData: [],
   userWishlist: [],
 };
 
@@ -14,13 +13,13 @@ export const userReducer = (state = initialState, action) => {
   const {type, payload} = action;
 
   switch (type) {
-    case ActionTypes.REGISTER_DETAILS:
+    case ActionTypes.USER_DETAILS:
       const {name, email, number, password} = payload;
       console.log('Registerd Details ----->', name, email, number, password);
       return {
         ...state,
-        registerData: [
-          ...state.registerData,
+        userDetails: [
+          ...state.userDetails,
           {
             Name: name,
             Email: email,
@@ -31,6 +30,7 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case ActionTypes.USER_ID:
+      console.log('user ID ----->', payload);
       return {
         ...state,
         userID: payload,

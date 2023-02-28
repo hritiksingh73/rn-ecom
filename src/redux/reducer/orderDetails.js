@@ -8,7 +8,7 @@ const initialState = {
   paymentMethod: '',
   products: [],
   billingDetails: {},
-
+  // All order Details
   orderDetails: [],
 };
 
@@ -37,7 +37,7 @@ export const orderDetails = (state = initialState, action) => {
         deliveryTime: payload,
       };
 
-    case ActionTypes.PAYMENT_METHOD:
+    case ActionTypes.PAYMENT_MODE:
       // console.log('reducer -> paymentMethod -> ', payload);
       return {
         ...state,
@@ -58,7 +58,7 @@ export const orderDetails = (state = initialState, action) => {
         billingDetails: payload,
       };
 
-    case ActionTypes.CHECKOUT_DETAILS:
+    case ActionTypes.USER_ORDER_DETAILS:
       // console.log('reducer -> orderDetails -> ', payload);
       return {
         ...state,
@@ -66,7 +66,7 @@ export const orderDetails = (state = initialState, action) => {
       };
 
     case ActionTypes.COMPONENT_CHANGE_BY_INDEX:
-      console.log('reducer -> screenIndex -> ', payload);
+      // console.log('reducer -> screenIndex -> ', payload);
       return {
         ...state,
         screenIndex: payload,
@@ -78,27 +78,3 @@ export const orderDetails = (state = initialState, action) => {
 };
 
 export default orderDetails;
-
-// orderDetails = [
-//   {
-//     orderID: '123',
-//     selectedAddress: {
-//       addressID: 'id1673369834645',
-//       addressType: 'O',
-//       apartment: 'O',
-//       area: 'O',
-//       block: 'O',
-//       firstName: 'Oo',
-//       lastName: 'O',
-//       number: 'O',
-//       street: 'Oo',
-//     },
-//     deliverySlot: {
-//       date: '10th',
-//       time: '8 AM - 9 AM',
-//       day: 'Monday',
-//       month: 'Jan',
-//     },
-//     paymentMethod: 'Cash On Delivery',
-//   },
-// ];

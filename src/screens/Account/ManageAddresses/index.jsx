@@ -9,7 +9,7 @@ import {
 import styles from './styles';
 import PrimaryButton from '../../../components/PrimaryButton';
 import {useDispatch, useSelector} from 'react-redux';
-import {DeleteAddress} from '../../../redux/action/action';
+import {deleteAddress} from '../../../redux/action/action';
 import Feather from 'react-native-vector-icons/Feather';
 
 const ManageAddresses = ({navigation}) => {
@@ -25,7 +25,7 @@ const ManageAddresses = ({navigation}) => {
   };
 
   const DeleteItem = id => {
-    dispatch(DeleteAddress(id));
+    dispatch(deleteAddress(id));
   };
 
   return (

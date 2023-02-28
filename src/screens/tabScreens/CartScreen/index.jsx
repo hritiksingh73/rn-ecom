@@ -11,11 +11,11 @@ import {
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-  IncrementCartItem,
-  DecrementCartItem,
-  RemoveCartItem,
-  OrderedProducts,
-  OrderedProductsPrice,
+  increaseNoOfCartItem,
+  decreaseNoOfCartItem,
+  removeSingleCartItem,
+  orderedProducts,
+  orderedProductsPricing,
 } from '../../../redux/action/action';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './style';
@@ -65,15 +65,15 @@ const CartScreen = ({navigation}) => {
   // };
 
   const IncreaseItemHandler = item => {
-    dispatch(IncrementCartItem(item.id));
+    dispatch(increaseNoOfCartItem(item.id));
     firestore().collection('Cart').doc('ABC').set({cartData});
   };
 
   const DecreaseItemHandler = item => {
     if (item.numberOfItem >= 1) {
-      dispatch(DecrementCartItem(item.id));
+      dispatch(decreaseNoOfCartItem(item.id));
     } else {
-      dispatch(RemoveCartItem(item.id));
+      dispatch(removeSingleCartItem(item.id));
     }
     firestore().collection('Cart').doc('ABC').set({cartData});
   };
@@ -192,8 +192,8 @@ const CartScreen = ({navigation}) => {
                 deliveryCharges: DeliveryCharge(),
                 totalAmoutn: TotalBilling()
               }
-              dispatch(OrderedProducts(cartData))
-              dispatch(OrderedProductsPrice(billingDetails))
+              dispatch(orderedProducts(cartData))
+              dispatch(orderedProductsPricing(billingDetails))
               navigation.navigate('Checkout')}}/>
           </View>
         </View>

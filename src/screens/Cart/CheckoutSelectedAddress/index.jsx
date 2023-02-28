@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-  SelectedAddress,
-  ComponentChangeByIndex,
+  selectedAddress,
+  componentChangeByIndex,
 } from '../../../redux/action/action';
 import {StyleSheet} from 'react-native';
 import PrimaryButton from '../../../components/PrimaryButton';
@@ -48,7 +48,7 @@ const Addresses = ({navigation}) => {
                 name={'Deliver here'}
                 onPress={() => {
                   setIsAddressSelected(index + 1);
-                  dispatch(SelectedAddress(item));
+                  dispatch(selectedAddress(item));
                 }}
                 customBtnAlignment={styles.customBtnAlignment}
               />
@@ -69,7 +69,7 @@ const Addresses = ({navigation}) => {
         <PrimaryButton
           name={'Save & Next'}
           onPress={() => {
-            dispatch(ComponentChangeByIndex(1));
+            dispatch(componentChangeByIndex(1));
           }}
         />
       </View>

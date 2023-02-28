@@ -6,14 +6,14 @@ import CheckoutSelectedAddress from '../CheckoutSelectedAddress';
 import CheckoutSelectDeliverySlot from '../CheckoutSelectDeliverySlot';
 import CheckoutPayment from '../CheckoutPayment';
 import {useDispatch, useSelector} from 'react-redux';
-import {ComponentChangeByIndex} from '../../../redux/action/action';
+import {componentChangeByIndex} from '../../../redux/action/action';
 
 const CheckoutScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const screenIndex = useSelector(state => state.orderDetails.screenIndex);
 
   const SelectIcon = val => {
-    dispatch(ComponentChangeByIndex(val));
+    dispatch(componentChangeByIndex(val));
   };
 
   return (
@@ -36,7 +36,7 @@ const CheckoutScreen = ({navigation}) => {
               onPress={() => {
                 if (screenIndex === 2) {
                   navigation.navigate('Thankyou');
-                  dispatch(ComponentChangeByIndex(0));
+                  dispatch(componentChangeByIndex(0));
                 }
               }}
             />

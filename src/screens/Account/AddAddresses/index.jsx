@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {View, SafeAreaView, ScrollView} from 'react-native';
 import AddressesPageTextInput from '../../../components/AddressesPageTextInput';
 import PrimaryButton from '../../../components/PrimaryButton';
-import {ManageAddresses, UpdateAddress} from '../../../redux/action/action';
+import {manageAddresses, updateAddress} from '../../../redux/action/action';
 import {useDispatch, useSelector} from 'react-redux';
 import {useForm} from 'react-hook-form';
 import styles from './styles';
@@ -41,10 +41,10 @@ const AddAddresses = ({navigation, route}) => {
       ...data,
     };
     if (ItemID === undefined) {
-      dispatch(ManageAddresses(uDetails));
+      dispatch(manageAddresses(uDetails));
     }
     if (ID) {
-      dispatch(UpdateAddress(ID, data));
+      dispatch(updateAddress(ID, data));
     }
     reset();
     navigation.navigate('Manage Addresses');

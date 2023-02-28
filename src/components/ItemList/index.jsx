@@ -8,7 +8,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {AddFruitsToCart, RemoveToWishlist} from '../../redux/action/action';
+import {addItemsToCart, removeToWishlist} from '../../redux/action/action';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import firestore from '@react-native-firebase/firestore';
@@ -71,7 +71,7 @@ const ItemList = props => {
       }
     }
     if (!isItemAvailable) {
-      dispatch(AddFruitsToCart(item));
+      dispatch(addItemsToCart(item));
       // FireSotreDataHandler(item);
     } else {
       alert('Item Already added to Cart');
@@ -136,7 +136,7 @@ const ItemList = props => {
                           ? styles.addToCartContainerWishlist
                           : styles.addToCartContainer
                       }
-                      onPress={() => dispatch(RemoveToWishlist(item.id))}>
+                      onPress={() => dispatch(removeToWishlist(item.id))}>
                       <View style={styles.deleteWishlistBtn}>
                         <Feather name={'trash-2'} size={22} />
                       </View>

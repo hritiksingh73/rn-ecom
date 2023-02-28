@@ -1,106 +1,113 @@
 import {ActionTypes} from '../constants/constants';
 
-export const UserId = val => ({
+// user Details
+export const userId = val => ({
   type: ActionTypes.USER_ID,
   payload: val,
 });
 
-export const registerDetails = (name, email, number, password) => ({
-  type: ActionTypes.REGISTER_DETAILS,
+export const userDetails = (name, email, number, password) => ({
+  type: ActionTypes.USER_DETAILS,
   payload: {name, email, number, password},
 });
 
-export const AddFruitsToCart = val => ({
+// cart Details
+export const addItemsToCart = val => ({
   type: ActionTypes.ADD_FRUITS_TO_CART,
   payload: val,
 });
 
-export const IncrementCartItem = val => ({
+export const increaseNoOfCartItem = val => ({
   type: ActionTypes.ITEMS_INCRIMENT,
   payload: val,
 });
 
-export const DecrementCartItem = val => ({
+export const decreaseNoOfCartItem = val => ({
   type: ActionTypes.ITEMS_DECREMENT,
   payload: val,
 });
 
-export const RemoveCartItem = val => ({
+export const removeSingleCartItem = val => ({
   type: ActionTypes.REMOVE_CART_ITEM,
   payload: val,
 });
 
-export const ManageAddresses = val => ({
+export const clearAllCartItem = () => ({
+  type: ActionTypes.REMOVE_ALL_CART_ITEM,
+  payload: true,
+});
+
+// Address Management
+export const manageAddresses = val => ({
   type: ActionTypes.MANAGE_ADDRESSES,
   payload: val,
 });
 
-export const DeleteAddress = val => ({
+export const deleteAddress = val => ({
   type: ActionTypes.DELETE_ADDRESS,
   payload: val,
 });
 
-export const UpdateAddress = (ID, data) => ({
+export const updateAddress = (ID, data) => ({
   type: ActionTypes.UPDATE_ADDRESS,
   payload: {ID, data},
 });
 
-
-export const ComponentChangeByIndex = val => ({
+// component change conditionally
+export const componentChangeByIndex = val => ({
   type: ActionTypes.COMPONENT_CHANGE_BY_INDEX,
   payload: val,
 });
 
-
 // CART -> CHECKOUT_SCREEN
-export const SelectedAddress = val => ({
+export const selectedAddress = val => ({
   type: ActionTypes.SELECTED_ADDRESS,
   payload: val,
 });
 
-export const DeliveryDate = val => ({
+export const deliveryDate = val => ({
   type: ActionTypes.DELIVERY_DATE,
   payload: val,
 });
 
-export const DeliveryTime = val => ({
+export const deliveryTime = val => ({
   type: ActionTypes.DELIVERY_TIME,
   payload: val,
 });
 
-export const PaymentMethod = val => ({
-  type: ActionTypes.PAYMENT_METHOD,
+export const paymentMode = val => ({
+  type: ActionTypes.PAYMENT_MODE,
   payload: val,
 });
 
-export const CheckoutDetails = val => ({
-  type: ActionTypes.CHECKOUT_DETAILS,
+export const userOrderDetails = val => ({
+  type: ActionTypes.USER_ORDER_DETAILS,
   payload: val,
 });
 
-export const OrderedProducts = val => ({
+export const orderedProducts = val => ({
   type: ActionTypes.ORDERED_PRODUCTS,
   payload: val,
 });
 
-export const OrderedProductsPrice = val => ({
+export const orderedProductsPricing = val => ({
   type: ActionTypes.ORDERED_PRODUCTS_PRICE_DETAILS,
   payload: val,
 });
 
 // add to Wishlist
-export const AddToWishlist = val => ({
+export const addToWishlist = val => ({
   type: ActionTypes.ADD_TO_WISHLIST,
   payload: val,
 });
 
-export const RemoveToWishlist = val => ({
+export const removeToWishlist = val => ({
   type: ActionTypes.REMOVE_TO_WISHLIST,
   payload: val,
 });
 
-
-export const FatchingData = data => {
+// Calling Products API
+export const setProductsData = data => {
   return dispatch => {
     try {
       const response = fetch(

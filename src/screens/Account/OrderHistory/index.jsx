@@ -27,7 +27,14 @@ const OrderHistory = ({navigation}) => {
               <Text style={styles.statusStyling}>Status: Placed</Text>
 
               <View style={styles.btnContainer}>
-                <PrimaryButton name="View Details" onPress={() => navigation.navigate('OrderHistoryDetails', {OrderID: item.orderID})}/>
+                <PrimaryButton
+                  name="View Details"
+                  onPress={() =>
+                    navigation.navigate('OrderHistoryDetails', {
+                      OrderID: item.orderID,
+                    })
+                  }
+                />
                 <PrimaryButton
                   name="Rate this Order"
                   customBtnContainerStyle={styles.customBtnContainerStyle}

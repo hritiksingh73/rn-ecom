@@ -10,9 +10,10 @@ import {
 import PrimaryButton from '../../../components/PrimaryButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-  PaymentMethod,
-  CheckoutDetails,
-  ComponentChangeByIndex,
+  paymentMode,
+  userOrderDetails,
+  componentChangeByIndex,
+  clearAllCartItem,
 } from '../../../redux/action/action';
 import {RadioButton} from 'react-native-paper';
 import colors from '../../../constants/colors';
@@ -50,7 +51,8 @@ const Payment = ({navigation}) => {
       billingDetails: billingDetails,
       products: products,
     };
-    dispatch(CheckoutDetails(orderDetails));
+    dispatch(userOrderDetails(orderDetails));
+    dispatch(clearAllCartItem());
   };
 
   return (
@@ -73,7 +75,7 @@ const Payment = ({navigation}) => {
       <TouchableOpacity
         onPress={() => {
           setIsItemSelected(1);
-          dispatch(PaymentMethod('Via Cart'));
+          dispatch(paymentMode('Via Cart'));
         }}>
         <View
           style={[
@@ -91,7 +93,7 @@ const Payment = ({navigation}) => {
       <TouchableOpacity
         onPress={() => {
           setIsItemSelected(2);
-          dispatch(PaymentMethod('Via UPI Option'));
+          dispatch(paymentMode('Via UPI Option'));
         }}>
         <View
           style={[
@@ -109,7 +111,7 @@ const Payment = ({navigation}) => {
       <TouchableOpacity
         onPress={() => {
           setIsItemSelected(3);
-          dispatch(PaymentMethod('Cash On Delivery'));
+          dispatch(paymentMode('Cash On Delivery'));
         }}>
         <View
           style={[
@@ -130,7 +132,7 @@ const Payment = ({navigation}) => {
           name={'Place Order'}
           onPress={() => {
             SubmitDetails();
-            // dispatch(ComponentChangeByIndex(0))
+            // dispatch(componentChangeByIndex(0))
             // navigation.navigate('Thankyou')
           }}
         />

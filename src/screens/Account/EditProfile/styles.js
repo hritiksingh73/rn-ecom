@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginBottom: 10,
   },
-  userEmail: {
+  userEmailStyle: {
     fontSize: 18,
     fontWeight: '500',
   },

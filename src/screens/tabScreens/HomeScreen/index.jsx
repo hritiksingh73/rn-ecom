@@ -19,15 +19,35 @@ import colors from '../../../constants/colors';
 import ItemList from '../../../components/ItemList';
 import {Rating} from 'react-native-ratings';
 import {useDispatch, useSelector} from 'react-redux';
-import {FatchingData} from '../../../redux/action/action';
+import {setProductsData} from '../../../redux/action/action';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const width = Dimensions.get('window').width;
   const productData = useSelector(state => state.user.productData);
 
+
+  // const dataCalling = async () => {
+  //           fetch('https://api.escuelajs.co/api/v1/products/', {
+  //             method: 'POST',
+  //             body: JSON.stringify({
+  //                 "title": "New Product",
+  //                 "price": 10,
+  //                 "description": "A description",
+  //                 "categoryId": 1,
+  //                 "images": [
+  //                   "https://placeimg.com/640/480/any"
+  //                 ]
+  //             })
+  //           })
+  //           .then(res=>res.json())
+  //           .then(json=>console.log(json))
+  //        };
+
+
   useEffect(() => {
-    dispatch(FatchingData());
+    dispatch(setProductsData());
+    // dataCalling()
   }, []);
 
   return (

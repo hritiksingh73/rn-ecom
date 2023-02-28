@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import ItemList from '../../../components/ItemList';
 import {useDispatch, useSelector} from 'react-redux';
-import { AddToWishlist } from '../../../redux/action/action';
+import { addToWishlist } from '../../../redux/action/action';
 import Feather from 'react-native-vector-icons/Feather';
 import strings from '../../../constants/strings';
 import globaStyle from '../../../constants/globalStyle';
@@ -45,7 +45,7 @@ const ItemDetails = ({navigation, route}) => {
       }
     }
     if (!isItemAvailable) {
-      dispatch(AddToWishlist(itemDetail));
+      dispatch(addToWishlist(itemDetail));
     } else {
       alert('Already added to WishList');
     }

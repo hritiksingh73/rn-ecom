@@ -9,10 +9,13 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
-import globaStyle from '../../../../constants/globalStyle';
+import globaStyle from '../../../constants/globalStyle';
 import ItemList from '../../../components/ItemList';
+import {useSelector} from 'react-redux';
 
 const ItemSearch = ({navigation}) => {
+  const productData = useSelector(state => state.user.productData);
+
   return (
     <SafeAreaView style={globaStyle.outerContainer}>
       <ScrollView>
@@ -39,8 +42,34 @@ const ItemSearch = ({navigation}) => {
 
 
 
+          <View style={styles.recentSearchContainer}>
+            <View style={styles.recentSearchContainerRow}>
+              <View styles={{
+                flex: 1,
+                        borderWidth: 1, 
+                        borderRadius: 20,}}>
+                <Text style={{}}>hello</Text>
 
-
+              </View>
+              <Text style={styles.searchedText}>hello</Text>
+              <Text style={styles.searchedText}>hello</Text>
+            </View>
+            <View style={styles.recentSearchContainerRow}>
+              <Text style={styles.searchedText}>hello</Text>
+              <Text style={styles.searchedText}>hello</Text>
+              <Text style={styles.searchedText}>hello</Text>
+            </View>
+            <View style={styles.recentSearchContainerRow}>
+              <Text style={styles.searchedText}>hello</Text>
+              <Text style={styles.searchedText}>hello</Text>
+              <Text style={styles.searchedText}>hello</Text>
+            </View>
+            <View style={styles.recentSearchContainerRow}>
+              <Text style={styles.searchedText}>hello</Text>
+              <Text style={styles.searchedText}>hello</Text>
+              <Text style={styles.searchedText}>hello</Text>
+            </View>
+          </View>
 
 
 
@@ -48,7 +77,7 @@ const ItemSearch = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.navigate('Fruits')}>
             <Text style={styles.productHeading}>Recommended</Text>
           </TouchableOpacity>
-        <ItemList data={productData} showHorizontal={true} />
+          <ItemList data={productData} showHorizontal={true} />
         </View>
       </ScrollView>
     </SafeAreaView>

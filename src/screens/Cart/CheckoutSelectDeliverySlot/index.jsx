@@ -12,9 +12,9 @@ import {Timings} from '../../../data/cartScreen';
 import {timeZone} from '../../../utils';
 import {useDispatch} from 'react-redux';
 import {
-  DeliveryDate,
-  DeliveryTime,
-  ComponentChangeByIndex,
+  deliveryDate,
+  deliveryTime,
+  componentChangeByIndex,
 } from '../../../redux/action/action';
 import PrimaryButton from '../../../components/PrimaryButton';
 import globaStyle from '../../../constants/globalStyle';
@@ -35,7 +35,7 @@ const DeliverySlot = () => {
             name={'Choose'}
             onPress={() => {
               setIsTimeSelected(index + 1);
-              dispatch(DeliveryTime(item.time));
+              dispatch(deliveryTime(item.time));
             }}
             customBtnContainerStyle={
               index + 1 === isTimeSelected
@@ -70,7 +70,7 @@ const DeliverySlot = () => {
                 <TouchableOpacity
                   onPress={() => {
                     setIsDateSelected(index + 1);
-                    dispatch(DeliveryDate(item));
+                    dispatch(deliveryDate(item));
                   }}>
                   <View
                     style={[
@@ -115,7 +115,7 @@ const DeliverySlot = () => {
           <PrimaryButton
             name={'Save & Next'}
             onPress={() => {
-              dispatch(ComponentChangeByIndex(2));
+              dispatch(componentChangeByIndex(2));
             }}
           />
         </View>
